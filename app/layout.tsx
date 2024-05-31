@@ -8,7 +8,7 @@ import { config } from '@/config/Wagmi'
 import { Web3ModalProvider } from '@/config/Web3Modal'
 import { Lens } from '@/config/Lens'
 import Header from "@/components/header/header";
-
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +45,7 @@ export default function RootLayout({
              <Header/>
              {/* <div className="sm:mt-16"/> */}
                 {children}
-              
+                <Analytics />
             </Lens>
           </Web3ModalProvider>
         </Provider>

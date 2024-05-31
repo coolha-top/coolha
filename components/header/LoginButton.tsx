@@ -77,8 +77,8 @@ export function LoginButton() {
     return (
         <>
             {!isConnected && <>
-                <button className="btn" color="primary" onClick={() => router.push(`/sigup`)}>注册</button>
-                <button className="btn" color="primary" onClick={() => router.push(`/login`)} >登入</button></>}
+                <button className="btn btn-square  btn-ghost" color="primary" onClick={() => router.push(`/sigup`)}>注册</button>
+                <button className="btn btn-square  btn-ghost" color="primary" onClick={() => router.push(`/login`)} >登入</button></>}
 
 
             <div className="dropdown dropdown-bottom dropdown-end">
