@@ -9,7 +9,7 @@ import { Web3ModalProvider } from '@/config/Web3Modal'
 import { Lens } from '@/config/Lens'
 import Header from "@/components/header/header";
 import { Analytics } from "@vercel/analytics/react"
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -46,6 +46,7 @@ export default function RootLayout({
              {/* <div className="sm:mt-16"/> */}
                 {children}
                 <Analytics />
+                <SpeedInsights />
             </Lens>
           </Web3ModalProvider>
         </Provider>
