@@ -52,7 +52,7 @@ export default function LoginForm({ owner, onSuccess }: { owner: string; onSucce
           {profiles.map((profile, idx) => (
             <label
               key={profile.id}
-              className="w-full items-center p-4 rounded-lg cursor-pointer border transition-colors border-gray-300 hover:border-gray-500 grid grid-cols-[24px_auto]"
+              className=" btn btn-outline"
             >
               <input
                 disabled={isLoginPending}

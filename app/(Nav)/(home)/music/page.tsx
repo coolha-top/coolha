@@ -74,7 +74,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex flex-1 flex-wrap flex-col max-w-4xl mx-auto">
+      <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
 
 
         {loadingMusicPubs && (
@@ -86,7 +86,7 @@ export default function Page() {
 
         {musicPubs?.map(publication => (
           <div
-            className="border-b border-l border-r sm:border-r-0 sm:border-l-0 hover:bg-[#6463631a]"
+            className="md:border  border-b border-t-0 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 lg:px-6 "
             key={publication.id}
             onClick={() => router.push(`https://share.lens.xyz/p/${publication.id}`)}
           >
@@ -105,23 +105,23 @@ export default function Page() {
 
 
               <div>
+                <ReactMarkdown className=" mt-4 break-words ">
+                  {publication.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
+                </ReactMarkdown>
                 <img
-                  className={`max-w-[400px] h-auto sm:max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
+                  className={`sm:max-w-[400px] h-auto max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
                   alt='audio img'
                   src={publication.__typename === 'Post' ?
                     publication.metadata?.asset?.cover?.optimized?.uri ?
                       publication.metadata?.asset?.cover?.optimized?.uri :
                       publication.metadata?.asset?.cover?.optimized?.raw?.uri : ''}
                 />
-                <audio controls>
+                <audio controls className={`sm:w-[400px] `}>
                   <source
                     type={publication.metadata?.asset?.audio?.optimized?.mimeType}
                     src={publication.metadata?.asset?.audio?.optimized?.uri}
                   />
                 </audio>
-                <ReactMarkdown className=" mt-4 break-words ">
-                  {publication.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
-                </ReactMarkdown>
               </div>
 
 

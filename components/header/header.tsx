@@ -15,7 +15,7 @@ export default function Header() {
 
 
 
-            <div className="navbar py-2 lg:py-0  px-0 lg:px-2 w-100vw sm:border-b bg-base-100  hidden sm:flex fixed top-0 left-0 z-50">
+            <div className="navbar py-0 px-0 lg:px-2 md:border-b bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
 
 
                 <div className="navbar-start">
@@ -31,7 +31,7 @@ export default function Header() {
                         </motion.div>
                     </a>
 
-                    <label className="input w-48 lg:w-72 input-bordered flex items-center gap-2">
+                    <label className="input w-44 lg:w-72 input-bordered flex items-center gap-2">
                         <input type="text" className="grow" placeholder="搜索" />
                         <RiSearchLine size={24} />
                     </label>
@@ -52,24 +52,24 @@ export default function Header() {
                         </li> */}
                         <li><Link
                             href='/'
-                            className={`btn btn-ghost btn-primary lg:btn-md ${pathname === "/" ? "btn-active " : ""}`}>
+                            className={`btn btn-ghost btn-primary  lg:text-xl ${pathname === "/" ? "btn-active text-info" : ""}`}>
                             首页
                         </Link></li>
 
                         <li> <Link
                             href='/find'
-                            className={`btn btn-ghost btn-primary lg:btn-md ${pathname && pathname.startsWith("/find") ? "btn-active " : ""}`}>
+                            className={`btn btn-ghost btn-primary  lg:text-xl ${pathname && pathname.startsWith("/find") ? "btn-active text-info" : ""}`}>
                             发现
                         </Link></li>
 
                         <li> <Link
-                            href='/message'
-                            className={` btn btn-ghost btn-primary lg:btn-md ${pathname && pathname.startsWith("/message") ? "btn-active " : ""}`}>
+                            href='/message/chat'
+                            className={` btn btn-ghost btn-primary  lg:text-xl ${pathname && pathname.startsWith("/message") ? "btn-active text-info" : ""}`}>
                             消息
                         </Link></li>
                         <li> <Link
                             href='/profile'
-                            className={`btn btn-ghost btn-primary lg:btn-md ${pathname && pathname.startsWith("/profile") ? "btn-active " : ""}`}>
+                            className={`btn btn-ghost btn-primary  lg:text-xl ${pathname && pathname.startsWith("/profile") ? "btn-active text-info" : ""}`}>
                             资料
                         </Link></li>
                     </ul>
@@ -82,34 +82,25 @@ export default function Header() {
             </div>
 
 
-            {["/find", "/message", "/profile"].includes(pathname) ? (
+{/*             {["/find", "/message/chat", "/profile"].includes(pathname) ? (
                 <div className="sm:hidden flex navbar border-b sm:border-0 w-100vw p-0">
                     {pathname === "/find" && <Find />}
-                    {pathname === "/message" && <Message />}
+                    {pathname === "/message/chat" && <Message />}
                     {pathname && pathname.startsWith("/profile") && null}
                     {pathname === "/profile" && <Profile />}
                     {pathname === `/@` && <Users />}
                 </div>
-            ) : null}
+            ) : null} */}
 
 
 
 
         </>)
 }
-function Users() {
-    return (
-        <div className="navbar">
-            <div className=" navbar-start"> </div>
-            <div className=" navbar-center">用户</div>
-            <div className=" navbar-end"> </div>
-        </div>
-    )
-}
 
 function Find() {
     return (
-        <div className="navbar">
+        <div className="navbar py-0">
             <div className=" navbar-start"> </div>
             <div className=" navbar-center">发现</div>
             <div className=" navbar-end">
@@ -123,7 +114,7 @@ function Find() {
 
 function Message() {
     return (
-        <div className="navbar">
+        <div className="navbar py-0">
             <div className=" navbar-start"> </div>
             <div className=" navbar-center">消息</div>
             <div className=" navbar-end"> </div>
@@ -133,13 +124,24 @@ function Message() {
 
 function Profile() {
     return (
-        <div className="navbar">
+        <div className="navbar py-0">
             <div className="navbar-start">
             </div>
             <div className="navbar-center"> </div>
             <div className="navbar-end">
                 <LoginButton />
             </div>
+        </div>
+    )
+}
+
+
+function Users() {
+    return (
+        <div className="navbar py-0">
+            <div className=" navbar-start"> </div>
+            <div className=" navbar-center">用户</div>
+            <div className=" navbar-end"> </div>
         </div>
     )
 }

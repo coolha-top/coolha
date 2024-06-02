@@ -23,7 +23,8 @@ createWeb3Modal({
   featuredWalletIds: [
     'c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96',
     '971e689d0a5be527bac79629b4ee9b925e82208e5168b733496a09c0faed0709',
-    '8a0ee50d1f22f6651afcae7eb4253e52a3310b90af5daef78a8c4929a9bb99d4'
+    '225affb176778569276e484e1b92637ad061b01e13a048b35a9d280c3b58970f',
+    'fd20dc426fb37566d803205b19bbc1d4096b248ac04548e3cfb6b3a38bd033aa',
   ],
   themeVariables: ({
     //'--w3m-font-family': 'Roboto, sans-serif',//Base 字体系列
@@ -31,7 +32,7 @@ createWeb3Modal({
     //'--w3m-color-mix': '#C0E218',//与默认颜色混合的颜色
     //'--w3m-color-mix-strength': 5,//“--w3m-color-mix”应该混合多少的百分比
     //'--w3m-font-size-master': '2px',// 的基本像素大小
-    '--w3m-border-radius-master': '1px',//基本边框半径（以像素为单位）
+    '--w3m-border-radius-master': '3px',//基本边框半径（以像素为单位）
     //'--w3m-z-index': 50
 
 

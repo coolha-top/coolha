@@ -35,19 +35,20 @@ const config: Config = {
           "accent": "#3f1de7",
           "neutral": "#9dba0d",
           "base-100": "#ffffff",
-          "info": "#ca8a04",
+          "base-content": "#1d1d1f",
+          "info": "#3f1de7",
           "success": "#00ff00",
           "warning": "#F37121",
           "error": "#ff0000",
-          "--rounded-box": "0rem", //边框半径圆角盒实用类，用于卡片等大型盒子
-          "--rounded-btn": "0rem",//border-radius圆角btn实用程序类，用于按钮和类似元素
-          "--rounded-badge": "0rem", //边框半径圆形徽章实用类，用于徽章及类似产品
+          "--rounded-box": "0.5rem", //边框半径圆角盒实用类，用于卡片等大型盒子
+          "--rounded-btn": "1.5rem",//border-radius圆角btn实用程序类，用于按钮和类似元素
+          "--rounded-badge": "0.5rem", //边框半径圆形徽章实用类，用于徽章及类似产品
           "--animation-btn": "0.25s", //单击按钮时的动画持续时间
           "--animation-input": "0.2s", //复选框、切换、单选等输入的动画持续时间
           "--btn-focus-scale": "0.95", //聚焦按钮时的缩放变换
-          "--border-btn": "1px", //聚焦按钮时的缩放变换
-          "--tab-border": "1px", //选项卡的边框宽度
-          "--tab-radius": "0rem", //选项卡的边界半径
+          "--border-btn": "0.8px", //聚焦按钮时的缩放变换
+          "--tab-border": "0.8px", //选项卡的边框宽度
+          "--tab-radius": "0rem", //选项卡的边界半径 
         },
 
         dark: {
@@ -57,18 +58,19 @@ const config: Config = {
           "accent": "#3f1de7",
           "neutral": "#C0E218",
           "base-100": "#000000",
-          "info": "#ca8a04",
+          "base-content": "#f5f5f7",
+          "info": "#C0E218",
           "success": "#00ff00",
           "warning": "#F37121",
           "error": "#ff0000",
-          "--rounded-box": "0rem", //边框半径圆角盒实用类，用于卡片等大型盒子
-          "--rounded-btn": "0rem",//border-radius圆角btn实用程序类，用于按钮和类似元素
-          "--rounded-badge": "0rem", //边框半径圆形徽章实用类，用于徽章及类似产品
+          "--rounded-box": "1rem", //边框半径圆角盒实用类，用于卡片等大型盒子
+          "--rounded-btn": "1.5rem",//border-radius圆角btn实用程序类，用于按钮和类似元素
+          "--rounded-badge": "1rem", //边框半径圆形徽章实用类，用于徽章及类似产品
           "--animation-btn": "0.25s", //单击按钮时的动画持续时间
           "--animation-input": "0.2s", //复选框、切换、单选等输入的动画持续时间
           "--btn-focus-scale": "0.95", //聚焦按钮时的缩放变换
-          "--border-btn": "1px", //聚焦按钮时的缩放变换
-          "--tab-border": "1px", //选项卡的边框宽度
+          "--border-btn": "0.8px", //聚焦按钮时的缩放变换
+          "--tab-border": "0.8px", //选项卡的边框宽度
           "--tab-radius": "0rem", //选项卡的边界半径 
         }
       }

@@ -11,7 +11,7 @@ if (!projectId) throw new Error('Project ID is not defined')
 const metadata = {
   name: 'VimCord',
   description: 'VimCord Socialize Dapp',
-  url: '/',
+  url: 'https://vimcord.vercel.com',
   icons: ['/favicon.ico']
 }
 

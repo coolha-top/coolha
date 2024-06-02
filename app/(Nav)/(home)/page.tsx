@@ -87,7 +87,7 @@ export default function Page() {
 
 
         {publications?.map((publication: any) => (
-          <div key={publication.id} className="md:border sm:border-t-0 border-b border-t-0 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 lg:px-6" >
+          <div key={publication.id} className="md:border  border-b border-t-0 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 lg:px-6" >
 
             {/* users  */}
             <div className=" flex px-6 lg:px-0">

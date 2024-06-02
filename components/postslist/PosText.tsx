@@ -22,7 +22,7 @@ const PosText = ({ content }) => {
       </ReactMarkdown>
       {lines.length > MAX_LINES && (
         <button
-          className=" text-orange-600 cursor-pointer"
+          className=" text-info cursor-pointer"
           onClick={() => setExpanded(!expanded)}
         >
           {expanded ? '收起' : '更多'}
