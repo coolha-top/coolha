@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 
 
-export function LoginButton() {
+export function MenuButton() {
     const router = useRouter();
     const { isConnected, isDisconnected, address } = useAccount({ config });
 

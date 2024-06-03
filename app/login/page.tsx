@@ -8,7 +8,7 @@ export default function page() {
             <div className="card card-compact bg-base-100 shadow-xl sm:max-w-2xl  h-dvh w-dvw">
 
 
-                <figure> <img src="/lens/Icon-T-Green_@2x.png" alt="nextui logo" /></figure>
+                <figure> <img src="/lens/Cover04-Text.png" alt="Cover04-Text.png" /></figure>
                 <div className="p-4">
                 <h2 className="card-title">连接 Lens 登入界面</h2>
                 <p>Lens Protocol</p>

@@ -17,8 +17,7 @@ export const metadata = {
     template: '%s | VimCord',
     default: 'VimCord',
   },
-  description:
-    "",
+  description:"",
   icons: {
     icon: '/favicon.ico',
     shortcut: '/shortcut-icon.png',

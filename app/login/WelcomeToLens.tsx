@@ -4,12 +4,12 @@ import { SessionType, useSession } from "@lens-protocol/react-web";
 import { useAccount as useWagmiAccount } from "wagmi";
 import { config } from "@/config/Wagmi";
 import { useWeb3Modal } from '@web3modal/wagmi/react'
-import ConnectWalletButton from "@/app/login/ConnectWalletButton";
-import { DisconnectWalletButton } from "@/app/login/DisconnectWalletButton";
-import LoginForm from "@/app/login/LoginForm";
-import { LogoutButton } from "@/app/login/LogoutButton";
+import { ConnectButton } from "@/components/wagmi/ConnectWalletButton";
+import { DisconnectWalletButton } from "@/components/wagmi/DisconnectWalletButton";
 import { truncateEthAddress } from "@/utils/truncateEthAddress";
 import ThemeSwap from "@/components/ThemeSwap";
+import LoginForm from "@/components/lnes/Login/LoginForm";
+import { LogoutButton } from "@/components/lnes/Login/LogoutButton";
 
 
 
@@ -24,9 +24,9 @@ export function WelcomeToLens() {
 
                 {!isConnected && (
                     <div className="flex flex-row justify-center items-center">
-{/*                         <p className="mb-4" onClick={()=>open({ view: 'Networks' })}>连接您的钱包</p> */}
-                        
-                        <ConnectWalletButton />
+                        {/*                         <p className="mb-4" onClick={()=>open({ view: 'Networks' })}>连接您的钱包</p> */}
+
+                        <ConnectButton />
                     </div>
                 )}
 
@@ -34,7 +34,7 @@ export function WelcomeToLens() {
                     <>
                         <p className="">当前连接的钱包: </p>
                         <div className="mt-2 mb-16 flex-row flex justify-between items-center">
-                            <button className='btn btn-outline' onClick={()=>open({ view: 'Account' })} >{truncateEthAddress(address)}</button>
+                            <button className='btn btn-outline' onClick={() => open({ view: 'Account' })} >{truncateEthAddress(address)}</button>
                             <DisconnectWalletButton />
                         </div>
 

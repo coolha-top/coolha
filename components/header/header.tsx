@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { RiSearchLine } from "react-icons/ri";
-import { LoginButton } from "@/components/header/LoginButton";
+import { MenuButton } from "./MenuButton";
 
 export default function Header() {
     const pathname = usePathname();
@@ -76,7 +76,7 @@ export default function Header() {
                 </div>
 
                 <div className="navbar-end">
-                    <LoginButton />
+                    <MenuButton />
                 </div>
 
             </div>
@@ -129,7 +129,7 @@ function Profile() {
             </div>
             <div className="navbar-center"> </div>
             <div className="navbar-end">
-                <LoginButton />
+                <MenuButton />
             </div>
         </div>
     )

@@ -80,7 +80,7 @@ const config: Config = {
     styled: true, // 包括所有组件的daisyUI颜色和设计决策
     utils: true, //添加响应和修饰符实用程序类
     prefix: "", //用于daisyUI类名的前缀（组件、修饰符和响应类名。不是颜色）
-    logs: true, // 在构建CSS时在控制台中显示有关daisyUI版本和使用的配置的信息
+    logs: false, // 在构建CSS时在控制台中显示有关daisyUI版本和使用的配置的信息
     themeRoot: ":root", // 接收主题颜色CSS变量的元素
   },
 };

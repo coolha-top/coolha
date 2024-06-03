@@ -13,10 +13,13 @@ import Image from "next/image"
 
 import ReactMarkdown from 'react-markdown'
 
-import InteractCard from '@/components/postslist/InteractCard'
+import InteractCard from '@/components/lnes/PostsCard/InteractCard'
 import { RiLoader4Line } from 'react-icons/ri'
 import { useRouter } from 'next/navigation'
 import Avatar from '@/gui/flowbite/Avatar'
+import Avatarimg from '@/components/lnes/PostsCard/Avatarimg'
+import AvatarName from '@/components/lnes/PostsCard/AvatarName'
+import PosAudio from '@/components/lnes/PostsCard/PosAudio'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -84,51 +87,43 @@ export default function Page() {
         )}
 
 
-        {musicPubs?.map(publication => (
+        {musicPubs?.map(mpub => (
           <div
-            className="md:border  border-b border-t-0 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 lg:px-6 "
-            key={publication.id}
-            onClick={() => router.push(`https://share.lens.xyz/p/${publication.id}`)}
+            className="md:border  border-b border-t-0 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 lg:px-6"
+            key={mpub.id}
+            onClick={() => router.push(`https://share.lens.xyz/p/${mpub.id}`)}
           >
-            <div className="space-y-3 mb-4 p-4">
 
-
+            <div className=" flex px-6 lg:px-0">
               <div className="flex">
-
-                <Avatar src={publication.by?.metadata?.picture?.optimized?.uri} alt={publication.by.handle.localName} />
-
-                <div className="ml-4">
-                  <h3 className="mb-1 font-medium leading-none">{publication.by.handle.localName}.{publication.by.handle.namespace}</h3>
-                  <p className="text-xs text-muted-foreground">{publication.by.handle.fullName}</p>
-                </div>
+                <Avatarimg href={`/${mpub.by.handle.localName}.lens`} src={mpub.by?.metadata?.picture?.optimized?.uri} alt={mpub.by.handle.localName} />
+                <AvatarName localName={mpub.by.handle.localName} displayName={mpub.by.metadata.displayName} namespace={mpub.by.handle.namespace} />
               </div>
-
-
-              <div>
-                <ReactMarkdown className=" mt-4 break-words ">
-                  {publication.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
-                </ReactMarkdown>
-                <img
-                  className={`sm:max-w-[400px] h-auto max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
-                  alt='audio img'
-                  src={publication.__typename === 'Post' ?
-                    publication.metadata?.asset?.cover?.optimized?.uri ?
-                      publication.metadata?.asset?.cover?.optimized?.uri :
-                      publication.metadata?.asset?.cover?.optimized?.raw?.uri : ''}
-                />
-                <audio controls className={`sm:w-[400px] `}>
-                  <source
-                    type={publication.metadata?.asset?.audio?.optimized?.mimeType}
-                    src={publication.metadata?.asset?.audio?.optimized?.uri}
-                  />
-                </audio>
-              </div>
-
-
-              <InteractCard dataname={publication} />
-
-
             </div>
+
+
+            <div className='px-6  lg:px-0' >
+              <ReactMarkdown className=" mt-4 break-words ">
+                {mpub.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
+              </ReactMarkdown>
+              <img
+                className={`sm:max-w-[400px] h-auto max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
+                alt='audio img'
+                src={mpub.__typename === 'Post' ?
+                  mpub.metadata?.asset?.cover?.optimized?.uri ?
+                    mpub.metadata?.asset?.cover?.optimized?.uri :
+                    mpub.metadata?.asset?.cover?.optimized?.raw?.uri : ''}
+              />
+              <PosAudio
+                type={mpub.metadata?.asset?.audio?.optimized?.mimeType}
+                src={mpub.metadata?.asset?.audio?.optimized?.uri}
+              />
+            </div>
+
+
+            <InteractCard dataname={mpub} />
+
+
 
           </div>
         ))

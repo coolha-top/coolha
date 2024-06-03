@@ -70,15 +70,15 @@ export default function Page() {
           ))}
         </div>
 
-
-        {loadingProfiles && (
-          <div className=" flex flex-1 justify-center items-center ">
-            <RiLoader4Line className="h-12 w-12 animate-spin" />
-          </div>
-        )}
-
-
       </div>
+
+
+      
+      {loadingProfiles && (
+        <div className=" flex flex-1 justify-center items-center ">
+          <RiLoader4Line className="h-12 w-12 animate-spin" />
+        </div>
+      )}
     </>
   )
 }

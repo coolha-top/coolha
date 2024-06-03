@@ -8,14 +8,16 @@ import {
   ExplorePublicationType,
   LimitType
 } from '@lens-protocol/react-web'
-import InteractCard from '@/components/postslist/InteractCard';
+import InteractCard from '@/components/lnes/PostsCard/InteractCard';
 
 import { RiLoader4Line } from "react-icons/ri";
-import Posimg from '@/components/postslist/Posimg';
-import Avatarimg from '@/components/postslist/Avatarimg';
-import AvatarName from '@/components/postslist/AvatarName';
-import PosText from '@/components/postslist/PosText';
+import Posimg from '@/components/lnes/PostsCard/Posimg';
+import Avatarimg from '@/components/lnes/PostsCard/Avatarimg';
+import AvatarName from '@/components/lnes/PostsCard/AvatarName';
+import PosText from '@/components/lnes/PostsCard/PosText';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Loading from './loading';
 
 
 enum PublicationMetadataMainFocusType {
@@ -79,34 +81,36 @@ export default function Page() {
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
         {
           loadingPubs && (
-            <div className=" flex justify-center items-center ">
-              <RiLoader4Line className="h-12 w-12 animate-spin" />
+            <div className=" flex justify-center items-center w-full flex-col">
+              <Loading />
+              <Loading />
+              <Loading />
+           {/*    <RiLoader4Line className="h-12 w-12 animate-spin" /> */}
             </div>
           )
         }
 
 
-        {publications?.map((publication: any) => (
-          <div key={publication.id} className="md:border  border-b border-t-0 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 lg:px-6" >
+        {publications?.map((pub: any) => (
+          <div key={pub.id} className="md:border  border-b border-t-0 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 pb-8" >
 
-            {/* users  */}
-            <div className=" flex px-6 lg:px-0">
+
+            <div className=" flex px-6 ">
               <div className="flex " >
-                <Avatarimg dataname={publication} />
-                <AvatarName dataname={publication} />
+                <Avatarimg href={`/${pub.by.handle.localName}.lens`} src={pub.by?.metadata?.picture?.optimized?.uri} alt={pub.by.handle.localName} />
+                <AvatarName localName={pub.by.handle.localName} displayName={pub.by.metadata?.displayName} namespace={pub.by.handle.namespace} />
               </div>
             </div>
 
-            {/* users posts data  */}
-            <div className='px-6  lg:px-0' onClick={() => router.push(`/${publication.by.handle.localName}.lens/posts/${publication.id}`)}>
-              <PosText content={publication.metadata.content} />
-
-
-              {/* <Posimg src={publication.__typename === 'Post' ? publication.metadata?.asset?.image?.optimized.url : ''} /> */}
+            <div className='px-6 pt-1'>
+              <Link href={`/${pub.by.handle.localName}.lens/posts/${pub.id}`}>
+                <PosText content={pub.metadata.content} />
+                <Posimg src={pub.metadata?.asset?.image?.optimized.uri} />
+              </Link>
             </div>
 
-            {/* InteractCard */}
-            <InteractCard dataname={publication} />
+
+            <InteractCard dataname={pub} />
 
           </div>
         ))}

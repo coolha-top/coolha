@@ -1,7 +1,7 @@
 'use client'
 import { usePathname } from "next/navigation";
 import { RiAddCircleLine, RiSearchLine } from "react-icons/ri";
-import { LoginButton } from "../header/LoginButton";
+import { MenuButton } from "./MenuButton";
 
 export default function NavHeader() {
     const pathname = usePathname();
@@ -14,7 +14,8 @@ export default function NavHeader() {
                     {/* {pathname === "/message/chat" && <Message />} */}
                     {pathname && pathname.startsWith("/profile") && null}
                     {pathname === "/profile" && <Profile />}
-                    {pathname === `/@` && <Users />}
+                
+                    
                 </div>
             ) : null}
         </>
@@ -56,19 +57,10 @@ function Profile() {
             </div>
             <div className="navbar-center"> </div>
             <div className="navbar-end">
-                <LoginButton />
+                <MenuButton />
             </div>
         </div>
     )
 }
 
 
-function Users() {
-    return (
-        <div className="navbar py-0">
-            <div className=" navbar-start"> </div>
-            <div className=" navbar-center">用户</div>
-            <div className=" navbar-end"> </div>
-        </div>
-    )
-}

@@ -1,6 +1,6 @@
 
-import Navbar from '@/components/nav/Navbar'
-import NavHeader from '@/components/nav/NavHeader'
+import Navbar from '@/components/header/Navbar'
+import NavHeader from '@/components/header/NavHeader'
 
 
 export default function layout({children}) {
