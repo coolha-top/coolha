@@ -8,16 +8,17 @@ import {
   ExplorePublicationType,
   LimitType
 } from '@lens-protocol/react-web'
-import InteractCard from '@/components/lnes/PostsCard/InteractCard';
 
-import { RiLoader4Line } from "react-icons/ri";
-import Posimg from '@/components/lnes/PostsCard/Posimg';
+
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg';
 import AvatarName from '@/components/lnes/PostsCard/AvatarName';
-import PosText from '@/components/lnes/PostsCard/PosText';
+import PosAtext from '@/components/lnes/PostsCard/PosAtext';
+import PosImage from '@/components/lnes/PostsCard/PosImage';
+import InteractCard from '@/components/lnes/PostsCard/InteractCard';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Loading from './loading';
+
 
 
 enum PublicationMetadataMainFocusType {
@@ -85,7 +86,7 @@ export default function Page() {
               <Loading />
               <Loading />
               <Loading />
-           {/*    <RiLoader4Line className="h-12 w-12 animate-spin" /> */}
+              {/*    <RiLoader4Line className="h-12 w-12 animate-spin" /> */}
             </div>
           )
         }
@@ -97,15 +98,22 @@ export default function Page() {
 
             <div className=" flex px-6 ">
               <div className="flex " >
-                <Avatarimg href={`/${pub.by.handle.localName}.lens`} src={pub.by?.metadata?.picture?.optimized?.uri} alt={pub.by.handle.localName} />
-                <AvatarName localName={pub.by.handle.localName} displayName={pub.by.metadata?.displayName} namespace={pub.by.handle.namespace} />
+                <Avatarimg
+                  href={`/${pub.by.handle.localName}`}
+                  src={pub.by?.metadata?.picture?.optimized?.uri}
+                  alt={pub.by.handle.localName} />
+                <AvatarName
+                  localName={pub.by.handle.localName}
+                  displayName={pub.by.metadata?.displayName}
+                  namespace={pub.by.handle.namespace} />
+                {pub.metadata?.publishedOn?.InputMaybe}
               </div>
             </div>
 
             <div className='px-6 pt-1'>
-              <Link href={`/${pub.by.handle.localName}.lens/posts/${pub.id}`}>
-                <PosText content={pub.metadata.content} />
-                <Posimg src={pub.metadata?.asset?.image?.optimized.uri} />
+              <Link href={`/${pub.by.handle.localName}/posts/${pub.id}`}>
+                <PosAtext content={pub.metadata.content} />
+                <PosImage src={pub.metadata?.asset?.image?.optimized?.uri} />
               </Link>
             </div>
 

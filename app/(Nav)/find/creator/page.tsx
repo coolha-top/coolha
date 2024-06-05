@@ -53,7 +53,7 @@ export default function Page() {
             <div
               key={profile.id}
               className="p-4 hover:bg-[--link-hover-background]  sm:border sm:border-t-0 border-b border-e-0 cursor-pointer"
-              onClick={() => router.push(`/${profile.handle.localName}.lens`)}>
+              onClick={() => router.push(`/${profile.handle.localName}`)}>
               <div className="space-y-3">
                 <div className="overflow-hidden rounded-md flex-1 flex-grow">
                   <Avatar

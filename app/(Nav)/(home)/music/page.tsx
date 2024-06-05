@@ -8,7 +8,6 @@ import {
   ExplorePublicationType,
   LimitType
 } from '@lens-protocol/react-web'
-import Image from "next/image"
 
 
 import ReactMarkdown from 'react-markdown'
@@ -19,7 +18,7 @@ import { useRouter } from 'next/navigation'
 import Avatar from '@/gui/flowbite/Avatar'
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg'
 import AvatarName from '@/components/lnes/PostsCard/AvatarName'
-import PosAudio from '@/components/lnes/PostsCard/PosAudio'
+import PosMusic from '@/components/lnes/PostsCard/PosMusic'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -96,7 +95,7 @@ export default function Page() {
 
             <div className=" flex px-6 lg:px-0">
               <div className="flex">
-                <Avatarimg href={`/${mpub.by.handle.localName}.lens`} src={mpub.by?.metadata?.picture?.optimized?.uri} alt={mpub.by.handle.localName} />
+                <Avatarimg href={`/${mpub.by.handle.localName}`} src={mpub.by?.metadata?.picture?.optimized?.uri} alt={mpub.by.handle.localName} />
                 <AvatarName localName={mpub.by.handle.localName} displayName={mpub.by.metadata.displayName} namespace={mpub.by.handle.namespace} />
               </div>
             </div>
@@ -114,7 +113,7 @@ export default function Page() {
                     mpub.metadata?.asset?.cover?.optimized?.uri :
                     mpub.metadata?.asset?.cover?.optimized?.raw?.uri : ''}
               />
-              <PosAudio
+              <PosMusic
                 type={mpub.metadata?.asset?.audio?.optimized?.mimeType}
                 src={mpub.metadata?.asset?.audio?.optimized?.uri}
               />

@@ -11,10 +11,11 @@ export default function UsersStats({ name, profile }) {
         { label: "获赞", value: profile?.globalStats?.upvotes, link: `/${name}.lens/upvotes` },
     ];
     const statsData1 = [
-        { label: "出版物", value: profile?.globalStats?.publications, link: `/${name}.lens/publications` },
-        { label: "镜子", value: profile?.globalStats?.mirrors, link: `/${name}.lens/mirrors` },
-        { label: "Lens得分", value: profile?.globalStats?.lensClassifierScore, link: `/${name}.lens/lensClassifierScore` },
+        { label: "出版", value: profile?.globalStats?.publications, link: `/${name}.lens/publications` },
+        { label: "得分", value: profile?.globalStats?.lensClassifierScore, link: `/${name}.lens/lensClassifierScore` },
+        { label: "id", value: profile?.globalStats?.id, link: `/${name}.lens/id` },
     ];
+    
     return (
         <>
             <div className="flex flex-row px-6 mt-1 gap-1">
@@ -23,14 +24,14 @@ export default function UsersStats({ name, profile }) {
             </div >
 
 
-            <div className="stats-container px-6 my-4 flex flex-col lg:flex-row w-[100%] gap-2">
+            <div className="stats-container px-6 my-4 flex flex-col  w-[100%] gap-2">
 
 
                 <div className="flex  flex-row justify-around  rounded-md  w-[100%] lg:w-1/2">
                     {statsData.map((item, index) => (
-                        <Link href={item.link} key={index} className="stat-item text-left  w-1/3">
+                        <Link href={item.link} key={index} className="stat-item text-left  w-1/3 flex items-center">
+                            <span className="stat-label text-[#878787] block mr-1">{item.label}</span>
                             <span className=" text-xl font-bold hover:text-primary">{item.value}</span>
-                            <span className="stat-label text-[#878787]   block">{item.label}</span>
                         </Link>
                     ))}
                 </div>
@@ -38,9 +39,9 @@ export default function UsersStats({ name, profile }) {
 
                 <div className="flex  flex-row justify-around rounded-md  w-[100%] lg:w-1/2">
                     {statsData1.map((item, index) => (
-                        <Link href={item.link} key={index} className="stat-item text-left  w-1/3">
+                        <Link href={item.link} key={index} className="stat-item text-left  w-1/3 flex items-center">
+                            <span className="stat-label text-[#878787] block mr-1">{item.label}</span>
                             <span className=" text-xl font-bold hover:text-primary">{item.value}</span>
-                            <span className="stat-label text-[#878787]   block">{item.label}</span>
                         </Link>
                     ))}
                 </div>

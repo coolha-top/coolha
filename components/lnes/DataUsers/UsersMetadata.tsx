@@ -7,36 +7,61 @@ import Link from "next/link"
 export default function UsersMetadata({ profile }) {
     const ensName = profile?.onchainIdentity?.ens?.name;
     const ethAddress = profile?.ownedBy?.address;
-    const ethAddressText = ensName ? <span className="flex-1 inline-flex items-center hover:text-primary">
-        {ensName} <img className="size-4" src="/logo/ens_mark_primary.svg" alt="ENS.logo" />
-    </span> : truncateEthAddress(`${ethAddress}`);
+    const ethAddressText = ensName ? 
+    <> {ensName} <img className="size-4" src="/logo/ens_mark_primary.svg" alt="ENS.logo" /></>
+        :
+        truncateEthAddress(`${ethAddress}`);
 
     return (
-        <div className="flex flex-row items-center space-y-4 lg:space-y-0 lg:space-x-6 px-6  rounded-lg">
+        <div className="flex flex-row items-center  px-6 ">
+
+            <div className="">
+                {profile?.metadata?.picture ? (
+                    <>
+                        {profile.metadata.picture.optimized?.uri && (
+                            <img
+                                width={100}
+                                height={100}
+                                className="rounded-full border border-base-content"
+                                src={profile.metadata.picture.optimized.uri}
+                                alt="picture Set"
+                            />
+                        )}
+                        {profile.metadata.picture.__typename === 'ProfilePicture_NftImage_' && (
+                            <img
+                                width={100}
+                                height={100}
+                                className="rounded-full border border-base-content"
+                                src={profile.metadata.picture.uri}
+                                alt="picture NFT"
+                            />
+                        )}
+                    </>
+                ) : (
+                    <img
+                        width={100}
+                        height={100}
+                        className="rounded-full border border-base-content w-[100px] h-[100px]"
+                        src="/rlogo.png" // 使用默认的占位符图片
+                        alt="optimized on"
+                    />
+                )}
+            </div>
 
 
-            {profile?.metadata?.picture?.__typename === 'ImageSet' && (
-                <img
-                    alt="posts data"
-                    width={100}
-                    height={100}
-                    className="rounded-full border border-base-content"
-                    src={profile.metadata.picture.optimized?.uri}
-                />
-            )}
-
-
-            <div className="flex-1 ml-2">
+            <div className=" ml-2">
                 <b className="text-2xl ">{profile?.metadata?.displayName}</b>
                 <p className="text-gray-500"> {profile?.handle?.localName}.{profile?.handle?.namespace}</p>
-                <p className="text-gray-500 font-bold hover:text-primary">
+                <p className="text-gray-500 font-bold hover:text-primary w-full">
                     <Link href={`https://www.oklink.com/zh-hans/multi-search#key=${ensName ? ensName : ethAddress}`} target='_blank'>
-                       {ethAddressText}
+                        <span className="flex-1 inline-flex items-center hover:text-primary  w-full">{ethAddressText}</span>
                     </Link>
                 </p>
-                <p className="text-gray-500"> <span className="font-bold">{profile?.createdAt ? formatDate(profile?.createdAt) : ''}</span> </p>
+                <p className="text-gray-500"> <span className="font-bold w-full">{profile?.createdAt ? formatDate(profile?.createdAt) : ''}</span> </p>
                 {/*  <p className="text-gray-500"><span className="font-bold">{truncateEthAddress(`${profile?.ownedBy?.address}`)}</span>   </p> */}
             </div>
+            <div className="flex-1 ml-2"></div>
+
 
 
             <div>

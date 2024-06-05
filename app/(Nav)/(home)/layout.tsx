@@ -10,27 +10,27 @@ export default function Home({ children }) {
   const linknav = [
     {
       href: "/",
-      name: "All",
+      name: "推荐",
       logo: <RiShapesLine  />
     },
     {
       href: "/article",
-      name: "article",
+      name: "文章",
       logo: <RiFileTextLine  />
     },
     {
       href: "/image",
-      name: "image",
+      name: "图片",
       logo: <RiImageLine  />
     },
     {
       href: "/music",
-      name: "music",
+      name: "音乐",
       logo: <RiMusic2Line  />
     },
     {
       href: "/video",
-      name: "video",
+      name: "视频",
       logo: <RiVideoLine  />
     }
   ]

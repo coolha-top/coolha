@@ -1,4 +1,4 @@
-export default function PosAudio(type,src) {
+export default function PosMusic({type,src}) {
     return (
         <div>
             <audio controls className={`sm:w-[400px] `}>

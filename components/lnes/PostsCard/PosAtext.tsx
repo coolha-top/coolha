@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 
 const MAX_LINES = 10;
 
-const PosText = ({ content }) => {
+const PosAtext = ({ content }) => {
   const [expanded, setExpanded] = useState(false);
 
   // 将文本按行分割
@@ -31,4 +31,4 @@ const PosText = ({ content }) => {
     </div>
   );
 };
-export default PosText;
+export default PosAtext;

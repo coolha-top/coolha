@@ -1,24 +1,26 @@
 'use client'
-import { LimitType, Profile, PublicationType, usePublications } from "@lens-protocol/react-web"
-import Avatarimg from "../PostsCard/Avatarimg"
-import AvatarName from "../PostsCard/AvatarName"
+import { ExplorePublicationsOrderByType, LimitType, Profile, profileId, PublicationType, usePublications } from "@lens-protocol/react-web"
+import Avatarimg from "../../PostsCard/Avatarimg"
+import AvatarName from "../../PostsCard/AvatarName"
 import ReactMarkdown from "react-markdown"
-import InteractCard from "../PostsCard/InteractCard"
+import InteractCard from "../../PostsCard/InteractCard"
 import Avatar from "@/gui/flowbite/Avatar"
 import router from "next/router"
 import Link from "next/link"
+import PosImage from "../../PostsCard/PosImage"
 
-export function PubPosts({
+export function PUBposts({
   profile
 }: {
   profile: Profile
 }) {
   let { data: publications } = usePublications({
+    limit: LimitType.TwentyFive,
+    //orderBy: ExplorePublicationsOrderByType.LensCurated,
     where: {
+      from: [profile?.id],
       publicationTypes: [PublicationType.Post],
-      from: [profile.id],
     },
-    limit: LimitType.TwentyFive
   })
   return (
     <div className=" flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
@@ -36,18 +38,13 @@ export function PubPosts({
 
           {/* users posts data  */}
           <div className=' px-6'>
-            <Link href={`/${pub.by.handle.localName}.lens/posts/${pub.id}`}>
+            <Link href={`/${pub.by.handle.localName}/posts/${pub.id}`}>
               <ReactMarkdown className=" h-auto">
-                {pub.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
+                {pub.metadata?.content && (
+                  pub.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')
+                )}
               </ReactMarkdown>
-
-              {pub.metadata?.asset?.image?.optimized?.uri && (
-                <img
-                  alt="user posts img"
-                  className='sm:max-w-[400px] max-w-[100%] h-auto  mb-3 rounded-2xl object-cover'
-                  src={pub.metadata?.asset?.image?.optimized?.uri}
-                />
-              )}
+              <PosImage src={pub.metadata?.asset?.image?.optimized?.uri} />
             </Link>
           </div>
 
@@ -57,6 +54,8 @@ export function PubPosts({
 
         </div>
       ))}
+
+
 
     </div>
   )

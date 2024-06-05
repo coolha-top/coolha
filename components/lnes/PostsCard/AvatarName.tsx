@@ -9,11 +9,11 @@ export default function AvatarName({ localName, displayName, namespace }) {
         <>
             <div className="sm:ml-3 ml-4">
 
-                <Link href={`/${localName}.lens`} className="hover:underline hover:caret-primary hover:text-info">
+                <Link href={`/${localName}`} className="hover:underline hover:caret-primary hover:text-info">
                     <b >{displayName}</b>
                 </Link>
 
-                <Link href={`/${localName}.lens`} >
+                <Link href={`/${localName}`} >
                     <p className=" text-[#878787] " >{localName}.{namespace}</p>
                 </Link>
 
