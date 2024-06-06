@@ -16,7 +16,7 @@ const PosAtext = ({ content }) => {
   const displayedLines = expanded ? lines : lines.slice(0, MAX_LINES);
 
   return (
-    <div className=''>
+    <div className='pt-2'>
       <ReactMarkdown className=" break-words h-auto text-wrap">
         {displayedLines.join('\n')}
       </ReactMarkdown>

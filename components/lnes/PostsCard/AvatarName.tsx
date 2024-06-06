@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { RiCheckboxCircleFill } from "react-icons/ri"
 
 export default function AvatarName({ localName, displayName, namespace }) {
     const router = useRouter()
@@ -10,7 +11,7 @@ export default function AvatarName({ localName, displayName, namespace }) {
             <div className="sm:ml-3 ml-4">
 
                 <Link href={`/${localName}`} className="hover:underline hover:caret-primary hover:text-info">
-                    <b >{displayName}</b>
+                    <b className="flex flex-row items-center">{displayName}<RiCheckboxCircleFill className=" size-4 ml-1 text-primary bg-black rounded-full"/></b>
                 </Link>
 
                 <Link href={`/${localName}`} >

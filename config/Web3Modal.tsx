@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { State, WagmiProvider } from 'wagmi'
 import { useTheme } from 'next-themes'
+import { Lens } from './Lens'
 
 
 // Setup queryClient
@@ -18,14 +19,14 @@ if (!projectId) throw new Error('Project ID is not defined')
 createWeb3Modal({
   wagmiConfig: config,
   projectId,
-  enableAnalytics: true,
-  enableOnramp: true,
-  featuredWalletIds: [
+  enableAnalytics: true,//cloud.walletconnect.com 云分析
+  enableOnramp: true,//coinbase买币
+/*   featuredWalletIds: [
     'c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96',
     '971e689d0a5be527bac79629b4ee9b925e82208e5168b733496a09c0faed0709',
     '225affb176778569276e484e1b92637ad061b01e13a048b35a9d280c3b58970f',
     'fd20dc426fb37566d803205b19bbc1d4096b248ac04548e3cfb6b3a38bd033aa',
-  ],
+  ], */
   themeVariables: ({
     //'--w3m-font-family': 'Roboto, sans-serif',//Base 字体系列
     '--w3m-accent': '#ea7411',//用于按钮、图标、标签等的颜色
@@ -55,8 +56,8 @@ export function Web3ModalProvider({
   return (
     <WagmiProvider config={config} initialState={initialState}>
       <QueryClientProvider client={queryClient}>
-        {children}
-        </QueryClientProvider>
+          {children}
+      </QueryClientProvider>
     </WagmiProvider>
   )
 }

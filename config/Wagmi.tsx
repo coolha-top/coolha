@@ -1,5 +1,4 @@
 
-import { defaultWagmiConfig } from '@web3modal/wagmi/react/config'
 import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
 import { polygon } from 'wagmi/chains'
 import { walletConnect, injected, coinbaseWallet } from 'wagmi/connectors'
@@ -10,8 +9,8 @@ if (!projectId) throw new Error('Project ID is not defined')
 
 const metadata = {
   name: 'VimCord',
-  description: 'VimCord Socialize Dapp',
-  url: 'https://vimcord.vercel.com',
+  description: 'VimCord Web Dapp',
+  url: 'https://vimcord.coinipfs.com',
   icons: ['/favicon.ico']
 }
 
@@ -22,11 +21,11 @@ const metadata = {
 export const config = createConfig({
   chains: [polygon],
   transports: {
-    [polygon.id]: http(),
+    [polygon.id]: http('https://polygon-mainnet.g.alchemy.com/v2/r7uzJiYjqoCs7Gn0tSZT3U9BROceAZSJ'),
   },
   connectors: [
-    walletConnect({ projectId, metadata, showQrModal: false }),
     injected({ shimDisconnect: true }),
+    walletConnect({ projectId, metadata, showQrModal: false }),
     coinbaseWallet({
       appName: metadata.name,
       appLogoUrl: metadata.icons[0]

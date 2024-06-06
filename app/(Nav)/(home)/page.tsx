@@ -110,7 +110,7 @@ export default function Page() {
               </div>
             </div>
 
-            <div className='px-6 pt-1'>
+            <div className='px-6 '>
               <Link href={`/${pub.by.handle.localName}/posts/${pub.id}`}>
                 <PosAtext content={pub.metadata.content} />
                 <PosImage src={pub.metadata?.asset?.image?.optimized?.uri} />

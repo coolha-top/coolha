@@ -17,7 +17,7 @@ export const metadata = {
     template: '%s | VimCord',
     default: 'VimCord',
   },
-  description:"",
+  description: "",
   icons: {
     icon: '/favicon.ico',
     shortcut: '/shortcut-icon.png',
@@ -41,11 +41,13 @@ export default function RootLayout({
           <Web3ModalProvider initialState={initialState}>
             <Lens>
 
-             <Header/>
-             {/* <div className="sm:mt-16"/> */}
-                {children}
-                <Analytics />
-                <SpeedInsights />
+              <Header />
+              {/* <div className="sm:mt-16"/> */}
+              {children}
+
+              <Analytics />
+              <SpeedInsights />
+
             </Lens>
           </Web3ModalProvider>
         </Provider>
