@@ -28,8 +28,8 @@ export default function page() {
 
                 <figure> <img src="/lens/Cover04-Text.png" alt="Cover04-Text.png" /></figure>
                 <div className="p-4">
-                    <h2 className="card-title">连接 Lens 登入界面</h2>
-                    <p>Lens Protocol</p>
+{/*                     <h2 className="card-title">连接 Lens 登入界面</h2>
+                    <p>Lens Protocol</p> */}
                 </div>
                 <div className="card-body">
                     <WelcomeToLens />

@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { headers } from 'next/headers'
-import Provider from '@/app/Provider'
-import { cookieToInitialState } from 'wagmi'
-import { config } from '@/config/Wagmi'
+/* import { cookieToInitialState } from 'wagmi'
+import { config } from '@/config/Wagmi' */
 import { Web3ModalProvider } from '@/config/Web3Modal'
 import { Lens } from '@/config/Lens'
 import Header from "@/components/header/header";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Provider from '@/app/Provider'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -32,13 +32,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const initialState = cookieToInitialState(config, headers().get('cookie'))
+  /* const initialState = cookieToInitialState(config, headers().get('cookie')) */
 
   return (
     <html lang="zh">
       <body className={inter.className}>
         <Provider>
-          <Web3ModalProvider initialState={initialState}>
+          <Web3ModalProvider /* initialState={initialState} */>
             <Lens>
 
               <Header />

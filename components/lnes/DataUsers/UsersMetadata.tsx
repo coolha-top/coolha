@@ -46,7 +46,7 @@ export default function UsersMetadata({ profile }) {
 
 
             <div className="ml-2 lg:ml-4">
-                <b className="text-xl flex flex-row items-center">{profile?.metadata?.displayName}<RiCheckboxCircleFill className="ml-1 size-5 text-primary bg-black rounded-full"/></b>
+                <b className="text-xl flex flex-row items-center">{profile?.metadata?.displayName}<RiCheckboxCircleFill className="ml-1 size-5 text-primary bg-black rounded-full" /></b>
                 <p className="text-[#878787]"> {profile?.handle?.localName}.{profile?.handle?.namespace}</p>
                 <p className="text-[#878787] font-bold hover:text-primary w-full">
                     <Link href={`https://www.oklink.com/zh-hans/multi-search#key=${ensName ? ensName : ethAddress}`} target='_blank'>
@@ -61,7 +61,8 @@ export default function UsersMetadata({ profile }) {
 
 
             <div>
-            <UseFollow  profile={profile }/>
+        
+                <UseFollow profile={profile} />
             </div>
 
         </div>

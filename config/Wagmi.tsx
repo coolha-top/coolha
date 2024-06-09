@@ -1,7 +1,7 @@
 
 import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
 import { polygon } from 'wagmi/chains'
-import { walletConnect, injected, coinbaseWallet } from 'wagmi/connectors'
+import { walletConnect, injected,/* metaMask,*/safe, coinbaseWallet,} from 'wagmi/connectors'
 
 
 export const projectId = process.env.WEB3MODAL_PROJECT_ID || '1234567890'
@@ -24,17 +24,19 @@ export const config = createConfig({
     [polygon.id]: http('https://polygon-mainnet.g.alchemy.com/v2/r7uzJiYjqoCs7Gn0tSZT3U9BROceAZSJ'),
   },
   connectors: [
+   // metaMask(),
     injected({ shimDisconnect: true }),
     walletConnect({ projectId, metadata, showQrModal: false }),
+    safe(),
     coinbaseWallet({
       appName: metadata.name,
       appLogoUrl: metadata.icons[0]
     })
   ],
-  ssr: true,
-  storage: createStorage({
+  ssr: false,
+/*   storage: createStorage({
     storage: cookieStorage
-  }),
+  }), */
 })
 
 

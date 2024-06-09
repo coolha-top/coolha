@@ -1,6 +1,6 @@
 'use client'
 
-import { SessionType, useSession } from "@lens-protocol/react-web";
+import { Profile, SessionType, useSession } from "@lens-protocol/react-web";
 import { useAccount as useWagmiAccount } from "wagmi";
 import { config } from "@/config/Wagmi";
 import { useWeb3Modal } from '@web3modal/wagmi/react'
@@ -12,10 +12,11 @@ import LoginForm from "@/components/lnes/Login/LoginForm";
 import { LogoutButton } from "@/components/lnes/Login/LogoutButton";
 
 
-
 export function WelcomeToLens() {
     const { isConnected, address } = useWagmiAccount({ config });
-    const { data } = useSession();
+    const { data } = useSession({
+        suspense: true,
+    });
     const { open, close } = useWeb3Modal()
 
     return (

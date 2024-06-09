@@ -1,5 +1,5 @@
 'use client'
-import { SessionType, useSession, useProfile, ProfileSessionType, useLogout, } from "@lens-protocol/react-web";
+import { SessionType, useSession, useProfile, useLogout, } from "@lens-protocol/react-web";
 import { useAccount, useDisconnect } from "wagmi";
 import { config } from "@/config/Wagmi";
 import { useRouter } from "next/navigation";
@@ -52,33 +52,16 @@ export function MenuButton() {
             {/*            {!data?.authenticated && isDisconnected && address && <>
                 <button className="btn btn-outline btn-sm md:btn-md text-lg text-base-content md:text-xl mx-1" onClick={() => router.push(`/login`)} >未签名</button></>} */}
 
-{data && data.type === SessionType.WithProfile && (
-    <Link className="avatar online" replace href={`/login`}>
-        {data.profile?.metadata?.picture ? (
-            <div className="w-12 rounded-full">
-                {data.profile?.metadata.picture.__typename === 'ProfilePicture_ImageSet_' && data.profile?.metadata.picture.optimized?.uri && (
-                    <img
-                        src={data.profile?.metadata.picture.optimized.uri}
-                        alt="picture Set"
-                    />
-                )}
-                {data.profile?.metadata.picture.__typename === 'ProfilePicture_NftImage_' && (
-                    <img
-                        src={data.profile?.metadata.picture.uri}
-                        alt="picture NFT"
-                    />
-                )}
-            </div>
-        ) : (
-            <div className="w-12 rounded-full">
-                <img
-                    src="/rlogo.png" // 使用默认的占位符图片
-                    alt="optimized on"
-                />
-            </div>
-        )}
-    </Link>
-)}
+            {data && data.type === SessionType.WithProfile && (
+                <Link className="avatar online" replace href={`/login`}>
+                    <div className="w-12 rounded-full">
+                        <img
+                            src="/rlogo.png" // 使用默认的占位符图片
+                            alt="optimized on"
+                        />
+                    </div>
+                </Link>
+            )}
 
             <div className="dropdown dropdown-bottom dropdown-end">
                 <div tabIndex={0} role="button" className="btn btn-square  btn-ghost mx-1"><RiMenu3Fill size={24} /></div>
@@ -116,3 +99,20 @@ export function MenuButton() {
         </>
     );
 }
+/* function ImgProfileSession() {
+    const { data } = useSession<ProfileSession>();
+
+    return (
+        <div>
+            {data && data.type === SessionType.WithProfile && (
+                <Link className="avatar online" replace href={`/login`}>
+
+
+
+                </Link>
+            )}
+
+
+        </div>
+    )
+} */
