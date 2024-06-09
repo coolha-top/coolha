@@ -33,10 +33,10 @@ export const config = createConfig({
       appLogoUrl: metadata.icons[0]
     })
   ],
-  ssr: false,
-/*   storage: createStorage({
+  ssr: true,
+  storage: createStorage({
     storage: cookieStorage
-  }), */
+  }),
 })
 
 

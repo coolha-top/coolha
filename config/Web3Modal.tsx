@@ -43,10 +43,10 @@ createWeb3Modal({
 
 export function Web3ModalProvider({
   children,
-
+  initialState
 }: {
   children: ReactNode
- 
+  initialState?: State
 }) {
 
   const { theme } = useTheme();
@@ -54,7 +54,7 @@ export function Web3ModalProvider({
   setThemeMode(theme === 'light' ? 'light' : 'dark')
 
   return (
-    <WagmiProvider config={config} >
+    <WagmiProvider config={config} initialState={initialState}>
       <QueryClientProvider client={queryClient}>
           {children}
       </QueryClientProvider>

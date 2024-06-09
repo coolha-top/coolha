@@ -1,3 +1,4 @@
+'use client'
 import { config } from "@/config/Wagmi";
 import { useLogout } from "@lens-protocol/react-web";
 

@@ -1,3 +1,5 @@
+'use client'
+
 import { config } from "@/config/Wagmi";
 import { useAccount, useDisconnect } from "wagmi";
 

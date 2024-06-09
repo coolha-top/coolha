@@ -1,3 +1,5 @@
+'use client'
+
 export default function PosMusic({type,src}) {
     return (
         <div className="pt-2">
