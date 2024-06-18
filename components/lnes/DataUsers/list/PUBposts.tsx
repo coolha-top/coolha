@@ -8,20 +8,24 @@ import Avatar from "@/gui/flowbite/Avatar"
 import router from "next/router"
 import Link from "next/link"
 import PosImage from "../../PostsCard/PosImage"
+import { useInfiniteScroll } from "@/hooks/lens/useInfiniteScroll"
 
 export function PUBposts({
   profile
 }: {
   profile: Profile
 }) {
-  let { data: publications } = usePublications({
-    limit: LimitType.TwentyFive,
+  let { data: publications, hasMore, loading, observeRef } = useInfiniteScroll(usePublications({
+    limit: LimitType.Ten,
     //orderBy: ExplorePublicationsOrderByType.LensCurated,
     where: {
       from: [profile?.id],
       publicationTypes: [PublicationType.Post],
     },
-  })
+  }))
+
+
+
   return (
     <div className=" flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
 
@@ -55,7 +59,11 @@ export function PUBposts({
         </div>
       ))}
 
-
+      {hasMore && (
+        <div className="flex justify-center my-4">
+          <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
+        </div>
+      )}
 
     </div>
   )

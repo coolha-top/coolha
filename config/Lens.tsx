@@ -1,21 +1,35 @@
 'use client'
+import type { ReactNode } from 'react'
 
-import { LensConfig, production  ,LensProvider} from '@lens-protocol/react-web';
-import { bindings  } from '@lens-protocol/wagmi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { type State, WagmiProvider } from 'wagmi'
+
+import { LensConfig, production, LensProvider } from '@lens-protocol/react-web';
+import { bindings } from '@lens-protocol/wagmi';
 import { config } from './Wagmi';
+
+const queryClient = new QueryClient()
+
 const lensConfig: LensConfig = {
-  environment: production ,
+  environment: production,
   bindings: bindings(config),
 };
 
-export function Lens({
+
+export function LensWagmiProviders({
   children,
+  initialState
 }: {
-  children: React.ReactNode;
+  children: ReactNode
+  initialState?: State
 }) {
   return (
-    <LensProvider config={lensConfig}>
-      {children}
-    </LensProvider>
-  );
+    <WagmiProvider config={config} initialState={initialState}>
+      <QueryClientProvider client={queryClient}>
+        <LensProvider config={lensConfig}>
+          {children}
+        </LensProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  )
 }

@@ -1,10 +1,10 @@
 'use client'
 
 import { Profile, SessionType, useSession } from "@lens-protocol/react-web";
-import { useAccount as useWagmiAccount } from "wagmi";
+import { useAccount } from "wagmi";
 import { config } from "@/config/Wagmi";
-import { useWeb3Modal } from '@web3modal/wagmi/react'
-import { ConnectButton } from "@/components/wagmi/ConnectWalletButton";
+//import { useWeb3Modal } from '@web3modal/wagmi/react'
+import { WalletOptions } from "@/components/wagmi/ConnectWalletButton";
 import { DisconnectWalletButton } from "@/components/wagmi/DisconnectWalletButton";
 import { truncateEthAddress } from "@/utils/truncateEthAddress";
 import ThemeSwap from "@/components/ThemeSwap";
@@ -13,11 +13,11 @@ import { LogoutButton } from "@/components/lnes/Login/LogoutButton";
 
 
 export function WelcomeToLens() {
-    const { isConnected, address } = useWagmiAccount({ config });
+    const { isConnected, address } = useAccount({ config });
     const { data } = useSession({
         suspense: true,
     });
-    const { open, close } = useWeb3Modal()
+    //const { open, close } = useWeb3Modal()
 
     return (
         <div className=" flex justify-center items-center">
@@ -25,23 +25,23 @@ export function WelcomeToLens() {
 
                 {!isConnected && (
                     <div className="flex flex-row justify-center items-center">
-                        {/*                         <p className="mb-4" onClick={()=>open({ view: 'Networks' })}>连接您的钱包</p> */}
-
-                        <ConnectButton />
+                        <WalletOptions />
                     </div>
                 )}
+
 
                 {!data?.authenticated && address && (
                     <>
                         <p className="">当前连接的钱包: </p>
                         <div className="mt-2 mb-16 flex-row flex justify-between items-center">
-                            <button className='btn btn-outline' onClick={() => open({ view: 'Account' })} >{truncateEthAddress(address)}</button>
+                            <button className='btn btn-outline'/*  onClick={() => open({ view: 'Account' })} */ >{truncateEthAddress(address)}</button>
                             <DisconnectWalletButton />
                         </div>
 
                         <LoginForm owner={address} />
                     </>
                 )}
+                
                 {data && data.type === SessionType.WithProfile && (
                     <>
                         <p className="">当前登入的Lens账号 </p>

@@ -21,7 +21,7 @@ export default function Loading() {
 
                 <div className="skeleton h-96 w-full lg:w-1/2 px-6"></div>
 
-                <div className=" gap-0.5 justify-around flex items-center">
+                <div className=" justify-around flex items-center">
                     <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
                     <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
                     <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>

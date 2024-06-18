@@ -31,7 +31,7 @@ export default function layout({ children, params: { users } }) {
     });
 
     return (
-        <div className='max-w-4xl lg:min-w-4xl mx-auto mt-0 md:mt-16 w-full'>
+        <div className=' md:border-x max-w-4xl lg:min-w-4xl mx-auto mt-0 md:mt-16 w-full'>
             <UsersHeader name={users} />
             <div className=' flex-1'>
 

@@ -15,17 +15,18 @@ export default function Header() {
 
 
 
-            <div className="navbar py-0 px-0 lg:px-2 md:border-b bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
+            <div className="navbar w-[100vw] py-0 px-0 lg:px-4 md:border-b bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
 
 
-                <div className="navbar-start">
+                <div className="navbar-start gap-4">
 
-                    <a className="btn btn-ghost px-4 text-xl">
+                    <a className="avatar">
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                             <Image
                                 src='/favicon.ico'
                                 width={40}
                                 height={40}
+                                className="w-12 rounded-full "
                                 alt='Q'
                             />
                         </motion.div>

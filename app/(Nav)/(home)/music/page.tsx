@@ -19,6 +19,7 @@ import Avatar from '@/gui/flowbite/Avatar'
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg'
 import AvatarName from '@/components/lnes/PostsCard/AvatarName'
 import PosMusic from '@/components/lnes/PostsCard/PosMusic'
+import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -44,7 +45,7 @@ export default function Page() {
     orderBy: ExploreProfilesOrderByType.MostFollowers
   }) as any
 
-  let { data: musicPubs, loading: loadingMusicPubs } = useExplorePublications({
+  let { data: musicPubs, loading: loadingMusicPubs, hasMore, observeRef } = useInfiniteScroll(useExplorePublications({
     limit: LimitType.TwentyFive,
     orderBy: ExplorePublicationsOrderByType.TopCommented,
     where: {
@@ -53,7 +54,7 @@ export default function Page() {
         mainContentFocus: [PublicationMetadataMainFocusType.Audio]
       }
     }
-  }) as any
+  })) as any
 
   let { data: publications, loading: loadingPubs } = useExplorePublications({
     limit: LimitType.TwentyFive,
@@ -81,14 +82,14 @@ export default function Page() {
 
         {loadingMusicPubs && (
           <div className=" flex flex-1 justify-center items-center ">
-            <RiLoader4Line className="h-12 w-12 animate-spin" />
+           <span className="loading loading-spinner loading-lg"></span>
           </div>
         )}
 
 
         {musicPubs?.map(mpub => (
           <div
-            className="md:border  border-b border-t-0 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 lg:px-6"
+            className="border-b border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 lg:px-6"
             key={mpub.id}
             onClick={() => router.push(`https://share.lens.xyz/p/${mpub.id}`)}
           >
@@ -125,8 +126,14 @@ export default function Page() {
 
 
           </div>
-        ))
-        }
+        ))}
+
+        {hasMore && (
+          <div className="flex justify-center my-4">
+            <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
+          </div>
+        )}
+
       </div>
     </>
   )

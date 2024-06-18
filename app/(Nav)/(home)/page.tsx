@@ -18,6 +18,7 @@ import InteractCard from '@/components/lnes/PostsCard/InteractCard';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Loading from './loading';
+import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll';
 
 
 
@@ -58,13 +59,13 @@ export default function Page() {
     }
   }) as any
 
-  let { data: publications, loading: loadingPubs } = useExplorePublications({
+  let { data: publications, loading: loadingPubs, hasMore,observeRef } = useInfiniteScroll(useExplorePublications({
     limit: LimitType.TwentyFive,
     orderBy: ExplorePublicationsOrderByType.LensCurated,
     where: {
       publicationTypes: [ExplorePublicationType.Post],
     }
-  }) as any
+  })) as any
 
 
   profiles = profiles?.filter(p => p.metadata?.picture?.optimized?.uri)
@@ -93,7 +94,7 @@ export default function Page() {
 
 
         {publications?.map((pub: any) => (
-          <div key={pub.id} className="md:border  border-b border-t-0 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 pb-8" >
+          <div key={pub.id} className="border-b lg:border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 pb-8" >
 
 
             <div className=" flex px-6 ">
@@ -122,7 +123,11 @@ export default function Page() {
 
           </div>
         ))}
-
+        {hasMore && (
+          <div className="flex justify-center my-4">
+            <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
+          </div>
+        )}
 
       </div>
     </>

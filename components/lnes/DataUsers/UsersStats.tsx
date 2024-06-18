@@ -13,7 +13,7 @@ export default function UsersStats({ name, profile }) {
     ];
     const statsData1 = [
         { label: "出版", value: profile?.createdAt ? formatDate(profile?.createdAt) : '', link: `/${name}.lens/publications` },
-        { label: "id", value: profile?.globalStats?.id, link: `/${name}.lens/id` },
+        { label: "id", value: profile?.globalStats?.id ? `# ${parseInt(profile?.globalStats?.id, 16)}` : '#', link: `/${name}.lens/id` },
         { label: "得分", value: profile?.globalStats?.lensClassifierScore, link: `/${name}.lens/lensClassifierScore` },
     ];
 
@@ -30,9 +30,9 @@ export default function UsersStats({ name, profile }) {
 
                 <div className="flex  flex-row justify-around  rounded-md  w-[100%] lg:w-1/2">
                     {statsData.map((item, index) => (
-                        <Link href={item.link} key={index} className="stat-item text-left  text-base md:text-xl w-1/3 flex items-center">
-                            <span className="stat-label text-base text-[#878787] block mr-1">{item.label}</span>
-                            <span className=" font-bold hover:text-primary">{item.value}</span>
+                        <Link href={item.link} key={index} className="stat-item text-left  text-base md:text-xl w-1/3 flex items-center hover:text-primary">
+                            <span className=" font-bold">{item.value}</span>
+                            <span className="stat-label text-base text-[#878787] block ml-1">{item.label}</span>
                         </Link>
                     ))}
                 </div>

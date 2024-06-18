@@ -37,8 +37,8 @@ export default function LoginForm({ owner, onSuccess }: { owner: string; onSucce
   }
 
   if (profiles.length === 0) {
-    return <div className="mb-4 text-base text-gray-500">在此钱包中未找到Lens配置文件。
-      <Link href={`/signup`} className=" hover:text-primary">前往注册→</Link>
+    return <div className="mb-4 text-base text-gray-500">在此钱包中未找到Lens配置文件!
+      <Link href={`/signup`} className="text-primary">前往注册→</Link>
     </div>;
   }
 

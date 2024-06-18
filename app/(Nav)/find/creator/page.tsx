@@ -14,15 +14,17 @@ import {
 import { RiLoader4Line } from 'react-icons/ri'
 import { useRouter } from 'next/navigation'
 import Avatar from '@/gui/flowbite/Avatar'
+import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll'
+import AvatarName from '@/components/lnes/PostsCard/AvatarName'
 
 
 
 export default function Page() {
 
-  let { data: profiles, error: profileError, loading: loadingProfiles } = useExploreProfiles({
+  let { data: profiles, error: profileError, loading: loadingProfiles, hasMore, observeRef } = useInfiniteScroll(useExploreProfiles({
     limit: LimitType.TwentyFive,
     orderBy: ExploreProfilesOrderByType.MostFollowers
-  }) as any
+  })) as any
 
 
   let { data: publications, loading: loadingPubs } = useExplorePublications({
@@ -44,6 +46,7 @@ export default function Page() {
     return true
   })
   const router = useRouter()
+  /* if (profiles.length === 0) return <p>No profiles found</p>; */
   return (
     <>
       <div className="flex mx-auto max-w-4xl justify-center">
@@ -55,16 +58,16 @@ export default function Page() {
               className="p-4 hover:bg-[--link-hover-background]  sm:border sm:border-t-0 border-b border-e-0 cursor-pointer"
               onClick={() => router.push(`/${profile.handle.localName}`)}>
               <div className="space-y-3">
-                <div className="overflow-hidden rounded-md flex-1 flex-grow">
+                <div className="overflow-hidden rounded-md flex flex-row">
                   <Avatar
                     /* className="h-auto w-auto object-cover transition-all hover:scale-105 aspect-square" */
                     src={profile.metadata?.picture?.optimized?.uri
                     }
                     alt={`${profile.metadata?.displayName}.Avatar`} />
 
-                  <h3 className="font-medium leading-none">{profile.handle.localName}.{profile.handle.namespace}</h3>
-                  <p className="text-xs text-muted-foreground">{profile.metadata?.displayName}</p>
+                  <AvatarName localName={profile.handle?.localName ?? profile.id} displayName={profile.metadata.displayName} namespace={`lens`} />
                 </div>
+                <div className='flex-1'></div>
               </div>
             </div>
           ))}
@@ -72,11 +75,15 @@ export default function Page() {
 
       </div>
 
+      {hasMore && (
+        <div className="flex justify-center my-4">
+          <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
+        </div>
+      )}
 
-      
       {loadingProfiles && (
         <div className=" flex flex-1 justify-center items-center ">
-          <RiLoader4Line className="h-12 w-12 animate-spin" />
+          <span className="loading loading-spinner loading-lg"></span>
         </div>
       )}
     </>

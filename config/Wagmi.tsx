@@ -1,13 +1,34 @@
 
 import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
-import { polygon } from 'wagmi/chains'
-import { walletConnect, injected,/* metaMask,*/safe, coinbaseWallet,} from 'wagmi/connectors'
+import { polygon, sepolia, lineaSepolia, zkSyncSepoliaTestnet } from 'wagmi/chains'
+import { walletConnect, injected, metaMask, safe, coinbaseWallet, } from 'wagmi/connectors'
+import { defineChain, type Chain } from 'viem'
 
 
-export const projectId = process.env.WEB3MODAL_PROJECT_ID || '1234567890'
-if (!projectId) throw new Error('Project ID is not defined')
+export const bbtestnet = defineChain({
+  id: 18200,
+  name: "bbtestnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Native Token",
+    symbol: "Native Token",
+  },
+  rpcUrls: {
+    default: { http: ["https://rpc.buildbear.io/cute-mistersinister-f90ef39f"] },
+  },
+  blockExplorers: {
+    default: {
+      name: "BBExplorer",
+      url: "https://explorer.buildbear.io/cute-mistersinister-f90ef39f",
+    },
+  }
+})
 
-const metadata = {
+
+/* export const projectId = process.env.WEB3MODAL_PROJECT_ID || '1234567890'
+if (!projectId) throw new Error('Project ID is not defined') */
+
+export const metadata = {
   name: 'VimCord',
   description: 'VimCord Web Dapp',
   url: 'https://vimcord.coinipfs.com',
@@ -15,23 +36,26 @@ const metadata = {
 }
 
 
-
 // 1. Get projectId at https://cloud.walletconnect.com
-
+export const chains = [polygon, bbtestnet, sepolia, lineaSepolia, zkSyncSepoliaTestnet]
 export const config = createConfig({
-  chains: [polygon],
+  chains: [polygon, bbtestnet, sepolia, lineaSepolia, zkSyncSepoliaTestnet],
   transports: {
     [polygon.id]: http('https://polygon-mainnet.g.alchemy.com/v2/r7uzJiYjqoCs7Gn0tSZT3U9BROceAZSJ'),
+    [bbtestnet.id]: http('https://rpc.buildbear.io/cute-mistersinister-f90ef39f'),
+    [sepolia.id]: http(),
+    [lineaSepolia.id]: http(),
+    [zkSyncSepoliaTestnet.id]: http(),
   },
   connectors: [
-   // metaMask(),
-    injected({ shimDisconnect: true }),
-    walletConnect({ projectId, metadata, showQrModal: false }),
+    metaMask(),
+    /*   walletConnect({ projectId, metadata, showQrModal: false }), */
     safe(),
     coinbaseWallet({
       appName: metadata.name,
       appLogoUrl: metadata.icons[0]
-    })
+    }),
+    injected({ shimDisconnect: true }),
   ],
   ssr: true,
   storage: createStorage({

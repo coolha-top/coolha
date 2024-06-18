@@ -1,7 +1,7 @@
 'use client'
 
 import { RiArrowLeftLine, RiMore2Fill } from "react-icons/ri";
-import { WelcomeToLens } from "../../components/lnes/Login/WelcomeToLens";
+
 
 import { useRouter } from "next/navigation";
 export default function page() {
@@ -18,7 +18,7 @@ export default function page() {
                             <RiArrowLeftLine size={24} />
                         </button>
                     </div>
-                    <div className=" navbar-center">登入界面</div>
+                    <div className=" navbar-center">注册界面</div>
                     <div className=" navbar-end">
                         <button className="btn btn-square btn-ghost">
                             <RiMore2Fill size={24} />
@@ -26,13 +26,13 @@ export default function page() {
                     </div>
                 </div>
 
-                <figure> <img src="/lens/Cover04-Text.png" alt="Cover04-Text.png" /></figure>
+                <figure> <img src="/lens/Cover.png" alt="Cover.png" /></figure>
                 <div className="p-4">
-{/*                     <h2 className="card-title">连接 Lens 登入界面</h2>
-                    <p>Lens Protocol</p> */}
+                    <h2 className="card-title">注册</h2>
+                    <p>Lens Protocol</p>
                 </div>
                 <div className="card-body">
-                    <WelcomeToLens />
+                  暂未集成模块  
                 </div>
 
             </div>
