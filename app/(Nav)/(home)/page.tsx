@@ -1,5 +1,9 @@
 'use client'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Loading from './loading';
+
 import {
   useExploreProfiles,
   useExplorePublications,
@@ -10,15 +14,18 @@ import {
 } from '@lens-protocol/react-web'
 
 
+
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg';
 import AvatarName from '@/components/lnes/PostsCard/AvatarName';
-import PosAtext from '@/components/lnes/PostsCard/PosAtext';
+import { PosAtext } from '@/components/lnes/PostsCard/PosAtext';
 import PosImage from '@/components/lnes/PostsCard/PosImage';
+import PosVideo from '@/components/lnes/PostsCard/PosVideo'; // 添加视频组件
+import PosMusic from '@/components/lnes/PostsCard/PosMusic'; // 添加音频组件
 import InteractCard from '@/components/lnes/PostsCard/InteractCard';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Loading from './loading';
+
 import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll';
+import { timeAgo } from '@/utils/formatDate';
+import Meide from '@/components/lnes/PostsCard/Meide';
 
 
 
@@ -42,41 +49,26 @@ enum PublicationMetadataMainFocusType {
 }
 
 export default function Page() {
-  const router = useRouter()
-  let { data: profiles, error: profileError, loading: loadingProfiles } = useExploreProfiles({
-    limit: LimitType.TwentyFive,
-    orderBy: ExploreProfilesOrderByType.MostFollowers
-  }) as any
 
-  let { data: musicPubs, loading: loadingMusicPubs } = useExplorePublications({
-    limit: LimitType.TwentyFive,
-    orderBy: ExplorePublicationsOrderByType.TopCommented,
-    where: {
-      publicationTypes: [ExplorePublicationType.Post],
-      metadata: {
-        mainContentFocus: [PublicationMetadataMainFocusType.Audio]
-      }
-    }
-  }) as any
 
-  let { data: publications, loading: loadingPubs, hasMore,observeRef } = useInfiniteScroll(useExplorePublications({
+  let { data: publications, loading: loadingPubs, hasMore, observeRef } = useInfiniteScroll(useExplorePublications({
     limit: LimitType.TwentyFive,
     orderBy: ExplorePublicationsOrderByType.LensCurated,
     where: {
-      publicationTypes: [ExplorePublicationType.Post],
+      publicationTypes: [ExplorePublicationType.Post, ExplorePublicationType.Quote],
     }
   })) as any
 
 
-  profiles = profiles?.filter(p => p.metadata?.picture?.optimized?.uri)
 
   publications = publications?.filter(p => {
     if (p.metadata && p.metadata.asset) {
-      if (p.metadata.asset.image) return true
-      return false
+      if (p.metadata.asset.image) return true;
+      if (p.metadata.asset.video || p.metadata.asset.audio) return true; // 添加音频和视频的判断
+      return false;
     }
-    return true
-  })
+    return true;
+  });
 
   return (
     <>
@@ -94,34 +86,37 @@ export default function Page() {
 
 
         {publications?.map((pub: any) => (
-          <div key={pub.id} className="border-b lg:border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 pb-8" >
+          <Link href={`posts/${pub.id}`} key={pub.id}>
+            <div  className="border-b md:border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-6 pb-8 " >
 
+              <div className=" flex ">
+                <div className="flex " >
+                  <Avatarimg
+                    href={`/${pub.by.handle.localName}`}
+                    src={pub.by?.metadata?.picture?.optimized?.uri}
+                    alt={pub.by.handle.localName} />
+                  <AvatarName
+                    localName={pub.by.handle.localName}
+                    displayName={pub.by.metadata?.displayName}
+                    namespace={pub.by.handle.namespace}
+                    createdAt={pub.by.createdAt}
+                  />
+                  {pub.metadata?.publishedOn?.InputMaybe}
+                </div>
 
-            <div className=" flex px-6 ">
-              <div className="flex " >
-                <Avatarimg
-                  href={`/${pub.by.handle.localName}`}
-                  src={pub.by?.metadata?.picture?.optimized?.uri}
-                  alt={pub.by.handle.localName} />
-                <AvatarName
-                  localName={pub.by.handle.localName}
-                  displayName={pub.by.metadata?.displayName}
-                  namespace={pub.by.handle.namespace} />
-                {pub.metadata?.publishedOn?.InputMaybe}
               </div>
-            </div>
 
-            <div className='px-6 '>
-              <Link href={`/${pub.by.handle.localName}/posts/${pub.id}`}>
+              <div className=' '>
+
                 <PosAtext content={pub.metadata.content} />
-                <PosImage src={pub.metadata?.asset?.image?.optimized?.uri} />
-              </Link>
+                <Meide pub={pub.metadata.asset} type={pub.metadata?.asset?.audio?.optimized?.mimeType} />
+              </div>
+
+
+              <InteractCard dataname={pub} />
+
             </div>
-
-
-            <InteractCard dataname={pub} />
-
-          </div>
+          </Link>
         ))}
         {hasMore && (
           <div className="flex justify-center my-4">

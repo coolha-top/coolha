@@ -65,7 +65,7 @@ export default function Page() {
                     }
                     alt={`${profile.metadata?.displayName}.Avatar`} />
 
-                  <AvatarName localName={profile.handle?.localName ?? profile.id} displayName={profile.metadata.displayName} namespace={`lens`} />
+                  <AvatarName localName={profile.handle?.localName ?? profile.id} displayName={profile.metadata.displayName} namespace={`lens`} createdAt={profile.createdAt} />
                 </div>
                 <div className='flex-1'></div>
               </div>

@@ -29,12 +29,15 @@
   margin: 0;
   padding: 0;
 }
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
-
+body{
+  overflow-y: scroll;
+}
 /*--选择器----*/
 ::selection {
   background: #C0E218;

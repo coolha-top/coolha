@@ -38,8 +38,8 @@ export default function RootLayout({
 
   return (
     <html lang="zh">
-      <Head>
-        <meta property="twitter:image" content="/logo.png" />
+      <head>
+{/*         <meta property="twitter:image" content="/logo.png" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content="VimCoed:Lens Protocol Web3 Content social 内容社交" />
         <meta property="twitter:description" content="Lens Protocol Web3 Content social" />
@@ -47,9 +47,9 @@ export default function RootLayout({
         <meta property="og:image" content="/logo.png" />
         <meta property="og:site_name" content="VimCord Dapp:基于Lens协议构建,为中文用户设计的去中心化平台" />
         <meta property="og:title" content="VimCord Dapp"></meta>
-        <meta property="og:description" content="基于Lens协议构建,为中文用户构建,内容社交,社群聊天,放大创作者经济,灵感保证原创,Web3优质内容的去中心化平台" />
+        <meta property="og:description" content="基于Lens协议构建,为中文用户构建,内容社交,社群聊天,放大创作者经济,灵感保证原创,Web3优质内容的去中心化平台" /> */}
         {/*  <meta property="og:url" content="Canonical link preview URL"></meta> */}
-      </Head>
+      </head>
 
       <body className={inter.className}>
         <Provider>

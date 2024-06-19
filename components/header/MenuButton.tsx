@@ -73,7 +73,7 @@ export function MenuButton() {
                             <li><Link href={`/wallet`}><RiWallet2Line size={24} />钱包</Link></li>
                             <li><Link href={`/settings`}><RiSettingsLine size={24} />设置</Link></li>
                             <li onClick={() => logout()}><Link replace href={`/login`}> <RiLogoutBoxRLine size={24} />注销</Link></li>
-                            <li></li>
+                            <li className="my-1"></li>
                         </b>
                     }
 
@@ -86,7 +86,7 @@ export function MenuButton() {
                     </li>
                     <li><Link href={`/locales`}><RiTranslate size={24} />界面语言</Link></li>
 
-                    <li></li>
+                    <li className="my-1"></li>
                     <li><Link href={`/mintNFT`}> <RiGiftLine size={24} />测试奖励</Link></li>
                     <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>
                     <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>

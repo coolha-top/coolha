@@ -18,6 +18,7 @@ import { useRouter } from 'next/navigation'
 import Avatar from '@/gui/flowbite/Avatar'
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg'
 import AvatarName from '@/components/lnes/PostsCard/AvatarName'
+import { UsersPosAtext } from '@/components/lnes/PostsCard/PosAtext'
 import PosMusic from '@/components/lnes/PostsCard/PosMusic'
 import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll'
 enum PublicationMetadataMainFocusType {
@@ -82,30 +83,35 @@ export default function Page() {
 
         {loadingMusicPubs && (
           <div className=" flex flex-1 justify-center items-center ">
-           <span className="loading loading-spinner loading-lg"></span>
+            <span className="loading loading-spinner loading-lg"></span>
           </div>
         )}
 
 
         {musicPubs?.map(mpub => (
           <div
-            className="border-b border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl py-6 lg:px-6"
+            className="border-b border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-6 "
             key={mpub.id}
             onClick={() => router.push(`https://share.lens.xyz/p/${mpub.id}`)}
           >
 
-            <div className=" flex px-6 lg:px-0">
+            <div className=" flex">
               <div className="flex">
-                <Avatarimg href={`/${mpub.by.handle.localName}`} src={mpub.by?.metadata?.picture?.optimized?.uri} alt={mpub.by.handle.localName} />
-                <AvatarName localName={mpub.by.handle.localName} displayName={mpub.by.metadata.displayName} namespace={mpub.by.handle.namespace} />
+                <Avatarimg
+                  href={`/${mpub.by.handle.localName}`}
+                  src={mpub.by?.metadata?.picture?.optimized?.uri}
+                  alt={mpub.by.handle.localName} />
+                <AvatarName
+                  localName={mpub.by.handle.localName}
+                  displayName={mpub.by?.metadata?.displayName} namespace={mpub.by.handle.namespace}
+                  createdAt={mpub.by.createdAt} />
               </div>
             </div>
 
 
-            <div className='px-6  lg:px-0' >
-              <ReactMarkdown className=" mt-4 break-words ">
-                {mpub.metadata.content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')}
-              </ReactMarkdown>
+            <div className='' >
+
+              <UsersPosAtext content={mpub.metadata.content} />
               <img
                 className={`sm:max-w-[400px] h-auto max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
                 alt='audio img'

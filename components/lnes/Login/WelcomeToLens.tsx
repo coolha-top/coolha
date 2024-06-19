@@ -4,7 +4,7 @@ import { Profile, SessionType, useSession } from "@lens-protocol/react-web";
 import { useAccount } from "wagmi";
 import { config } from "@/config/Wagmi";
 //import { useWeb3Modal } from '@web3modal/wagmi/react'
-import { WalletOptions } from "@/components/wagmi/ConnectWalletButton";
+import { ConnectWalletButton } from "@/components/wagmi/ConnectWalletButton";
 import { DisconnectWalletButton } from "@/components/wagmi/DisconnectWalletButton";
 import { truncateEthAddress } from "@/utils/truncateEthAddress";
 import ThemeSwap from "@/components/ThemeSwap";
@@ -25,7 +25,7 @@ export function WelcomeToLens() {
 
                 {!isConnected && (
                     <div className="flex flex-row justify-center items-center">
-                        <WalletOptions />
+                        <ConnectWalletButton />
                     </div>
                 )}
 

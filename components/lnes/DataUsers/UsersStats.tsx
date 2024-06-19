@@ -6,15 +6,19 @@ import Link from "next/link"
 import { formatNumberWithUnit } from "@/utils/formatNumber";
 
 export default function UsersStats({ name, profile }) {
+
+
     const statsData = [
-        { label: "关注", value: profile?.globalStats?.following, link: `/${name}.lens/following` },
-        { label: "粉丝", value: formatNumberWithUnit(profile?.globalStats?.followers), link: `/${name}.lens/followers` },
-        { label: "获赞", value: formatNumberWithUnit(profile?.globalStats?.upvotes), link: `/${name}.lens/upvotes` },
+        { label: "关注", value: profile?.globalStats?.following, link: `/${name}/following` },
+        { label: "粉丝", value: formatNumberWithUnit(profile?.globalStats?.followers), link: `/${name}/followers` },
+        { label: "获赞", value: formatNumberWithUnit(profile?.globalStats?.upvotes), link: `` },
     ];
+
+
     const statsData1 = [
-        { label: "出版", value: profile?.createdAt ? formatDate(profile?.createdAt) : '', link: `/${name}.lens/publications` },
-        { label: "id", value: profile?.globalStats?.id ? `# ${parseInt(profile?.globalStats?.id, 16)}` : '#', link: `/${name}.lens/id` },
-        { label: "得分", value: profile?.globalStats?.lensClassifierScore, link: `/${name}.lens/lensClassifierScore` },
+        { label: "出版", value: profile?.createdAt ? formatDate(profile?.createdAt) : '', link: `/${name}/publications` },
+        { label: "id", value: profile?.globalStats?.id ? `# ${parseInt(profile?.globalStats?.id, 16)}` : '#', link: `` },
+        { label: "得分", value: profile?.globalStats?.lensClassifierScore, link: `/${name}/lensClassifierScore` },
     ];
 
     return (
@@ -30,7 +34,7 @@ export default function UsersStats({ name, profile }) {
 
                 <div className="flex  flex-row justify-around  rounded-md  w-[100%] lg:w-1/2">
                     {statsData.map((item, index) => (
-                        <Link href={item.link} key={index} className="stat-item text-left  text-base md:text-xl w-1/3 flex items-center hover:text-primary">
+                        <Link replace href={item.link} key={index} className="stat-item text-left  text-base md:text-xl w-1/3 flex items-center hover:text-primary">
                             <span className=" font-bold">{item.value}</span>
                             <span className="stat-label text-base text-[#878787] block ml-1">{item.label}</span>
                         </Link>
