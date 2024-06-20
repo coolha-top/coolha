@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Head from 'next/head';
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+/* import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next" */
 import Provider from '@/app/Provider'
 import Header from "@/components/header/header";
 import { headers } from "next/headers";
@@ -64,8 +64,8 @@ export default function RootLayout({
 
 
         </Provider>
-        <Analytics />
-        <SpeedInsights />
+{/*         <Analytics />
+        <SpeedInsights /> */}
       </body>
     </html>
   );

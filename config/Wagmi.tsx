@@ -5,7 +5,7 @@ import { walletConnect, injected, metaMask, safe, coinbaseWallet, } from 'wagmi/
 import { defineChain, type Chain } from 'viem'
 
 
-export const bbtestnet = defineChain({
+/* export const bbtestnet = defineChain({
   id: 18200,
   name: "bbtestnet",
   nativeCurrency: {
@@ -23,7 +23,7 @@ export const bbtestnet = defineChain({
     },
   }
 })
-
+ */
 
 /* export const projectId = process.env.WEB3MODAL_PROJECT_ID || '1234567890'
 if (!projectId) throw new Error('Project ID is not defined') */
@@ -34,15 +34,14 @@ export const metadata = {
   url: 'https://vimcord.coinipfs.com',
   icons: ['/favicon.ico']
 }
-
-
 // 1. Get projectId at https://cloud.walletconnect.com
-export const chains = [polygon, bbtestnet, sepolia, lineaSepolia, zkSyncSepoliaTestnet]
+
+
 export const config = createConfig({
-  chains: [polygon, bbtestnet, sepolia, lineaSepolia, zkSyncSepoliaTestnet],
+  chains: [polygon, /* bbtestnet, */ sepolia, lineaSepolia, zkSyncSepoliaTestnet],
   transports: {
     [polygon.id]: http('https://polygon-mainnet.g.alchemy.com/v2/r7uzJiYjqoCs7Gn0tSZT3U9BROceAZSJ'),
-    [bbtestnet.id]: http('https://rpc.buildbear.io/cute-mistersinister-f90ef39f'),
+   /*  [bbtestnet.id]: http('https://rpc.buildbear.io/cute-mistersinister-f90ef39f'), */
     [sepolia.id]: http(),
     [lineaSepolia.id]: http(),
     [zkSyncSepoliaTestnet.id]: http(),

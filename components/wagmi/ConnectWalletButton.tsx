@@ -2,7 +2,7 @@
 import { metadata } from '@/config/Wagmi'
 import * as React from 'react'
 import { Connector, useConnect } from 'wagmi'
-import { walletConnect, injected, metaMask, safe, coinbaseWallet, } from 'wagmi/connectors'
+import {/*  walletConnect,safe,   */injected, metaMask, coinbaseWallet, } from 'wagmi/connectors'
 export function ConnectWalletButton() {
   const { connectors, connect } = useConnect()
   const walletConnectors = [
