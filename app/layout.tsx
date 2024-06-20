@@ -60,12 +60,12 @@ export default function RootLayout({
           </LensWagmiProviders>
 
 
-          <Analytics />
-          <SpeedInsights />
+
 
 
         </Provider>
-
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
