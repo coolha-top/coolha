@@ -34,20 +34,28 @@ export const metadata = {
   url: 'https://vimcord.coinipfs.com',
   icons: ['/favicon.ico']
 }
+const MetaMaskOptions = {
+  dappMetadata: {
+    name: "VimCord dapp",
+  },
+  infuraAPIKey: process.env.INFURA_API_KEY,
+  extensionOnly: true
+  // Other options.
+};
 // 1. Get projectId at https://cloud.walletconnect.com
 
 
 export const config = createConfig({
   chains: [polygon, /* bbtestnet, */ sepolia, lineaSepolia, zkSyncSepoliaTestnet],
   transports: {
-    [polygon.id]: http('https://polygon-mainnet.g.alchemy.com/v2/r7uzJiYjqoCs7Gn0tSZT3U9BROceAZSJ'),
+    [polygon.id]: http(`https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
    /*  [bbtestnet.id]: http('https://rpc.buildbear.io/cute-mistersinister-f90ef39f'), */
     [sepolia.id]: http(),
     [lineaSepolia.id]: http(),
     [zkSyncSepoliaTestnet.id]: http(),
   },
   connectors: [
-    metaMask(),
+    metaMask(MetaMaskOptions),
     /*   walletConnect({ projectId, metadata, showQrModal: false }), */
     safe(),
     coinbaseWallet({
