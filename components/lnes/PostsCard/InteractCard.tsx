@@ -5,7 +5,7 @@ import { RiBookmarkLine, RiChat1Line, RiCopperCoinLine, RiHeart3Line, RiRepeat2L
 export default function interactCard({ dataname }) {
   const router = useRouter();
   return (
-    <div className='flex justify-items-start md:max-w-[100%] w-full px-6 mt-1 text-base-content/50'>
+    <div className='flex justify-items-start md:max-w-[100%] w-full  text-base-content/50'>
 
       {/* 评论 */}
       <div className=" flex gap-0.5 justify-start items-center pt-1 rounded-full size-7 w-1/6 hover:text-info" onClick={() => router.push(`/${dataname.by.handle.localName}/posts/${dataname.id}`)} >
