@@ -11,7 +11,7 @@ const HaYiNFTContract = {
     address: '0x149ddd93d774e501e0961be1efea5841ed242678',
     abi: HaYiABI,
 } as const
-export default async function MintNFT() {
+export default  function MintNFT() {
     const { address } = useAccount({ config });
     const { data, error, isPending } = useReadContracts({
         config,
@@ -36,19 +36,9 @@ export default async function MintNFT() {
     }
     const [balanceOf, owner, MAX_SUPPLY, currentPrice, name, symbol, tokenURI] = data.map(item => item.result?.toString());
 
-    const { request } = await simulateContract(config, {
-        ...HaYiNFTContract,
-        functionName: 'transferFrom',
-        args: [
-            '0xd2135CfB216b74109775236E36d4b433F1DF507B',
-            '0xA0Cf798816D4b9b9866b5330EEa46a18382f251e',
-            {BigInt(address)},
-        ],
-    })
-    const hash = await writeContract(config, request)
 
     return (
-        <div className='mt-16 p-4'>
+        <div className='p-4'>
 
 
             <div className="card w-96 bg-base-100 shadow-xl border">

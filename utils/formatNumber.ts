@@ -1,4 +1,9 @@
-export function formatNumberWithUnit(number: number): string {
+'use client'
+export function formatNumberWithUnit(number: number | undefined | null): string {
+    if (number == null) { // 检查 number 是否为 null 或 undefined
+        return '';
+    }
+
     if (number >= 1e9) {
         const formatted = (number / 1e9).toFixed(1);
         return formatted.endsWith('.0') ? `${formatted.slice(0, -2)}B` : `${formatted}B`;

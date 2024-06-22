@@ -1,6 +1,5 @@
 'use client'
 
-import UseFollow from "@/hooks/lens/useFollow";
 import { truncateEthAddress } from "@/utils/truncateEthAddress"
 import { useFollow } from "@lens-protocol/react-web";
 import Link from "next/link"
@@ -27,10 +26,10 @@ export default function UsersMetadata({ profile }) {
                                 alt="picture Set"
                             />
                         )}
-                        {profile.metadata.picture.__typename === 'ProfilePicture_NftImage_' && (
+                        {profile.metadata.picture.__typename === 'NftImage' && (
                             <img
                                 className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
-                                src={profile.metadata.picture.uri}
+                                src={profile.metadata.picture.image.optimized?.uri}
                                 alt="picture NFT"
                             />
                         )}
@@ -61,7 +60,7 @@ export default function UsersMetadata({ profile }) {
 
 
             <div >
-                <UseFollow profile={profile} />
+               <button className="btn btn-sm btn-primary text-black">编辑资料</button>
             </div>
 
         </div>

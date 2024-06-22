@@ -15,8 +15,8 @@ export function LogoutButton() {
   };
 
   if (!isConnected) {
-    return null;
+    return <button className='btn btn-info'  onClick={() => execute()}>注销</button>;
   }
 
-  return <button className='btn btn-primary'  onClick={() => logout()}>注销</button>;
+  return <button className='btn btn-info'  onClick={() => logout()}>注销</button>;
 }

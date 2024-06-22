@@ -42,7 +42,7 @@ export default function NavNavLink() {
                     activeHrefs={[`/profile`]}
                     icon={<RiUserLine className="size-6" />}
                     activeIcon={<RiUserFill className="size-6" />}
-                    text='资料'
+                    text='个人'
                 />
 
                 {/*        {address ? () : (

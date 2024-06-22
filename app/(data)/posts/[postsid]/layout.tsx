@@ -11,7 +11,7 @@ export default function layout({ children }) {
     router.back(); // 调用路由器的 back 方法返回上一页
   };
   return (
-    <div className="max-w-4xl lg:min-w-4xl mx-auto mt-0 md:mt-16 w-full h-full md:border-x">
+    <div className="max-w-4xl lg:min-w-4xl mx-auto   w-full h-full md:border-x">
 
       <div className="navbar py-0 ">
         <div className=" navbar-start">

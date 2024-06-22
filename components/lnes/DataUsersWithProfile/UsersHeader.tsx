@@ -2,7 +2,7 @@
 'use client'
 import { useRouter } from "next/navigation";
 import { RiArrowLeftLine, RiMore2Fill } from "react-icons/ri";
-export default function PostHeader() {
+export default function UsersHeader({name}) {
         // 获取路由器实例
         const router = useRouter();
 
@@ -19,7 +19,7 @@ export default function PostHeader() {
                         <RiArrowLeftLine size={24} />
                     </button>
                 </div>
-                <div className=" navbar-center">帖子详情</div>
+                <div className=" navbar-center">{name}</div>
                 <div className=" navbar-end">
                     <button className="btn btn-square btn-ghost">
                         <RiMore2Fill size={24} />

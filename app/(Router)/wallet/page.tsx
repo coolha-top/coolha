@@ -13,14 +13,15 @@ export default function Wallet() {
 
             <div className="flex justify-center items-center mx-auto max-w-4xl pt-2">
                 {ensAvatar && <img alt="ENS Avatar" src={ensAvatar} />}
-                {address && <Link
-                    href={`https://debank.com/profile/${ensName ? ensName : address}`}
-                    className='btn  btn-neutral'
-                    target='_blank'
+                {address &&
+                    <Link
+                        href={`https://debank.com/profile/${ensName ? ensName : address}`}
+                        className='btn  btn-neutral'
+                        target='_blank'
                     >
-                    {ensName ? `${ensName} (${truncateEthAddress(address)})`
-                        : truncateEthAddress(address)}↗
-                </Link>}
+                        {ensName ? `${ensName} (${truncateEthAddress(address)})`
+                            : truncateEthAddress(address)}↗
+                    </Link>}
             </div>
 
         </div>

@@ -37,7 +37,7 @@ export function PUBposts({
           {/* users  */}
           <div className="flex  ">
             <div className="flex" >
-              <Avatarimg src={pub.by} href={pub.by.handle.localName} />
+              <Avatar src={pub.by?.metadata?.picture?.optimized?.uri} alt={pub.by.handle.localName} />
               <AvatarName
                 localName={pub.by.handle.localName}
                 displayName={pub.by.metadata?.displayName}
@@ -52,7 +52,7 @@ export function PUBposts({
             <Link href={`/posts/${pub.id}`} passHref legacyBehavior>
               <div>
                 {pub.metadata.content && <UsersPosAtext content={pub.metadata.content} />}
-                <Meide pub={pub.metadata.asset}/>
+                <Meide pub={pub.metadata.asset} type={pub.metadata?.asset?.audio?.optimized?.mimeType}/>
               </div>
             </Link>
           </div>
@@ -62,7 +62,7 @@ export function PUBposts({
             <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
 
               <div className="flex" >
-                <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />
+                <Avatarimg src={pub.quoteOn.by?.metadata?.picture?.optimized?.uri} alt={pub.by.handle.localName} href={pub.by.handle.localName} />
                 <AvatarName
                   localName={pub.quoteOn.by.handle.localName}
                   displayName={pub.quoteOn.by.metadata?.displayName}
@@ -73,7 +73,7 @@ export function PUBposts({
 
               <Link href={`/posts/${pub.quoteOn.id}`} passHref>
                 <UsersPosAtext content={pub.quoteOn.metadata.content} />
-                <Meide pub={pub.quoteOn.metadata.asset}/>
+                <Meide pub={pub.quoteOn.metadata.asset} type={pub.quoteOn.metadata?.asset?.audio?.optimized?.mimeType}/>
               </Link>
             </div>
           )}

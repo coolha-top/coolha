@@ -1,9 +1,16 @@
 'use client'
 
-export default function page({ params: { postsid } }) {
+import Posts from "@/components/lnes/DataPostid/Posts";
+
+
+export default function Page({ params: { postsid } }) {
+
+    
     return (
-        <>
-            {postsid}
-        </>
-    )
+        <div className="flex-1 w-full">
+
+
+            <Posts postsid={postsid} />
+        </div>
+    );
 }

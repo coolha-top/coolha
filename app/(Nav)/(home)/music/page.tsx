@@ -98,9 +98,9 @@ export default function Page() {
             <div className=" flex">
               <div className="flex">
                 <Avatarimg
-                  href={`/${mpub.by.handle.localName}`}
-                  src={mpub.by?.metadata?.picture?.optimized?.uri}
-                  alt={mpub.by.handle.localName} />
+                  href={mpub.by.handle.localName}
+                  src={mpub.by}
+                />
                 <AvatarName
                   localName={mpub.by.handle.localName}
                   displayName={mpub.by?.metadata?.displayName} namespace={mpub.by.handle.namespace}

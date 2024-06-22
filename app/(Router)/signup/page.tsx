@@ -10,7 +10,7 @@ export default function page() {
     return (
         <div className="flex justify-center items-center mx-auto max-w-4xl">
 
-            <div className="card card-compact bg-base-100 shadow-xl sm:max-w-2xl  h-dvh w-dvw md:mt-16">
+            <div className="card card-compact bg-base-100 shadow-xl sm:max-w-2xl  h-dvh w-dvw ">
 
                 <div className="navbar py-0 ">
                     <div className=" navbar-start">

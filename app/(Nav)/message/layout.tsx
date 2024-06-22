@@ -10,7 +10,7 @@ export default function Message({ children }) {
 
 
 
-      <div className="flex flex-row  w-full lg:w-full z-20 h-16 md:mt-16 items-center ">
+      <div className="flex flex-row  w-full lg:w-full z-20 h-16  items-center ">
 
         {linknav.map((item) => (
           <div className='mx-auto flex-col sm:flex-row w-1/3 justify-around flex hover:bg-[--link-hover-background]  z-20' key={item.href}>

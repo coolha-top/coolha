@@ -15,22 +15,22 @@ export default function Header() {
 
 
 
-            <div className="navbar w-[100vw] py-0 px-0 lg:px-4 md:border-b bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
+            <div className="navbar w-[100vw] py-0 px-0 md:px-4 md:border-b bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
 
 
                 <div className="navbar-start gap-4">
 
-                    <a className="avatar">
+                    <Link href={`/`} className="avatar">
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                            <Image
-                                src='/favicon.ico'
-                                width={40}
-                                height={40}
-                                className="w-12 rounded-full "
-                                alt='Q'
-                            />
+                                <Image
+                                    src='/favicon.ico'
+                                    width={40}
+                                    height={40}
+                                    className="w-12 rounded-full "
+                                    alt='Q'
+                                />
                         </motion.div>
-                    </a>
+                    </Link>
 
                     <label className="input w-44 lg:w-72 input-bordered flex items-center gap-2">
                         <input type="text" className="grow" placeholder="搜索" />
@@ -71,7 +71,7 @@ export default function Header() {
                         <li> <Link
                             href='/profile'
                             className={`btn btn-ghost btn-primary  lg:text-xl ${pathname && pathname.startsWith("/profile") ? "btn-active text-info" : ""}`}>
-                            资料
+                            个人
                         </Link></li>
                     </ul>
                 </div>
@@ -83,7 +83,7 @@ export default function Header() {
             </div>
 
 
-{/*             {["/find", "/message/chat", "/profile"].includes(pathname) ? (
+            {/*             {["/find", "/message/chat", "/profile"].includes(pathname) ? (
                 <div className="sm:hidden flex navbar border-b sm:border-0 w-100vw p-0">
                     {pathname === "/find" && <Find />}
                     {pathname === "/message/chat" && <Message />}

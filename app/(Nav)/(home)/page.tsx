@@ -87,14 +87,15 @@ export default function Page() {
 
         {publications?.map((pub: any) => (
           <Link href={`posts/${pub.id}`} key={pub.id}>
-            <div  className="border-b md:border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-6 pb-8 " >
+            <div className="border-b md:border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-6 " >
 
               <div className=" flex ">
                 <div className="flex " >
                   <Avatarimg
-                    href={`/${pub.by.handle.localName}`}
-                    src={pub.by?.metadata?.picture?.optimized?.uri}
-                    alt={pub.by.handle.localName} />
+                    href={pub.by.handle.localName}
+                    src={pub.by}                   
+
+                  />
                   <AvatarName
                     localName={pub.by.handle.localName}
                     displayName={pub.by.metadata?.displayName}
@@ -109,7 +110,7 @@ export default function Page() {
               <div className=' '>
 
                 <PosAtext content={pub.metadata.content} />
-                <Meide pub={pub.metadata.asset} type={pub.metadata?.asset?.audio?.optimized?.mimeType} />
+                <Meide pub={pub.metadata.asset}  />
               </div>
 
 

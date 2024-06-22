@@ -18,7 +18,7 @@ export default function ProfileA({ params: { users }, }) {
   });
 
   
-  if (loading) return <p className="md:mt-16 w-full"><Loading /><Loading /><Loading /></p>
+  if (loading) return <p className=" w-full"><Loading /><Loading /><Loading /></p>
 
   return (
     <div className='lg:min-w-4xl mx-auto biorder-b '>

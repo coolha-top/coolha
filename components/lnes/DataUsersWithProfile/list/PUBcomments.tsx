@@ -22,20 +22,21 @@ export default function PUBcomments({ profile }) {
     },
   }))
 
+  if (loading) return <p>Loading...</p>;
 
   return (
     <>
       {data?.map((comment: any, index: number) => (
         <>
 
-          <div key={index} className="  lg:max-w-4xl w-dvw pb-4  border-b">
+          <div key={index} className=" border-b hover:bg-[--link-hover-background] lg:max-w-4xl w-dvw py-4  ">
 
             {/* 如果是引用类型的帖子，显示引用的内容 */}
             {comment.__typename === "Comment" && (
-              <div className="pb-6">
-                <div className="p-6 border-y hover:bg-[--link-hover-background]">
+              <div className="p-6">
+                <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
                   <div className="flex" >
-                    <Avatarimg src={comment.commentOn.by} href={comment.by.handle.localName} />
+                    <Avatarimg src={comment.commentOn.by?.metadata?.picture?.optimized?.uri} alt={comment.by.handle.localName} href={comment.by.handle.localName} />
                     <AvatarName
                       localName={comment.commentOn.by.handle.localName}
                       displayName={comment.commentOn.by.metadata?.displayName}
@@ -46,13 +47,11 @@ export default function PUBcomments({ profile }) {
 
                   <Link href={`/posts/${comment.commentOn.id}`} passHref>
                     <p className="">{comment.commentOn.metadata.content}</p>
-
-                    <Meide pub={comment.commentOn.metadata.asset}  />
+                   
+                    <Meide pub={comment.commentOn.metadata.asset} type={comment.commentOn.metadata?.asset?.audio?.optimized?.mimeType} />
                   </Link>
                   <InteractCard dataname={comment.commentOn} />
                 </div>
-
-                <div className="h-12 w-0.5 border ml-10 absolute"></div>{/* 连线 */}
               </div>
             )}
 
@@ -63,15 +62,17 @@ export default function PUBcomments({ profile }) {
 
                 {/* users */}
                 <div className="flex">
-                  <Avatarimg src={comment.by} href={comment.by.handle.localName} />
+                  <Avatar src={comment.by?.metadata?.picture?.optimized?.uri} alt={comment.by.handle.localName} />
                   <AvatarName localName={comment.by.handle.localName} displayName={comment.by.metadata?.displayName} namespace={comment.by.handle.namespace} createdAt={comment.by.createdAt} />
                 </div>
 
                 {/* users posts data */}
                 <div className=''>
-                  <Link href={`/posts/${comment.id}`}>
+                  <Link href={`posts/${comment.id}`}>
                     {comment.metadata.content && <UsersPosAtext content={comment.metadata.content} />}
-                    <Meide pub={comment.commentOn.metadata.asset}  />
+                    {comment.metadata?.asset?.image?.optimized?.uri && (
+                      <PosImage src={comment.metadata.asset.image.optimized.uri} />
+                    )}
                   </Link>
                 </div>
 

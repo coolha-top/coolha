@@ -39,7 +39,7 @@ export default function Home({ children }) {
 
 
 
-      <div className="flex flex-row border-x-0 md:border-x w-[100vw] lg:w-full z-20 h-16 md:mt-16 items-center ">
+      <div className="flex flex-row border-x-0 md:border-x w-[100vw] lg:w-full z-20 h-16  items-center ">
         {linknav.map((item) => (
           <div className='mx-auto flex-col sm:flex-row  justify-around w-[20%] flex hover:bg-[--link-hover-background]  z-20' key={item.href}>
 

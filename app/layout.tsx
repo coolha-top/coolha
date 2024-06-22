@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Head from 'next/head';
 import { Inter } from "next/font/google";
-/* import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next" */
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Provider from '@/app/Provider'
 import Header from "@/components/header/header";
 import { headers } from "next/headers";
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="zh">
       <head>
-{/*         <meta property="twitter:image" content="/logo.png" />
+        {/*         <meta property="twitter:image" content="/logo.png" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content="VimCoed:Lens Protocol Web3 Content social 内容社交" />
         <meta property="twitter:description" content="Lens Protocol Web3 Content social" />
@@ -54,8 +54,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Provider>
 
-          <LensWagmiProviders  initialState={initialState}>
-            <Header />
+          <LensWagmiProviders initialState={initialState}>
             {children}
           </LensWagmiProviders>
 
@@ -64,8 +63,8 @@ export default function RootLayout({
 
 
         </Provider>
-{/*         <Analytics />
-        <SpeedInsights /> */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

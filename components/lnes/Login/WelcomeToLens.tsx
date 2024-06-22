@@ -46,7 +46,7 @@ export function WelcomeToLens() {
                     <>
                         <p className="">当前登入的Lens账号 </p>
                         <div className="mt-2  flex-row flex justify-between items-center">
-                            <button className='btn btn-outline btn-primary font-semibold' >{data.profile.handle?.fullHandle ?? data.profile.id}
+                            <button className='btn btn-outline btn-info font-semibold' >{data.profile.handle?.fullHandle ?? data.profile.id}
                             </button>
                             <LogoutButton />
                         </div>

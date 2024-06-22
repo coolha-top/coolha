@@ -1,3 +1,5 @@
+'use client'
+
 // utils.ts
 
 // Function to convert Wei to ETH

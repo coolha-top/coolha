@@ -1,3 +1,5 @@
+'use client'
+
 export const formatDate = (isoDate) => {
     const date = new Date(isoDate);
     const year = date.getFullYear();

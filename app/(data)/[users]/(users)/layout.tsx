@@ -1,75 +1,101 @@
 'use client'
+import { useProfile, useSession, SessionType } from '@lens-protocol/react-web';
 
 
 import UsersHeader from '@/components/lnes/DataUsers/UsersHeader';
 import UsersPicimg from '@/components/lnes/DataUsers/UsersPicimg';
 import UsersMetadata from '@/components/lnes/DataUsers/UsersMetadata';
 import UsersStats from '@/components/lnes/DataUsers/UsersStats';
-import UsersNav from '@/components/lnes/DataUsers/UsersNav'
-import { useProfile } from '@lens-protocol/react-web';
+import UseBio from '@/components/lnes/DataUsers/UseBio';
 import UsersInterests from '@/components/lnes/DataUsers/UsersInterests';
 import UseMutualFollowers from '@/components/lnes/DataUsers/UseMutualFollowers';
-import UseBio from '@/components/lnes/DataUsers/UseBio';
+import UsersNav from '@/components/lnes/DataUsers/UsersNav';
 
 
-/* export async function generateMetadata({ params: { users }  }) {
-    return {
-        title: `${users} | VimCord`,
-    };
-} */
+import UsersPicimgWithProfile from '@/components/lnes/DataUsersWithProfile/UsersPicimg';
+import UsersMetadataWithProfile from '@/components/lnes/DataUsersWithProfile/UsersMetadata';
+import UsersStatsWithProfile from '@/components/lnes/DataUsersWithProfile/UsersStats';
+import UseBioWithProfile from '@/components/lnes/DataUsersWithProfile/UseBio';
+import UsersInterestsWithProfile from '@/components/lnes/DataUsersWithProfile/UsersInterests';
+import UseMutualFollowersWithProfile from '@/components/lnes/DataUsersWithProfile/UseMutualFollowers';
+import UsersNavWithProfile from '@/components/lnes/DataUsersWithProfile/UsersNav';
+
 
 export default function layout({ children, params: { users } }) {
+    const { data: session } = useSession({ suspense: true });
+    
+    //当前登入的账户
+    let profileHandle;
+    if (session.type === SessionType.WithProfile && session.profile?.handle?.fullHandle) {
+        profileHandle = session.profile.handle.fullHandle;
+    }
+    const isCurrentUser = profileHandle === `lens/${users}`;
 
-    // 将用户的名字和命名空间从 'users' 参数中拆分出来
-    //users = users.split('.')[0];
-    //const namespace = users.split('.')[1];
+    //获取路由params: { users }传入账户的数据
+    const { data: profile, loading: loadingProfile } = useProfile({ forHandle: `lens/${users}` });
 
-    // 使用拆分出来的命名空间和用户名调用 useProfile 钩子
-    let { data: profile, loading } = useProfile({
-        forHandle: `lens/${users}`
-    });
-
-    return (
-        <div className=' md:border-x max-w-4xl lg:min-w-4xl mx-auto mt-0 md:mt-16 w-full'>
-            <UsersHeader name={users} />
-            <div className=' flex-1'>
-
-                {loading ? (
-                    <p className="max-w-4xl lg:min-w-4xl mx-auto w-full"><Loading /></p>
-                ) : (<>
-
-                    {/* 背景 */}
-                    < UsersPicimg profile={profile} />
+    //获取当前登入账户的数据
+    const { data: profileWithProfile, loading: loadingWithProfile } = useProfile({ forHandle: profileHandle });
 
 
-                    {/* 用户信息 */}
-                    <UsersMetadata profile={profile} />
+  
 
-                    {/* 用户数据 */}
-                    <UsersStats profile={profile} name={users} />
 
-                    {/* 简介 */}
-                    <div className='w-full'>
-                        <UseBio profile={profile} />
 
-                        {/*   <UseMutualFollowers  profile={profile}/> */}
+  /*   if (`lens/${users}` == profileHandle ) { */
+        return (
+            <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw ">
+                <div className=' md:border-x max-w-4xl lg:min-w-4xl mx-auto  w-full'>
 
-                        {/*  <UsersInterests profile={profile} /> */}
+                    <UsersHeader name={users} />
+                    <div className=' flex-1'>
+
+
+                        {/* 当路由lens/${users}是profileHandle时显示profileWithProfile的组件,不是时显示params: { users }lens/${users}传入profile的组件 */}
+
+                        {isCurrentUser ? (
+                        <>
+                            编辑资料
+                            {/* 背景 */}
+                            <UsersPicimgWithProfile profile={profileWithProfile} />
+                            {/* 用户信息 */}
+                            <UsersMetadataWithProfile profile={profileWithProfile} />
+                            {/* 用户数据 */}
+                            <UsersStatsWithProfile profile={profileWithProfile} name={users} />
+                            {/* 简介 */}
+                            <div className='w-full'>
+                                <UseBioWithProfile profile={profileWithProfile} />
+                            </div>
+                            {/* 展开选项卡 */}
+                            <UsersNavWithProfile profile={profileWithProfile} name={users} />
+                        </>
+                    ) : (
+                        <>
+                            {/* 背景 */}
+                            <UsersPicimg profile={profile} />
+                            {/* 用户信息 */}
+                            <UsersMetadata profile={profile} />
+                            {/* 用户数据 */}
+                            <UsersStats profile={profile} name={users} />
+                            {/* 简介 */}
+                            <div className='w-full'>
+                                <UseBio profile={profile} />
+                            </div>
+                            {/* 展开选项卡 */}
+                            <UsersNav profile={profile} name={users} />
+                        </>
+                    )}
+
+                        {loadingProfile || loadingWithProfile && <>
+                            <div className="max-w-4xl lg:min-w-4xl mx-auto w-full"><Loading /></div>
+                        </>}
+                        {children}
                     </div>
 
 
-                    {/* 展开选项卡 */}
-                    <UsersNav name={users} profile={profile} />
-
-
-
-                </>)}
-
-                {children}
-
-            </div>
-        </div>
-    )
+                </div>
+            </div >
+        )
 }
 
 
