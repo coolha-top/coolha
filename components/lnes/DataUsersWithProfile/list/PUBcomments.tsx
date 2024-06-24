@@ -36,7 +36,7 @@ export default function PUBcomments({ profile }) {
               <div className="p-6">
                 <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
                   <div className="flex" >
-                    <Avatarimg src={comment.commentOn.by?.metadata?.picture?.optimized?.uri} alt={comment.by.handle.localName} href={comment.by.handle.localName} />
+                    <Avatarimg src={comment.commentOn.by?.metadata?.picture?.optimized?.uri} href={comment.commentOn.by.handle.localName} />
                     <AvatarName
                       localName={comment.commentOn.by.handle.localName}
                       displayName={comment.commentOn.by.metadata?.displayName}
@@ -48,7 +48,7 @@ export default function PUBcomments({ profile }) {
                   <Link href={`/posts/${comment.commentOn.id}`} passHref>
                     <p className="">{comment.commentOn.metadata.content}</p>
                    
-                    <Meide pub={comment.commentOn.metadata.asset} type={comment.commentOn.metadata?.asset?.audio?.optimized?.mimeType} />
+                    <Meide pub={comment.commentOn.metadata.asset}  />
                   </Link>
                   <InteractCard dataname={comment.commentOn} />
                 </div>
