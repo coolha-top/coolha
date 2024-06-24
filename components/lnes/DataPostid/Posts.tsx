@@ -12,7 +12,6 @@ import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll';
 import Link from "next/link";
 import Meide from "@/components/lnes/PostsCard/Meide";
 import { useState } from "react";
-
 export default function Posts({ postsid }) {
   const { data: pubData } = usePublication({
     forId: postsid,
@@ -45,7 +44,7 @@ export default function Posts({ postsid }) {
   // 确保 pub 是单个 AnyPublication 对象
   let pub: AnyPublication = pubData;
   if (pub instanceof Array) {
-   pub.filter(p => {
+    pub.filter(p => {
       if (p.metadata && p.metadata.asset) {
         if (p.metadata.asset.image) return true;
         if (p.metadata.asset.video || p.metadata.asset.audio) return true; // 添加音频和视频的判断
@@ -57,6 +56,7 @@ export default function Posts({ postsid }) {
     // 处理 pub 不是数组的情况，例如报错或者其他处理逻辑
     console.error('pub is not an array');
   }
+
 
   return (
     <div>
@@ -73,7 +73,7 @@ export default function Posts({ postsid }) {
               localName={pub.by?.handle?.localName}
               displayName={pub.by?.metadata?.displayName}
               namespace={`lens`}
-              createdAt={pub.by.createdAt}
+              createdAt={pub.by?.createdAt}
             />
 
 
@@ -98,6 +98,7 @@ export default function Posts({ postsid }) {
       {/* 评论区 */}
       <div className="my-4 border-t">
         {commentsData && commentsData.length > 0 ? (commentsData.map((comment) => (
+
           <div key={comment.id} className="border-b p-4 hover:bg-[--link-hover-background]">
             <Link href={`/posts/${comment.id}`}>
               <div className="flex">
@@ -120,7 +121,7 @@ export default function Posts({ postsid }) {
                 {comment.metadata && (
                   <>
                     <UsersPosAtext content={comment.metadata.content} />
-                    <Meide pub={comment.metadata.asset}  />
+                    <Meide pub={comment.metadata.asset} />
                   </>
                 )}
               </div>
