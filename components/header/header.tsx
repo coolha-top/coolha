@@ -20,7 +20,7 @@ export default function Header() {
 
                 <div className="navbar-start gap-4">
 
-                    <Link href={`/`} className="avatar">
+                    <Link href={`/`} className="avatar w-12 h-12 ">
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                                 <Image
                                     src='/favicon.ico'
