@@ -87,7 +87,7 @@ export default function Page() {
 
         {publications?.map((pub: any) => (
           <Link href={`posts/${pub.id}`} key={pub.id}>
-            <div className="border-b md:border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-6 " >
+            <div className="border-b md:border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 " >
 
               <div className=" flex ">
                 <div className="flex " >

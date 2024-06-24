@@ -33,7 +33,7 @@ export default function PUBcomments({ profile }) {
             {/* 如果是引用类型的帖子，显示引用的内容 */}
             {comment.__typename === "Comment" && (
               <div className="pb-6">
-                <div className="p-6 border-y hover:bg-[--link-hover-background]">
+                <div className="p-4 border-b hover:bg-[--link-hover-background]">
                   <div className="flex" >
                     <Avatarimg src={comment.commentOn.by} href={comment.by.handle.localName} />
                     <AvatarName
@@ -45,20 +45,19 @@ export default function PUBcomments({ profile }) {
                   </div>
 
                   <Link href={`/posts/${comment.commentOn.id}`} passHref>
-                    <p className="">{comment.commentOn.metadata.content}</p>
-
-                    <Meide pub={comment.commentOn.metadata.asset}  />
+                    <UsersPosAtext content={comment.commentOn.metadata.content} />
+                    <Meide pub={comment.commentOn.metadata.asset} />
                   </Link>
                   <InteractCard dataname={comment.commentOn} />
                 </div>
 
-                <div className="h-12 w-0.5 border ml-10 absolute"></div>{/* 连线 */}
+                <div className="h-10 w-0.5 border ml-10 absolute"></div>{/* 连线 */}
               </div>
             )}
 
 
-
-            <div className="p-6">
+            {/* 用户的评论 */}
+            <div className="py-4 px-6">
               <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
 
                 {/* users */}
@@ -71,7 +70,7 @@ export default function PUBcomments({ profile }) {
                 <div className=''>
                   <Link href={`/posts/${comment.id}`}>
                     {comment.metadata.content && <UsersPosAtext content={comment.metadata.content} />}
-                    <Meide pub={comment.commentOn.metadata.asset}  />
+                    <Meide pub={comment.commentOn.metadata.asset} />
                   </Link>
                 </div>
 

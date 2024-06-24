@@ -15,7 +15,7 @@ export default function UsersMetadata({ profile }) {
         truncateEthAddress(`${ethAddress}`);
 
     return (
-        <div className="flex flex-row items-center  px-6 pt-1">
+        <div className="flex flex-row items-center  px-4 pt-1">
 
             <div className="w-16 h-16 md:w-24 md:h-24 ">
                 {profile?.metadata?.picture ? (

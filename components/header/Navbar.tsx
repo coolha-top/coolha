@@ -11,7 +11,7 @@ export default function NavNavLink() {
     return (
         <div >
 
-            <div className="md:hidden flex fixed bottom-0 w-dvw h-14 bg-[var(--background-end-rgb)] backdrop-filter backdrop-saturate-180 backdrop-blur-16 border-t-[0.3px]">
+            <div className="md:hidden flex fixed bottom-0 w-dvw h-14 bg-[var(--background-end-rgb)] backdrop-filter backdrop-saturate-180 backdrop-blur-16">
 
                 <NavLink
                     href='/'
@@ -77,7 +77,7 @@ function NavLink({ href, activeIcon, icon, activeHrefs, text }) {
 
             <div className="flex flex-col items-center justify-center">
                 {activeHrefs.includes(pathname) ? activeIcon : icon}
-                <span className="text-sm ">{text}</span>
+                <span className="text-xs mt-0.5">{text}</span>
             </div>
 
         </Link>

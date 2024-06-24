@@ -26,7 +26,7 @@ export default function Header() {
                                     src='/favicon.ico'
                                     width={40}
                                     height={40}
-                                    className="w-12 rounded-full "
+                                    className="w-12 h-12 rounded-full "
                                     alt='Q'
                                 />
                         </motion.div>

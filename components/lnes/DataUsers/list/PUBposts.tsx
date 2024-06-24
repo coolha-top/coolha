@@ -32,7 +32,7 @@ export function PUBposts({
     <div className=" flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
 
       {publications?.map((pub: any, index: number) => (
-        <div key={index} className=" border-b  hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw  p-6 pb-8">
+        <div key={index} className=" border-b  hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw  p-4 pb-6">
 
           {/* users  */}
           <div className="flex  ">
@@ -48,33 +48,35 @@ export function PUBposts({
           </div>
 
           {/* users posts data  */}
-          <div className='mb-1'>
+          <div className=''>
             <Link href={`/posts/${pub.id}`} passHref legacyBehavior>
               <div>
                 {pub.metadata.content && <UsersPosAtext content={pub.metadata.content} />}
-                <Meide pub={pub.metadata.asset}/>
+                <Meide pub={pub.metadata.asset} />
               </div>
             </Link>
           </div>
 
           {/* 如果是引用类型的帖子，显示引用的内容 */}
           {pub.__typename === "Quote" && (
-            <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+            <div className="p-6 pl-0">
+              <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
 
-              <div className="flex" >
-                <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />
-                <AvatarName
-                  localName={pub.quoteOn.by.handle.localName}
-                  displayName={pub.quoteOn.by.metadata?.displayName}
-                  namespace={pub.quoteOn.by.handle.namespace}
-                  createdAt={pub.quoteOn.by.createdAt}
-                />
+                <div className="flex" >
+                  <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />
+                  <AvatarName
+                    localName={pub.quoteOn.by.handle.localName}
+                    displayName={pub.quoteOn.by.metadata?.displayName}
+                    namespace={pub.quoteOn.by.handle.namespace}
+                    createdAt={pub.quoteOn.by.createdAt}
+                  />
+                </div>
+
+                <Link href={`/posts/${pub.quoteOn.id}`} passHref>
+                  <UsersPosAtext content={pub.quoteOn.metadata.content} />
+                  <Meide pub={pub.quoteOn.metadata.asset} />
+                </Link>
               </div>
-
-              <Link href={`/posts/${pub.quoteOn.id}`} passHref>
-                <UsersPosAtext content={pub.quoteOn.metadata.content} />
-                <Meide pub={pub.quoteOn.metadata.asset}/>
-              </Link>
             </div>
           )}
 

@@ -90,7 +90,7 @@ export default function Page() {
 
         {musicPubs?.map(mpub => (
           <div
-            className="border-b border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-6 "
+            className="border-b border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 "
             key={mpub.id}
             onClick={() => router.push(`https://share.lens.xyz/p/${mpub.id}`)}
           >

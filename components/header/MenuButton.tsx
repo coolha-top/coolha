@@ -88,12 +88,12 @@ export function MenuButton() {
 
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border">
                     {data && data.type === SessionType.WithProfile &&
-                        <b>
+                        <>
                             <li><Link href={`/wallet`}><RiWallet2Line size={24} />钱包</Link></li>
                             <li><Link href={`/settings`}><RiSettingsLine size={24} />设置</Link></li>
 
                             <li className="my-1"></li>
-                        </b>
+                        </>
                     }
 
 

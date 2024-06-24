@@ -26,7 +26,7 @@ export const PosAtext = ({ content }) => {
   return (
     <div className='pt-2'>
       <ReactMarkdown
-        className="break-words h-auto text-wrap"
+        className="break-words text-wrap h-auto "
         components={{
           a: LinkRenderer,
         }}
@@ -49,7 +49,7 @@ export const PosAtext = ({ content }) => {
 export function UsersPosAtext({ content }) {
   return (
     <>
-      <ReactMarkdown className="h-auto"
+      <ReactMarkdown className="break-words text-wrap h-auto"
         components={{
           a: LinkRenderer,
         }}>

@@ -61,7 +61,7 @@ export default function Posts({ postsid }) {
   return (
     <div>
       {/* 主帖 */}
-      <div key={pub.id} className="w-dvw lg:max-w-4xl p-6 pt-0">
+      <div key={pub.id} className="w-dvw lg:max-w-4xl p-4 pt-0">
         <div className="flex">
           <div className="flex">
 
@@ -96,9 +96,9 @@ export default function Posts({ postsid }) {
 
 
       {/* 评论区 */}
-      <div className="py-6">
+      <div className="my-4 border-t">
         {commentsData && commentsData.length > 0 ? (commentsData.map((comment) => (
-          <div key={comment.id} className="border-t p-6 hover:bg-[--link-hover-background]">
+          <div key={comment.id} className="border-b p-4 hover:bg-[--link-hover-background]">
             <Link href={`/posts/${comment.id}`}>
               <div className="flex">
                 {comment.by && comment.by.handle && comment.by.metadata && (
@@ -136,7 +136,7 @@ export default function Posts({ postsid }) {
             }
 
 
-            {/* 在这里添加评论帖的评论内容 */}
+            {/* 在这里添加子评论帖的评论内容 */}
             {expandedComments[comment.id] && (
               <div className="mt-4 pl-4">
                 <ChildComments commentId={comment.id} />
