@@ -32,7 +32,7 @@ export function PUBposts({
     <div className=" flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
 
       {publications?.map((pub: any, index: number) => (
-        <div key={index} className=" border-b  hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw  p-4 pb-6">
+        <div key={index} className=" bg-base-100 hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 pb-6">
 
           {/* users  */}
           <div className="flex  ">
@@ -86,7 +86,7 @@ export function PUBposts({
       ))}
 
       {hasMore && (
-        <div className="flex justify-center my-4">
+        <div className="flex justify-center my-4 bg-base-100">
           <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
         </div>
       )}

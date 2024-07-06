@@ -6,14 +6,14 @@ import { RiChat3Line, RiFileTextLine, RiImageLine, RiMusic2Line, RiNotification3
 export default function Message({ children }) {
   const pathname = usePathname();
   return (
-    <div className='mx-auto max-w-4xl justify-center border-x-0 md:border-x'>
+    <div className=' min-h-dvh mx-auto max-w-4xl justify-center border-x-0 md:border-x'>
 
 
 
       <div className="flex flex-row  w-full lg:w-full z-20 h-16  items-center ">
 
         {linknav.map((item) => (
-          <div className='mx-auto flex-col sm:flex-row w-1/3 justify-around flex hover:bg-[--link-hover-background]  z-20' key={item.href}>
+          <div className='mx-auto flex-col sm:flex-row w-1/3 justify-around flex bg-base-100 hover:bg-[--link-hover-background]  z-20' key={item.href}>
 
             <Link href={item.href} className={`z-20 flex items-center justify-center w-[100%] h-16 flex-col sm:flex-row  text-[#878787]  border-b ${pathname === item.href ? 'text-info  border-b-2 border-b-info' : ''}`}>
               <div className=' justify-center text-2xl sm:text-2xl z-20'> {item.logo} </div>

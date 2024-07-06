@@ -15,7 +15,7 @@ export default function Header() {
 
 
 
-            <div className="navbar w-[100vw] py-0 px-0 md:px-4 md:border-b bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
+            <div className="navbar w-[100vw] py-0 px-0 md:px-4  bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
 
 
                 <div className="navbar-start gap-4">

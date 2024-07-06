@@ -3,7 +3,7 @@
 export default function UsersPicimg({ profile }) {
     return (
         <>
-            <div className=' h-36 max-w-4xl mx-auto '>
+            <div className=' h-36 max-w-4xl mx-auto bg-base-100'>
                 {profile?.metadata?.coverPicture?.raw?.uri ?
                     (
                         <div className=' bg-primary text-base-content'>

@@ -51,11 +51,13 @@ export default function RootLayout({
         {/*  <meta property="og:url" content="Canonical link preview URL"></meta> */}
       </head>
 
-      <body className={inter.className}>
+      <body className={`${inter.className}`}>
         <Provider>
 
           <LensWagmiProviders initialState={initialState}>
+            
             {children}
+       
           </LensWagmiProviders>
 
 

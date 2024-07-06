@@ -22,14 +22,14 @@ export default function UsersStats({ name, profile }) {
     ];
 
     return (
-        <>
-            <div className="flex flex-row px-4 mt-1 gap-1">
+        <div className="bg-base-100">
+            <div className="flex flex-row px-4 py-1 gap-1">
 
                 {/* <p className="text-gray-500"> <span className="font-bold">{profile?.createdAt ? formatDate(profile?.createdAt) : ''}</span> </p> */}
             </div >
 
 
-            <div className="stats-container px-4 my-4 flex flex-col  w-[100%] gap-2">
+            <div className="stats-container px-4 flex flex-col  w-[100%] gap-2">
 
 
                 <div className="flex  flex-row justify-around  rounded-md  w-[100%] lg:w-1/2">
@@ -53,6 +53,6 @@ export default function UsersStats({ name, profile }) {
 
 
             </div>
-        </>
+        </div>
     )
 }

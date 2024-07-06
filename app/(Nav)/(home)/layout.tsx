@@ -35,11 +35,11 @@ export default function Home({ children }) {
     }
   ]
   return (
-    <div className="mx-auto lg:max-w-4xl  lg:justify-center pb-14  flex  flex-col ">
+    <div className="mx-auto lg:max-w-4xl  lg:justify-center pb-14  flex  flex-col">
 
 
 
-      <div className="flex flex-row border-x-0 md:border-x w-[100vw] lg:w-full z-20 h-16  items-center ">
+      <div className="flex flex-row w-[100vw] lg:w-full z-20 h-16  items-center border-x-0 md:border-x bg-base-100">
         {linknav.map((item) => (
           <div className='mx-auto flex-col sm:flex-row  justify-around w-[20%] flex hover:bg-[--link-hover-background]  z-20' key={item.href}>
 

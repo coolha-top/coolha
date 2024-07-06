@@ -9,21 +9,23 @@ export default function AvatarName({ localName, displayName, namespace, createdA
     const router = useRouter()
     return (
         <>
-            <div className="sm:ml-3 ml-4">
+            <div className="ml-3">
 
-                <Link href={`/${localName}`} className="hover:underline hover:caret-primary hover:text-info">
-                    <b className="flex flex-row items-center">{displayName ? displayName : ''}<RiVerifiedBadgeFill  className=" size-4 ml-1 text-primary bg-secondary rounded-full" /></b>
-
+                <Link href={`/${localName}`} className="hover:underline hover:caret-primary hover:text-info flex flex-row items-center">
+                    <b className=" flex items-center overflow-hidden text-ellipsis whitespace-nowrap">{displayName ? displayName : ''}</b>
+                    <RiVerifiedBadgeFill  className=" size-4 ml-1 text-primary bg-secondary rounded-full" />
                 </Link>
 
-                <Link href={`/${localName}`} >
+                <span className='text-base-content/50 hover:underline text-sm'>{timeAgo(createdAt)}</span>
+
+{/*                 <Link href={`/${localName}`} >
                     <p className=" text-[#878787] hover:underline" >{localName}.{namespace}</p>
-                </Link>
+                </Link> */}
 
 
             </div>
 
-            <span className='text-base-content/50 mx-1 hover:underline text-sm'>{timeAgo(createdAt)}</span>
+            
         </>
     )
 }

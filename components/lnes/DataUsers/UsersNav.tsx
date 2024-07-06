@@ -9,7 +9,7 @@ export default function UsersNav({ name, profile }) {
 
     return (
         <>
-            <div className="flex flex-row  w-[100vw] lg:w-full z-20 h-16  items-center ">
+            <div className="flex flex-row  w-[100vw] lg:w-full z-20 h-16  items-center bg-base-100">
                 {linknav.map((item) => (
                     <div className='mx-auto flex-col sm:flex-row  justify-around w-1/4 flex hover:bg-[--link-hover-background]  z-20' key={item.href}>
 

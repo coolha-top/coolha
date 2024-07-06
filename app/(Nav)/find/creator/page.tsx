@@ -51,11 +51,11 @@ export default function Page() {
     <>
       <div className="flex mx-auto max-w-4xl justify-center">
 
-        <div className=' flex  lg:flex-wrap flex-col w-full'>
+        <div className=' flex  lg:flex-wrap flex-col w-full '>
           {profiles?.map(profile => (
             <div
               key={profile.id}
-              className="p-4 hover:bg-[--link-hover-background]  sm:border sm:border-t-0 border-b border-e-0 cursor-pointer"
+              className="p-4 mt-2 bg-base-100 hover:bg-[--link-hover-background]  cursor-pointer"
               onClick={() => router.push(`/${profile.handle.localName}`)}>
               <div className="space-y-3">
                 <div className="overflow-hidden rounded-md flex flex-row">
@@ -81,11 +81,11 @@ export default function Page() {
         </div>
       )}
 
-      {loadingProfiles && (
+{/*       {loadingProfiles && (
         <div className=" flex flex-1 justify-center items-center ">
           <span className="loading loading-spinner loading-lg"></span>
         </div>
-      )}
+      )} */}
     </>
   )
 }

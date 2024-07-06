@@ -17,7 +17,7 @@ export default function page() {
 
    if (data && data.type === SessionType.Anonymous) {
       return (
-         <div className="mx-auto max-w-4xl  justify-center sm:border-x flex-1">
+         <div className="mx-auto max-w-4xl min-h-dvh justify-center flex-1">
             <p>Profile</p>
             <div>暂未登录 Lens 账户</div>
          </div>
@@ -29,7 +29,7 @@ export default function page() {
          forHandle: ProfileWithProfile
       });
       return (
-         <div className="mx-auto max-w-4xl min-h-dvh  justify-center border-x-0 md:border-x flex-1">
+         <div className="mx-auto max-w-4xl min-h-dvh  justify-center flex-1">
             <div className='h-full'>
                {loading ? (<Loading />) : (
                   <>
