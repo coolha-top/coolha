@@ -44,7 +44,7 @@ const config: Config = {
           "success": "#1F7A1F",
           "warning": "#F37121",
           "error": "#ff0000",
-          "--rounded-box": "1rem", //边框半径圆角盒实用类，用于卡片等大型盒子
+          "--rounded-box": "1.5rem", //边框半径圆角盒实用类，用于卡片等大型盒子
           "--rounded-btn": "1.5rem",//border-radius圆角btn实用程序类，用于按钮和类似元素
           "--rounded-badge": "0.5rem", //边框半径圆形徽章实用类，用于徽章及类似产品
           "--animation-btn": "0.25s", //单击按钮时的动画持续时间
@@ -63,12 +63,12 @@ const config: Config = {
           "neutral": "#C0E218",
           "base-100": "#000000",
           "base-200": "#111111",
-          "base-content": "#f5f5f5",
+          "base-content": "#ffffffe3",
           "info": "#C0E218",
           "success": "#2CFF2C",
           "warning": "#F37121",
           "error": "#ff0000",
-          "--rounded-box": "1rem", //边框半径圆角盒实用类，用于卡片等大型盒子
+          "--rounded-box": "1.5rem", //边框半径圆角盒实用类，用于卡片等大型盒子
           "--rounded-btn": "1.5rem",//border-radius圆角btn实用程序类，用于按钮和类似元素
           "--rounded-badge": "1rem", //边框半径圆形徽章实用类，用于徽章及类似产品
           "--animation-btn": "0.25s", //单击按钮时的动画持续时间

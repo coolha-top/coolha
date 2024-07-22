@@ -23,7 +23,7 @@ import UsersNavWithProfile from '@/components/lnes/DataUsersWithProfile/UsersNav
 
 export default function layout({ children, params: { users } }) {
     const { data: session } = useSession({ suspense: true });
-    
+
     //当前登入的账户
     let profileHandle;
     if (session.type === SessionType.WithProfile && session.profile?.handle?.fullHandle) {
@@ -38,22 +38,22 @@ export default function layout({ children, params: { users } }) {
     const { data: profileWithProfile, loading: loadingWithProfile } = useProfile({ forHandle: profileHandle });
 
 
-  
 
 
 
-  /*   if (`lens/${users}` == profileHandle ) { */
-        return (
-            <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw ">
-                <div className=' max-w-4xl lg:min-w-4xl mx-auto  w-full'>
 
-                    <UsersHeader name={users} />
-                    <div className=' flex-1 bg-base-200'>
+    /*   if (`lens/${users}` == profileHandle ) { */
+    return (
+        <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw ">
+            <div className=' max-w-4xl lg:min-w-4xl mx-auto  w-full'>
+
+                <UsersHeader name={users} />
+                <div className=' flex-1 bg-base-200'>
 
 
-                        {/* 当路由lens/${users}是profileHandle时显示profileWithProfile的组件,不是时显示params: { users }lens/${users}传入profile的组件 */}
+                    {/* 当路由lens/${users}是profileHandle时显示profileWithProfile的组件,不是时显示params: { users }lens/${users}传入profile的组件 */}
 
-                        {isCurrentUser ? (
+                    {isCurrentUser ? (
                         <>
                             编辑资料
                             {/* 背景 */}
@@ -76,7 +76,9 @@ export default function layout({ children, params: { users } }) {
                             {/* 用户信息 */}
                             <UsersMetadata profile={profile} />
                             {/* 用户数据 */}
-                            <UsersStats profile={profile} name={users} />
+                            <div className='bg-base-100'>
+                                <UsersStats profile={profile} name={users} />
+                            </div>
                             {/* 简介 */}
                             <div className='w-full'>
                                 <UseBio profile={profile} />
@@ -86,16 +88,16 @@ export default function layout({ children, params: { users } }) {
                         </>
                     )}
 
-                        {loadingProfile || loadingWithProfile && <>
-                            <div className="max-w-4xl lg:min-w-4xl mx-auto w-full"><Loading /></div>
-                        </>}
-                        {children}
-                    </div>
-
-
+                    {loadingProfile || loadingWithProfile && <>
+                        <div className="max-w-4xl lg:min-w-4xl mx-auto w-full"><Loading /></div>
+                    </>}
+                    {children}
                 </div>
-            </div >
-        )
+
+
+            </div>
+        </div >
+    )
 }
 
 

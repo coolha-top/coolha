@@ -22,7 +22,7 @@ export default function UsersStats({ name, profile }) {
     ];
 
     return (
-        <div className="bg-base-100">
+        <div className="">
             <div className="flex flex-row px-4 py-1 gap-1">
 
                 {/* <p className="text-gray-500"> <span className="font-bold">{profile?.createdAt ? formatDate(profile?.createdAt) : ''}</span> </p> */}

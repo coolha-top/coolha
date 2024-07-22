@@ -10,7 +10,9 @@ export default function layout({ children }) {
       <Header />
       <div className="h-0 md:h-16" />
       <NavHeader />
-      {children}
+      <div className='mx-auto max-w-4xl min-h-[calc(100dvh-4rem)] flex-1 justify-center'>
+        {children}
+      </div>
       <Navbar />
     </div>
   )
