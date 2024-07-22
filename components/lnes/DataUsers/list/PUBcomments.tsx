@@ -28,12 +28,12 @@ export default function PUBcomments({ profile }) {
       {data?.map((comment: any, index: number) => (
         <>
 
-          <div key={index} className="  lg:max-w-4xl w-dvw pb-4  border-b">
+          <div key={index} className=" bg-base-100 lg:max-w-4xl w-dvw mt-2 pb-4 ">
 
             {/* 如果是引用类型的帖子，显示引用的内容 */}
             {comment.__typename === "Comment" && (
               <div className="pb-6">
-                <div className="p-4 border-b hover:bg-[--link-hover-background]">
+                <div className="p-4  hover:bg-[--link-hover-background]">
                   <div className="flex" >
                     <Avatarimg src={comment.commentOn.by} href={comment.by.handle.localName} />
                     <AvatarName
@@ -49,15 +49,15 @@ export default function PUBcomments({ profile }) {
                     <Meide pub={comment.commentOn.metadata.asset} />
                   </Link>
                   <InteractCard dataname={comment.commentOn} />
+                <div className="h-14 w-0.5  border ml-4 absolute"></div>{/* 连线 */}
                 </div>
 
-                <div className="h-10 w-0.5 border ml-10 absolute"></div>{/* 连线 */}
               </div>
             )}
 
 
             {/* 用户的评论 */}
-            <div className="py-4 px-6">
+            <div className="p-4">
               <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
 
                 {/* users */}
@@ -95,7 +95,7 @@ export default function PUBcomments({ profile }) {
 
       {
         hasMore && (
-          <div className="flex justify-center my-4">
+          <div className="flex justify-center my-4  bg-base-100">
             <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
           </div>
         )

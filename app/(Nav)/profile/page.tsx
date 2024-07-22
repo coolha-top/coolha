@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { SessionType, useProfile, useSession } from "@lens-protocol/react-web";
 import { truncateEthAddress } from '@/utils/truncateEthAddress';
-import { RiCheckboxCircleFill } from 'react-icons/ri';
+import { RiBarChart2Line, RiCopperCoinLine, RiHistoryLine, RiNftLine, RiPuzzleLine, RiTrophyLine, RiUserSettingsLine, RiVerifiedBadgeLine, RiCheckboxCircleFill } from "react-icons/ri";
 import { formatNumberWithUnit } from '@/utils/formatNumber';
 import { formatDate } from '@/utils/formatDate';
 import { convertLinksToHTML } from "@/utils/convertLinksToHTML";
@@ -17,7 +17,7 @@ export default function page() {
 
    if (data && data.type === SessionType.Anonymous) {
       return (
-         <div className="mx-auto max-w-4xl  justify-center sm:border-x flex-1">
+         <div className="">
             <p>Profile</p>
             <div>暂未登录 Lens 账户</div>
          </div>
@@ -29,23 +29,21 @@ export default function page() {
          forHandle: ProfileWithProfile
       });
       return (
-         <div className="mx-auto max-w-4xl min-h-dvh  justify-center border-x-0 md:border-x flex-1">
+         <div className="">
             <div className='h-full'>
-               {loading ? (<Loading />) : (
-                  <>
-                     {/* 背景 */}
-                     <UsersPicimg profile={Profile} />
+               {loading ? (<>loading...</>) : (
+                  <div className='rounded-[--rounded-box] mx-0  md:mx-4'>
+                     <div className='w-full  bg-base-100 py-2'>
                      {/* 用户信息 */}
                      <UsersMetadata profile={Profile} />
+                     
                      {/* 用户数据 */}
                      <UsersStats profile={Profile} name={data.profile.handle?.localName} />
-                     {/* 简介 */}
-                     <div className='w-full'>
-                        <UseBio profile={Profile} />
                      </div>
-                  </>
+                  </div>
                )}
 
+               <Card />
 
 
             </div>
@@ -53,98 +51,111 @@ export default function page() {
       );
    }
 }
+function Card() {
+   const assetData = [
+      { icon: RiCopperCoinLine, label: 'Token' },
+      { icon: RiNftLine, label: 'NFT' },
+      { icon: RiHistoryLine, label: '交易记录' },
+      { icon: RiVerifiedBadgeLine, label: '会员' }
+   ];
 
+   const userData = [
+      { icon: RiUserSettingsLine, label: '账户设置' },
+      { icon: RiPuzzleLine, label: '扩展功能' },
+      { icon: RiBarChart2Line, label: '数据分析' },
+      { icon: RiTrophyLine, label: '成就等级' }
+   ];
+   return (
+      <div>
+
+         <div className='bg-base-100 m-4 h-32 w-auto rounded-[--rounded-box]'>
+            <h1 className="p-4 text-xl font-bold">资产</h1>
+            <div className='flex-row h-auto w-auto  grid grid-cols-4 justify-items-stretch '>
+               {assetData.map((item, index) => (
+                  <div key={index} className=' grid justify-items-center hover:bg-[--link-hover-background]'>
+                     <item.icon size={24} /> <p >{item.label}</p>
+                  </div>
+               ))}
+            </div>
+         </div>
+
+
+         <div className='bg-base-100 m-4 h-32 w-auto rounded-[--rounded-box]'>
+            <h1 className="p-4 text-xl font-bold">用户</h1>
+            <div className='flex-row h-auto w-auto py-2 grid grid-cols-4 justify-items-stretch  '>
+               {userData.map((item, index) => (
+                  <div key={index} className='grid justify-items-center hover:bg-[--link-hover-background]'>
+                     <item.icon size={24} /> <p>{item.label}</p>
+                  </div>
+               ))}
+            </div>
+         </div>
+
+      </div>
+   )
+}
 
 
 function UsersMetadata({ profile }) {
    const ensName = profile?.onchainIdentity?.ens?.name;
    const ethAddress = profile?.ownedBy?.address;
    const ethAddressText = ensName ?
-       <> {ensName} <img className="size-4 ml-1" src="/logo/ens_mark_primary.svg" alt="ENS.logo" /></>
-       :
-       truncateEthAddress(`${ethAddress}`);
+      <> {ensName} <img className="size-4 ml-1" src="/logo/ens_mark_primary.svg" alt="ENS.logo" /></>
+      :
+      truncateEthAddress(`${ethAddress}`);
 
    return (
-       <div className="flex flex-row items-center  px-6 pt-1">
+      <div className="flex flex-row items-center  px-6 pt-1">
 
-           <div className="w-16 h-16 md:w-24 md:h-24 ">
-               {profile?.metadata?.picture ? (
-                   <>
-                       {profile.metadata.picture.optimized?.uri && (
-                           <img
-                               className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
-                               src={profile.metadata.picture.optimized.uri}
-                               alt="picture Set"
-                           />
-                       )}
-                       {profile.metadata.picture.__typename === 'ProfilePicture_NftImage_' && (
-                           <img
-                               className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
-                               src={profile.metadata.picture.uri}
-                               alt="picture NFT"
-                           />
-                       )}
-                   </>
-               ) : (
-                   <img
-                       className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
-                       src="/rlogo.png" // 使用默认的占位符图片
-                       alt="optimized on"
-                   />
-               )}
-           </div>
-
-
-           <div className="ml-2 lg:ml-4">
-               <b className="md:text-xl flex flex-row items-center  font-bold">{profile?.metadata?.displayName}<RiCheckboxCircleFill className="ml-1 size-5 text-primary bg-black rounded-full" /></b>
-               <p className="text-[#878787] text-sm"> {profile?.handle?.localName}.{profile?.handle?.namespace}</p>
-               <p className="text-[#878787]  text-sm font-bold hover:text-primary w-full">
-                   <Link href={`https://www.oklink.com/zh-hans/multi-search#key=${ensName ? ensName : ethAddress}`} target='_blank'>
-                       <span className="flex-1 inline-flex items-center hover:text-primary  w-full">{ethAddressText}</span>
-                   </Link>
-               </p>
-               {/* <p className="badge badge-outline text-gray-500"> <span className="font-bold w-full">{profile?.createdAt ? formatDate(profile?.createdAt) : ''}</span> </p> */}
-               {/*  <p className="text-gray-500"><span className="font-bold">{truncateEthAddress(`${profile?.ownedBy?.address}`)}</span>   </p> */}
-           </div>
-           <div className="flex-1 lg:ml-2"></div>
-
-
-
-           <div >
-              <button className="btn btn-sm btn-primary text-black">编辑资料</button>
-           </div>
-
-       </div>
-   )
-}
-
-
-function Loading() {
-   return (
-      <>
-         <div className="flex flex-col gap-4 w-full">
-
-            <div className="skeleton h-36 w-full"></div>
-
-            <div className="flex gap-4 items-center w-full px-6">
-               <div className="skeleton w-24 h-24 rounded-full shrink-0"></div>
-               <div className="flex flex-col gap-0.5">
-                  <div className="skeleton h-8 w-28"></div>
-                  <div className="skeleton h-5 w-28"></div>
-                  <div className="skeleton h-5 w-28"></div>
-                  <div className="skeleton h-5 w-28"></div>
-               </div>
-               <div className='flex-1'></div>
-               <div className="skeleton w-20 h-12 rounded-xl shrink-0"></div>
-            </div>
-
-            <div className="skeleton h-14 w-full px-6"></div>
-            <div className="skeleton h-2 w-full px-6"></div>
-            <div className="skeleton h-2 w-full px-6"></div>
-            <div className="skeleton h-2 w-full px-6"></div>
-
-
+         <div className="w-16 h-16 md:w-24 md:h-24 ">
+            {profile?.metadata?.picture ? (
+               <>
+                  {profile.metadata.picture.optimized?.uri && (
+                     <img
+                        className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
+                        src={profile.metadata.picture.optimized.uri}
+                        alt="picture Set"
+                     />
+                  )}
+                  {profile.metadata.picture.__typename === 'ProfilePicture_NftImage_' && (
+                     <img
+                        className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
+                        src={profile.metadata.picture.uri}
+                        alt="picture NFT"
+                     />
+                  )}
+               </>
+            ) : (
+               <img
+                  className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
+                  src="/rlogo.png" // 使用默认的占位符图片
+                  alt="optimized on"
+               />
+            )}
          </div>
-      </>
+
+
+         <div className="ml-2 lg:ml-4">
+            <b className="md:text-xl flex flex-row items-center  font-bold">{profile?.metadata?.displayName}<RiCheckboxCircleFill className="ml-1 size-5 text-primary bg-black rounded-full" /></b>
+            <p className="text-[#878787] text-sm"> {profile?.handle?.localName}.{profile?.handle?.namespace}</p>
+            <p className="text-[#878787]  text-sm font-bold hover:text-primary w-full">
+               <Link href={`https://www.oklink.com/zh-hans/multi-search#key=${ensName ? ensName : ethAddress}`} target='_blank'>
+                  <span className="flex-1 inline-flex items-center hover:text-primary  w-full">{ethAddressText}</span>
+               </Link>
+            </p>
+            {/* <p className="badge badge-outline text-gray-500"> <span className="font-bold w-full">{profile?.createdAt ? formatDate(profile?.createdAt) : ''}</span> </p> */}
+            {/*  <p className="text-gray-500"><span className="font-bold">{truncateEthAddress(`${profile?.ownedBy?.address}`)}</span>   </p> */}
+         </div>
+         <div className="flex-1 lg:ml-2"></div>
+
+
+
+         <div >
+            <button className="btn btn-sm btn-primary text-black">编辑资料</button>
+         </div>
+
+      </div>
    )
 }
+
+

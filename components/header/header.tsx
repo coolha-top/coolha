@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { RiSearchLine } from "react-icons/ri";
+
+import { RiApps2Fill, RiApps2Line, RiArchiveFill, RiArchiveLine, RiCompass3Fill, RiCompass3Line, RiHome5Fill, RiHome5Line, RiMailFill, RiMailLine, RiMessageFill, RiMessageLine, RiUserFill, RiUserLine, RiSearchLine, RiChat1Line, RiChat1Fill } from "react-icons/ri";
 import { MenuButton } from "./MenuButton";
 
 export default function Header() {
@@ -15,20 +16,20 @@ export default function Header() {
 
 
 
-            <div className="navbar w-[100vw] py-0 px-0 md:px-4 md:border-b bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
+            <div className="navbar w-[100vw] py-0 px-0 md:px-4  bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
 
 
                 <div className="navbar-start gap-4">
 
                     <Link href={`/`} className="avatar w-12 h-12 ">
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                <Image
-                                    src='/favicon.ico'
-                                    width={40}
-                                    height={40}
-                                    className="w-12 h-12 rounded-full "
-                                    alt='Q'
-                                />
+                            <Image
+                                src='/favicon.ico'
+                                width={40}
+                                height={40}
+                                className="w-12 h-12 rounded-full "
+                                alt='Q'
+                            />
                         </motion.div>
                     </Link>
 
@@ -51,28 +52,7 @@ export default function Header() {
                                 </ul>
                             </details>
                         </li> */}
-                        <li><Link
-                            href='/'
-                            className={`btn btn-ghost btn-primary  lg:text-xl ${pathname === "/" ? "btn-active text-info" : ""}`}>
-                            首页
-                        </Link></li>
-
-                        <li> <Link
-                            href='/find'
-                            className={`btn btn-ghost btn-primary  lg:text-xl ${pathname && pathname.startsWith("/find") ? "btn-active text-info" : ""}`}>
-                            发现
-                        </Link></li>
-
-                        <li> <Link
-                            href='/message/chat'
-                            className={` btn btn-ghost btn-primary  lg:text-xl ${pathname && pathname.startsWith("/message") ? "btn-active text-info" : ""}`}>
-                            消息
-                        </Link></li>
-                        <li> <Link
-                            href='/profile'
-                            className={`btn btn-ghost btn-primary  lg:text-xl ${pathname && pathname.startsWith("/profile") ? "btn-active text-info" : ""}`}>
-                            个人
-                        </Link></li>
+                        <NavbarLink />
                     </ul>
                 </div>
 
@@ -99,50 +79,47 @@ export default function Header() {
         </>)
 }
 
-function Find() {
+function NavbarLink() {
+    const pathname = usePathname();
+    const links = [
+        {
+            href: '/home',
+            iconActive: RiHome5Fill,
+            iconInactive: RiHome5Line,
+            startsWith: '/home'
+        },
+        {
+            href: '/find',
+            iconActive: RiCompass3Fill,
+            iconInactive: RiCompass3Line,
+            startsWith: '/find'
+        },
+        {
+            href: '/message/chat',
+            iconActive: RiChat1Fill ,
+            iconInactive: RiChat1Line,
+            startsWith: '/message'
+        },
+        {
+            href: '/profile',
+            iconActive: RiUserFill ,
+            iconInactive: RiUserLine,
+            startsWith: '/profile'
+        }
+    ];
     return (
-        <div className="navbar py-0">
-            <div className=" navbar-start"> </div>
-            <div className=" navbar-center">发现</div>
-            <div className=" navbar-end">
-                <div className="btn btn-square btn-ghost">
-                    <RiSearchLine size={24} />
-                </div>
-            </div>
-        </div>
-    )
-}
+        <>
+            {links.map(link => (
+                <li key={link.href}>
+                    <Link
+                        href={link.href}
+                        className={`btn  btn-square btn-ghost btn-primary  ${pathname && pathname.startsWith(link.startsWith) ? "btn-active text-info" : ""}`}
+                    >
+                        {pathname.startsWith(link.startsWith) ? <link.iconActive className="size-8" /> : <link.iconInactive className="size-8" />}
+                    </Link>
+                </li>
+            ))}
 
-function Message() {
-    return (
-        <div className="navbar py-0">
-            <div className=" navbar-start"> </div>
-            <div className=" navbar-center">消息</div>
-            <div className=" navbar-end"> </div>
-        </div>
-    );
-}
-
-function Profile() {
-    return (
-        <div className="navbar py-0">
-            <div className="navbar-start">
-            </div>
-            <div className="navbar-center"> </div>
-            <div className="navbar-end">
-                <MenuButton />
-            </div>
-        </div>
-    )
-}
-
-
-function Users() {
-    return (
-        <div className="navbar py-0">
-            <div className=" navbar-start"> </div>
-            <div className=" navbar-center">用户</div>
-            <div className=" navbar-end"> </div>
-        </div>
+        </>
     )
 }

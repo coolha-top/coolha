@@ -13,7 +13,7 @@ export default function UsersHeader({name}) {
     return (
         <div>
             {/* header */}
-            <div className="navbar py-0 ">
+            <div className="navbar py-0 bg-base-100">
                 <div className=" navbar-start">
                     <button className="btn btn-square btn-ghost" onClick={handleBack} /* onClick={() => router.back()} */>
                         <RiArrowLeftLine size={24} />
