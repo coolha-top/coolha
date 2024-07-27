@@ -77,7 +77,7 @@ export default function Page() {
             <div className=" flex justify-center items-center w-full flex-col">
               <Loading />
               <Loading />
-           
+
               {/*    <RiLoader4Line className="h-12 w-12 animate-spin" /> */}
             </div>
           )
@@ -92,16 +92,15 @@ export default function Page() {
                 <div className="flex " >
                   <Avatarimg
                     href={pub.by.handle.localName}
-                    src={pub.by}                   
+                    src={pub.by}
 
                   />
                   <AvatarName
                     localName={pub.by.handle.localName}
                     displayName={pub.by.metadata?.displayName}
                     namespace={pub.by.handle.namespace}
-                    createdAt={pub.by.createdAt}
+                    createdAt={pub.createdAt}
                   />
-                  {pub.metadata?.publishedOn?.InputMaybe}
                 </div>
 
               </div>
@@ -109,7 +108,7 @@ export default function Page() {
               <div className=' '>
 
                 <PosAtext content={pub.metadata.content} />
-                <Meide pub={pub.metadata.asset}  />
+                <Meide pub={pub.metadata.asset} />
               </div>
 
 
@@ -132,33 +131,33 @@ export default function Page() {
 
 function Loading() {
   return (
-      <>
-          <div className="flex flex-col gap-4 w-full p-6  bg-base-100">
+    <>
+      <div className="flex flex-col gap-4 w-full p-6  bg-base-100">
 
-              <div className="flex gap-4 items-center w-full">
-                  <div className="skeleton w-12 h-12 rounded-full shrink-0"></div>
-                  <div className="flex flex-col gap-0.5">
-                      <div className="skeleton h-6 w-32"></div>
-                      <div className="skeleton h-5 w-32"></div>
-                  </div>
-                  <div className='flex-1'></div>
-                  <div className="skeleton w-6 h-6 rounded-full shrink-0"></div>
-              </div>
-
-              <div className="skeleton h-2 w-full px-6"></div>
-              <div className="skeleton h-2 w-full px-6"></div>
-              <div className="skeleton h-2 w-full px-6"></div>
-
-              <div className="skeleton h-96 w-full lg:w-1/2 px-6"></div>
-
-              <div className=" gap-0.5 justify-around flex items-center">
-                  <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
-                  <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
-                  <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
-                  <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
-              </div>
-
+        <div className="flex gap-4 items-center w-full">
+          <div className="skeleton w-12 h-12 rounded-full shrink-0"></div>
+          <div className="flex flex-col gap-0.5">
+            <div className="skeleton h-6 w-32"></div>
+            <div className="skeleton h-5 w-32"></div>
           </div>
-      </>
+          <div className='flex-1'></div>
+          <div className="skeleton w-6 h-6 rounded-full shrink-0"></div>
+        </div>
+
+        <div className="skeleton h-2 w-full px-6"></div>
+        <div className="skeleton h-2 w-full px-6"></div>
+        <div className="skeleton h-2 w-full px-6"></div>
+
+        <div className="skeleton h-96 w-full lg:w-1/2 px-6"></div>
+
+        <div className=" gap-0.5 justify-around flex items-center">
+          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
+          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
+          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
+          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
+        </div>
+
+      </div>
+    </>
   )
 }

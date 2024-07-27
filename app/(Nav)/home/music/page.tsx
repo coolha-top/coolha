@@ -104,7 +104,7 @@ export default function Page() {
                 <AvatarName
                   localName={mpub.by.handle.localName}
                   displayName={mpub.by?.metadata?.displayName} namespace={mpub.by.handle.namespace}
-                  createdAt={mpub.by.createdAt} />
+                  createdAt={mpub.createdAt} />
               </div>
             </div>
 

@@ -42,7 +42,7 @@ export function PUBposts({
                 localName={pub.by.handle.localName}
                 displayName={pub.by.metadata?.displayName}
                 namespace={pub.by.handle.namespace}
-                createdAt={pub.by.createdAt}
+                createdAt={pub.createdAt}
               />
             </div>
           </div>
@@ -68,7 +68,7 @@ export function PUBposts({
                     localName={pub.quoteOn.by.handle.localName}
                     displayName={pub.quoteOn.by.metadata?.displayName}
                     namespace={pub.quoteOn.by.handle.namespace}
-                    createdAt={pub.quoteOn.by.createdAt}
+                    createdAt={pub.quoteOn.createdAt}
                   />
                 </div>
 

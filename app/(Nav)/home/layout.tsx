@@ -10,7 +10,7 @@ export default function Home({ children }) {
   const linknav = [
     {
       href: "/home",
-      name: "推荐",
+      name: "所有",
       logo: <RiShapesLine />
     },
     {
@@ -39,13 +39,13 @@ export default function Home({ children }) {
 
 
 
-      <div className="flex flex-row w-[100vw] lg:w-full z-20 h-16  items-center  bg-base-100">
+      <div className="flex flex-row w-[100vw] lg:w-full z-20 h-16  items-center">
         {linknav.map((item) => (
-          <div className='mx-auto flex-col sm:flex-row  justify-around w-[20%] flex border-b hover:bg-[--link-hover-background]  z-20' key={item.href}>
+          <div className='mx-auto flex-col sm:flex-row  justify-around w-[20%] flex border-b z-20  ' key={item.href}>
 
-            <Link href={item.href} className={`z-20 flex items-center justify-center w-[100%] h-16 flex-col sm:flex-row  text-[#878787]  border-b ${pathname === item.href ? 'text-info  border-b-info border-b-2' : ''}`}>
+            <Link href={item.href} className={`z-20 flex items-center justify-center w-[100%] h-16 flex-col sm:flex-row  text-[#878787] border-b bg-base-100 hover:bg-[--link-hover-background] ${pathname === item.href ? 'text-info  border-b-info border-b-2' : ''}`}>
               <div className=' justify-center text-2xl sm:text-3xl z-20'> {item.logo} </div>
-              <p className="text-sm text-inherit z-20 text-center">{item.name}</p>
+              <p className="text-sm text-inherit z-20 text-center md:text-base md:ml-1">{item.name}</p>
             </Link>
 
           </div>
