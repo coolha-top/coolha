@@ -20,6 +20,7 @@ export default function page() {
          <div className="">
             <p>Profile</p>
             <div>暂未登录 Lens 账户</div>
+            <Card />
          </div>
       );
    }

@@ -1,5 +1,5 @@
 'use client'
-import { SessionType, useSession, useProfile, useLogout, } from "@lens-protocol/react-web";
+import { SessionType, useSession, useProfile, useLogout, useBookmarks, } from "@lens-protocol/react-web";
 import { useAccount, useDisconnect } from "wagmi";
 import { config } from "@/config/Wagmi";
 import { useRouter } from "next/navigation";
@@ -31,7 +31,7 @@ export function MenuButton() {
     const { theme, setTheme } = useTheme();
     const { data } = useSession();
     const { address } = useAccount({ config });
-
+    const { data:bookmarks, loading, error } = useBookmarks();
     return (
         <>
 {/*             {data && data.type === SessionType.JustWallet && <>
@@ -101,6 +101,7 @@ export function MenuButton() {
                             <li className="my-1"></li>
                         </>
                     } */}
+                    <li><Link href={`/settings`}><RiSettingsLine size={24} />应用设置</Link></li>
                     <li><a onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
                         {theme === 'dark' ?
                             (<RiSunLine size={24} />)
@@ -108,7 +109,6 @@ export function MenuButton() {
                         <span>切换主题</span></a>
                     </li>
                     <li><Link href={`/locales`}><RiTranslate size={24} />界面语言</Link></li>
-                    <li><Link href={`/settings`}><RiSettingsLine size={24} />应用设置</Link></li>
                     <li className="my-1"></li>
                     <li><Link href={`/mintNFT`}> <RiGiftLine size={24} />测试奖励</Link></li>
                     <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>

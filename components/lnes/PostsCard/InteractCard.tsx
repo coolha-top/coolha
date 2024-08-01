@@ -1,7 +1,7 @@
 'use client'
 import { formatNumberWithUnit } from "@/utils/formatNumber";
+import { AnyPublication, useBookmarkToggle } from "@lens-protocol/react-web";
 import { useRouter } from "next/navigation";
-import { Children } from "react";
 import { RiBookmarkLine, RiChat1Line, RiCopperCoinLine, RiHeart3Line, RiRepeat2Line, RiShare2Line, RiShieldCheckLine, RiTicketLine } from "react-icons/ri";
 
 export default function interactCard({ dataname }) {
@@ -64,3 +64,4 @@ function CardButton({ children, hovertext }) {
     </div>
   )
 }
+
