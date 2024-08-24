@@ -12,7 +12,7 @@ export default function interactCard({ dataname }) {
       {/* 评论 */}
       <div className="w-1/6" >
         <div className="flex gap-0.5 justify-start items-center  rounded-full size-7 w-3/4 md:w-1/2 px-1   hover:text-info" onClick={() => router.push(`/${dataname.by.handle.localName}/posts/${dataname.id}`)} >
-          <RiChat1Line className="size-5 " />
+          <RiChat1Line className="size-6 " />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.comments)}</p>
         </div>
       </div>
@@ -27,21 +27,21 @@ export default function interactCard({ dataname }) {
 
       {/* 点赞 */}
       <CardButton hovertext={`hover:text-error`}>
-        <RiHeart3Line className="size-5 " />{/* RiHeart3Fill  */}
+        <RiHeart3Line className="size-6 " />{/* RiHeart3Fill  */}
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.upvotes)}</p>
       </CardButton>
 
 
       {/* 出版 收藏 */}
       <CardButton hovertext={`hover:text-[#00d176]`}>
-        <RiTicketLine className="size-5 " />
+        <RiTicketLine className="size-6 " />
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.collects)}</p>
       </CardButton>
 
 
       {/* 书签 */}
       <CardButton hovertext={`hover:text-[#D1B200]`}>
-        <RiBookmarkLine className="size-5 " />
+        <RiBookmarkLine className="size-6 " />
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.bookmarks)}</p>
       </CardButton>
 
@@ -58,7 +58,7 @@ export default function interactCard({ dataname }) {
 function CardButton({ children, hovertext }) {
   return (
     <div className="w-1/6">
-      <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1   ${hovertext}`}  >
+      <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1  ${hovertext}`}  >
         {children}
       </div>
     </div>

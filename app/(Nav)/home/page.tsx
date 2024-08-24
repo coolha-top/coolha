@@ -85,37 +85,37 @@ export default function Page() {
 
 
         {publications?.map((pub: any) => (
-          <Link href={`posts/${pub.id}`} key={pub.id}>
-            <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" >
+          <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={pub.id}>
 
-              <div className=" flex ">
-                <div className="flex " >
-                  <Avatarimg
-                    href={pub.by.handle.localName}
-                    src={pub.by}
+            <div className=" flex ">
+              <div className="flex " >
+                <Avatarimg
+                  href={pub.by.handle.localName}
+                  src={pub.by}
 
-                  />
-                  <AvatarName
-                    localName={pub.by.handle.localName}
-                    displayName={pub.by.metadata?.displayName}
-                    namespace={pub.by.handle.namespace}
-                    createdAt={pub.createdAt}
-                  />
-                </div>
-
+                />
+                <AvatarName
+                  localName={pub.by.handle.localName}
+                  displayName={pub.by.metadata?.displayName}
+                  namespace={pub.by.handle.namespace}
+                  createdAt={pub.createdAt}
+                />
               </div>
-
-              <div className=' '>
-
-                <PosAtext content={pub.metadata.content} />
-                <Meide pub={pub.metadata.asset} />
-              </div>
-
-
-              <InteractCard dataname={pub} />
 
             </div>
-          </Link>
+
+            <div className=' '>
+              <Link href={`posts/${pub.id}`} >
+                <PosAtext content={pub.metadata.content} />
+                <Meide pub={pub.metadata.asset} />
+              </Link>
+
+            </div>
+
+
+            <InteractCard dataname={pub} />
+
+          </div>
         ))}
         {hasMore && (
           <div className="flex justify-center my-4">

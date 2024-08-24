@@ -40,7 +40,7 @@ const config: Config = {
           "base-100": "#ffffff",
           "base-200": "#EDEDED",
           "base-content": "#1d1d1d",
-          "info": "#3f1de7",
+          "info": "#A1C103",
           "success": "#1F7A1F",
           "warning": "#F37121",
           "error": "#ff0000",

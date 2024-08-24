@@ -25,7 +25,6 @@ export default function AvatarName({ localName, displayName, namespace, createdA
 
             </div>
 
-            
         </>
     )
 }

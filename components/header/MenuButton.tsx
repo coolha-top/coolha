@@ -91,7 +91,7 @@ export function MenuButton() {
 
 
             <div className="dropdown dropdown-bottom dropdown-end">
-                <div tabIndex={0} role="button" className="btn btn-square btn-ghost mx-1 border"><RiMenu3Fill className="size-8"/></div>
+                <div tabIndex={0} role="button" className="btn btn-circle  mx-1 border"><RiMenu3Fill className="size-8"/></div>
 
 
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border">
