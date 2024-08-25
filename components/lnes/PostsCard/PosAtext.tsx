@@ -10,7 +10,7 @@ const MAX_LINES = 10;
 
 // 自定义链接渲染器
 const LinkRenderer = ({ href, children }:any) => (
-  <Link href={href} className="text-balance text-info  hover:underline" target='_blank'>
+  <Link href={href} className=" text-info  hover:underline" target='_blank'>
     {children}
   </Link>
 );
@@ -24,9 +24,9 @@ export const PosAtext = ({ content }) => {
   const displayedLines = expanded ? lines : lines.slice(0, MAX_LINES);
 
   return (
-    <div className='mx-auto lg:max-w-4xl pt-2'>
+    <div className='pt-2'>
       <ReactMarkdown
-        className="text-balance "
+        className="break-words text-wrap h-auto "
         components={{
           a: LinkRenderer,
         }}
@@ -49,7 +49,7 @@ export const PosAtext = ({ content }) => {
 export function UsersPosAtext({ content }) {
   return (
     <>
-      <ReactMarkdown className=" text-balance"
+      <ReactMarkdown className="break-words text-wrap h-auto"
         components={{
           a: LinkRenderer,
         }}>

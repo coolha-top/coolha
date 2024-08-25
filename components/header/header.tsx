@@ -34,9 +34,9 @@ export default function Header() {
                         </motion.div>
                     </Link>
 
-                    <label className="input w-44 lg:w-72 input-bordered flex items-center gap-2">
+                    <label className="input w-44 lg:w-64 input-bordered flex items-center gap-2">
                         <input type="text" className="grow" placeholder="搜索" />
-                        <RiSearchLine size={24} />
+                        <RiSearchLine size={32} />
                     </label>
 
                 </div>

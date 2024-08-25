@@ -4,7 +4,7 @@ import { useAccount, useDisconnect } from "wagmi";
 import { config } from "@/config/Wagmi";
 import { useRouter } from "next/navigation";
 import ThemeSwap from "../ThemeSwap";
-import { RiMenu3Fill, RiSettingsLine, RiWallet2Line, RiNewsLine, RiTranslate, RiInformation2Line, RiLogoutBoxRLine, RiThumbUpLine, RiBardFill, RiServiceLine, RiQuestionLine, RiSunLine, RiMoonClearLine, RiGiftLine, RiAccountCircleFill } from "react-icons/ri";
+import { RiMenu3Fill, RiSettingsLine, RiWallet2Line, RiNewsLine, RiTranslate, RiInformation2Line, RiLogoutBoxRLine, RiThumbUpLine, RiBardFill, RiServiceLine, RiQuestionLine, RiSunLine, RiMoonClearLine, RiGiftLine, RiAccountCircleFill, RiGridFill, RiMenuFill } from "react-icons/ri";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { truncateEthAddress } from "@/utils/truncateEthAddress";
@@ -91,7 +91,7 @@ export function MenuButton() {
 
 
             <div className="dropdown dropdown-bottom dropdown-end">
-                <div tabIndex={0} role="button" className="btn btn-circle  mx-1 border"><RiMenu3Fill className="size-8"/></div>
+                <div tabIndex={0} role="button" className="btn btn-circle  mx-1 border"><RiMenuFill className="size-8"/></div>
 
 
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border">
