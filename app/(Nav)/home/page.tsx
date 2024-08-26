@@ -9,14 +9,15 @@ import {
   ExploreProfilesOrderByType,
   ExplorePublicationsOrderByType,
   ExplorePublicationType,
-  LimitType
+  LimitType,
+  PublicationMetadataMainFocusType
 } from '@lens-protocol/react-web'
 
 
 
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg';
 import AvatarName from '@/components/lnes/PostsCard/AvatarName';
-import { PosAtext } from '@/components/lnes/PostsCard/PosAtext';
+import { PosAtext, UsersPosAtext } from '@/components/lnes/PostsCard/PosAtext';
 import PosImage from '@/components/lnes/PostsCard/PosImage';
 import PosVideo from '@/components/lnes/PostsCard/PosVideo'; // 添加视频组件
 import PosMusic from '@/components/lnes/PostsCard/PosMusic'; // 添加音频组件
@@ -25,38 +26,31 @@ import InteractCard from '@/components/lnes/PostsCard/InteractCard';
 import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll';
 import { timeAgo } from '@/utils/formatDate';
 import Meide from '@/components/lnes/PostsCard/Meide';
+import Menu from '@/components/lnes/PostsCard/Menu';
+import { useOrderBy } from './_contexts/OrderByContext';
+import { orderOptions } from './_contexts/OrderBylist';
 
 
 
-enum PublicationMetadataMainFocusType {
-  Article = "ARTICLE",
-  Audio = "AUDIO",
-  CheckingIn = "CHECKING_IN",
-  Embed = "EMBED",
-  Event = "EVENT",
-  Image = "IMAGE",
-  Link = "LINK",
-  Livestream = "LIVESTREAM",
-  Mint = "MINT",
-  ShortVideo = "SHORT_VIDEO",
-  Space = "SPACE",
-  Story = "STORY",
-  TextOnly = "TEXT_ONLY",
-  ThreeD = "THREE_D",
-  Transaction = "TRANSACTION",
-  Video = "VIDEO"
-}
+
 
 export default function Page() {
+  const { state, dispatch } = useOrderBy(); // 使用useOrderBy获取全局状态和dispatch函数
+  const { orderBy } = state;
 
+  const handleOrderByChange = (type: ExplorePublicationsOrderByType) => {
+    dispatch({ type: 'SET_ORDER_BY', payload: type });
+  };
 
   let { data: publications, loading: loadingPubs, hasMore, observeRef } = useInfiniteScroll(useExplorePublications({
-    limit: LimitType.TwentyFive,
-    orderBy: ExplorePublicationsOrderByType.LensCurated,
+    limit: LimitType.Ten,
+    orderBy,
     where: {
       publicationTypes: [ExplorePublicationType.Post, ExplorePublicationType.Quote],
     }
   })) as any
+
+
 
 
 
@@ -71,6 +65,22 @@ export default function Page() {
 
   return (
     <>
+
+      {/* 算法 */}
+      <div className="  flex flex-row w-full z-20 h-12 items-center bg-base-100 overflow-x-auto">
+        {orderOptions.map((option) => (
+          <div className='m-1' key={option.key}>
+            <button
+              className={`btn btn-sm ${orderBy === option.key ? 'text-info' : ''}`}
+              onClick={() => handleOrderByChange(option.key)}
+            >
+              {option.title}
+            </button>
+          </div>
+        ))}
+      </div>
+
+
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
         {
           loadingPubs && (
@@ -101,6 +111,9 @@ export default function Page() {
                   createdAt={pub.createdAt}
                 />
               </div>
+              <div className="flex-1" ></div>
+
+              <Menu />
 
             </div>
 
@@ -110,6 +123,30 @@ export default function Page() {
                 <Meide pub={pub.metadata.asset} />
               </Link>
 
+              {/* 如果是引用类型的帖子，显示引用的内容 */}
+              {pub.__typename === "Quote" && (
+                <div className="p-6 pl-0">
+                  <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+
+                    <div className="flex" >
+                      <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />
+                      <AvatarName
+                        localName={pub.quoteOn.by.handle.localName}
+                        displayName={pub.quoteOn.by.metadata?.displayName}
+                        namespace={pub.quoteOn.by.handle.namespace}
+                        createdAt={pub.quoteOn.createdAt}
+                      />
+
+                    </div>
+
+                    <Link href={`/posts/${pub.quoteOn.id}`} passHref>
+                      <PosAtext content={pub.quoteOn.metadata.content} />
+                      <Meide pub={pub.quoteOn.metadata.asset} />
+                    </Link>
+                  </div>
+                </div>
+              )}
+              
             </div>
 
 

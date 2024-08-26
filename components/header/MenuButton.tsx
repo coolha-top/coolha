@@ -94,7 +94,7 @@ export function MenuButton() {
                 <div tabIndex={0} role="button" className="btn btn-circle  mx-1 border"><RiMenuFill className="size-8"/></div>
 
 
-                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border">
+                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border text-lg">
                     {/*                     {data && data.type === SessionType.WithProfile &&
                         <>
                             <li><Link href={`/wallet`}><RiWallet2Line size={24} />钱包</Link></li>
@@ -113,7 +113,7 @@ export function MenuButton() {
                     <li><Link href={`/mintNFT`}> <RiGiftLine size={24} />测试奖励</Link></li>
                     <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>
                     <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>
-                    <li><Link href={`/about`}> <RiInformation2Line size={24} />关于应用</Link></li>
+                    <li><Link href={`/about_app`}> <RiInformation2Line size={24} />关于应用</Link></li>
 
 
                 </ul>

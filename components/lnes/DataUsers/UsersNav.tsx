@@ -80,7 +80,7 @@ const linknav = [
     {
         href: "/collects",
         logo: <RiShieldCheckLine />,
-        name: "收藏",
+        name: "收集",
         globalStats: "collects",
     }
 ]

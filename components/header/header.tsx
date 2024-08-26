@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
-import { RiApps2Fill, RiApps2Line, RiArchiveFill, RiArchiveLine, RiCompass3Fill, RiCompass3Line, RiHome5Fill, RiHome5Line, RiMailFill, RiMailLine, RiMessageFill, RiMessageLine, RiUserFill, RiUserLine, RiSearchLine, RiChat1Line, RiChat1Fill } from "react-icons/ri";
+import { RiApps2Fill, RiApps2Line, RiArchiveFill, RiArchiveLine, RiCompass3Fill, RiCompass3Line, RiHome5Fill, RiHome5Line, RiMailFill, RiMailLine, RiMessageFill, RiMessageLine, RiUserFill, RiUserLine, RiSearchLine, RiChat1Line, RiChat1Fill, RiHomeFill, RiHomeLine } from "react-icons/ri";
 import { MenuButton } from "./MenuButton";
 import { title } from "process";
 
@@ -86,8 +86,8 @@ function NavbarLink() {
         {
             title: '首页',
             href: '/home',
-            iconActive: RiHome5Fill,
-            iconInactive: RiHome5Line,
+            iconActive: RiHomeFill,
+            iconInactive: RiHomeLine,
             startsWith: '/home'
         },
         {

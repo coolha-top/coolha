@@ -11,6 +11,7 @@ import PosImage from "../../PostsCard/PosImage"
 import { useInfiniteScroll } from "@/hooks/lens/useInfiniteScroll"
 import { UsersPosAtext } from "../../PostsCard/PosAtext"
 import Meide from "../../PostsCard/Meide"
+import Menu from "../../PostsCard/Menu"
 
 export function PUBposts({
   profile
@@ -45,6 +46,8 @@ export function PUBposts({
                 createdAt={pub.createdAt}
               />
             </div>
+            <div className="flex-1" ></div>
+            <Menu />
           </div>
 
           {/* users posts data  */}
@@ -70,6 +73,8 @@ export function PUBposts({
                     namespace={pub.quoteOn.by.handle.namespace}
                     createdAt={pub.quoteOn.createdAt}
                   />
+                  <div className="flex-1" ></div>
+                  <Menu />
                 </div>
 
                 <Link href={`/posts/${pub.quoteOn.id}`} passHref>

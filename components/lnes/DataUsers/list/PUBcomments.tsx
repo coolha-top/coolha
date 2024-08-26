@@ -11,6 +11,7 @@ import { useInfiniteScroll } from "@/hooks/lens/useInfiniteScroll";
 import { UsersPosAtext } from "../../PostsCard/PosAtext";
 import Avatarimg from "../../PostsCard/Avatarimg";
 import Meide from "../../PostsCard/Meide";
+import Menu from "../../PostsCard/Menu";
 
 export default function PUBcomments({ profile }) {
   const { data, hasMore, loading, observeRef } = useInfiniteScroll(usePublications({
@@ -42,6 +43,8 @@ export default function PUBcomments({ profile }) {
                       namespace={comment.commentOn.by.handle.namespace}
                       createdAt={comment.commentOn.createdAt}
                     />
+                    <div className="flex-1" ></div>
+                    <Menu />
                   </div>
 
                   <Link href={`/posts/${comment.commentOn.id}`} passHref>
@@ -49,7 +52,7 @@ export default function PUBcomments({ profile }) {
                     <Meide pub={comment.commentOn.metadata.asset} />
                   </Link>
                   <InteractCard dataname={comment.commentOn} />
-                <div className="h-14 w-0.5  border ml-4 absolute"></div>{/* 连线 */}
+                  <div className="h-14 w-0.5  border ml-4 absolute"></div>{/* 连线 */}
                 </div>
 
               </div>

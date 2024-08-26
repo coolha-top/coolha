@@ -2,7 +2,7 @@
 import { formatNumberWithUnit } from "@/utils/formatNumber";
 import { AnyPublication, useBookmarkToggle } from "@lens-protocol/react-web";
 import { useRouter } from "next/navigation";
-import { RiBookmarkLine, RiChat1Line, RiCopperCoinLine, RiHeart3Line, RiRepeat2Line, RiShare2Line, RiShieldCheckLine, RiTicketLine } from "react-icons/ri";
+import { RiBookmarkLine, RiChat1Line, RiChat3Line, RiChat4Line, RiCopperCoinLine, RiHeart3Line, RiLoopLeftFill, RiLoopRightLine, RiRepeat2Fill, RiRepeat2Line, RiRepeatLine, RiShare2Line, RiShareForwardBoxLine, RiShieldCheckLine, RiShoppingBagLine, RiTicketLine } from "react-icons/ri";
 
 export default function interactCard({ dataname }) {
   const router = useRouter();
@@ -12,7 +12,7 @@ export default function interactCard({ dataname }) {
       {/* 评论 */}
       <div className="w-1/6" >
         <div className="flex gap-0.5 justify-start items-center  rounded-full size-7 w-3/4 md:w-1/2 px-1   hover:text-info" onClick={() => router.push(`/${dataname.by.handle.localName}/posts/${dataname.id}`)} >
-          <RiChat1Line className="size-6 " />
+          <RiChat3Line className="size-6 " />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.comments)}</p>
         </div>
       </div>
@@ -20,7 +20,7 @@ export default function interactCard({ dataname }) {
 
       {/* 转发 + 转贴 */}
       <CardButton hovertext={`hover:text-success`}>
-        <RiRepeat2Line className="size-5" />
+        <RiLoopLeftFill  className="size-6" />
         <p className=" text-center text-sm">{formatNumberWithUnit(dataname.stats.mirrors + dataname.stats.quotes)}</p>
       </CardButton>
 
@@ -32,18 +32,20 @@ export default function interactCard({ dataname }) {
       </CardButton>
 
 
-      {/* 出版 收藏 */}
+      {/* 出版 收集 */}
       <CardButton hovertext={`hover:text-[#00d176]`}>
-        <RiTicketLine className="size-6 " />
+        <RiShoppingBagLine className="size-6 " />
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.collects)}</p>
       </CardButton>
 
-
-      {/* 书签 */}
+      {/* 打赏 */}
       <CardButton hovertext={`hover:text-[#D1B200]`}>
-        <RiBookmarkLine className="size-6 " />
+        <RiCopperCoinLine className="size-6 " />
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.bookmarks)}</p>
       </CardButton>
+
+
+
 
 
 

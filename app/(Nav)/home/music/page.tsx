@@ -21,6 +21,9 @@ import AvatarName from '@/components/lnes/PostsCard/AvatarName'
 import { UsersPosAtext } from '@/components/lnes/PostsCard/PosAtext'
 import PosMusic from '@/components/lnes/PostsCard/PosMusic'
 import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll'
+import Menu from '@/components/lnes/PostsCard/Menu'
+import { useOrderBy } from '../_contexts/OrderByContext'
+import { orderOptions } from '../_contexts/OrderBylist'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -41,14 +44,17 @@ enum PublicationMetadataMainFocusType {
 }
 export default function Page() {
   const router = useRouter()
-  let { data: profiles, error: profileError, loading: loadingProfiles } = useExploreProfiles({
-    limit: LimitType.TwentyFive,
-    orderBy: ExploreProfilesOrderByType.MostFollowers
-  }) as any
+  const { state, dispatch } = useOrderBy(); // 使用useOrderBy获取全局状态和dispatch函数
+  const { orderBy } = state;
+
+  const handleOrderByChange = (type: ExplorePublicationsOrderByType) => {
+    dispatch({ type: 'SET_ORDER_BY', payload: type });
+  };
+
 
   let { data: musicPubs, loading: loadingMusicPubs, hasMore, observeRef } = useInfiniteScroll(useExplorePublications({
     limit: LimitType.TwentyFive,
-    orderBy: ExplorePublicationsOrderByType.TopCommented,
+    orderBy,
     where: {
       publicationTypes: [ExplorePublicationType.Post],
       metadata: {
@@ -57,27 +63,25 @@ export default function Page() {
     }
   })) as any
 
-  let { data: publications, loading: loadingPubs } = useExplorePublications({
-    limit: LimitType.TwentyFive,
-    orderBy: ExplorePublicationsOrderByType.LensCurated,
-    where: {
-      publicationTypes: [ExplorePublicationType.Post],
-    }
-  }) as any
 
-
-  profiles = profiles?.filter(p => p.metadata?.picture?.optimized?.uri)
-
-  publications = publications?.filter(p => {
-    if (p.metadata && p.metadata.asset) {
-      if (p.metadata.asset.image) return true
-      return false
-    }
-    return true
-  })
 
   return (
     <>
+      {/* 算法 */}
+      <div className="flex flex-row w-full z-20 h-12 items-center bg-base-100 overflow-x-auto">
+        {orderOptions.map((option) => (
+          <div className='m-1' key={option.key}>
+            <button
+              className={`btn btn-sm ${orderBy === option.key ? 'text-info' : ''}`}
+              onClick={() => handleOrderByChange(option.key)}
+            >
+              {option.title}
+            </button>
+          </div>
+        ))}
+      </div>
+
+      
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
 
 
@@ -90,9 +94,9 @@ export default function Page() {
 
         {musicPubs?.map(mpub => (
           <div
-            className="border-b border-x hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 "
+            className="bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2 "
             key={mpub.id}
-            onClick={() => router.push(`https://share.lens.xyz/p/${mpub.id}`)}
+            
           >
 
             <div className=" flex">
@@ -106,10 +110,12 @@ export default function Page() {
                   displayName={mpub.by?.metadata?.displayName} namespace={mpub.by.handle.namespace}
                   createdAt={mpub.createdAt} />
               </div>
+              <div className="flex-1" ></div>
+              <Menu />
             </div>
 
 
-            <div className='' >
+            <div className='' onClick={() => router.push(`https://share.lens.xyz/p/${mpub.id}`)}>
 
               <UsersPosAtext content={mpub.metadata.content} />
               <img
