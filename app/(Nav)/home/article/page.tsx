@@ -19,8 +19,8 @@ import Avatar from '@/gui/flowbite/Avatar'
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg'
 import AvatarName from '@/components/lnes/PostsCard/AvatarName'
 import { PosAtext, UsersPosAtext } from '@/components/lnes/PostsCard/PosAtext'
-import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll'
-import Menu from '@/components/lnes/PostsCard/Menu'
+import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteScroll'
+import Menu from '@/components/lnes/PostsCard/Menu/Menu'
 import PosVideo from '@/components/lnes/PostsCard/PosVideo'
 import { useOrderBy } from '../_contexts/OrderByContext'
 import { orderOptions } from '../_contexts/OrderBylist'
@@ -96,7 +96,7 @@ export default function Page() {
                   createdAt={mpub.createdAt} />
               </div>
               <div className="flex-1" ></div>
-              <Menu />
+              <Menu pub={mpub} />
             </div>
 
 

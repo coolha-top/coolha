@@ -40,6 +40,7 @@ export default function page() {
 
                         {/* 用户数据 */}
                         <UsersStats profile={Profile} name={data.profile.handle?.localName} />
+                        <UseBio profile={Profile} />
                      </div>
                   </div>
                )}
@@ -152,7 +153,8 @@ function UsersMetadata({ profile }) {
 
 
 
-         <div >
+         <div className='flex flex-row gap-2'>
+            <Link href={`/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black'>查看主页</Link>
             <button className="btn btn-sm btn-primary text-black">编辑资料</button>
          </div>
 

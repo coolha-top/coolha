@@ -11,13 +11,13 @@ export default function AvatarName({ localName, displayName, namespace, createdA
         <>
             <div className="ml-3">
 
-                <Link href={`/${localName}`} className="hover:underline hover:caret-primary hover:text-info flex flex-row items-center">
-                    <b className=" flex items-center overflow-hidden text-ellipsis whitespace-nowrap">{displayName ? displayName : ''}</b>
+                <Link href={`/${localName}`} className="flex flex-row  items-center ">
+                    <b className=" flex items-center overflow-hidden text-ellipsis whitespace-nowrap hover:underline hover:caret-primary hover:text-info ">{displayName ? displayName : ''}</b>
+                    <span className=" ml-1 text-[#878787] hover:underline">@{localName ? localName : ''}</span>
                     <RiVerifiedBadgeFill className=" size-4 ml-1 text-primary bg-secondary rounded-full" />
                 </Link>
 
-                <span className='text-base-content/50  text-sm'>{timeAgo(createdAt)}</span>
-                <Link href={`/${localName}`} ><span className=" ml-1 text-[#878787] hover:underline">@{localName ? localName : ''}</span></Link>
+                <span className=' text-base-content/50  text-sm'>{timeAgo(createdAt)}</span>
 
                 {/*                 <Link href={`/${localName}`} >
                     <p className=" text-[#878787] hover:underline" >{localName}.{namespace}</p>

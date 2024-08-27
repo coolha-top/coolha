@@ -7,20 +7,21 @@ import { UsersPosAtext } from '@/components/lnes/PostsCard/PosAtext';
 import PosImage from '@/components/lnes/PostsCard/PosImage';
 import InteractCard from '@/components/lnes/PostsCard/InteractCard';
 
-import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll';
+import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteScroll';
 import Link from "next/link";
 import Meide from "@/components/lnes/PostsCard/Meide";
 import { useState } from "react";
-export default function Posts({ postsid }) {
+import Menu from "@/components/lnes/PostsCard/Menu/Menu";
+export default function Posts({ params }) {
   const { data: pubData } = usePublication({
-    forId: postsid,
+    forId: params.postsid,
     suspense: true,
   });
   const { data: commentsData, loading, hasMore, observeRef } = useInfiniteScroll(usePublications({
     where: {
       /* publicationTypes: [PublicationType.Comment], */
       commentOn: {
-        id: publicationId(postsid),
+        id: publicationId(params.postsid),
       },
     },
     limit: LimitType.TwentyFive,
@@ -59,11 +60,13 @@ export default function Posts({ postsid }) {
 
   return (
     <div>
+
+
       {/* 主帖 */}
       <div key={pub.id} className="w-dvw lg:max-w-4xl p-4 pt-0">
+
         <div className="flex">
           <div className="flex">
-
             <Avatarimg
               href={pub.by?.handle?.localName}
               src={pub.by}
@@ -72,17 +75,16 @@ export default function Posts({ postsid }) {
               localName={pub.by?.handle?.localName}
               displayName={pub.by?.metadata?.displayName}
               namespace={`lens`}
-              createdAt={pub.by?.createdAt}
+              createdAt={pub.createdAt}
             />
-
-
           </div>
+          <div className="flex-1" ></div>
+          <Menu pub={pub} />
         </div>
-
-        <div className=''>
-          <UsersPosAtext content={pub.metadata?.content} />
-          <Meide pub={pub.metadata?.asset} />
-        </div>
+          <div className=''>
+            <UsersPosAtext content={pub.metadata?.content} />
+            <Meide pub={pub.metadata?.asset} />
+          </div>
 
         <InteractCard dataname={pub} />
       </div>
@@ -111,7 +113,7 @@ export default function Posts({ postsid }) {
                       localName={comment.by.handle.localName || 'unknown'}
                       displayName={comment.by.metadata.displayName || 'unknown'}
                       namespace={`lens`}
-                      createdAt={comment.by.createdAt}
+                      createdAt={comment.createdAt}
                     />
                   </>
                 )}

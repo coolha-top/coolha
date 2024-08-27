@@ -36,7 +36,7 @@ export default function Header() {
 
                     <label className="input w-44 lg:w-64 input-bordered flex items-center gap-2">
                         <input type="text" className="grow" placeholder="搜索" />
-                        <RiSearchLine size={32} />
+                        <RiSearchLine size={24} />
                     </label>
 
                 </div>
@@ -118,7 +118,7 @@ function NavbarLink() {
                 <li key={link.href}>
                     <Link
                         href={link.href}
-                        className={`btn  ${pathname && pathname.startsWith(link.startsWith) ? " text-info" : ""}`}
+                        className={`btn   ${pathname && pathname.startsWith(link.startsWith) ? " text-info " : ""}`}
                     >
                         {pathname.startsWith(link.startsWith) ? <link.iconActive className="size-8" /> : <link.iconInactive className="size-8" />}
                         <span className=" hidden md:flex text-lg">

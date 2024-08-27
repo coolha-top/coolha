@@ -12,7 +12,7 @@ export default function UsersPicimg({ profile }) {
     return (
         <>
             <div className=' h-36 max-w-4xl mx-auto bg-base-100'>
-                {coverImageUri  ?
+                {profile?.metadata?.coverPicture.__typename === "ImageSet" ?
                     (
                         <div className=' bg-primary text-black'>
                             <img

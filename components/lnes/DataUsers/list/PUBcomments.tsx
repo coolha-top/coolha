@@ -7,11 +7,11 @@ import ReactMarkdown from "react-markdown";
 import PosImage from "../../PostsCard/PosImage";
 import AvatarName from "../../PostsCard/AvatarName";
 import InteractCard from "../../PostsCard/InteractCard";
-import { useInfiniteScroll } from "@/hooks/lens/useInfiniteScroll";
+import { useInfiniteScroll } from "@/components/lnes/DataUsers/hook/useInfiniteScroll";
 import { UsersPosAtext } from "../../PostsCard/PosAtext";
 import Avatarimg from "../../PostsCard/Avatarimg";
 import Meide from "../../PostsCard/Meide";
-import Menu from "../../PostsCard/Menu";
+import Menu from "../../PostsCard/Menu/Menu";
 
 export default function PUBcomments({ profile }) {
   const { data, hasMore, loading, observeRef } = useInfiniteScroll(usePublications({
@@ -36,7 +36,7 @@ export default function PUBcomments({ profile }) {
               <div className="pb-6">
                 <div className="p-4  hover:bg-[--link-hover-background]">
                   <div className="flex" >
-                    <Avatarimg src={comment.commentOn.by} href={comment.by.handle.localName} />
+                    <Avatarimg src={comment.commentOn.by} href={comment.commentOn.by.handle.localName} />
                     <AvatarName
                       localName={comment.commentOn.by.handle.localName}
                       displayName={comment.commentOn.by.metadata?.displayName}
@@ -44,7 +44,7 @@ export default function PUBcomments({ profile }) {
                       createdAt={comment.commentOn.createdAt}
                     />
                     <div className="flex-1" ></div>
-                    <Menu />
+                    <Menu pub={comment.commentOn} />
                   </div>
 
                   <Link href={`/posts/${comment.commentOn.id}`} passHref>
@@ -67,13 +67,15 @@ export default function PUBcomments({ profile }) {
                 <div className="flex">
                   <Avatarimg src={comment.by} href={comment.by.handle.localName} />
                   <AvatarName localName={comment.by.handle.localName} displayName={comment.by.metadata?.displayName} namespace={comment.by.handle.namespace} createdAt={comment.createdAt} />
+                  <div className="flex-1" ></div>
+                  <Menu pub={comment} />
                 </div>
 
                 {/* users posts data */}
                 <div className=''>
                   <Link href={`/posts/${comment.id}`}>
                     {comment.metadata.content && <UsersPosAtext content={comment.metadata.content} />}
-                    <Meide pub={comment.commentOn.metadata.asset} />
+                    {comment.metadata.asset && <Meide pub={comment.metadata.asset} />}
                   </Link>
                 </div>
 

@@ -1,5 +1,5 @@
 'use client'
-import ThemeSwap from "@/components/ThemeSwap";
+import ThemeSwap from "@/components/header/ThemeSwap";
 import Link from "next/link";
 import { usePathname } from 'next/navigation'
 import { RiChat3Line, RiFileTextLine, RiImageLine, RiMessage2Line, RiMusic2Line, RiNotification3Line, RiQuestionAnswerLine, RiShapesLine, RiTeamLine, RiVideoLine } from 'react-icons/ri'
@@ -22,7 +22,7 @@ export default function Message({ children }) {
 
           </div>
         ))}
-        
+
       </div>
 
 
@@ -36,7 +36,7 @@ const linknav = [
   {
     href: "/message/chat",
     name: "聊天",
-    logo: <RiMessage2Line  />
+    logo: <RiMessage2Line />
   },
   {
     href: "/message/community",

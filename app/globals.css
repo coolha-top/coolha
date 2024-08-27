@@ -20,7 +20,7 @@
   --background-end-rgb: #000000;
 
   /* UI hover */
-  --link-hover-background: rgba(0, 0, 0, 0.5) !important;
+  --link-hover-background: rgba(255, 255, 255, 0.05) !important;
   --navlink-color: #ece1e1d3 !important;
   --navlink-active: #C0E218, 
 

@@ -20,8 +20,8 @@ import Avatarimg from '@/components/lnes/PostsCard/Avatarimg'
 import AvatarName from '@/components/lnes/PostsCard/AvatarName'
 import { UsersPosAtext } from '@/components/lnes/PostsCard/PosAtext'
 import PosMusic from '@/components/lnes/PostsCard/PosMusic'
-import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll'
-import Menu from '@/components/lnes/PostsCard/Menu'
+import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteScroll'
+import Menu from '@/components/lnes/PostsCard/Menu/Menu'
 import { useOrderBy } from '../_contexts/OrderByContext'
 import { orderOptions } from '../_contexts/OrderBylist'
 enum PublicationMetadataMainFocusType {
@@ -81,7 +81,7 @@ export default function Page() {
         ))}
       </div>
 
-      
+
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
 
 
@@ -96,7 +96,7 @@ export default function Page() {
           <div
             className="bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2 "
             key={mpub.id}
-            
+
           >
 
             <div className=" flex">
@@ -111,7 +111,7 @@ export default function Page() {
                   createdAt={mpub.createdAt} />
               </div>
               <div className="flex-1" ></div>
-              <Menu />
+              <Menu pub={mpub} />
             </div>
 
 

@@ -7,18 +7,9 @@ import UsersPicimg from '@/components/lnes/DataUsers/UsersPicimg';
 import UsersMetadata from '@/components/lnes/DataUsers/UsersMetadata';
 import UsersStats from '@/components/lnes/DataUsers/UsersStats';
 import UseBio from '@/components/lnes/DataUsers/UseBio';
-import UsersInterests from '@/components/lnes/DataUsers/UsersInterests';
-import UseMutualFollowers from '@/components/lnes/DataUsers/UseMutualFollowers';
+
 import UsersNav from '@/components/lnes/DataUsers/UsersNav';
 
-
-import UsersPicimgWithProfile from '@/components/lnes/DataUsersWithProfile/UsersPicimg';
-import UsersMetadataWithProfile from '@/components/lnes/DataUsersWithProfile/UsersMetadata';
-import UsersStatsWithProfile from '@/components/lnes/DataUsersWithProfile/UsersStats';
-import UseBioWithProfile from '@/components/lnes/DataUsersWithProfile/UseBio';
-import UsersInterestsWithProfile from '@/components/lnes/DataUsersWithProfile/UsersInterests';
-import UseMutualFollowersWithProfile from '@/components/lnes/DataUsersWithProfile/UseMutualFollowers';
-import UsersNavWithProfile from '@/components/lnes/DataUsersWithProfile/UsersNav';
 
 
 export default function layout({ children, params: { users } }) {
@@ -50,43 +41,25 @@ export default function layout({ children, params: { users } }) {
                 <UsersHeader name={users} />
                 <div className=' flex-1 bg-base-200'>
 
-
                     {/* 当路由lens/${users}是profileHandle时显示profileWithProfile的组件,不是时显示params: { users }lens/${users}传入profile的组件 */}
 
-                    {isCurrentUser ? (
-                        <>
-                            编辑资料
-                            {/* 背景 */}
-                            <UsersPicimgWithProfile profile={profileWithProfile} />
-                            {/* 用户信息 */}
-                            <UsersMetadataWithProfile profile={profileWithProfile} />
-                            {/* 用户数据 */}
-                            <UsersStatsWithProfile profile={profileWithProfile} name={users} />
-                            {/* 简介 */}
-                            <div className='w-full'>
-                                <UseBioWithProfile profile={profileWithProfile} />
-                            </div>
-                            {/* 展开选项卡 */}
-                            <UsersNavWithProfile profile={profileWithProfile} name={users} />
-                        </>
-                    ) : (
-                        <>
-                            {/* 背景 */}
-                            <UsersPicimg profile={profile} />
-                            {/* 用户信息 */}
-                            <UsersMetadata profile={profile} />
-                            {/* 用户数据 */}
-                            <div className='bg-base-100'>
-                                <UsersStats profile={profile} name={users} />
-                            </div>
-                            {/* 简介 */}
-                            <div className='w-full'>
-                                <UseBio profile={profile} />
-                            </div>
-                            {/* 展开选项卡 */}
-                            <UsersNav profile={profile} name={users} />
-                        </>
-                    )}
+                    <>
+
+                        {/* 背景 */}
+                        <UsersPicimg profile={profile} />
+                        {/* 用户信息 */}
+                        <UsersMetadata profile={profile} />
+                        {/* 用户数据 */}
+                        <div className='bg-base-100'>
+                            <UsersStats profile={profile} name={users} />
+                        </div>
+                        {/* 简介 */}
+                        <div className='w-full'>
+                            <UseBio profile={profile} />
+                        </div>
+                        {/* 展开选项卡 */}
+                        <UsersNav profile={profile} name={users} />
+                    </>
 
                     {loadingProfile || loadingWithProfile && <>
                         <div className="max-w-4xl lg:min-w-4xl mx-auto w-full"><Loading /></div>

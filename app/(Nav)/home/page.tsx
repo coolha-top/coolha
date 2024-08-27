@@ -23,10 +23,10 @@ import PosVideo from '@/components/lnes/PostsCard/PosVideo'; // 添加视频组�
 import PosMusic from '@/components/lnes/PostsCard/PosMusic'; // 添加音频组件
 import InteractCard from '@/components/lnes/PostsCard/InteractCard';
 
-import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll';
+import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteScroll';
 import { timeAgo } from '@/utils/formatDate';
 import Meide from '@/components/lnes/PostsCard/Meide';
-import Menu from '@/components/lnes/PostsCard/Menu';
+import Menu from '@/components/lnes/PostsCard/Menu/Menu';
 import { useOrderBy } from './_contexts/OrderByContext';
 import { orderOptions } from './_contexts/OrderBylist';
 
@@ -67,7 +67,7 @@ export default function Page() {
     <>
 
       {/* 算法 */}
-      <div className="  flex flex-row w-full z-20 h-12 items-center bg-base-100 overflow-x-auto">
+      <div className="  flex flex-row  z-20 h-12 items-center bg-base-100 overflow-x-auto">
         {orderOptions.map((option) => (
           <div className='m-1' key={option.key}>
             <button
@@ -111,9 +111,9 @@ export default function Page() {
                   createdAt={pub.createdAt}
                 />
               </div>
-              <div className="flex-1" ></div>
 
-              <Menu />
+              <div className="flex-1" ></div>
+              <Menu pub={pub} />
 
             </div>
 
@@ -146,7 +146,7 @@ export default function Page() {
                   </div>
                 </div>
               )}
-              
+
             </div>
 
 
@@ -174,11 +174,11 @@ function Loading() {
         <div className="flex gap-4 items-center w-full">
           <div className="skeleton w-12 h-12 rounded-full shrink-0"></div>
           <div className="flex flex-col gap-0.5">
-            <div className="skeleton h-6 w-32"></div>
-            <div className="skeleton h-5 w-32"></div>
+            <div className="skeleton h-6 w-64"></div>
+            <div className="skeleton h-5 w-16"></div>
           </div>
           <div className='flex-1'></div>
-          <div className="skeleton w-6 h-6 rounded-full shrink-0"></div>
+          <div className="skeleton w-8 h-8 rounded-full shrink-0"></div>
         </div>
 
         <div className="skeleton h-2 w-full px-6"></div>
@@ -187,7 +187,8 @@ function Loading() {
 
         <div className="skeleton h-96 w-full lg:w-1/2 px-6"></div>
 
-        <div className=" gap-0.5 justify-around flex items-center">
+        <div className=" gap-0.5 justify-around flex items-center ">
+          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
           <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
           <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
           <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
