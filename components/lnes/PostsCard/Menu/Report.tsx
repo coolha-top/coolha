@@ -23,10 +23,16 @@ export default function Report({ publication }) {
             alert('举报失败，请重试。');
         }
     };
-
-
+    function showModal() {
+        const modalElement = document.getElementById('my_modal_3') as HTMLDialogElement;
+        if (modalElement) {
+          modalElement.showModal();
+        } else {
+          console.error('Modal element not found.');
+        }
+      }
     return (
-        <button onClick={() => document.getElementById('my_modal_3').showModal()} className="flex flex-row ">
+        <button onClick={showModal} className="flex flex-row ">
 
 
             <RiAlertLine className="size-6 text-red-600" /> <span className="text-red-600">举报</span>
@@ -45,7 +51,7 @@ export default function Report({ publication }) {
                         {/* 举报原因选择框 */}
                         <select
                             value={selectedReason}
-                            onChange={(e) => setSelectedReason(e.target.value)}
+                            onChange={(e) => setSelectedReason(e.target.value as PublicationReportReason)}
                             className="select select-primary w-full max-w-xs my-3"
                         >
                             {reportOptions.map((option) => (

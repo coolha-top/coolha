@@ -11,7 +11,7 @@ const HaYiNFTContract = {
     address: '0x149ddd93d774e501e0961be1efea5841ed242678',
     abi: HaYiABI,
 } as const
-export default  function MintNFT() {
+export default function MintNFT() {
     const { address } = useAccount({ config });
     const { data, error, isPending } = useReadContracts({
         config,
