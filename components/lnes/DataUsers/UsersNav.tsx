@@ -11,12 +11,12 @@ export default function UsersNav({ name, profile }) {
         <>
             <div className="flex flex-row  w-[100vw] lg:w-full z-20 h-16  items-center bg-base-100">
                 {linknav.map((item) => (
-                    <div className='mx-auto flex-col sm:flex-row  justify-around w-1/4 flex border-b hover:bg-[--link-hover-background]  z-20' key={item.href}>
+                    <div className='mx-auto flex-col sm:flex-row  justify-around w-1/4 flex border-b' key={item.href}>
 
                         <Link
                             replace
                             href={`/${name}${item.href}`}
-                            className={`z-20 flex items-center justify-center w-[100%]  h-16 text-[#878787]  border-b 
+                            className={`z-20 flex items-center justify-center w-[100%]  h-16 text-[#878787]  border-b hover:bg-[var(--link-hover-background)]
                         ${pathname === `/${name}${item.href}` ? 'text-info border-b-2 border-b-info ' : ''}
                         `}>
                             <div className='flex-col sm:flex-row'>

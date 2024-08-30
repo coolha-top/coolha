@@ -12,7 +12,7 @@ export default function interactCard({ dataname }) {
       {/* 评论 */}
       <div className="w-1/6" >
         <div className="flex gap-0.5 justify-start items-center  rounded-full size-7 w-3/4 md:w-1/2 px-1   hover:text-info" onClick={() => router.push(`/posts/${dataname.id}`)} >
-          <RiChat3Line className="size-6 " />
+          <RiChat3Line className="size-7 " />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.comments)}</p>
         </div>
       </div>
@@ -26,13 +26,13 @@ export default function interactCard({ dataname }) {
 
       {/* 出版 收集 */}
       <CardButton hovertext={`hover:text-success`}>
-        <RiShoppingBagLine className="size-6 " />
+        <RiShoppingBagLine className="size-7 " />
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.collects)}</p>
       </CardButton>
 
       {/* 打赏 */}
       <CardButton hovertext={`hover:text-[#D1B200]`}>
-        <RiCopperCoinLine className="size-6 " />
+        <RiCopperCoinLine className="size-7 " />
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.bookmarks)}</p>
       </CardButton>
 
@@ -66,7 +66,7 @@ function MirrorsToggle({ dataname }) {
     <>
       <button onClick={handleSubmit} disabled={loading} className="w-1/6">
         <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 hover:text-success ${dataname.operations.hasMirrored ? 'text-success' : ''}`}>
-          <RiLoopLeftFill className="size-6" />
+          <RiLoopLeftFill className="size-7" />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.mirrors + dataname.stats.quotes)}</p>
         </div>
       </button>
@@ -96,9 +96,9 @@ function UpvoteToggle({ dataname }) {
         <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1  hover:text-error ${dataname.operations.hasUpvoted ? 'text-red-500' : ''}`}  >
 
           {dataname.operations.hasUpvoted ? (
-            <RiHeart3Fill className="size-6" /> // 红色填充图标表示已点赞
+            <RiHeart3Fill className="size-7" /> // 红色填充图标表示已点赞
           ) : (
-            <RiHeart3Line className="size-6" /> // 空心图标表示未点赞
+            <RiHeart3Line className="size-7" /> // 空心图标表示未点赞
           )}
 
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.upvotes)}</p>
