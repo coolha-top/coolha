@@ -4,19 +4,20 @@ import { truncateEthAddress } from "@/utils/truncateEthAddress"
 import { formatDate } from "@/utils/formatDate"
 import Link from "next/link"
 import { formatNumberWithUnit } from "@/utils/formatNumber";
+import { RiTimeLine } from "react-icons/ri";
 
 export default function UsersStats({ name, profile }) {
 
 
     const statsData = [
-        { label: "关注", value: profile?.globalStats?.following, link: `/${name}/following` },
         { label: "粉丝", value: formatNumberWithUnit(profile?.globalStats?.followers), link: `/${name}/followers` },
+        { label: "关注", value: profile?.globalStats?.following, link: `/${name}/following` },
         { label: "获赞", value: formatNumberWithUnit(profile?.globalStats?.upvotes), link: `` },
     ];
 
 
     const statsData1 = [
-        { label: "出版", value: profile?.createdAt ? formatDate(profile?.createdAt) : '', link: `/${name}/publications` },
+        { label: "出版", value: profile?.createdAt ? formatDate(profile?.createdAt) : `RiTimeLine`, link: `/${name}/publications` },
         { label: "id", value: profile?.globalStats?.id ? `# ${parseInt(profile?.globalStats?.id, 16)}` : '#', link: `` },
         { label: "得分", value: profile?.globalStats?.lensClassifierScore, link: `/${name}/lensClassifierScore` },
     ];

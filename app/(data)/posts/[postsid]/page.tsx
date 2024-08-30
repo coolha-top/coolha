@@ -1,15 +1,8 @@
-'use client'
 
-/* import Posts from "@/components/lnes/DataPostid/Posts"; */
-
-
-export default function Page({ params: { postsid } }) {
-
-    
+export default function Search({ params }) {
     return (
-        <div className="flex-1 w-full">
-            {/* <Posts postsid={postsid} /> */}
-            postsid: {postsid}
+        <div className="px-10 py-14">
+            <p>{params.postsid}</p>
         </div>
-    );
+    )
 }

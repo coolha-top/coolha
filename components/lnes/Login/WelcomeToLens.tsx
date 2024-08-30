@@ -7,7 +7,7 @@ import { config } from "@/config/Wagmi";
 import { ConnectWalletButton } from "@/components/wagmi/ConnectWalletButton";
 import { DisconnectWalletButton } from "@/components/wagmi/DisconnectWalletButton";
 import { truncateEthAddress } from "@/utils/truncateEthAddress";
-import ThemeSwap from "@/components/ThemeSwap";
+import ThemeSwap from "@/components/header/ThemeSwap";
 import LoginForm from "@/components/lnes/Login/LoginForm";
 import { LogoutButton } from "@/components/lnes/Login/LogoutButton";
 
@@ -41,7 +41,7 @@ export function WelcomeToLens() {
                         <LoginForm owner={address} />
                     </>
                 )}
-                
+
                 {data && data.type === SessionType.WithProfile && (
                     <>
                         <p className="">当前登入的Lens账号 </p>

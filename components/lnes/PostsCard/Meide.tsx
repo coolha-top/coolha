@@ -9,11 +9,11 @@ export default function Meide({ pub }) {
         <>
             {pub ? (
                 <>
-                    {pub.image && !pub.audio && <PosImage src={
-                        pub ?
-                            pub.cover?.optimized?.uri ?
-                                pub.cover?.optimized?.uri :
-                                pub.cover?.optimized?.raw?.uri : ''} />}
+                    {pub.image && !pub.audio && <img
+                        className={`sm:max-w-[400px] h-auto max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
+                        alt='pub.image && !pub.audio img'
+                        src={pub?.image?.optimized?.uri || pub?.image?.optimized?.raw?.uri || ''} />}
+
                     {pub.audio && (
                         <>
                             <img
@@ -32,6 +32,7 @@ export default function Meide({ pub }) {
 
                         </>
                     )}
+
                     {pub.video && <PosVideo src={pub.video.optimized.uri} />}
                 </>
             ) : (``)}

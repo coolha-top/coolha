@@ -14,7 +14,7 @@ import {
 import { RiLoader4Line } from 'react-icons/ri'
 import { useRouter } from 'next/navigation'
 import Avatar from '@/gui/flowbite/Avatar'
-import { useInfiniteScroll } from '@/hooks/lens/useInfiniteScroll'
+import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteScroll'
 import AvatarName from '@/components/lnes/PostsCard/AvatarName'
 
 
@@ -81,7 +81,7 @@ export default function Page() {
         </div>
       )}
 
-{/*       {loadingProfiles && (
+      {/*       {loadingProfiles && (
         <div className=" flex flex-1 justify-center items-center ">
           <span className="loading loading-spinner loading-lg"></span>
         </div>

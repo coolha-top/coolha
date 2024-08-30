@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { usePathname, } from 'next/navigation'
 
-import { RiApps2Fill, RiApps2Line, RiArchiveFill, RiArchiveLine, RiChat1Fill, RiChat1Line, RiCompass3Fill, RiCompass3Line, RiHome5Fill, RiHome5Line, RiMailFill, RiMailLine, RiMessageFill, RiMessageLine, RiUserFill, RiUserLine } from "react-icons/ri";
+import { RiApps2Fill, RiApps2Line, RiArchiveFill, RiArchiveLine, RiChat1Fill, RiChat1Line, RiCompass3Fill, RiCompass3Line, RiHome5Fill, RiHome5Line, RiHomeFill, RiHomeLine, RiMailFill, RiMailLine, RiMessageFill, RiMessageLine, RiUserFill, RiUserLine } from "react-icons/ri";
 
 
 export default function NavNavLink() {
@@ -16,24 +16,24 @@ export default function NavNavLink() {
                 <NavLink
                     href='/home'
                     activeHrefs={['/home', "/home/article", "/home/image", "/home/music", "/home/video",]}
-                    icon={<RiHome5Line className="size-7" />}
-                    activeIcon={<RiHome5Fill className="size-7" />}
+                    icon={<RiHomeLine className="size-7" />}
+                    activeIcon={<RiHomeFill className="size-7" />}
                     text='首页'
                 />
 
                 <NavLink
                     href='/find'
                     activeHrefs={['/find']}
-                    icon={<RiCompass3Line  className="size-7" />}
-                    activeIcon={<RiCompass3Fill  className="size-7" />}
+                    icon={<RiCompass3Line className="size-7" />}
+                    activeIcon={<RiCompass3Fill className="size-7" />}
                     text='发现'
                 />
 
                 <NavLink
                     href='/message/chat'
-                    activeHrefs={['/message/chat','/message/community','/message/notice',]}
-                    icon={<RiChat1Line    className="size-7" />}
-                    activeIcon={<RiChat1Fill    className="size-7" />}
+                    activeHrefs={['/message/chat', '/message/community', '/message/notice',]}
+                    icon={<RiChat1Line className="size-7" />}
+                    activeIcon={<RiChat1Fill className="size-7" />}
                     text='消息'
                 />
 
@@ -70,7 +70,7 @@ function NavLink({ href, activeIcon, icon, activeHrefs, text }) {
 
     return (
         <Link
-            className={`flex-1 flex flex-col items-center justify-center h-full  transition-shadow text-[var(--navlink-color)] hover:bg-[var(--link-hover-background)] ${isActive ? ' text-info' : ''}`}
+            className={`flex-1 flex flex-col items-center justify-center h-full  transition-shadow  hover:bg-[var(--link-hover-background)] ${isActive ? ' text-info' : ''}`}
             href={href}
             prefetch={true} passHref
         >

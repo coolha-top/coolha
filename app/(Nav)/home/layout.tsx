@@ -2,15 +2,16 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { RiFileTextLine, RiImageLine, RiMusic2Line, RiShapesLine, RiVideoLine } from 'react-icons/ri'
+import { OrderByProvider } from './_contexts/OrderByContext';
 
 
-export default function Home({ children }) {
+export default function a({ children }) {
   const pathname = usePathname();
 
   const linknav = [
     {
       href: "/home",
-      name: "所有",
+      name: "全部",
       logo: <RiShapesLine />
     },
     {
@@ -35,13 +36,14 @@ export default function Home({ children }) {
     }
   ]
   return (
-    <div className="mx-auto lg:max-w-4xl  lg:justify-center pb-14  flex  flex-col">
+    <div className="mx-auto lg:max-w-4xl  lg:justify-center pb-14 flex flex-col">
 
 
 
-      <div className="flex flex-row w-[100vw] lg:w-full z-20 h-16  items-center">
+      {/* 类型 */}
+      <div className="flex flex-row w-full z-20 h-16  items-center">
         {linknav.map((item) => (
-          <div className='mx-auto flex-col sm:flex-row  justify-around w-[20%] flex border-b z-20  ' key={item.href}>
+          <div className='mx-auto flex-col sm:flex-row  justify-around w-[20%] flex  z-20  ' key={item.href}>
 
             <Link href={item.href} className={`z-20 flex items-center justify-center w-[100%] h-16 flex-col sm:flex-row  text-[#878787] border-b bg-base-100 hover:bg-[--link-hover-background] ${pathname === item.href ? 'text-info  border-b-info border-b-2' : ''}`}>
               <div className=' justify-center text-2xl sm:text-3xl z-20'> {item.logo} </div>
@@ -55,9 +57,9 @@ export default function Home({ children }) {
 
 
       <div className=''>
-
-        {children}
-
+        <OrderByProvider>
+          {children}
+        </OrderByProvider>
       </div>
 
 

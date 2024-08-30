@@ -5,8 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
-import { RiApps2Fill, RiApps2Line, RiArchiveFill, RiArchiveLine, RiCompass3Fill, RiCompass3Line, RiHome5Fill, RiHome5Line, RiMailFill, RiMailLine, RiMessageFill, RiMessageLine, RiUserFill, RiUserLine, RiSearchLine, RiChat1Line, RiChat1Fill } from "react-icons/ri";
+import { RiApps2Fill, RiApps2Line, RiArchiveFill, RiArchiveLine, RiCompass3Fill, RiCompass3Line, RiHome5Fill, RiHome5Line, RiMailFill, RiMailLine, RiMessageFill, RiMessageLine, RiUserFill, RiUserLine, RiSearchLine, RiChat1Line, RiChat1Fill, RiHomeFill, RiHomeLine } from "react-icons/ri";
 import { MenuButton } from "./MenuButton";
+import { title } from "process";
 
 export default function Header() {
     const pathname = usePathname();
@@ -16,7 +17,7 @@ export default function Header() {
 
 
 
-            <div className="navbar w-[100vw] py-0 px-0 md:px-4  bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
+            <div className="navbar w-screen py-0 px-0 md:px-4  bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
 
 
                 <div className="navbar-start gap-4">
@@ -33,7 +34,7 @@ export default function Header() {
                         </motion.div>
                     </Link>
 
-                    <label className="input w-44 lg:w-72 input-bordered flex items-center gap-2">
+                    <label className="input w-44 lg:w-64 input-bordered flex items-center gap-2">
                         <input type="text" className="grow" placeholder="搜索" />
                         <RiSearchLine size={24} />
                     </label>
@@ -83,26 +84,30 @@ function NavbarLink() {
     const pathname = usePathname();
     const links = [
         {
+            title: '首页',
             href: '/home',
-            iconActive: RiHome5Fill,
-            iconInactive: RiHome5Line,
+            iconActive: RiHomeFill,
+            iconInactive: RiHomeLine,
             startsWith: '/home'
         },
         {
+            title: '发现',
             href: '/find',
             iconActive: RiCompass3Fill,
             iconInactive: RiCompass3Line,
             startsWith: '/find'
         },
         {
+            title: '消息',
             href: '/message/chat',
-            iconActive: RiChat1Fill ,
+            iconActive: RiChat1Fill,
             iconInactive: RiChat1Line,
             startsWith: '/message'
         },
         {
+            title: '用户',
             href: '/profile',
-            iconActive: RiUserFill ,
+            iconActive: RiUserFill,
             iconInactive: RiUserLine,
             startsWith: '/profile'
         }
@@ -113,9 +118,12 @@ function NavbarLink() {
                 <li key={link.href}>
                     <Link
                         href={link.href}
-                        className={`btn  btn-square btn-ghost btn-primary  ${pathname && pathname.startsWith(link.startsWith) ? "btn-active text-info" : ""}`}
+                        className={`btn   ${pathname && pathname.startsWith(link.startsWith) ? " text-info " : ""}`}
                     >
                         {pathname.startsWith(link.startsWith) ? <link.iconActive className="size-8" /> : <link.iconInactive className="size-8" />}
+                        <span className=" hidden md:flex text-lg">
+                            {link.title}
+                        </span>
                     </Link>
                 </li>
             ))}

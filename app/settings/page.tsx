@@ -3,7 +3,7 @@
 export default function settings() {
    return (
      <>
-     settings
+     应用设置
      </>
    )
 }

@@ -1,12 +1,23 @@
 'use client'
 
-import UseFollow from "@/hooks/lens/useFollow";
+import UseFollow from "@/components/lnes/DataUsers/hook/BFollow";
 import { truncateEthAddress } from "@/utils/truncateEthAddress"
-import { useFollow } from "@lens-protocol/react-web";
+import { SessionType, useFollow, useProfile, useSession } from "@lens-protocol/react-web";
 import Link from "next/link"
 import { RiCheckboxCircleFill } from "react-icons/ri";
+import Follow from "./hook/Follow";
+import BFollow from "@/components/lnes/DataUsers/hook/BFollow";
 
 export default function UsersMetadata({ profile }) {
+    const { data: session } = useSession({ suspense: true });
+    //当前登入的账户
+    let profileHandle;
+    if (session.type === SessionType.WithProfile && session.profile?.handle?.fullHandle) {
+        profileHandle = session.profile.handle.fullHandle;
+    }
+
+
+
     const ensName = profile?.onchainIdentity?.ens?.name;
     const ethAddress = profile?.ownedBy?.address;
     const ethAddressText = ensName ?
@@ -48,6 +59,9 @@ export default function UsersMetadata({ profile }) {
             <div className="ml-2 lg:ml-4">
                 <b className="md:text-xl flex flex-row items-center  font-bold">{profile?.metadata?.displayName}<RiCheckboxCircleFill className="ml-1 size-5 text-primary bg-black rounded-full" /></b>
                 <p className="text-[#878787] text-sm"> {profile?.handle?.localName}.{profile?.handle?.namespace}</p>
+
+
+
                 <p className="text-[#878787]  text-sm font-bold hover:text-primary w-full">
                     <Link href={`https://www.oklink.com/zh-hans/multi-search#key=${ensName ? ensName : ethAddress}`} target='_blank'>
                         <span className="flex-1 inline-flex items-center hover:text-primary  w-full">{ethAddressText}</span>
@@ -61,7 +75,7 @@ export default function UsersMetadata({ profile }) {
 
 
             <div >
-                <UseFollow profile={profile} />
+                <BFollow profile={profile} />
             </div>
 
         </div>

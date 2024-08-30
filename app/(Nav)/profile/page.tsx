@@ -35,11 +35,12 @@ export default function page() {
                {loading ? (<>loading...</>) : (
                   <div className='rounded-[--rounded-box] mx-0  md:mx-4'>
                      <div className='w-full  bg-base-100 py-2'>
-                     {/* 用户信息 */}
-                     <UsersMetadata profile={Profile} />
-                     
-                     {/* 用户数据 */}
-                     <UsersStats profile={Profile} name={data.profile.handle?.localName} />
+                        {/* 用户信息 */}
+                        <UsersMetadata profile={Profile} />
+
+                        {/* 用户数据 */}
+                        <UsersStats profile={Profile} name={data.profile.handle?.localName} />
+                        <UseBio profile={Profile} />
                      </div>
                   </div>
                )}
@@ -54,28 +55,29 @@ export default function page() {
 }
 function Card() {
    const assetData = [
-      { icon: RiCopperCoinLine, label: 'Token' },
-      { icon: RiNftLine, label: 'NFT' },
-      { icon: RiHistoryLine, label: '交易记录' },
-      { icon: RiVerifiedBadgeLine, label: '会员' }
+      { label: 'Token', href: '/wallet', icon: RiCopperCoinLine, },
+      { label: 'NFT', href: '/wallet', icon: RiNftLine, },
+      { label: '交易记录', href: '/wallet', icon: RiHistoryLine, },
+      { label: '会员', href: '', icon: RiVerifiedBadgeLine, }
    ];
 
    const userData = [
-      { icon: RiUserSettingsLine, label: '账户设置' },
-      { icon: RiPuzzleLine, label: '扩展功能' },
-      { icon: RiBarChart2Line, label: '数据分析' },
-      { icon: RiTrophyLine, label: '成就等级' }
+      { label: '账户设置', icon: RiUserSettingsLine, },
+      { label: '扩展功能', icon: RiPuzzleLine, },
+      { label: '数据分析', icon: RiBarChart2Line, },
+      { label: '成就等级', icon: RiTrophyLine, }
    ];
+
    return (
       <div>
 
          <div className='bg-base-100 m-4 h-32 w-auto rounded-[--rounded-box]'>
             <h1 className="p-4 text-xl font-bold">资产</h1>
-            <div className='flex-row h-auto w-auto  grid grid-cols-4 justify-items-stretch '>
+            <div className='flex-row  grid grid-cols-4 justify-items-stretch '>
                {assetData.map((item, index) => (
-                  <div key={index} className=' grid justify-items-center hover:bg-[--link-hover-background]'>
+                  <Link href={`/wallet`} key={index} className=' grid justify-items-center hover:bg-[--link-hover-background]'>
                      <item.icon size={24} /> <p >{item.label}</p>
-                  </div>
+                  </Link>
                ))}
             </div>
          </div>
@@ -151,7 +153,8 @@ function UsersMetadata({ profile }) {
 
 
 
-         <div >
+         <div className='flex flex-row gap-2'>
+            <Link href={`/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black'>查看主页</Link>
             <button className="btn btn-sm btn-primary text-black">编辑资料</button>
          </div>
 
