@@ -1,16 +1,16 @@
 'use client'
 
 import { RiArrowLeftLine, RiMore2Fill } from "react-icons/ri";
-
-
+import Cover from '@/public/lens/Cover.png'
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 export default function page() {
     const router = useRouter();
 
     return (
         <div className="flex justify-center items-center mx-auto max-w-4xl">
 
-            <div className="card card-compact bg-base-100 shadow-xl sm:max-w-2xl  h-dvh w-dvw ">
+            <div className="card card-compact bg-base-100 shadow-xl sm:max-w-2xl my-4 h-dvh w-dvw ">
 
                 <div className="navbar py-0 ">
                     <div className=" navbar-start">
@@ -26,13 +26,22 @@ export default function page() {
                     </div>
                 </div>
 
-                <figure> <img src="/lens/Cover.png" alt="Cover.png" /></figure>
+                <figure>
+                    <Image
+                        src={Cover}
+                        alt="Cover.png"
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                        }} />
+                </figure>
                 <div className="p-4">
                     <h2 className="card-title">注册</h2>
                     <p>Lens Protocol</p>
                 </div>
                 <div className="card-body">
-                  暂未集成模块  
+                    暂未集成模块
                 </div>
 
             </div>

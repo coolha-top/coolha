@@ -2,8 +2,10 @@
 
 import { RiArrowLeftLine, RiMore2Fill } from "react-icons/ri";
 import { WelcomeToLens } from "@/components/lnes/Login/WelcomeToLens";
+import Cover04Text from '@/public/lens/Cover04-Text.png'
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 export default function page() {
     const router = useRouter();
 
@@ -26,13 +28,24 @@ export default function page() {
                     </div>
                 </div>
 
-                <figure> <img src="/lens/Cover04-Text.png"  alt="Cover04-Text.png"/></figure>
+                <figure>
+                    <Image
+                        src={Cover04Text}
+                        alt="Cover04-Text.png"
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                        }} />
+                </figure>
                 <div className="p-4">
-{/*                     <h2 className="card-title">连接 Lens 登入界面</h2>
+                    {/*                     <h2 className="card-title">连接 Lens 登入界面</h2>
                     <p>Lens Protocol</p> */}
                 </div>
-                <div className="card-body">
+                <div className="card-body border-opacity-50">
                     <WelcomeToLens />
+                    <div className="divider">没有Lens账户</div>
+                    <Link href={'/signup'} className="btn btn-primary">前往注册</Link>
                 </div>
 
             </div>

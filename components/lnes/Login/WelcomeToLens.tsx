@@ -10,6 +10,7 @@ import { truncateEthAddress } from "@/utils/truncateEthAddress";
 import ThemeSwap from "@/components/header/ThemeSwap";
 import LoginForm from "@/components/lnes/Login/LoginForm";
 import { LogoutButton } from "@/components/lnes/Login/LogoutButton";
+import { UpdateProfileManagers } from "./UpdateProfileManagers";
 
 
 export function WelcomeToLens() {
@@ -50,6 +51,7 @@ export function WelcomeToLens() {
                             </button>
                             <LogoutButton />
                         </div>
+                        <UpdateProfileManagers />
                     </>
                 )}
 
