@@ -1,7 +1,7 @@
 import { convertLinksToHTML } from '@/utils/convertLinksToHTML';
 import Link from 'next/link';
 import React from 'react';
-import { RiGlobalLine, RiMapPin2Line, RiSpotifyLine, RiTwitterXFill, RiYoutubeLine } from 'react-icons/ri';
+import { RiAttachment2, RiMapPin2Line, RiSpotifyLine, RiTwitterXFill, RiYoutubeLine } from 'react-icons/ri';
 
 export default function UseBio({ profile }) {
   const bioText = profile?.metadata?.bio || '';
@@ -45,7 +45,7 @@ export default function UseBio({ profile }) {
           <Link
             href={`${website}`}
             className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
-            <RiGlobalLine size={14} />{website}
+            <RiAttachment2  size={14} />{website}
           </Link>
         }
         {x &&

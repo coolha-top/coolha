@@ -10,7 +10,6 @@ import { truncateEthAddress } from "@/utils/truncateEthAddress";
 import ThemeSwap from "@/components/header/ThemeSwap";
 import LoginForm from "@/components/lnes/Login/LoginForm";
 import { LogoutButton } from "@/components/lnes/Login/LogoutButton";
-import { UpdateProfileManagers } from "./UpdateProfileManagers";
 
 
 export function WelcomeToLens() {
@@ -47,11 +46,10 @@ export function WelcomeToLens() {
                     <>
                         <p className="">当前登入的Lens账号 </p>
                         <div className="mt-2  flex-row flex justify-between items-center">
-                            <button className='btn btn-outline btn-info font-semibold' >{data.profile.handle?.fullHandle ?? data.profile.id}
+                            <button className='btn btn-outline  text-base-content  font-semibold' >{data.profile.handle?.fullHandle ?? data.profile.id}
                             </button>
                             <LogoutButton />
                         </div>
-                        <UpdateProfileManagers />
                     </>
                 )}
 

@@ -71,7 +71,7 @@ export default function Page() {
         {orderOptions.map((option) => (
           <div className='m-1' key={option.key}>
             <button
-              className={`btn btn-sm ${orderBy === option.key ? 'text-info' : ''}`}
+              className={`px-1 md:btn md:btn-sm ${orderBy === option.key ? 'text-info md:btn-primary' : ''}`}
               onClick={() => handleOrderByChange(option.key)}
             >
               {option.title}
@@ -169,7 +169,7 @@ export default function Page() {
 function Loading() {
   return (
     <>
-      <div className="flex flex-col gap-4 w-full p-6  bg-base-100">
+      <div className="flex flex-col gap-4 w-full py-4 bg-base-100">
 
         <div className="flex gap-4 items-center w-full">
           <div className="skeleton w-12 h-12 rounded-full shrink-0"></div>

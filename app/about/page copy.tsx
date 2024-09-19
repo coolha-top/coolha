@@ -5,6 +5,7 @@ import Hayi应用流程 from '@/public//hayi/Hayi应用流程.png'
 export default function Page() {
   return (
     <>
+    
       关于应用
       <Image
         src={Hayi应用流程}

@@ -1,5 +1,5 @@
 'use client'
-import Header from '@/components/header/header'
+import Header from '@/components/header/Header'
 import { useRouter } from "next/navigation";
 import { RiArrowLeftLine } from 'react-icons/ri'
 
@@ -24,11 +24,7 @@ export default function layout({ children }) {
             </button>
           </div>
           <div className=" navbar-center"></div>
-          <div className=" navbar-end">
-            {/*           <button className="btn btn-square btn-ghost">
-            <RiMore2Fill size={24} />
-          </button> */}
-          </div>
+          <div className=" navbar-end"></div>
         </div>
       </div>
 

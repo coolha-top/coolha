@@ -13,7 +13,7 @@ export default function interactCard({ dataname }) {
       {/* 评论 */}
       <div className="w-1/6" >
         <div className="flex gap-0.5 justify-start items-center  rounded-full size-7 w-3/4 md:w-1/2 px-1   hover:text-info" onClick={() => router.push(`/posts/${dataname.id}`)} >
-          <RiChat3Line className="size-7 " />
+          <RiChat3Line className="size-5 md:size-7 " />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.comments)}</p>
         </div>
       </div>
@@ -27,13 +27,13 @@ export default function interactCard({ dataname }) {
 
       {/* 出版 收集 */}
       <CardButton hovertext={`hover:text-success`}>
-        <RiShoppingBagLine className="size-7 " />
+        <RiShoppingBagLine className="size-5 md:size-7 " />
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.collects)}</p>
       </CardButton>
 
       {/* 打赏 */}
       <CardButton hovertext={`hover:text-[#D1B200]`}>
-        <RiCopperCoinLine className="size-7 " />
+        <RiCopperCoinLine className="size-5 md:size-7 " />
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.bookmarks)}</p>
       </CardButton>
 
@@ -65,7 +65,7 @@ function MirrorsToggle({ dataname }) {
   const hideMirrorToggle = async () => {
     const result = await hideMirror({ publication: dataname });
     if (result.isFailure()) {
-      console.log('取消转发失败:', result.error.message);
+      console.log('取消转发失败:');
       return;
     }
     console.log('取消转发成功');
@@ -97,7 +97,7 @@ function MirrorsToggle({ dataname }) {
       {isMirrored ?
         <button onClick={hideMirrorToggle} disabled={hidingMirror} className="w-1/6">
           <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 hover:text-success text-success`}>
-            <RiLoopLeftFill className="size-7" />
+            <RiLoopLeftFill className="size-5 md:size-7" />
             <p className="text-center text-sm">
               {formatNumberWithUnit(dataname.stats.mirrors + dataname.stats.quotes)}
             </p>
@@ -106,7 +106,7 @@ function MirrorsToggle({ dataname }) {
         :
         <button onClick={createMirrorToggle} disabled={creatingMirror} className="w-1/6">
           <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 hover:text-success`}>
-            <RiLoopLeftFill className="size-7" />
+            <RiLoopLeftFill className="size-5 md:size-7" />
             <p className="text-center text-sm">
               {formatNumberWithUnit(dataname.stats.mirrors + dataname.stats.quotes)}
             </p>
@@ -148,9 +148,9 @@ function UpvoteToggle({ dataname }) {
         <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1  hover:text-error ${dataname.operations.hasUpvoted ? 'text-red-500' : ''}`}  >
 
           {dataname.operations.hasUpvoted ? (
-            <RiHeart3Fill className="size-7" /> // 红色填充图标表示已点赞
+            <RiHeart3Fill className="size-5 md:size-7" /> // 红色填充图标表示已点赞
           ) : (
-            <RiHeart3Line className="size-7" /> // 空心图标表示未点赞
+            <RiHeart3Line className="size-5 md:size-7" /> // 空心图标表示未点赞
           )}
 
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.upvotes)}</p>

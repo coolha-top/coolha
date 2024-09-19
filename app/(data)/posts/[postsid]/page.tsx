@@ -20,6 +20,7 @@ export default function Posts({ params }) {
   const { data: commentsData, loading, hasMore, observeRef } = useInfiniteScroll(usePublications({
     where: {
       /* publicationTypes: [PublicationType.Comment], */
+      /* publicationTypes: [PublicationType.Post, PublicationType.Quote,PublicationType.Comment], */
       commentOn: {
         id: publicationId(params.postsid),
       },
@@ -61,103 +62,131 @@ export default function Posts({ params }) {
   return (
     <div>
 
+     
 
-      {/* 主帖 */}
-      <div key={pub.id} className="w-dvw lg:max-w-4xl p-4 pt-0">
+        {/* 主帖 */}
+        <div key={pub.id} className="w-dvw lg:max-w-4xl p-4 pt-0">
 
-        <div className="flex">
           <div className="flex">
-            <Avatarimg
-              href={pub.by?.handle?.localName}
-              src={pub.by}
-            />
-            <AvatarName
-              localName={pub.by?.handle?.localName}
-              displayName={pub.by?.metadata?.displayName}
-              namespace={`lens`}
-              createdAt={pub.createdAt}
-            />
+            <div className="flex">
+              <Avatarimg
+                href={pub.by?.handle?.localName}
+                src={pub.by}
+              />
+              <AvatarName
+                localName={pub.by?.handle?.localName}
+                displayName={pub.by?.metadata?.displayName}
+                namespace={`lens`}
+                createdAt={pub.createdAt}
+              />
+            </div>
+            <div className="flex-1" ></div>
+            <Menu pub={pub} />
           </div>
-          <div className="flex-1" ></div>
-          <Menu pub={pub} />
-        </div>
           <div className=''>
             <UsersPosAtext content={pub.metadata?.content} />
             <Meide pub={pub.metadata?.asset} />
           </div>
 
-        <InteractCard dataname={pub} />
-      </div>
+          {/* 如果是引用类型的帖子，显示引用的内容 */}
+          {
+            pub.__typename === "Quote" && (
+              <div className="p-6 pl-0">
+                <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
 
-
-      <div className="px-6">
-        <input type="text" placeholder="回复你的评论" className="input input-bordered w-full" />
-      </div>
-
-
-
-      {/* 评论区 */}
-      <div className="my-4 border-t">
-        {commentsData && commentsData.length > 0 ? (commentsData.map((comment) => (
-
-          <div key={comment.id} className="border-b p-4 hover:bg-[--link-hover-background]">
-            <Link href={`/posts/${comment.id}`}>
-              <div className="flex">
-                {comment.by && comment.by.handle && comment.by.metadata && (
-                  <>
-                    <Avatarimg
-                      href={comment.by.handle.localName}
-                      src={comment.by}
-                    />
+                  <div className="flex" >
+                    <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />
                     <AvatarName
-                      localName={comment.by.handle.localName || 'unknown'}
-                      displayName={comment.by.metadata.displayName || 'unknown'}
-                      namespace={`lens`}
-                      createdAt={comment.createdAt}
+                      localName={pub.quoteOn.by.handle.localName}
+                      displayName={pub.quoteOn.by.metadata?.displayName}
+                      namespace={pub.quoteOn.by.handle.namespace}
+                      createdAt={pub.quoteOn.createdAt}
                     />
-                  </>
-                )}
+                    <div className="flex-1" ></div>
+                    
+                  </div>
+
+                  <Link href={`/posts/${pub.quoteOn.id}`} passHref>
+                    <UsersPosAtext content={pub.quoteOn.metadata.content} />
+                    <Meide pub={pub.quoteOn.metadata.asset} />
+                  </Link>
+                </div>
               </div>
-              <div className='mt-2'>
-                {comment.metadata && (
-                  <>
-                    <UsersPosAtext content={comment.metadata.content} />
-                    <Meide pub={comment.metadata.asset} />
-                  </>
-                )}
-              </div>
-              <InteractCard dataname={comment} />
-            </Link>
+            )
+          }
+
+          <InteractCard dataname={pub} />
+        </div>
 
 
-            {/* 子评论 */}
-            {comment.stats?.comments > 0 &&
-              <button onClick={() => toggleComment(comment.id)} className="text-info">
-                {expandedComments[comment.id] ? '隐藏子评论' : `展开子评论${comment.stats?.comments}`}
-              </button>
-            }
+        <div className="px-6">
+          <input type="text" placeholder="回复你的评论" className="input input-bordered w-full" />
+        </div>
 
 
-            {/* 在这里添加子评论帖的评论内容 */}
-            {expandedComments[comment.id] && (
-              <div className="mt-4 pl-4">
-                <ChildComments commentId={comment.id} />
-              </div>
-            )}
+
+        {/* 评论区 */}
+        <div className="my-4 border-t">
+          {commentsData && commentsData.length > 0 ? (commentsData.map((comment) => (
+
+            <div key={comment.id} className="border-b p-4 hover:bg-[--link-hover-background]">
+              <Link href={`/posts/${comment.id}`}>
+                <div className="flex">
+                  {comment.by && comment.by.handle && comment.by.metadata && (
+                    <>
+                      <Avatarimg
+                        href={comment.by.handle.localName}
+                        src={comment.by}
+                      />
+                      <AvatarName
+                        localName={comment.by.handle.localName || 'unknown'}
+                        displayName={comment.by.metadata.displayName || 'unknown'}
+                        namespace={`lens`}
+                        createdAt={comment.createdAt}
+                      />
+                    </>
+                  )}
+                </div>
+                <div className='mt-2'>
+                  {comment.metadata && (
+                    <>
+                      <UsersPosAtext content={comment.metadata.content} />
+                      <Meide pub={comment.metadata.asset} />
+                    </>
+                  )}
+                </div>
+                <InteractCard dataname={comment} />
+              </Link>
 
 
-          </div>
-        ))
-        ) : (
-          <div className="flex justify-center items-center">暂无评论</div>
-        )}
+              {/* 子评论 */}
+              {comment.stats?.comments > 0 &&
+                <button onClick={() => toggleComment(comment.id)} className="text-info">
+                  {expandedComments[comment.id] ? '隐藏子评论' : `展开子评论${comment.stats?.comments}`}
+                </button>
+              }
 
-        {hasMore && (
-          <div className="flex justify-center my-4">
-            <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
-          </div>
-        )}
-      </div>
+
+              {/* 在这里添加子评论帖的评论内容 */}
+              {expandedComments[comment.id] && (
+                <div className="mt-4 pl-4">
+                  <ChildComments commentId={comment.id} />
+                </div>
+              )}
+
+
+            </div>
+          ))
+          ) : (
+            <div className="flex justify-center items-center">暂无评论</div>
+          )}
+
+          {hasMore && (
+            <div className="flex justify-center my-4">
+              <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
+            </div>
+          )}
+        </div>
 
     </div>
   )
