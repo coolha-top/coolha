@@ -84,7 +84,6 @@ export function PUBposts({
                       createdAt={pub.quoteOn.createdAt}
                     />
                     <div className="flex-1" ></div>
-                    <Menu pub={pub} />
                   </div>
 
                   <Link href={`/posts/${pub.quoteOn.id}`} passHref>

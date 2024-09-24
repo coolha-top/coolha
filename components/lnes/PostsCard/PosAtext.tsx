@@ -10,7 +10,7 @@ const MAX_LINES = 10;
 
 // 自定义链接渲染器
 const LinkRenderer = ({ href, children }:any) => (
-  <Link href={href} className=" text-info  hover:underline" target='_blank'>
+  <Link href={href} className=" text-info  hover:underline link  link-success" target='_blank'>
     {children}
   </Link>
 );

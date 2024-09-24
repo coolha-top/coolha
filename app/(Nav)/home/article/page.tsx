@@ -58,7 +58,7 @@ export default function Page() {
         {orderOptions.map((option) => (
           <div className='m-1' key={option.key}>
             <button
-              className={`btn btn-sm ${orderBy === option.key ? 'text-info' : ''}`}
+              className={`px-1 md:btn md:btn-sm ${orderBy === option.key ? ' text-info md:btn-primary' : ''}`}
               onClick={() => handleOrderByChange(option.key)}
             >
               {option.title}

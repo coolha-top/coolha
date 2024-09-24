@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { type State, WagmiProvider } from 'wagmi'
 
-import { LensConfig, production, LensProvider } from '@lens-protocol/react-web';
+import { LensConfig, production, LensProvider, development } from '@lens-protocol/react-web';
 import { bindings } from '@lens-protocol/wagmi';
 import { config } from './Wagmi';
 

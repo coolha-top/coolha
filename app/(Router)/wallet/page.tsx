@@ -17,8 +17,7 @@ export default function Wallet() {
                     <Link
                         href={`https://debank.com/profile/${ensName ? ensName : address}`}
                         className='btn  btn-neutral'
-                        target='_blank'
-                    >
+                        target='_blank'>
                         {ensName ? `${ensName} (${truncateEthAddress(address)})`
                             : truncateEthAddress(address)}↗
                     </Link>}

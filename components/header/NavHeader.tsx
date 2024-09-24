@@ -9,7 +9,7 @@ export default function NavHeader() {
     return (
         <>
             {["/find", , "/profile"].includes(pathname) ? (
-                <div className="md:hidden flex navbar border-b md:border-0 w-100vw p-0 bg-base-100">
+                <div className=" flex md:hidden navbar border-b md:border-0 w-100vw p-0 bg-base-100">
                     {pathname === "/find" && <Find />}
                     {/* {pathname === "/message/chat" && <Message />} */}
                     {pathname && pathname.startsWith("/profile") && null}

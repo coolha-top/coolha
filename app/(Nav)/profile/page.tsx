@@ -155,7 +155,7 @@ function UsersMetadata({ profile }) {
 
          <div className='flex flex-row gap-2'>
             <Link href={`/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black'>查看主页</Link>
-            <button className="btn btn-sm btn-primary text-black">编辑资料</button>
+            <Link href={`/edit_profile`} className="btn btn-sm btn-primary text-black">编辑资料</Link>
          </div>
 
       </div>

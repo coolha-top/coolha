@@ -1,23 +1,28 @@
 "use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
-import { RiApps2Fill, RiApps2Line, RiArchiveFill, RiArchiveLine, RiCompass3Fill, RiCompass3Line, RiHome5Fill, RiHome5Line, RiMailFill, RiMailLine, RiMessageFill, RiMessageLine, RiUserFill, RiUserLine, RiSearchLine, RiChat1Line, RiChat1Fill, RiHomeFill, RiHomeLine } from "react-icons/ri";
+import { RiCompass3Fill, RiCompass3Line, RiUserFill, RiUserLine, RiSearchLine, RiChat1Line, RiChat1Fill, RiHomeFill, RiHomeLine } from "react-icons/ri";
 import { MenuButton } from "./MenuButton";
-import { title } from "process";
-
 export default function Header() {
     const pathname = usePathname();
-
     return (
         <>
+            <HeaderC />
+        </>
+
+    )
+}
+function HeaderC() {
+
+    return (
+        <div className=" hidden md:flex">
 
 
 
-            <div className="navbar w-screen py-0 px-0 md:px-4  bg-base-100  hidden md:flex fixed top-0 left-0 z-50">
+            <div className="navbar w-screen py-0 px-0 md:px-4  bg-base-100   fixed top-0 left-0 z-50">
 
 
                 <div className="navbar-start gap-4">
@@ -77,7 +82,7 @@ export default function Header() {
 
 
 
-        </>)
+        </div>)
 }
 
 function NavbarLink() {

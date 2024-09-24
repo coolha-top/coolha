@@ -36,7 +36,7 @@ export default function a({ children }) {
     }
   ]
   return (
-    <div className="mx-auto lg:max-w-4xl  lg:justify-center pb-14 flex flex-col">
+    <div className="mx-auto max-w-4xl  lg:justify-center pb-14 flex flex-col">
 
 
 

@@ -1,8 +1,9 @@
+'use client'
 
-export default function Search({ params }) {
+export default function page({ params }) {
     return (
-        <div className="px-10 py-14">
-            <p>{params.postsid}</p>
-        </div>
+        <>
+            {params.postsid}
+        </>
     )
 }

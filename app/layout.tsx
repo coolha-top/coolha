@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Provider from '@/app/Provider'
-import Header from "@/components/header/header";
+
 import { headers } from "next/headers";
 import { cookieToInitialState } from 'wagmi'
 import { config } from '@/config/Wagmi'
@@ -51,13 +51,13 @@ export default function RootLayout({
         {/*  <meta property="og:url" content="Canonical link preview URL"></meta> */}
       </head>
 
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} `}>
         <Provider>
 
           <LensWagmiProviders initialState={initialState}>
-            
+
             {children}
-       
+
           </LensWagmiProviders>
 
 
