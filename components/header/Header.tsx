@@ -39,9 +39,9 @@ function HeaderC() {
                         </motion.div>
                     </Link>
 
-                    <label className="input w-44 lg:w-64 input-bordered flex items-center gap-2">
+                    <label className="input w-44 lg:w-56 input-bordered flex items-center ">
                         <input type="text" className="grow" placeholder="搜索" />
-                        <RiSearchLine size={24} />
+                        <RiSearchLine className=" w-8 h-8" />
                     </label>
 
                 </div>
@@ -123,7 +123,7 @@ function NavbarLink() {
                 <li key={link.href}>
                     <Link
                         href={link.href}
-                        className={`btn   ${pathname && pathname.startsWith(link.startsWith) ? " text-info " : ""}`}
+                        className={`btn hover:bg-[var(--link-hover-background)] ${pathname && pathname.startsWith(link.startsWith) ? " text-info " : ""}`}
                     >
                         {pathname.startsWith(link.startsWith) ? <link.iconActive className="size-8" /> : <link.iconInactive className="size-8" />}
                         <span className=" hidden md:flex text-lg">

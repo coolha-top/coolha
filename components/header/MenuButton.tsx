@@ -24,35 +24,7 @@ export function MenuButton() {
     };
     return (
         <>
-            <dialog className="modal">
-                <div className="modal-box p-0 border">
 
-                    <form method="dialog">
-                        <button className="btn btn-circle btn-sm btn-primary absolute right-2 top-2 text-lg" onClick={toggleModal}>✕</button>
-                    </form>
-
-                    <figure>
-                        <Image
-                            src={Cover04Text}
-                            alt="Cover04-Text.png"
-                            sizes="100%"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }} />
-                    </figure>
-                    <div className="card-body border-opacity-50">
-                        <WelcomeToLens />
-                        <div className="divider">没有Lens账户?</div>
-                        <Link href={'/signup'} className="btn btn-primary">前往注册</Link>
-                    </div>
-
-                </div>
-
-                <form method="dialog" className="modal-backdrop">
-                    <button onClick={toggleModal}>close</button>
-                </form>
-            </dialog>
             {/* 未登入显示 */}
             {!session || session.type !== SessionType.WithProfile && <>
                 <button
@@ -99,8 +71,10 @@ export function MenuButton() {
 
             {showModal &&
                 <div className=" w-full h-full fixed inset-0 flex justify-center items-center  z-auto   transition-opacity duration-300 ease-in-out  ">
-                    <div className=" w-96 rounded-2xl max-w-md  scale-95  transition-transform duration-300 ease-in-out transform   bg-black     z-auto border ">
-                        <button className="btn btn-circle btn-sm btn-primary text-lg  ml-96" onClick={toggleModal}>✕</button>
+                    <div className=" w-80 md:w-96 rounded-2xl max-w-md  scale-95  transition-transform duration-300 ease-in-out transform bg-base-100     z-auto border ">
+                        <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
+                            <button className="btn btn-circle btn-sm btn-primary text-lg" onClick={toggleModal}>✕</button>
+                        </div>
                         <figure>
                             <Image
                                 src={Cover04Text}
@@ -109,7 +83,10 @@ export function MenuButton() {
                                 style={{
                                     width: '100%',
                                     height: 'auto',
-                                }} />
+                                }}
+                                className=" rounded-t-2xl"
+                            />
+
                         </figure>
                         <div className="card-body border-opacity-50">
                             <WelcomeToLens />
@@ -117,9 +94,9 @@ export function MenuButton() {
                             <Link href={'/signup'} className="btn btn-primary">前往注册</Link>
                         </div>
                     </div>
-                    <form onClick={toggleModal}>
+{/*                     <form onClick={toggleModal}>
                         <button>close</button>
-                    </form>
+                    </form> */}
                 </div>
             }
 
