@@ -31,7 +31,7 @@ if (!projectId) throw new Error('Project ID is not defined') */
 export const metadata = {
   name: 'HaYi',
   description: 'HaYi Web Dapp',
-  url: 'https://vimcord.coinipfs.com',
+  url: 'https://coinipfs.com',
   icons: ['/favicon.ico']
 }
 const MetaMaskOptions = {
