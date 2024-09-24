@@ -97,7 +97,7 @@ function MirrorsToggle({ dataname }) {
       {isMirrored ?
         <button onClick={hideMirrorToggle} disabled={hidingMirror} className="w-1/6">
           <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 hover:text-success text-success`}>
-            <RiLoopLeftFill className="size-5 md:size-7" />
+          <RiLoopLeftFill className="size-5 md:size-7" />
             <p className="text-center text-sm">
               {formatNumberWithUnit(dataname.stats.mirrors + dataname.stats.quotes)}
             </p>

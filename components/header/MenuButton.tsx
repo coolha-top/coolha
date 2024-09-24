@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import Cover04Text from '@/public/lens/Cover04-Text.png'
 import Image from "next/image";
-import { WelcomeToLens } from "../lnes/Login/WelcomeToLens";
+import { WelcomeToLens } from "../lnes/Auth/WelcomeToLens";
 import { PiDotsNine, PiDotsNineBold } from "react-icons/pi";
 import { CgMenuGridO, CgMenuGridR } from "react-icons/cg";
 import { useState } from "react";
@@ -117,7 +117,7 @@ export function MenuButton() {
                             <Link href={'/signup'} className="btn btn-primary">前往注册</Link>
                         </div>
                     </div>
-                    <form  onClick={toggleModal}>
+                    <form onClick={toggleModal}>
                         <button>close</button>
                     </form>
                 </div>

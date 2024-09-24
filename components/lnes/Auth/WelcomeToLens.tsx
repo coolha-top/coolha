@@ -7,9 +7,9 @@ import { config } from "@/config/Wagmi";
 import { ConnectWalletButton } from "@/components/wagmi/ConnectWalletButton";
 import { DisconnectWalletButton } from "@/components/wagmi/DisconnectWalletButton";
 import { truncateEthAddress } from "@/utils/truncateEthAddress";
-import ThemeSwap from "@/components/header/ThemeSwap";
-import LoginForm from "@/components/lnes/Login/LoginForm";
-import { LogoutButton } from "@/components/lnes/Login/LogoutButton";
+import ThemeSwap from "@/gui/ThemeSwap";
+import LoginForm from "@/components/lnes/Auth/LoginForm";
+import { LogoutButton } from "@/components/lnes/Auth/LogoutButton";
 
 
 export function WelcomeToLens() {
@@ -38,7 +38,7 @@ export function WelcomeToLens() {
                             <DisconnectWalletButton />
                         </div>
 
-                        <LoginForm owner={address} />
+                        <LoginForm wallet={address} />
                     </>
                 )}
 

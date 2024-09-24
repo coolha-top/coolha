@@ -1,6 +1,6 @@
 
 import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
-import { polygon, sepolia, zkSyncSepoliaTestnet } from 'wagmi/chains'
+import { polygon, sepolia, polygonAmoy } from 'wagmi/chains'
 import { walletConnect, injected, metaMask, safe, coinbaseWallet, } from 'wagmi/connectors'
 import { defineChain, type Chain } from 'viem'
 
@@ -45,12 +45,12 @@ const MetaMaskOptions = {
 
 
 export const config = createConfig({
-  chains: [polygon, bbtestnet, sepolia, zkSyncSepoliaTestnet],
+  chains: [polygon, polygonAmoy, sepolia,bbtestnet],
   transports: {
     [polygon.id]: http(),
-    [bbtestnet.id]: http('https://rpc.buildbear.io/cute-mistersinister-f90ef39f'),
+    [polygonAmoy.id]: http(),
     [sepolia.id]: http(),
-    [zkSyncSepoliaTestnet.id]: http(),
+    [bbtestnet.id]: http('https://rpc.buildbear.io/cute-mistersinister-f90ef39f'),
   },
 
 

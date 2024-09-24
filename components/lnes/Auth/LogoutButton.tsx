@@ -15,8 +15,8 @@ export function LogoutButton() {
   };
 
   if (!isConnected) {
-    return <button className='btn btn-info'  onClick={() => execute()}>注销</button>;
+    return <button className='btn btn-info'  onClick={() => execute()}>断开钱包</button>;
   }
 
-  return <button className='btn btn-info'  onClick={() => logout()}>注销</button>;
+  return <button className='btn btn-info'  onClick={() => logout()}>退出账户</button>;
 }

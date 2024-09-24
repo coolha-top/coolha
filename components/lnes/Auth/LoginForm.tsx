@@ -3,9 +3,10 @@ import { profileId, useLogin, useProfilesManaged } from "@lens-protocol/react-we
 
 import Link from "next/link";
 
-export default function LoginForm({ owner, onSuccess }: { owner: string; onSuccess?: () => void }) {
+
+export default function LoginForm({ wallet, onSuccess }: { wallet: string; onSuccess?: () => void }) {
   const { execute: login, loading: isLoginPending } = useLogin();
-  const { data: profiles, error, loading } = useProfilesManaged({ for: owner, includeOwned: true });
+  const { data: profiles, error, loading } = useProfilesManaged({ for: wallet, includeOwned: true });
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -16,7 +17,7 @@ export default function LoginForm({ owner, onSuccess }: { owner: string; onSucce
     const id = profileId(formData.get("id") as string);
 
     const result = await login({
-      address: owner,
+      address: wallet,
       profileId: id,
     });
 
@@ -25,7 +26,7 @@ export default function LoginForm({ owner, onSuccess }: { owner: string; onSucce
       return onSuccess?.();
     }
 
-    console.error(result.error.message);
+    window.alert(result.error.message);
   };
 
   if (loading) {
