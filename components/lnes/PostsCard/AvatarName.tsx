@@ -5,15 +5,15 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { RiCheckboxCircleFill, RiVerifiedBadgeFill } from "react-icons/ri"
 
-export default function AvatarName({ localName, displayName, namespace, createdAt }) {
+export default function AvatarName({ localName, displayName,namespace ,id, createdAt }) {
     const router = useRouter()
     return (
         <>
             <div className="ml-3">
 
-                <Link href={`/${localName}`} className="flex flex-row  items-center ">
+                <Link href={`/${localName ? localName : id.by.id}`} className="flex flex-row  items-center ">
                     <b className=" flex items-center overflow-hidden text-ellipsis whitespace-nowrap hover:underline hover:caret-primary hover:text-info ">{displayName ? displayName : ''}</b>
-                    <span className=" ml-1 text-[#878787] hover:underline">@{localName ? localName : ''}</span>
+                    <span className=" ml-1 text-[#878787] hover:underline">@{localName ? localName : id.by.id}</span>
                     <RiVerifiedBadgeFill className=" size-4 ml-1 text-primary bg-secondary rounded-full" />
                 </Link>
 

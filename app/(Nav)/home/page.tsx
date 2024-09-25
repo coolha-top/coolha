@@ -100,14 +100,15 @@ export default function Page() {
             <div className=" flex ">
               <div className="flex " >
                 <Avatarimg
-                  href={pub.by.handle.localName}
+                  href={pub.by && pub.by.handle ? pub.by.handle.localName : pub.by.id}
                   src={pub.by}
 
                 />
                 <AvatarName
-                  localName={pub.by.handle.localName}
-                  displayName={pub.by.metadata?.displayName}
-                  namespace={pub.by.handle.namespace}
+                  localName={pub.by && pub.by.handle ? pub.by.handle.localName : pub.by.id}
+                  displayName={pub.by && pub.by.metadata ? pub.by.metadata.displayName : ''}
+                  namespace={pub.by && pub.by.handle ? pub.by.handle.namespace : ''}
+                  id={pub}
                   createdAt={pub.createdAt}
                 />
               </div>
@@ -134,6 +135,7 @@ export default function Page() {
                         localName={pub.quoteOn.by.handle.localName}
                         displayName={pub.quoteOn.by.metadata?.displayName}
                         namespace={pub.quoteOn.by.handle.namespace}
+                        id={pub.quoteOn}
                         createdAt={pub.quoteOn.createdAt}
                       />
 

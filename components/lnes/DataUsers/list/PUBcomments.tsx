@@ -41,6 +41,7 @@ export default function PUBcomments({ profile }) {
                       localName={comment.commentOn.by.handle.localName}
                       displayName={comment.commentOn.by.metadata?.displayName}
                       namespace={comment.commentOn.by.handle.namespace}
+                      id={comment.commentOn}
                       createdAt={comment.commentOn.createdAt}
                     />
                     <div className="flex-1" ></div>
@@ -66,7 +67,12 @@ export default function PUBcomments({ profile }) {
                 {/* users */}
                 <div className="flex">
                   <Avatarimg src={comment.by} href={comment.by.handle.localName} />
-                  <AvatarName localName={comment.by.handle.localName} displayName={comment.by.metadata?.displayName} namespace={comment.by.handle.namespace} createdAt={comment.createdAt} />
+                  <AvatarName
+                    localName={comment.by.handle.localName}
+                    displayName={comment.by.metadata?.displayName}
+                    namespace={comment.by.handle.namespace}
+                    id={comment}
+                    createdAt={comment.createdAt} />
                   <div className="flex-1" ></div>
                   <Menu pub={comment} />
                 </div>

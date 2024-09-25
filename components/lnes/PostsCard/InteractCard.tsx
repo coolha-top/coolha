@@ -11,7 +11,7 @@ export default function interactCard({ dataname }) {
     <div className='flex justify-items-start md:max-w-[100%] text-base-content/70 my-1'>
 
       {/* 评论 */}
-      <div className="w-1/6" >
+      <div className="w-1/4" >
         <div className="flex gap-0.5 justify-start items-center  rounded-full size-7 w-3/4 md:w-1/2 px-1   hover:text-info" onClick={() => router.push(`/posts/${dataname.id}`)} >
           <RiChat3Line className="size-5 md:size-7 " />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.comments)}</p>
@@ -31,11 +31,6 @@ export default function interactCard({ dataname }) {
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.collects)}</p>
       </CardButton>
 
-      {/* 打赏 */}
-      <CardButton hovertext={`hover:text-[#D1B200]`}>
-        <RiCopperCoinLine className="size-5 md:size-7 " />
-        <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.bookmarks)}</p>
-      </CardButton>
 
 
     </div>
@@ -44,8 +39,8 @@ export default function interactCard({ dataname }) {
 
 function CardButton({ children, hovertext }) {
   return (
-    <div className="w-1/6">
-      <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1  ${hovertext}`}  >
+    <div className="w-1/4">
+      <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 btn-disabled text-zinc-300 ${hovertext}`}  >
         {children}
       </div>
     </div>
@@ -95,7 +90,7 @@ function MirrorsToggle({ dataname }) {
     <>
 
       {isMirrored ?
-        <button onClick={hideMirrorToggle} disabled={hidingMirror} className="w-1/6">
+        <button onClick={hideMirrorToggle} disabled={hidingMirror} className="w-1/4">
           <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 hover:text-success text-success`}>
           <RiLoopLeftFill className="size-5 md:size-7" />
             <p className="text-center text-sm">
@@ -104,7 +99,7 @@ function MirrorsToggle({ dataname }) {
           </div>
         </button>
         :
-        <button onClick={createMirrorToggle} disabled={creatingMirror} className="w-1/6">
+        <button onClick={createMirrorToggle} disabled={creatingMirror} className="w-1/4">
           <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 hover:text-success`}>
             <RiLoopLeftFill className="size-5 md:size-7" />
             <p className="text-center text-sm">
@@ -144,7 +139,7 @@ function UpvoteToggle({ dataname }) {
   return (
     <>
 
-      <button onClick={Upvotetoggle} disabled={loading} className="w-1/6">
+      <button onClick={Upvotetoggle} disabled={loading} className="w-1/4">
         <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1  hover:text-error ${dataname.operations.hasUpvoted ? 'text-red-500' : ''}`}  >
 
           {dataname.operations.hasUpvoted ? (

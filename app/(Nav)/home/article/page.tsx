@@ -87,12 +87,14 @@ export default function Page() {
             <div className=" flex">
               <div className="flex">
                 <Avatarimg
-                  href={mpub.by.handle.localName}
+                  href={mpub.by && mpub.by.handle ? mpub.by.handle.localName : mpub.by.id}
                   src={mpub.by}
                 />
                 <AvatarName
-                  localName={mpub.by.handle.localName}
-                  displayName={mpub.by?.metadata?.displayName} namespace={mpub.by.handle.namespace}
+                  localName={mpub.by && mpub.by.handle ? mpub.by.handle.localName : mpub.by.id}
+                  displayName={mpub.by?.metadata?.displayName} 
+                  namespace={mpub.by && mpub.by.handle ? mpub.by.handle.namespace : ''}
+                  id={mpub}
                   createdAt={mpub.createdAt} />
               </div>
               <div className="flex-1" ></div>
@@ -116,6 +118,7 @@ export default function Page() {
                         localName={mpub.quoteOn.by.handle.localName}
                         displayName={mpub.quoteOn.by.metadata?.displayName}
                         namespace={mpub.quoteOn.by.handle.namespace}
+                        id={mpub.quoteOn}
                         createdAt={mpub.quoteOn.createdAt}
                       />
 

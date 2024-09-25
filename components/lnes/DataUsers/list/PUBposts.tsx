@@ -16,8 +16,6 @@ import { RiLoopLeftFill } from "react-icons/ri"
 
 export function PUBposts({
   profile
-}: {
-  profile: Profile
 }) {
   let { data: publications, hasMore, loading, observeRef } = useInfiniteScroll(usePublications({
     limit: LimitType.TwentyFive,
@@ -51,6 +49,7 @@ export function PUBposts({
                     localName={pub.by.handle.localName}
                     displayName={pub.by.metadata?.displayName}
                     namespace={pub.by.handle.namespace}
+                    id={pub}
                     createdAt={pub.createdAt}
                   />
                 </div>
@@ -81,6 +80,7 @@ export function PUBposts({
                       localName={pub.quoteOn.by.handle.localName}
                       displayName={pub.quoteOn.by.metadata?.displayName}
                       namespace={pub.quoteOn.by.handle.namespace}
+                      id={pub.quoteOn}
                       createdAt={pub.quoteOn.createdAt}
                     />
                     <div className="flex-1" ></div>
@@ -105,6 +105,7 @@ export function PUBposts({
                   localName={pub.mirrorOn.by.handle.localName}
                   displayName={pub.mirrorOn.by.metadata?.displayName}
                   namespace={pub.mirrorOn.by.handle.namespace}
+                  id={pub.mirrorOn}
                   createdAt={pub.mirrorOn.createdAt}
                 />
                 <div className="flex-1" ></div>

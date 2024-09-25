@@ -24,16 +24,20 @@ export function MenuButton() {
     };
     return (
         <>
-
-            {/* 未登入显示 */}
-            {!session || session.type !== SessionType.WithProfile && <>
+            {loading && <>
                 <button
-                    className="btn btn-primary text-black  text-lg  md:text-xl mx-1"
+                    className="btn btn-primary text-black btn-sm md:btn-md  text-lg  md:text-xl mx-1"
                     onClick={toggleModal}>
                     登录
                 </button>
-
-
+            </>}
+            {/* 未登入显示 */}
+            {!session || session.type !== SessionType.WithProfile && <>
+                <button
+                    className="btn btn-primary text-black btn-sm md:btn-md  text-lg  md:text-xl mx-1"
+                    onClick={toggleModal}>
+                    登录
+                </button>
             </>}
 
 
@@ -94,7 +98,7 @@ export function MenuButton() {
                             <Link href={'/signup'} className="btn btn-primary">前往注册</Link>
                         </div>
                     </div>
-{/*                     <form onClick={toggleModal}>
+                    {/*                     <form onClick={toggleModal}>
                         <button>close</button>
                     </form> */}
                 </div>
@@ -103,7 +107,7 @@ export function MenuButton() {
 
             {/* 菜单按钮 */}
             <div className="dropdown dropdown-bottom dropdown-end">
-                <div tabIndex={0} role="button" className="btn btn-circle btn-outline mx-1 "><CgMenuGridO className="size-8" /></div>
+                <div tabIndex={0} role="button" className="btn btn-circle btn-outline btn-sm md:btn-md  "><CgMenuGridO className=" size-6 md:size-8" /></div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border text-lg">
                     <li><Link href={`/settings`}><RiSettingsLine size={24} />应用设置</Link></li>
                     <li><a onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
