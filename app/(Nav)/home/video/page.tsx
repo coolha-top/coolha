@@ -26,6 +26,7 @@ import Menu from '@/components/lnes/PostsCard/Menu/Menu'
 import PosVideo from '@/components/lnes/PostsCard/PosVideo'
 import { useOrderBy } from '../_contexts/OrderByContext'
 import { orderOptions } from '../_contexts/OrderBylist'
+import Link from 'next/link'
 
 export default function Page() {
   const { state, dispatch } = useOrderBy(); // 使用useOrderBy获取全局状态和dispatch函数
@@ -86,15 +87,17 @@ export default function Page() {
             <div className=" flex">
               <div className="flex">
                 <Avatarimg
-                  href={mpub.by.handle.localName}
+                  href={mpub.by && mpub.by.handle ? mpub.by.handle.localName : mpub.by.id}
                   src={mpub.by}
                 />
                 <AvatarName
-                  localName={mpub.by.handle.localName}
-                  displayName={mpub.by?.metadata?.displayName} namespace={mpub.by.handle.namespace}
+                  localName={mpub.by && mpub.by.handle ? mpub.by.handle.localName : mpub.by.id}
+                  displayName={mpub.by?.metadata?.displayName} 
+                  namespace={mpub.by && mpub.by.handle ? mpub.by.handle.namespace : ''}
+                  id={mpub}
                   createdAt={mpub.createdAt} />
               </div>
-              <div className="flex-1" ></div>
+              <div className="flex-1 flex" ><Link href={`posts/${mpub.id}`} className="flex-1"></Link></div>
               <Menu pub={mpub} />
             </div>
 

@@ -31,10 +31,10 @@ export default function page() {
       });
       return (
          <div className="">
-            <div className='h-full'>
+            <div className='h-full '>
                {loading ? (<>loading...</>) : (
-                  <div className='rounded-[--rounded-box] mx-0  md:mx-4'>
-                     <div className='w-full  bg-base-100 py-2'>
+                  <div className='rounded-[--rounded-box] px-0  md:px-4'>
+                     <div className=' rounded-[--rounded-box] w-full  bg-base-100 py-2 px-0  md:px-4'>
                         {/* 用户信息 */}
                         <UsersMetadata profile={Profile} />
 
@@ -154,7 +154,7 @@ function UsersMetadata({ profile }) {
 
 
          <div className='flex flex-row gap-2'>
-            <Link href={`/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black'>查看主页</Link>
+            <Link href={`/u/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black'>查看主页</Link>
             <Link href={`/edit_profile`} className="btn btn-sm btn-primary text-black">编辑资料</Link>
          </div>
 

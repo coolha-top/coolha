@@ -14,12 +14,12 @@ export const bbtestnet = defineChain({
     symbol: "Native Token",
   },
   rpcUrls: {
-    default: { http: ["https://rpc.buildbear.io/cute-mistersinister-f90ef39f"] },
+    default: { http: ["https://rpc.buildbear.io/classical-kingpin-385d0670"] },
   },
   blockExplorers: {
     default: {
       name: "BBExplorer",
-      url: "https://explorer.buildbear.io/cute-mistersinister-f90ef39f",
+      url: "https://explorer.buildbear.io/classical-kingpin-385d0670",
     },
   }
 })
@@ -50,7 +50,7 @@ export const config = createConfig({
     [polygon.id]: http(),
     [polygonAmoy.id]: http(),
     [sepolia.id]: http(),
-    [bbtestnet.id]: http('https://rpc.buildbear.io/cute-mistersinister-f90ef39f'),
+    [bbtestnet.id]: http(),
   },
 
 

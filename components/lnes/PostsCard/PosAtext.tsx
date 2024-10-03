@@ -1,5 +1,6 @@
 'use client'
 
+import { convertLinksToHTML } from "@/utils/convertLinksToHTML";
 import Link from "next/link";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -9,8 +10,8 @@ import ReactMarkdown from "react-markdown";
 const MAX_LINES = 10;
 
 // 自定义链接渲染器
-const LinkRenderer = ({ href, children }:any) => (
-  <Link href={href} className=" text-info  hover:underline link  link-success" target='_blank'>
+const LinkRenderer = ({ href, children }: any) => (
+  <Link href={href} className=" text-[#667c0f]  hover:underline link  link-success" target='_blank'>
     {children}
   </Link>
 );
@@ -24,15 +25,11 @@ export const PosAtext = ({ content }) => {
   const displayedLines = expanded ? lines : lines.slice(0, MAX_LINES);
 
   return (
-    <div className='pt-2'>
-      <ReactMarkdown
-        className="break-words text-wrap h-auto "
-        components={{
-          a: LinkRenderer,
-        }}
-      >
-        {displayedLines.join('\n')}
-      </ReactMarkdown>
+    <div className='pt-2 break-words text-wrap h-auto '>
+
+      <p dangerouslySetInnerHTML={{ __html: expanded ? convertLinksToHTML(content).split('\n') : convertLinksToHTML(content).split('\n').slice(0, MAX_LINES) }}>
+
+      </p>
 
       {lines.length > MAX_LINES && (
         <button
@@ -48,16 +45,13 @@ export const PosAtext = ({ content }) => {
 };
 export function UsersPosAtext({ content }) {
   return (
-    <>
-      <ReactMarkdown className="break-words text-wrap h-auto"
-        components={{
-          a: LinkRenderer,
-        }}>
-        {content /* && (
-          content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, '[LINK]($1)')
-        ) */}
-      </ReactMarkdown>
-    </>
+    <div className='pt-2 break-words text-wrap h-auto' >
+      <ReactMarkdown></ReactMarkdown>
+      <p dangerouslySetInnerHTML={{ __html: convertLinksToHTML(content) }}>
+
+      </p>
+
+    </div>
   )
 }
 

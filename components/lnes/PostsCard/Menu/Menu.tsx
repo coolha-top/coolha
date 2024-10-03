@@ -1,16 +1,16 @@
 
 import { formatNumberWithUnit } from "@/utils/formatNumber"
-import { RiAlertLine, RiBookmarkFill, RiBookmarkLine, RiCheckboxMultipleBlankLine, RiEyeOffLine, RiMore2Fill, RiShareForwardBoxLine, RiSparkling2Line, RiThumbDownFill, RiThumbDownLine } from "react-icons/ri"
+import { RiAlertLine, RiBookmarkFill, RiBookmarkLine, RiCheckboxMultipleBlankLine, RiCopperCoinLine, RiEyeOffLine, RiMore2Fill, RiShareForwardBoxLine, RiSparkling2Line, RiThumbDownFill, RiThumbDownLine } from "react-icons/ri"
 import { AnyPublication, PublicationReactionType, PublicationReportReason, useBookmarkToggle, useLogin, useReactionToggle, useReportPublication } from '@lens-protocol/react-web';
 import Report from './Report'
 
 export default function Menu({ pub }) {
     return (
         <>
-            <div className="dropdown dropdown-end ">
+            <div className="dropdown dropdown-end " onClick={(e) => e.stopPropagation()}>
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle  btn-sm text-base-content/70 hover:text-base-content"><RiMore2Fill className="size-6 " /></div>
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1]  w-52 p-2 shadow border">
-
+                    <li>  <RewardToggle publication={pub}/> </li>
                     <li>  <BookmarkToggle publication={pub} /> </li>
                     <li>  <DownvoteToggle publication={pub} /></li>
                     <li> <EyeOffToggle publication={pub} /> </li>
@@ -28,6 +28,15 @@ export default function Menu({ pub }) {
     )
 }
 
+/* 收藏 */
+function RewardToggle({ publication }) {
+
+    return (
+        <button className={`flex flex-row  btn-disabled text-zinc-400`}>
+            <RiCopperCoinLine className="size-6" /><span>打赏</span>
+        </button>
+    );
+}
 
 /* 收藏 */
 function BookmarkToggle({ publication }) {
@@ -75,32 +84,32 @@ function DownvoteToggle({ publication }) {
 /* 不感兴趣 */
 function EyeOffToggle({ publication }) {
     return (
-        <button /* onClick={} disabled={} */ className={`flex flex-row text-base-content `}>
-          <RiEyeOffLine className="size-6" /><span>不感兴趣</span>
+        <button /* onClick={} disabled={} */ className={`flex flex-row  btn-disabled text-zinc-400`}>
+            <RiEyeOffLine className="size-6" /><span>不感兴趣</span>
         </button>
     );
 }
 /* 推荐兴趣 */
 function SparklingToggle({ publication }) {
     return (
-        <button /* onClick={} disabled={} */ className={`flex flex-row text-base-content `}>
-          <RiSparkling2Line className="size-6" /><span>推荐兴趣</span>
+        <button /* onClick={} disabled={} */ className={`flex flex-row  btn-disabled text-zinc-400`}>
+            <RiSparkling2Line className="size-6" /><span>推荐兴趣</span>
         </button>
     );
 }
 /* 复制文本 */
 function CheckboxMultipleBlankToggle({ publication }) {
     return (
-        <button /* onClick={} disabled={} */ className={`flex flex-row text-base-content `}>
-          <RiCheckboxMultipleBlankLine className="size-6" /><span>复制文本</span>
+        <button /* onClick={} disabled={} */ className={`flex flex-row btn-disabled text-zinc-400`}>
+            <RiCheckboxMultipleBlankLine className="size-6" /><span>复制文本</span>
         </button>
     );
 }
 /* 分享链接 */
 function ShareForwardBoxToggle({ publication }) {
     return (
-        <button /* onClick={} disabled={} */ className={`flex flex-row text-base-content `}>
-          <RiShareForwardBoxLine className="size-6" /><span>分享链接</span>
+        <button /* onClick={} disabled={} */ className={`flex flex-row btn-disabled text-zinc-400`}>
+            <RiShareForwardBoxLine className="size-6" /><span>分享链接</span>
         </button>
     );
 }

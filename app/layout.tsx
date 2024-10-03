@@ -50,7 +50,7 @@ export default function RootLayout({
         {/*  <meta property="og:url" content="Canonical link preview URL"></meta> */}
       </head>
 
-      <body className={`${inter.className} `}>
+      <body className={`${inter.className} bg-base-200`}>
         <Provider>
 
           <LensWagmiProviders initialState={initialState}>

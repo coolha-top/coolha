@@ -98,21 +98,21 @@ export default function Page() {
           <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={pub.id}>
 
             <div className=" flex ">
-              <div className="flex " >
+              <div className="flex " onClick={(e) => e.stopPropagation()}>
                 <Avatarimg
-                  href={pub.by.handle.localName}
+                  href={pub.by && pub.by.handle ? pub.by.handle.localName : pub.by.id}
                   src={pub.by}
-
                 />
                 <AvatarName
-                  localName={pub.by.handle.localName}
-                  displayName={pub.by.metadata?.displayName}
-                  namespace={pub.by.handle.namespace}
+                  localName={pub.by && pub.by.handle ? pub.by.handle.localName : pub.by.id}
+                  displayName={pub.by && pub.by.metadata ? pub.by.metadata.displayName : ''}
+                  namespace={pub.by && pub.by.handle ? pub.by.handle.namespace : ''}
+                  id={pub}
                   createdAt={pub.createdAt}
                 />
               </div>
 
-              <div className="flex-1" ></div>
+              <div className="flex-1 flex" ><Link href={`posts/${pub.id}`} className="flex-1"></Link></div>
               <Menu pub={pub} />
 
             </div>
@@ -125,7 +125,7 @@ export default function Page() {
 
               {/* 如果是引用类型的帖子，显示引用的内容 */}
               {pub.__typename === "Quote" && (
-                <div className="p-6 pl-0">
+                <div className="pl-0 pt-2">
                   <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
 
                     <div className="flex" >
@@ -134,9 +134,10 @@ export default function Page() {
                         localName={pub.quoteOn.by.handle.localName}
                         displayName={pub.quoteOn.by.metadata?.displayName}
                         namespace={pub.quoteOn.by.handle.namespace}
+                        id={pub.quoteOn}
                         createdAt={pub.quoteOn.createdAt}
                       />
-
+                      <div className="flex-1 flex" ><Link href={`/posts/${pub.quoteOn.id}`} passHref className="flex-1"></Link></div>
                     </div>
 
                     <Link href={`/posts/${pub.quoteOn.id}`} passHref>
@@ -169,7 +170,7 @@ export default function Page() {
 function Loading() {
   return (
     <>
-      <div className="flex flex-col gap-4 w-full py-4 bg-base-100">
+      <div className="flex flex-col gap-4 w-full p-4 bg-base-100">
 
         <div className="flex gap-4 items-center w-full">
           <div className="skeleton w-12 h-12 rounded-full shrink-0"></div>

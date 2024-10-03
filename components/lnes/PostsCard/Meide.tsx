@@ -6,18 +6,18 @@ import PosVideo from "./PosVideo"
 
 export default function Meide({ pub }) {
     return (
-        <>
+        <div className="pt-2">
             {pub ? (
                 <>
                     {pub.image && !pub.audio && <img
-                        className={`sm:max-w-[400px] h-auto max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
+                        className={`sm:max-w-[400px] h-auto max-w-[100%]   sm:h-auto mb-3   rounded-2xl object-cover`}
                         alt='pub.image && !pub.audio img'
                         src={pub?.image?.optimized?.uri || pub?.image?.optimized?.raw?.uri || ''} />}
 
                     {pub.audio && (
                         <>
                             <img
-                                className={`sm:max-w-[400px] h-auto max-w-[100%]   sm:h-auto mb-3  sm:rounded-none  rounded-2xl object-cover`}
+                                className={`sm:max-w-[400px] h-auto max-w-[100%]   sm:h-auto mb-3  rounded-2xl object-cover`}
                                 alt='audio img'
                                 src={
                                     pub ?
@@ -36,6 +36,6 @@ export default function Meide({ pub }) {
                     {pub.video && <PosVideo src={pub.video.optimized.uri} />}
                 </>
             ) : (``)}
-        </>
+        </div>
     )
 }

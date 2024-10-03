@@ -63,8 +63,7 @@ export default function page() {
             我们尊重他人的知识产权。如果您认为您的版权作品被以构成版权侵权的方式复制，并且可以通过我们的网站访问，请通知我们指定的版权代理，如下所示。
 
             指定版权代理：
-
-            磁带
+            hayi
             电子邮件：<a href="https://callhanet.feishu.cn/share/base/form/shrcnnepq09zTddWuJJFJVWFMBe" className=" link  link-success" target='_blank'>fqa@callha.com</a>
             为了有效，您的通知必须包括以下内容：
 

@@ -22,7 +22,7 @@ function HeaderC() {
 
 
 
-            <div className="navbar w-screen py-0 px-0 md:px-4  bg-base-100   fixed top-0 left-0 z-50">
+            <div className="navbar w-full py-0 px-0 md:px-4  bg-base-100   fixed top-0 left-0 z-50">
 
 
                 <div className="navbar-start gap-4">
@@ -123,7 +123,7 @@ function NavbarLink() {
                 <li key={link.href}>
                     <Link
                         href={link.href}
-                        className={`btn hover:bg-[var(--link-hover-background)] ${pathname && pathname.startsWith(link.startsWith) ? " text-info " : ""}`}
+                        className={`btn  ${pathname && pathname.startsWith(link.startsWith) ? " text-info " : ""}`}
                     >
                         {pathname.startsWith(link.startsWith) ? <link.iconActive className="size-8" /> : <link.iconInactive className="size-8" />}
                         <span className=" hidden md:flex text-lg">
