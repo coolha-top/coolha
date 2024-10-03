@@ -53,7 +53,7 @@ export function PUBposts({
                     createdAt={pub.createdAt}
                   />
                 </div>
-                <div className="flex-1" ></div>
+                <div className="flex-1 flex" ><Link href={`posts/${pub.id}`} className="flex-1"></Link></div>
                 <Menu pub={pub} />
               </div>
               <Link href={`/posts/${pub.id}`} passHref legacyBehavior>
@@ -83,7 +83,7 @@ export function PUBposts({
                       id={pub.quoteOn}
                       createdAt={pub.quoteOn.createdAt}
                     />
-                    <div className="flex-1" ></div>
+                    <div className="flex-1 flex" ><Link href={`posts/${pub.quoteOn.id}`} className="flex-1"></Link></div>
                   </div>
 
                   <Link href={`/posts/${pub.quoteOn.id}`} passHref>
@@ -108,7 +108,7 @@ export function PUBposts({
                   id={pub.mirrorOn}
                   createdAt={pub.mirrorOn.createdAt}
                 />
-                <div className="flex-1" ></div>
+                <div className="flex-1 flex" ><Link href={`posts/${pub.mirrorOn.id}`} className="flex-1"></Link></div>
                 <Menu pub={pub.mirrorOn} />
               </div>
 

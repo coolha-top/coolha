@@ -106,7 +106,7 @@ export function MenuButton() {
 
 
             {/* 菜单按钮 */}
-            <div className="dropdown dropdown-bottom dropdown-end">
+            <div className="dropdown dropdown-bottom dropdown-end ml-1">
                 <div tabIndex={0} role="button" className="btn btn-circle btn-outline btn-sm md:btn-md  "><CgMenuGridO className=" size-6 md:size-8" /></div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border text-lg">
                     <li><Link href={`/settings`}><RiSettingsLine size={24} />应用设置</Link></li>

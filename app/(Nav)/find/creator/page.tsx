@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation'
 import Avatar from '@/gui/flowbite/Avatar'
 import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteScroll'
 import AvatarName from '@/components/lnes/PostsCard/AvatarName'
+import BFollow from '@/components/lnes/DataUsers/hook/BFollow'
 
 
 
@@ -49,7 +50,7 @@ export default function Page() {
   /* if (profiles.length === 0) return <p>No profiles found</p>; */
   return (
     <>
-      <div className="flex mx-auto max-w-4xl justify-center">
+      <div className="flex mx-auto max-w-3xl justify-center">
 
         <div className=' flex  lg:flex-wrap flex-col w-full '>
           {profiles?.map(profile => (
@@ -57,7 +58,7 @@ export default function Page() {
               key={profile.id}
               className="p-4 mt-2 bg-base-100 hover:bg-[--link-hover-background]  cursor-pointer"
               onClick={() => router.push(`/${profile.handle.localName}`)}>
-              <div className="space-y-3">
+              <div className="space-y-3 flex">
                 <div className="overflow-hidden rounded-md flex flex-row">
                   <Avatar
                     /* className="h-auto w-auto object-cover transition-all hover:scale-105 aspect-square" */
@@ -68,6 +69,7 @@ export default function Page() {
                   <AvatarName localName={profile.handle?.localName ?? profile.id} displayName={profile.metadata.displayName} namespace={`lens`} createdAt={profile.createdAt} id={profile} />
                 </div>
                 <div className='flex-1'></div>
+                <BFollow profile={profile} />
               </div>
             </div>
           ))}

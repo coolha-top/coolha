@@ -6,7 +6,7 @@ import PosVideo from "./PosVideo"
 
 export default function Meide({ pub }) {
     return (
-        <>
+        <div className="pt-2">
             {pub ? (
                 <>
                     {pub.image && !pub.audio && <img
@@ -36,6 +36,6 @@ export default function Meide({ pub }) {
                     {pub.video && <PosVideo src={pub.video.optimized.uri} />}
                 </>
             ) : (``)}
-        </>
+        </div>
     )
 }

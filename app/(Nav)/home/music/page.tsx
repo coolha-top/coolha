@@ -24,6 +24,7 @@ import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteS
 import Menu from '@/components/lnes/PostsCard/Menu/Menu'
 import { useOrderBy } from '../_contexts/OrderByContext'
 import { orderOptions } from '../_contexts/OrderBylist'
+import Link from 'next/link'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -112,7 +113,7 @@ export default function Page() {
                   id={mpub}
                   createdAt={mpub.createdAt} />
               </div>
-              <div className="flex-1" ></div>
+              <div className="flex-1 flex" ><Link href={`posts/${mpub.id}`} className="flex-1"></Link></div>
               <Menu pub={mpub} />
             </div>
 

@@ -6,13 +6,14 @@ import { useState } from "react";
 import { RiChat3Line, RiCopperCoinLine, RiHeart3Fill, RiHeart3Line, RiLoopLeftFill, RiShoppingBagLine } from "react-icons/ri";
 
 export default function interactCard({ dataname }) {
+  const ButtonCSS = 'flex gap-0.5 justify-start items-center  rounded-full size-7 py-5 px-2 w-full sm:w-2/3 md:w-1/2 hover:bg-[var(--button-bg)]'
   const router = useRouter();
   return (
-    <div className='flex justify-items-start md:max-w-[100%] text-base-content/70 my-1'>
+    <div className='flex justify-items-start md:max-w-[100%]  text-base-content/70 mt-2 '>
 
       {/* 评论 */}
       <div className="w-1/4" >
-        <div className="flex gap-0.5 justify-start items-center  rounded-full size-7 w-3/4 md:w-1/2 px-1   hover:text-info" onClick={() => router.push(`/posts/${dataname.id}`)} >
+        <div className={`${ButtonCSS} hover:text-info`} onClick={() => router.push(`/posts/${dataname.id}`)} >
           <RiChat3Line className="size-5 md:size-7 " />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.comments)}</p>
         </div>
@@ -40,7 +41,7 @@ export default function interactCard({ dataname }) {
 function CardButton({ children, hovertext }) {
   return (
     <div className="w-1/4">
-      <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 btn-disabled text-zinc-300 ${hovertext}`}  >
+      <div className={`flex gap-0.5 justify-start items-center  rounded-full size-7 py-5 px-2 w-full sm:w-2/3 md:w-1/2 hover:bg-[var(--button-bg)] btn-disabled text-zinc-300 ${hovertext}`}  >
         {children}
       </div>
     </div>
@@ -91,8 +92,8 @@ function MirrorsToggle({ dataname }) {
 
       {isMirrored ?
         <button onClick={hideMirrorToggle} disabled={hidingMirror} className="w-1/4">
-          <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 hover:text-success text-success`}>
-          <RiLoopLeftFill className="size-5 md:size-7" />
+          <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 py-5 px-2 w-full sm:w-2/3 md:w-1/2 hover:bg-[var(--button-bg)] hover:text-success text-success`}>
+            <RiLoopLeftFill className="size-5 md:size-7" />
             <p className="text-center text-sm">
               {formatNumberWithUnit(dataname.stats.mirrors + dataname.stats.quotes)}
             </p>
@@ -100,7 +101,7 @@ function MirrorsToggle({ dataname }) {
         </button>
         :
         <button onClick={createMirrorToggle} disabled={creatingMirror} className="w-1/4">
-          <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1 hover:text-success`}>
+          <div className={`flex gap-0.5 justify-start items-center rounded-full size-7 py-5 px-2 w-full sm:w-2/3 md:w-1/2 hover:bg-[var(--button-bg)] hover:text-success`}>
             <RiLoopLeftFill className="size-5 md:size-7" />
             <p className="text-center text-sm">
               {formatNumberWithUnit(dataname.stats.mirrors + dataname.stats.quotes)}
@@ -140,7 +141,7 @@ function UpvoteToggle({ dataname }) {
     <>
 
       <button onClick={Upvotetoggle} disabled={loading} className="w-1/4">
-        <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 w-3/4 md:w-1/2 px-1  hover:text-error ${dataname.operations.hasUpvoted ? 'text-red-500' : ''}`}  >
+        <div className={` flex gap-0.5 justify-start items-center rounded-full size-7 py-5 px-2 w-full sm:w-2/3 md:w-1/2 hover:bg-[var(--button-bg)]  hover:text-error ${dataname.operations.hasUpvoted ? 'text-red-500' : ''}`}  >
 
           {dataname.operations.hasUpvoted ? (
             <RiHeart3Fill className="size-5 md:size-7" /> // 红色填充图标表示已点赞

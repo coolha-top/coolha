@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { FaDiscord, FaGithub, FaSquareXTwitter, FaTelegram, FaTiktok } from 'react-icons/fa6';
+import Image from "next/image"
+import Hayi应用流程 from '@/public//hayi/Hayi应用流程.png'
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -54,9 +56,26 @@ export default function AboutPage() {
               <h4 className="text-xl font-semibold text-gray-800 mb-2">去中心化治理</h4>
               <p className="text-gray-600">用户参与共同治理,不要因为中心组织过度控制而丧失活力</p>
             </div>
+
+            <div className="bg-gray-100 p-6 rounded-lg">
+              <h4 className="text-xl font-semibold text-gray-800 mb-2">应用架构</h4>
+              <Image
+                src={Hayi应用流程}
+                alt="Hayi应用流程.png"
+                sizes="100%"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                }} />
+            </div>
+
+
           </div>
         </div>
       </section>
+
+
+
 
       {/* Team Section (Placeholder) */}
       <section className="py-20 bg-gray-100">

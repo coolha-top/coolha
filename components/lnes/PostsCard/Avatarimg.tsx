@@ -8,7 +8,7 @@ export default function Avatarimg({ href, src }) {
     const router = useRouter()
     return (
         <Motion>
-            <Link href={`/${href}`}>
+            <Link href={`/u/${href}`}>
                 <div className="py-[4px] ">
 
 

@@ -11,18 +11,19 @@
   /* UI */
   --link-hover-background: rgba(255, 255, 255, 0.5) !important;
   --navlink-color: #545353d3 !important;
-  --navlink-active: #3f1de7,
+  --navlink-active: #3f1de7;
+  --button-bg:#00000011;
 }
 
 [data-theme='dark'] {
   --foreground-rgb: #ffffff;
   --background-start-rgb: #000000;
   --background-end-rgb: #000000;
-
+  --button-bg:#ffffff2e;
   /* UI hover */
   --link-hover-background: rgba(255, 255, 255, 0.05) !important;
   --navlink-color: #ece1e1d3 !important;
-  --navlink-active: #C0E218,
+  --navlink-active: #C0E218;
 
 }
 
@@ -38,6 +39,7 @@
 }
 body{
   overflow-y: auto;
+  
 /*   color: rgba(0, 0, 0, 0.3); */
 }
 
