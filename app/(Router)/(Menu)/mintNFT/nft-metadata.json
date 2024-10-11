@@ -1,12 +1,19 @@
 {
-    "attributes": [
-      {
-        "trait_type": "id",
-        "value": "0"
-      }
-    ],
-    "description": "HaYi Pioneer testing NFT,Commemorative closed beta version of the app",
-    "image": "ipfs://QmU43j1wy1xkTNSqo5kpq5wSxpM59AEUNPxLXQSpHXfyNb",
-    "name": "HaYi Pioneer testing NFT"
-  }
-  
+  "name": "coolha.top Pioneer Test NFT",
+  "description": "Exclusive rewards for coolha.top pioneer user testing, laying the foundation for coolha.top's future development until the product is decentralized and the community is fully governed",
+  "image": "ipfs/QmSVXYAnSmjcf3WxstTYft6E7ohQHStoPPcdtE4ScUFzCa",
+  "attributes": [
+    {
+      "trait_type": "Color Palette",
+      "value": "#C0E218"
+    },
+    {
+      "trait_type": "Style",
+      "value": "Simplicity"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Rare"
+    }
+  ]
+}

@@ -46,9 +46,7 @@ export const PosAtext = ({ content }) => {
 export function UsersPosAtext({ content }) {
   return (
     <div className='pt-2 break-words text-wrap h-auto' >
-      <ReactMarkdown></ReactMarkdown>
       <p dangerouslySetInnerHTML={{ __html: convertLinksToHTML(content) }}>
-
       </p>
 
     </div>

@@ -38,8 +38,8 @@ export default function LoginForm({ wallet, onSuccess }: { wallet: string; onSuc
   }
 
   if (profiles.length === 0) {
-    return <div className="mb-4 text-base text-gray-500">在此钱包中未找到Lens配置文件!
-      <Link href={`/signup`} className="text-primary">前往注册→</Link>
+    return <div className="mb-4 text-base text-gray-500">
+      <p>在此钱包中未找到Lens配置文件!</p>
     </div>;
   }
 

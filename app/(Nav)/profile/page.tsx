@@ -34,7 +34,7 @@ export default function page() {
             <div className='h-full '>
                {loading ? (<>loading...</>) : (
                   <div className='rounded-[--rounded-box] px-0  md:px-4'>
-                     <div className=' rounded-[--rounded-box] w-full  bg-base-100 py-2 px-0  md:px-4'>
+                     <div className=' rounded-[--rounded-box] w-full  bg-base-100 mt-4 py-2 px-0  md:px-4'>
                         {/* 用户信息 */}
                         <UsersMetadata profile={Profile} />
 
@@ -58,14 +58,14 @@ function Card() {
       { label: 'Token', href: '/wallet', icon: RiCopperCoinLine, },
       { label: 'NFT', href: '/wallet', icon: RiNftLine, },
       { label: '交易记录', href: '/wallet', icon: RiHistoryLine, },
-      { label: '会员', href: '', icon: RiVerifiedBadgeLine, }
+      { label: '会员', href: '/a', icon: RiVerifiedBadgeLine, }
    ];
 
    const userData = [
-      { label: '账户设置', icon: RiUserSettingsLine, },
-      { label: '扩展功能', icon: RiPuzzleLine, },
-      { label: '数据分析', icon: RiBarChart2Line, },
-      { label: '成就等级', icon: RiTrophyLine, }
+      { label: '账户设置', href: '/edit_profile', icon: RiUserSettingsLine, },
+      { label: '扩展功能', href: '/a', icon: RiPuzzleLine, },
+      { label: '数据分析', href: '/a', icon: RiBarChart2Line, },
+      { label: '成就等级', href: '/a', icon: RiTrophyLine, }
    ];
 
    return (
@@ -75,7 +75,7 @@ function Card() {
             <h1 className="p-4 text-xl font-bold">资产</h1>
             <div className='flex-row  grid grid-cols-4 justify-items-stretch '>
                {assetData.map((item, index) => (
-                  <Link href={`/wallet`} key={index} className=' grid justify-items-center hover:bg-[--link-hover-background]'>
+                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[ --button-bg]'>
                      <item.icon size={24} /> <p >{item.label}</p>
                   </Link>
                ))}
@@ -87,9 +87,9 @@ function Card() {
             <h1 className="p-4 text-xl font-bold">用户</h1>
             <div className='flex-row h-auto w-auto py-2 grid grid-cols-4 justify-items-stretch  '>
                {userData.map((item, index) => (
-                  <div key={index} className='grid justify-items-center hover:bg-[--link-hover-background]'>
+                  <Link href={item.href ? item.href : ''} key={index} className='grid justify-items-center hover:bg-[ --button-bg]'>
                      <item.icon size={24} /> <p>{item.label}</p>
-                  </div>
+                  </Link>
                ))}
             </div>
          </div>
@@ -108,7 +108,7 @@ function UsersMetadata({ profile }) {
       truncateEthAddress(`${ethAddress}`);
 
    return (
-      <div className="flex flex-row items-center  px-6 pt-1">
+      <div className="flex flex-row items-center  px-6">
 
          <div className="w-16 h-16 md:w-24 md:h-24 ">
             {profile?.metadata?.picture ? (

@@ -11,7 +11,7 @@ export const weiToEth = (weiAmount: bigint | number | string): string => {
 export const weiToDawei = (weiAmount: bigint | number | string): string => {
     const wei = typeof weiAmount === 'bigint' ? weiAmount : BigInt(weiAmount);
     const eth = Number(wei) / 10**18;
-    return eth.toFixed(0); // Adjust the number of decimal places as needed
+    return eth.toFixed(4); // Adjust the number of decimal places as needed
 };
 // Example usage:
 // const priceInWei = BigInt('180000000000000');

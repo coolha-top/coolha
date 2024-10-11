@@ -1,12 +1,12 @@
 
 import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
-import { polygon, sepolia, polygonAmoy } from 'wagmi/chains'
+import { polygon, polygonAmoy } from 'wagmi/chains'
 import { walletConnect, injected, metaMask, safe, coinbaseWallet, } from 'wagmi/connectors'
 import { defineChain, type Chain } from 'viem'
 
 
 export const bbtestnet = defineChain({
-  id: 18200,
+  id: 20651,
   name: "bbtestnet",
   nativeCurrency: {
     decimals: 18,
@@ -14,6 +14,7 @@ export const bbtestnet = defineChain({
     symbol: "Native Token",
   },
   rpcUrls: {
+    public: { http: ["https://rpc.buildbear.io/classical-kingpin-385d0670"] },
     default: { http: ["https://rpc.buildbear.io/classical-kingpin-385d0670"] },
   },
   blockExplorers: {
@@ -29,14 +30,14 @@ export const bbtestnet = defineChain({
 if (!projectId) throw new Error('Project ID is not defined') */
 
 export const metadata = {
-  name: 'HaYi',
-  description: 'HaYi Web Dapp',
-  url: 'https://coinipfs.com',
+  name: 'CoolHa.Top',
+  description: 'CoolHa.Top Web Dapp',
+  url: 'https://coolha.top',
   icons: ['/favicon.ico']
 }
 const MetaMaskOptions = {
   dappMetadata: {
-    name: "HaYi Dapp",
+    name: "CoolHa.Top Dapp",
   },
   infuraAPIKey: process.env.INFURA_API_KEY,
   extensionOnly: true
@@ -45,11 +46,10 @@ const MetaMaskOptions = {
 
 
 export const config = createConfig({
-  chains: [polygon, polygonAmoy, sepolia,bbtestnet],
+  chains: [polygon, polygonAmoy,bbtestnet],
   transports: {
     [polygon.id]: http(),
     [polygonAmoy.id]: http(),
-    [sepolia.id]: http(),
     [bbtestnet.id]: http(),
   },
 

@@ -13,6 +13,11 @@ const queryClient = new QueryClient()
 const lensConfig: LensConfig = {
   environment: production,
   bindings: bindings(config),
+/*   params: {
+    profile: {
+      metadataSource: 'coolha'
+    }
+  } */
 };
 
 

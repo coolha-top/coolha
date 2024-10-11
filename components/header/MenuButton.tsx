@@ -94,8 +94,9 @@ export function MenuButton() {
                         </figure>
                         <div className="card-body border-opacity-50">
                             <WelcomeToLens />
-                            <div className="divider">没有Lens账户?</div>
-                            <Link href={'/signup'} className="btn btn-primary">前往注册</Link>
+                            <div className="divider">没有Lens账户?
+                                <Link href={'/signup'} className="link link-hover link-info">前往注册</Link>
+                            </div>
                         </div>
                     </div>
                     {/*                     <form onClick={toggleModal}>

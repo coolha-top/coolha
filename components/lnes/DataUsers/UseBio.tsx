@@ -7,11 +7,11 @@ export default function UseBio({ profile }) {
   const bioText = profile?.metadata?.bio || '';
   const formattedBio = convertLinksToHTML(bioText);
 
-  let website = null;
-  let x = null;
-  let youtube = null;
-  let spotify = null;
-  let location = null;
+  let website: string | null = null;
+  let x: string | null = null;
+  let youtube: string | null = null;
+  let spotify: string | null = null;
+  let location: string | null = null;
   if (profile?.metadata?.attributes) {
     for (const attribute of profile.metadata.attributes) {
       if (attribute.key === 'website') {
