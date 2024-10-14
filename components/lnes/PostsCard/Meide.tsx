@@ -33,7 +33,7 @@ export default function Meide({ pub }) {
                         </>
                     )}
 
-                    {pub.video && <PosVideo src={pub.video.optimized.uri} />}
+                    {pub.video && <PosVideo src={pub.video?.optimized?.uri} />}
                 </>
             ) : (``)}
         </div>

@@ -1,6 +1,6 @@
 
 export default function page() {
   return (
-    <div>账户资料</div>
+    <div>Export</div>
   )
 }

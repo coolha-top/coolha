@@ -1,6 +1,6 @@
 {
-  "name": "hayi",
-  "version": "0.1.0",
+  "name": "coolha.top",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lens-protocol/metadata": "^1.2.0",
     "@lens-protocol/react-web": "^2.2.0",
     "@lens-protocol/wagmi": "^4.1.2",
     "@tailwindcss/typography": "^0.5.15",
@@ -27,7 +28,8 @@
     "remark-gfm": "^4.0.0",
     "sharp": "^0.33.5",
     "viem": "^2.21.15",
-    "wagmi": "^2.12.16"
+    "wagmi": "^2.12.16",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^22.7.4",

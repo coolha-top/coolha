@@ -15,10 +15,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: {
-    template: '%s | HaYi',
-    default: 'HaYi',
+    template: '%s | coolha.top',
+    default: 'coolha.top',
   },
-  description: "HaYi,为Lens协议中文用户构建",
+  description: "coolha.top,为Lens协议中文用户构建",
   icons: {
     icon: '/favicon.ico',
     shortcut: '/shortcut-icon.png',
@@ -38,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="zh">
       <head>
+      <meta charSet="utf-8"/>
         {/*         <meta property="twitter:image" content="/logo.png" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content="VimCoed:Lens Protocol Web3 Content social 内容社交" />

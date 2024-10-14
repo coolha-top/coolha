@@ -94,8 +94,9 @@ export function MenuButton() {
                         </figure>
                         <div className="card-body border-opacity-50">
                             <WelcomeToLens />
-                            <div className="divider">没有Lens账户?</div>
-                            <Link href={'/signup'} className="btn btn-primary">前往注册</Link>
+                            <div className="divider">没有Lens账户?
+                                <Link href={'/signup'} className="link link-hover link-info">前往注册</Link>
+                            </div>
                         </div>
                     </div>
                     {/*                     <form onClick={toggleModal}>
@@ -116,7 +117,7 @@ export function MenuButton() {
                             : (<RiMoonClearLine size={24} />)}
                         <span>切换主题</span></a>
                     </li>
-                    <li><Link href={`/settings/locales`}><RiTranslate size={24} />界面语言</Link></li>
+                   {/*  <li><Link href={`/settings`}><RiTranslate size={24} />界面语言</Link></li> */}
                     <li className="my-1"></li>
                     <li><Link href={`/mintNFT`}> <RiGiftLine size={24} />测试奖励</Link></li>
                     <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>

@@ -2,6 +2,7 @@ import React from 'react';
 import FollowButton from './Follow';
 import UnFollowButton from './UnFollow';
 import { SessionType, useSession } from '@lens-protocol/react-web';
+import Link from 'next/link';
 export default function BFollow({ profile }) {
 
   // 使用 profile.operations.canFollow 和 profile.operations.canUnfollow 来决定按钮显示
@@ -23,7 +24,7 @@ export default function BFollow({ profile }) {
 
       {UsersID
         ? (
-          <button className="btn btn-sm btn-primary text-black">编辑资料</button>
+          <Link href={`/settings/edit_profile`} className="btn btn-sm btn-primary text-black">编辑资料</Link>
         )
         :
         (<>

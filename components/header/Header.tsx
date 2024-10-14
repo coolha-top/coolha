@@ -39,7 +39,7 @@ function HeaderC() {
                         </motion.div>
                     </Link>
 
-                    <label className="input w-44 lg:w-56 input-bordered flex items-center ">
+                    <label className="input w-24 lg:w-56 input-bordered flex ">
                         <input type="text" className="grow" placeholder="搜索" />
                         <RiSearchLine className=" w-8 h-8" />
                     </label>
