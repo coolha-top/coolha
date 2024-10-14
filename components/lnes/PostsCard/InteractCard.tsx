@@ -41,7 +41,7 @@ export default function interactCard({ dataname }) {
 function CardButton({ children, hovertext }) {
   return (
     <div className="w-1/4">
-      <div className={`flex gap-0.5 justify-start items-center  rounded-full size-7 py-5 px-2 w-full sm:w-2/3 md:w-1/2 hover:bg-[var(--button-bg)] btn-disabled text-zinc-300 ${hovertext}`}  >
+      <div className={`flex gap-0.5 justify-start items-center  rounded-full size-7 py-5 px-2 w-full sm:w-2/3 md:w-1/2 hover:bg-[var(--button-bg)] btn-disabled text-zinc-400 ${hovertext}`}  >
         {children}
       </div>
     </div>

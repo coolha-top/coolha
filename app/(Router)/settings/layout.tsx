@@ -5,8 +5,13 @@ import { RiArrowDropLeftLine, RiCursorLine, RiDatabase2Line, RiEditLine, RiHandC
 
 const LinkEditProfile = [
     {
-        logo: <RiEditLine />,
+        logo: <RiSoundModuleLine />,
         href: '',
+        title: '应用设置'
+    },
+    {
+        logo: <RiEditLine />,
+        href: '/edit_profile',
         title: '编辑资料'
     },
     {
@@ -20,9 +25,9 @@ const LinkEditProfile = [
         title: '账户关联'
     },
     {
-        logo: <RiSoundModuleLine />,
-        href: '/preferences',
-        title: '应用偏好'
+        logo: <RiLock2Line />,
+        href: '/manager',
+        title: '管理权限'
     },
     {
         logo: <RiSparkling2Line />,
@@ -30,14 +35,14 @@ const LinkEditProfile = [
         title: '推荐兴趣'
     },
     {
-        logo: <RiLock2Line />,
-        href: '/manager',
-        title: '管理权限'
-    },
-    {
         logo: <RiHandCoinLine />,
         href: '/allowance',
         title: '津贴打赏'
+    },
+    {
+        logo: <RiUserForbidLine />,
+        href: '/blocked',
+        title: '屏蔽用户'
     },
     {
         logo: <RiTimeLine />,
@@ -50,11 +55,6 @@ const LinkEditProfile = [
         title: '操作记录'
     },
     {
-        logo: <RiUserForbidLine />,
-        href: '/blocked',
-        title: '屏蔽用户'
-    },
-    {
         logo: <RiDatabase2Line />,
         href: '/export',
         title: '导出数据'
@@ -63,7 +63,7 @@ const LinkEditProfile = [
         logo: <RiShieldKeyholeLine />,
         href: '/danger',
         title: '安全中心'
-    },
+    }
 ]
 export default function Layout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -76,15 +76,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <nav className="space-y-2 p-1">
                     {LinkEditProfile.map((litm) => (
                         <Link
-                            href={`/edit_profile${litm.href}`}
+                            href={`/settings${litm.href}`}
                             className={` p-2 pl-6 rounded-full hover:bg-[var(--button-bg)] flex flex-row items-center gap-2
-                            ${pathname === `/edit_profile${litm.href}` ? 'bg-[var(--button-bg)] ' : ''}`}
+                            ${pathname === `/settings${litm.href}` ? 'bg-[var(--button-bg)] ' : ''}`}
                         >
                             <span className="text-xl">{litm.logo}</span>
                             <span className="">{litm.title}</span>
-                            {/* {pathname === `/edit_profile${litm.href}` ? <RiArrowDropLeftLine size={24} /> : ''} */}
+                            {/* {pathname === `/settings${litm.href}` ? <RiArrowDropLeftLine size={24} /> : ''} */}
                         </Link>
                     ))}
+                    <div className={`text-error p-2 pl-6 rounded-full hover:bg-[var(--button-bg)] flex flex-row items-center gap-2`}>开发中！</div>
                 </nav>
             </aside>
 
@@ -93,13 +94,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <nav className="space-y-2 p-1">
                     {LinkEditProfile.map((litm) => (
                         <Link
-                            href={`/edit_profile${litm.href}`}
+                            href={`/settings${litm.href}`}
                             className={` p-1 pl-3 rounded-full hover:bg-[var(--button-bg)] flex flex-row items-center gap-2
-                            ${pathname === `/edit_profile${litm.href}` ? 'bg-[var(--button-bg)] ' : ''}`}
+                            ${pathname === `/settings${litm.href}` ? 'bg-[var(--button-bg)] ' : ''}`}
                         >
                             <span className="">{litm.logo}</span>
                             <span className="">{litm.title}</span>
-                            {/* {pathname === `/edit_profile${litm.href}` ? <RiArrowDropLeftLine size={24} /> : ''} */}
+                            {/* {pathname === `/settings${litm.href}` ? <RiArrowDropLeftLine size={24} /> : ''} */}
                         </Link>
                     ))}
                 </nav>

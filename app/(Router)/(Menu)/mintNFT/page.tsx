@@ -77,6 +77,7 @@ export default function MintNFT() {
                     <img src={`https://gateway.pinata.cloud/ipfs/QmSVXYAnSmjcf3WxstTYft6E7ohQHStoPPcdtE4ScUFzCa`} alt="NFT" />
                 </figure>
                 <div>图片: {tokenURI && <img src={`https://gateway.pinata.cloud/${tokenURI}`} alt={tokenURI} />}{tokenURI}</div>
+                <div className='text-error'>当前暂未部署，仅测试网</div>
                 <div className="card-body border-t">
                     <div>名称: {name}</div>
                     <div>符号: {symbol}</div>

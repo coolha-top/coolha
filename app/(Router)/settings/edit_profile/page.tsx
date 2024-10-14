@@ -104,7 +104,7 @@ export default function page() {
       <form className="min-w-svh p-1 w-full" onSubmit={updateProfileMetadata}>
 
         <div className="w-full ">
-          <button type="submit" disabled={loading} className="btn btn-primary">
+          <button type="submit" disabled={loading} className="btn btn-primary btn-sm">
             {loading ? '更新中...' : '更新'}
           </button>
         </div>

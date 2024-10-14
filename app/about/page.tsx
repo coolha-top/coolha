@@ -14,14 +14,8 @@ export default function AboutPage() {
               <li><Link href="https://x.com" className="text-gray-800 hover:text-gray-600" target='_blank'>
                 <FaSquareXTwitter className="w-8 h-8" />
               </Link></li>
-              <li><Link href="https://discord.com" className="text-gray-800 hover:text-gray-600" target='_blank'>
-                <FaDiscord className="w-8 h-8" />
-              </Link></li>
               <li><Link href="https://telegram.org" className="text-gray-800 hover:text-gray-600" target='_blank'>
                 <FaTelegram className="w-8 h-8" />
-              </Link></li>
-              <li><Link href="https://github.com" className="text-gray-800 hover:text-gray-600" target='_blank'>
-                <FaGithub className="w-8 h-8" />
               </Link></li>
             </ul>
           </nav>

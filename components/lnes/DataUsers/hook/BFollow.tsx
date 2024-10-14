@@ -24,7 +24,7 @@ export default function BFollow({ profile }) {
 
       {UsersID
         ? (
-          <Link href={`/edit_profile`} className="btn btn-sm btn-primary text-black">编辑资料</Link>
+          <Link href={`/settings/edit_profile`} className="btn btn-sm btn-primary text-black">编辑资料</Link>
         )
         :
         (<>
