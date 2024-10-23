@@ -15,8 +15,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: {
-    template: '%s | coolha.top',
-    default: 'coolha.top',
+    template: '%s | Coolha',
+    default: 'Coolha',
   },
   description: "coolha.top,为Lens协议中文用户构建",
   icons: {

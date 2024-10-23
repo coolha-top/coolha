@@ -5,7 +5,6 @@ import AvatarName from "../../PostsCard/AvatarName"
 import ReactMarkdown from "react-markdown"
 import InteractCard from "../../PostsCard/InteractCard"
 import Avatar from "@/gui/flowbite/Avatar"
-import router from "next/router"
 import Link from "next/link"
 import PosImage from "../../PostsCard/PosImage"
 import { useInfiniteScroll } from "@/components/lnes/DataUsers/hook/useInfiniteScroll"
@@ -32,6 +31,7 @@ export function PUBposts({
       {publications?.map((pub: any, index: number) => (
         <div key={index} className=" bg-base-100 hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 pb-6">
 
+          {/* 转发的帖子 */}
           {pub.__typename === "Mirror" ? (
             <>
               <div className="mb-3 flex flex-row gap-0.5 text-base-content/70">
@@ -53,47 +53,42 @@ export function PUBposts({
                     createdAt={pub.createdAt}
                   />
                 </div>
-                <div className="flex-1 flex" ><Link href={`posts/${pub.id}`} className="flex-1"></Link></div>
+                <div className="flex-1 flex" ><Link href={`/posts/${pub.id}`} className="flex-1"></Link></div>
                 <Menu pub={pub} />
               </div>
               <Link href={`/posts/${pub.id}`} passHref legacyBehavior>
-                <div>
-
                   <UsersPosAtext content={pub.metadata.content} />
                   <Meide pub={pub.metadata.asset} />
-
-                </div>
               </Link>
+              {/* 如果是引用类型的帖子，显示引用的内容 */}
+              {pub.__typename === "Quote" && (
+                <div className="p-6 pl-0">
+                  <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+
+                    <div className="flex" >
+                      <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />
+                      <AvatarName
+                        localName={pub.quoteOn.by.handle.localName}
+                        displayName={pub.quoteOn.by.metadata?.displayName}
+                        namespace={pub.quoteOn.by.handle.namespace}
+                        id={pub.quoteOn}
+                        createdAt={pub.quoteOn.createdAt}
+                      />
+                      <div className="flex-1 flex" ><Link href={`/posts/${pub.quoteOn.id}`} className="flex-1"></Link></div>
+                    </div>
+
+                    <Link href={`/posts/${pub.quoteOn.id}`} passHref>
+                      <UsersPosAtext content={pub.quoteOn.metadata.content} />
+                      <Meide pub={pub.quoteOn.metadata.asset} />
+                    </Link>
+                  </div>
+                </div>
+              )}
             </>
 
           )}
 
-          {/* 如果是引用类型的帖子，显示引用的内容 */}
-          {
-            pub.__typename === "Quote" && (
-              <div className="p-6 pl-0">
-                <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
 
-                  <div className="flex" >
-                    <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />
-                    <AvatarName
-                      localName={pub.quoteOn.by.handle.localName}
-                      displayName={pub.quoteOn.by.metadata?.displayName}
-                      namespace={pub.quoteOn.by.handle.namespace}
-                      id={pub.quoteOn}
-                      createdAt={pub.quoteOn.createdAt}
-                    />
-                    <div className="flex-1 flex" ><Link href={`posts/${pub.quoteOn.id}`} className="flex-1"></Link></div>
-                  </div>
-
-                  <Link href={`/posts/${pub.quoteOn.id}`} passHref>
-                    <UsersPosAtext content={pub.quoteOn.metadata.content} />
-                    <Meide pub={pub.quoteOn.metadata.asset} />
-                  </Link>
-                </div>
-              </div>
-            )
-          }
 
           {/*Mirror  */}
           {pub.__typename === "Mirror" && (
@@ -108,7 +103,7 @@ export function PUBposts({
                   id={pub.mirrorOn}
                   createdAt={pub.mirrorOn.createdAt}
                 />
-                <div className="flex-1 flex" ><Link href={`posts/${pub.mirrorOn.id}`} className="flex-1"></Link></div>
+                <div className="flex-1 flex" ><Link href={`/posts/${pub.mirrorOn.id}`} className="flex-1"></Link></div>
                 <Menu pub={pub.mirrorOn} />
               </div>
 
@@ -116,9 +111,32 @@ export function PUBposts({
                 <UsersPosAtext content={pub.mirrorOn.metadata.content} />
                 <Meide pub={pub.mirrorOn.metadata.asset} />
               </Link>
+              {/* 如果是引用类型的帖子，显示引用的内容 */}
+              {pub.__typename === "Quote" && (
+                <div className="p-6 pl-0">
+                  <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+
+                    <div className="flex" >
+                      <Avatarimg src={pub.mirrorOn.by.quoteOn.by} href={pub.by.handle.localName} />
+                      <AvatarName
+                        localName={pub.quoteOn.by.handle.localName}
+                        displayName={pub.quoteOn.by.metadata?.displayName}
+                        namespace={pub.quoteOn.by.handle.namespace}
+                        id={pub.quoteOn}
+                        createdAt={pub.quoteOn.createdAt}
+                      />
+                      <div className="flex-1 flex" ><Link href={`/posts/${pub.quoteOn.id}`} className="flex-1"></Link></div>
+                    </div>
+
+                    <Link href={`/posts/${pub.quoteOn.id}`} passHref>
+                      <UsersPosAtext content={pub.quoteOn.metadata.content} />
+                      <Meide pub={pub.quoteOn.metadata.asset} />
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
-          )
-          }
+          )}
 
 
           {pub.__typename === "Mirror" ? (<><InteractCard dataname={pub.mirrorOn} /></>

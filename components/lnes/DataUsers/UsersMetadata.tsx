@@ -4,7 +4,7 @@ import UseFollow from "@/components/lnes/DataUsers/hook/BFollow";
 import { truncateEthAddress } from "@/utils/truncateEthAddress"
 import { SessionType, useFollow, useProfile, useSession } from "@lens-protocol/react-web";
 import Link from "next/link"
-import { RiCheckboxCircleFill } from "react-icons/ri";
+import { RiCheckboxCircleFill, RiVerifiedBadgeFill } from "react-icons/ri";
 import Follow from "./hook/Follow";
 import BFollow from "@/components/lnes/DataUsers/hook/BFollow";
 
@@ -26,7 +26,7 @@ export default function UsersMetadata({ profile }) {
         truncateEthAddress(`${ethAddress}`);
 
     return (
-        <div className="flex flex-row items-center  px-4 bg-base-100">
+        <div className="flex flex-row items-center pt-2  px-4 bg-base-100">
 
             <div className="w-16 h-16 md:w-24 md:h-24 ">
                 {profile?.metadata?.picture ? (
@@ -57,7 +57,7 @@ export default function UsersMetadata({ profile }) {
 
 
             <div className="ml-2 lg:ml-4">
-                <b className="md:text-xl flex flex-row items-center  font-bold">{profile?.metadata?.displayName}<RiCheckboxCircleFill className="ml-1 size-5 text-primary bg-black rounded-full" /></b>
+                <b className="md:text-xl flex flex-row items-center  font-bold">{profile?.metadata?.displayName}<RiVerifiedBadgeFill className="ml-1 size-5 text-primary  rounded-full" /></b>
                 <p className="text-[#878787] text-sm"> {profile?.handle?.namespace}/{profile?.handle?.localName} {profile?.id}  </p>
 
 

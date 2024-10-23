@@ -8,13 +8,13 @@ export default function AboutPage() {
       {/* Header */}
       <header className="bg-[#C0E218] shadow-md">
         <div className=" mx-auto px-4 py-4 flex justify-between items-center">
-          <img src="/favicon.ico" alt="favicon" className="w-16 font-bold text-gray-800" />
+          <img src="/favicon.ico" alt="favicon" className="w-16 rounded-full font-bold text-gray-800" />
           <nav>
             <ul className="flex space-x-4">
-              <li><Link href="https://x.com" className="text-gray-800 hover:text-gray-600" target='_blank'>
+              <li><Link href="https://x.com/coolha_top" className="text-gray-800 hover:text-gray-600" target='_blank'>
                 <FaSquareXTwitter className="w-8 h-8" />
               </Link></li>
-              <li><Link href="https://telegram.org" className="text-gray-800 hover:text-gray-600" target='_blank'>
+              <li><Link href="https://t.me/coolha_top" className="text-gray-800 hover:text-gray-600" target='_blank'>
                 <FaTelegram className="w-8 h-8" />
               </Link></li>
             </ul>
@@ -26,13 +26,31 @@ export default function AboutPage() {
       <section className="bg-[#C0E218] py-20">
         <div className=" mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">欢迎来到 coolha.top</h2>
-          <p className="text-xl text-gray-700 mb-8">在 Web3 时代赋能去中心化连接</p>
+          <p className="text-xl text-gray-700 mb-4">Coolha 是一款基于 Lens Protocol 构建的去中心化社交应用，连接创作者和用户</p>
+          <p className="text-xl text-gray-700 mb-8">数据权回归用户，在 Web3 时代赋能去中心化连接</p>
           <Link href="/" className="inline-flex items-center bg-gray-800 text-white  text-2xl px-8 py-4 rounded-full hover:bg-gray-700 transition duration-300">
             开始使用 →
           </Link>
         </div>
       </section>
 
+{/*       <div className=" justify-center  p-12">
+        <div className="mockup-browser bg-base-300 border h-auto">
+          <div className="mockup-browser-toolbar">
+            <div className="input">https://coolha.top</div>
+          </div>
+          <div className="bg-base-200 flex w-full h-auto"><img src="/web.png" alt="web.png" /></div>
+          
+        </div>
+
+        <div className="mockup-phone ">
+          <div className="camera"></div>
+          <div className="display">
+            <div className="artboard artboard-demo phone-1 h-auto"><img src="/app.png" alt="app.png" /></div>
+
+          </div>
+        </div>
+      </div> */}
 
       {/* Features Section */}
       <section className="py-20">

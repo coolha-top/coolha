@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 import {
@@ -35,12 +35,11 @@ import { orderOptions } from './_contexts/OrderBylist';
 
 
 export default function Page() {
+  const pathname = usePathname();
+
   const { state, dispatch } = useOrderBy(); // 使用useOrderBy获取全局状态和dispatch函数
   const { orderBy } = state;
 
-  const handleOrderByChange = (type: ExplorePublicationsOrderByType) => {
-    dispatch({ type: 'SET_ORDER_BY', payload: type });
-  };
 
   let { data: publications, loading: loadingPubs, hasMore, observeRef } = useInfiniteScroll(useExplorePublications({
     limit: LimitType.Ten,
@@ -67,18 +66,7 @@ export default function Page() {
     <>
 
       {/* 算法 */}
-      <div className="  flex flex-row  z-20 h-12 items-center bg-base-100 overflow-x-auto">
-        {orderOptions.map((option) => (
-          <div className='m-1' key={option.key}>
-            <button
-              className={`px-1 md:btn md:btn-sm ${orderBy === option.key ? 'text-info md:btn-primary' : ''}`}
-              onClick={() => handleOrderByChange(option.key)}
-            >
-              {option.title}
-            </button>
-          </div>
-        ))}
-      </div>
+
 
 
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
@@ -93,10 +81,10 @@ export default function Page() {
           )
         }
 
-
         {publications?.map((pub: any) => (
           <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={pub.id}>
 
+            {/* 帖子主内容 */}
             <div className=" flex ">
               <div className="flex " onClick={(e) => e.stopPropagation()}>
                 <Avatarimg
@@ -117,7 +105,7 @@ export default function Page() {
 
             </div>
 
-            <div className=' '>
+            <div >
               <Link href={`posts/${pub.id}`} >
                 <PosAtext content={pub.metadata.content} />
                 <Meide pub={pub.metadata.asset} />

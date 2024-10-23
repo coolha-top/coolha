@@ -51,7 +51,7 @@ const LinkEditProfile = [
     },
     {
         logo: <RiCursorLine />,
-        href: '/action',
+        href: '/actions',
         title: '操作记录'
     },
     {
@@ -79,6 +79,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             href={`/settings${litm.href}`}
                             className={` p-2 pl-6 rounded-full hover:bg-[var(--button-bg)] flex flex-row items-center gap-2
                             ${pathname === `/settings${litm.href}` ? 'bg-[var(--button-bg)] ' : ''}`}
+                            replace
                         >
                             <span className="text-xl">{litm.logo}</span>
                             <span className="">{litm.title}</span>

@@ -1,6 +1,6 @@
 {
-  "name": "coolha.top",
-  "version": "0.2.0",
+  "name": "coolha",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "dev": "next dev",

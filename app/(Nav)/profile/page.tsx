@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { SessionType, useProfile, useSession } from "@lens-protocol/react-web";
 import { truncateEthAddress } from '@/utils/truncateEthAddress';
-import { RiBarChart2Line, RiCopperCoinLine, RiHistoryLine, RiNftLine, RiPuzzleLine, RiTrophyLine, RiUserSettingsLine, RiVerifiedBadgeLine, RiCheckboxCircleFill } from "react-icons/ri";
+import { RiBarChart2Line, RiCopperCoinLine, RiHistoryLine, RiNftLine, RiPuzzleLine, RiTrophyLine, RiUserSettingsLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill } from "react-icons/ri";
 import { formatNumberWithUnit } from '@/utils/formatNumber';
 import { formatDate } from '@/utils/formatDate';
 import { convertLinksToHTML } from "@/utils/convertLinksToHTML";
@@ -26,24 +26,22 @@ export default function page() {
    }
    if (data && data.type === SessionType.WithProfile) {
       const ProfileWithProfile = data.profile.handle?.fullHandle ?? data.profile.id;
-      let { data: Profile, loading } = useProfile({
+      let { data: Profile } = useProfile({
          forHandle: ProfileWithProfile
       });
       return (
          <div className="">
             <div className='h-full '>
-               {loading ? (<>loading...</>) : (
-                  <div className='rounded-[--rounded-box] px-0  md:px-4'>
-                     <div className=' rounded-[--rounded-box] w-full  bg-base-100 mt-4 py-2 px-0  md:px-4'>
-                        {/* 用户信息 */}
-                        <UsersMetadata profile={Profile} />
+               <div className='rounded-[--rounded-box] px-2  md:px-4'>
+                  <div className=' rounded-[--rounded-box]   bg-base-100 mt-4 py-2 px-1'>
+                     {/* 用户信息 */}
+                     <UsersMetadata profile={Profile} />
 
-                        {/* 用户数据 */}
-                        <UsersStats profile={Profile} name={data.profile.handle?.localName} />
-                        <UseBio profile={Profile} />
-                     </div>
+                     {/* 用户数据 */}
+                     {/*                         <UsersStats profile={Profile} name={data.profile.handle?.localName} />
+                        <UseBio profile={Profile} /> */}
                   </div>
-               )}
+               </div>
 
                <Card />
 
@@ -64,57 +62,60 @@ function UsersMetadata({ profile }) {
       truncateEthAddress(`${ethAddress}`);
 
    return (
-      <div className="flex flex-row items-center  px-6">
+      <div className="flex flex-row items-center ">
 
-<div className="w-16 h-16 md:w-24 md:h-24 ">
-                {profile?.metadata?.picture ? (
-                    <>
-                        {profile.metadata.picture.optimized?.uri && (
-                            <img
-                                className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
-                                src={profile.metadata.picture.optimized.uri}
-                                alt="picture Set"
-                            />
-                        )}
-                        {profile.metadata.picture.__typename === 'ProfilePicture_NftImage_' && (
-                            <img
-                                className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
-                                src={profile.metadata.picture.uri}
-                                alt="picture NFT"
-                            />
-                        )}
-                    </>
-                ) : (
-                    <img
+         <div className="w-16 h-16 md:w-24 md:h-24 ml-2 lg:ml-4">
+            {profile?.metadata?.picture ? (
+               <>
+                  {profile.metadata.picture.optimized?.uri && (
+                     <img
                         className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
-                        src="/rlogo.png" // 使用默认的占位符图片
-                        alt="optimized on"
-                    />
-                )}
-            </div>
+                        src={profile.metadata.picture.optimized.uri}
+                        alt="picture Set"
+                     />
+                  )}
+                  {profile.metadata.picture.__typename === 'ProfilePicture_NftImage_' && (
+                     <img
+                        className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
+                        src={profile.metadata.picture.uri}
+                        alt="picture NFT"
+                     />
+                  )}
+               </>
+            ) : (
+               <img
+                  className="rounded-full border border-base-content w-16 h-16 md:w-24 md:h-24 "
+                  src="/rlogo.png" // 使用默认的占位符图片
+                  alt="optimized on"
+               />
+            )}
+         </div>
 
 
-            <div className="ml-2 lg:ml-4">
-                <b className="md:text-xl flex flex-row items-center  font-bold">{profile?.metadata?.displayName}<RiCheckboxCircleFill className="ml-1 size-5 text-primary bg-black rounded-full" /></b>
-                <p className="text-[#878787] text-sm"> {profile?.handle?.namespace}/{profile?.handle?.localName} {profile?.id}  </p>
+         <div className="ml-2 lg:ml-4">
+            <b className="md:text-xl flex flex-row items-center  font-bold">
+               {profile?.metadata?.displayName}
+               <RiVerifiedBadgeFill className=" size-4 ml-1 text-primary rounded-full" />
+            </b>
+            <p className="text-[#878787] text-sm"> {profile?.handle?.namespace}/{profile?.handle?.localName} {profile?.id}  </p>
 
 
 
-                <p className="text-[#878787]  text-sm font-bold hover:text-primary w-full">
-                    <Link href={`https://www.oklink.com/zh-hans/multi-search#key=${ensName ? ensName : ethAddress}`} target='_blank'>
-                        <span className="flex-1 inline-flex items-center hover:text-primary  w-full">{ethAddressText}</span>
-                    </Link>
-                </p>
-                {/* <p className="badge badge-outline text-gray-500"> <span className="font-bold w-full">{profile?.createdAt ? formatDate(profile?.createdAt) : ''}</span> </p> */}
-                {/*  <p className="text-gray-500"><span className="font-bold">{truncateEthAddress(`${profile?.ownedBy?.address}`)}</span>   </p> */}
-            </div>
-            <div className="flex-1 lg:ml-2"></div>
+            <p className="text-[#878787]  text-sm font-bold hover:text-primary w-full">
+               <Link href={`https://www.oklink.com/zh-hans/multi-search#key=${ensName ? ensName : ethAddress}`} target='_blank'>
+                  <span className="flex-1 inline-flex items-center hover:text-primary  w-full">{ethAddressText}</span>
+               </Link>
+            </p>
+            {/* <p className="badge badge-outline text-gray-500"> <span className="font-bold w-full">{profile?.createdAt ? formatDate(profile?.createdAt) : ''}</span> </p> */}
+            {/*  <p className="text-gray-500"><span className="font-bold">{truncateEthAddress(`${profile?.ownedBy?.address}`)}</span>   </p> */}
+         </div>
+         <div className="flex-1 lg:ml-2"></div>
 
 
 
-         <div className='flex flex-row gap-2'>
-            <Link href={`/u/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black'>查看主页</Link>
-            <Link href={`/edit_profile`} className="btn btn-sm btn-primary text-black">编辑资料</Link>
+         <div className='flex flex-col  md:flex-row gap-2 mr-2 lg:mr-4'>
+            <Link href={`/u/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black text-sm md:text-md'>查看主页</Link>
+            <Link href={`/edit_profile`} className="btn btn-sm btn-primary text-black text-sm md:text-md">编辑资料</Link>
          </div>
 
       </div>

@@ -14,7 +14,7 @@ import Meide from "../../PostsCard/Meide";
 import Menu from "../../PostsCard/Menu/Menu";
 
 export default function PUBcomments({ profile }) {
-  const { data, hasMore, loading, observeRef } = useInfiniteScroll(usePublications({
+  const { data, hasMore,  observeRef } = useInfiniteScroll(usePublications({
     limit: LimitType.Ten,
     //orderBy: ExplorePublicationsOrderByType.LensCurated,
     where: {

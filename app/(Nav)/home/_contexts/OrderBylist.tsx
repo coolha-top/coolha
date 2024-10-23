@@ -29,5 +29,4 @@ export const tabs = [
     { title: '视频', key: PublicationMetadataMainFocusType.Video },
     { title: '视频', key: PublicationMetadataMainFocusType.Video },
     { title: '视频', key: PublicationMetadataMainFocusType.Video },
-
 ];

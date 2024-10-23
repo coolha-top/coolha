@@ -18,7 +18,7 @@ export default function UsersPicimg({ profile }) {
     return (
         <>
             <div className='h-36 max-w-4xl mx-auto bg-base-100'>
-                {profile?.metadata?.coverPicture.__typename === "ImageSet" ?
+                {profile?.metadata?.coverPicture?.__typename === "ImageSet" ?
                     (
                         <div className='bg-primary text-black'>
                             <img
@@ -29,7 +29,7 @@ export default function UsersPicimg({ profile }) {
                         </div>
                     ) : (
                         <div className='bg-primary text-base-content'>
-                            <img src="/logo.png" alt="logo.png" className='h-36 w-full object-cover' />
+                            <div className='h-36 w-full object-cover bg-primary text-center' >默认背景</div>
                         </div>
                     )}
             </div>
