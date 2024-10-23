@@ -11,12 +11,12 @@ export default function UsersNav({ name, profile }) {
         <>
             <div className="flex flex-row  w-[100vw] lg:w-full z-20 h-16  items-center bg-base-100">
                 {linknav.map((item) => (
-                    <div className='mx-auto flex-col sm:flex-row  justify-around w-1/4 flex border-b' key={item.href}>
+                    <div className='mx-auto flex-col sm:flex-row  justify-around w-1/4 flex ' key={item.href}>
 
                         <Link
                             replace
                             href={`/u/${name}${item.href}`}
-                            className={`z-20 flex items-center justify-center w-[100%]  h-16 text-[#878787]  border-b hover:bg-[var(--link-hover-background)]
+                            className={`z-20 flex items-center justify-center w-[100%]  h-16 text-[#878787]  border-b-0 hover:bg-[var(--button-bg)]
                         ${pathname === `/u/${name}${item.href}` ? 'text-info border-b-2 border-b-info ' : ''}
                         `}>
                             <div className='flex-col sm:flex-row'>
@@ -27,7 +27,7 @@ export default function UsersNav({ name, profile }) {
                                     <p className="text-center">
                                         {profile?.globalStats?.posts +
                                             profile?.globalStats?.quotes +
-                                            profile?.globalStats?.mirrors }
+                                            profile?.globalStats?.mirrors}
                                     </p>
                                 )}
                                 {item.name !== '帖子' && (
@@ -52,13 +52,7 @@ const linknav = [
         globalStatsA: "quotes",
         globalStatsC: "mirrors",
     },
-    {
-        href: "/comments",
-        logo: <RiChat1Line />,
-        name: "评论",
-        globalStats: "comments",
-    },
-/*     {
+    /*     {
         href: "/quotes",
         logo: <RiShieldCheckLine />,
         name: "引用",
@@ -71,10 +65,16 @@ const linknav = [
         globalStats: "mirrors",
     }, */
     {
-        href: "/upvoted",
+        href: "/comments",
+        logo: <RiChat1Line />,
+        name: "评论",
+        globalStats: "comments",
+    },
+    {
+        href: "/media",
         logo: <RiHeart3Line />,
-        name: "点赞",
-        globalStats: "upvoted",
+        name: "媒体",
+        globalStats: "",
 
     },
     {

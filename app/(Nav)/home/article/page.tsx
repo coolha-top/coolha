@@ -32,16 +32,13 @@ export default function Page() {
   const { state, dispatch } = useOrderBy(); // 使用useOrderBy获取全局状态和dispatch函数
   const { orderBy } = state;
 
-  const handleOrderByChange = (type: ExplorePublicationsOrderByType) => {
-    dispatch({ type: 'SET_ORDER_BY', payload: type });
-  };
   let { data: musicPubs, loading: loadingMusicPubs, hasMore, observeRef } = useInfiniteScroll(useExplorePublications({
     limit: LimitType.TwentyFive,
     orderBy,
     where: {
       publicationTypes: [ExplorePublicationType.Post],
       metadata: {
-        mainContentFocus: [PublicationMetadataMainFocusType.TextOnly]
+        mainContentFocus: [PublicationMetadataMainFocusType.TextOnly,PublicationMetadataMainFocusType.Article,PublicationMetadataMainFocusType.Story]
       }
     }
   })) as any
@@ -53,19 +50,7 @@ export default function Page() {
 
   return (
     <>
-      {/* 算法 */}
-      <div className="flex flex-row w-full z-20 h-12 items-center bg-base-100 overflow-x-auto">
-        {orderOptions.map((option) => (
-          <div className='m-1' key={option.key}>
-            <button
-              className={`px-1 md:btn md:btn-sm ${orderBy === option.key ? ' text-info md:btn-primary' : ''}`}
-              onClick={() => handleOrderByChange(option.key)}
-            >
-              {option.title}
-            </button>
-          </div>
-        ))}
-      </div>
+
 
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
 

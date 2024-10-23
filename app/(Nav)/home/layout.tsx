@@ -1,14 +1,25 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { RiFileTextLine, RiImageLine, RiMusic2Line, RiShapesLine, RiVideoLine } from 'react-icons/ri'
+import { RiBardLine, RiFileTextLine, RiImageLine, RiMusic2Line, RiShapesLine, RiUserFollowLine, RiVideoLine } from 'react-icons/ri'
 import { OrderByProvider } from './_contexts/OrderByContext';
+import ButtonList from './_contexts/ButtonList';
 
 
-export default function a({ children }) {
+export default function HomeLayout({ children }) {
   const pathname = usePathname();
 
   const linknav = [
+    {
+      href: "/home/following",
+      name: "关注",
+      logo: <RiUserFollowLine  />
+    },   
+     {
+      href: "/home/foryou",
+      name: "给你",
+      logo: <RiBardLine  />
+    },
     {
       href: "/home",
       name: "全部",
@@ -58,6 +69,7 @@ export default function a({ children }) {
 
       <div className=''>
         <OrderByProvider>
+        <ButtonList />
           {children}
         </OrderByProvider>
       </div>

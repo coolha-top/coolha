@@ -39,7 +39,7 @@ export default function UseBio({ profile }) {
 
 
 
-      <div className=' py-1 flex  flex-row px-4 gap-2'>
+      <div className=' py-1 flex flex-col md:flex-row px-4 gap-0.5 md:gap-2 items-start'>
 
         {website &&
           <Link

@@ -22,11 +22,16 @@ export function MenuButton() {
     const toggleModal = () => {
         setShowModal(!showModal);
     };
+    const handleOutsideClick = (event) => {
+        if (event.target.classList.contains("bg-black") || event.target.classList.contains("bg-opacity-50")) {
+            setShowModal(false);
+        }
+    };
     return (
         <>
             {loading && <>
                 <button
-                    className="btn btn-primary text-black btn-sm md:btn-md  text-lg  md:text-xl mx-1"
+                    className="btn btn-primary text-black  text-xl mx-1"
                     onClick={toggleModal}>
                     登录
                 </button>
@@ -34,7 +39,7 @@ export function MenuButton() {
             {/* 未登入显示 */}
             {!session || session.type !== SessionType.WithProfile && <>
                 <button
-                    className="btn btn-primary text-black btn-sm md:btn-md  text-lg  md:text-xl mx-1"
+                    className="btn btn-primary text-black  text-xl mx-1"
                     onClick={toggleModal}>
                     登录
                 </button>
@@ -46,10 +51,10 @@ export function MenuButton() {
             {session && session.type === SessionType.WithProfile && session.profile?.metadata?.picture &&
                 <>
                     <button
-                        className="avatar online"
+                        className="avatar "
                         onClick={toggleModal}>
                         {session.profile?.metadata?.picture ? (
-                            <div className="w-12 rounded-full">
+                            <div className="w-12 rounded-full ">
                                 {session.profile.metadata.picture.__typename === 'ImageSet' && (
                                     <img
                                         src={session.profile.metadata.picture.optimized?.uri}
@@ -74,7 +79,7 @@ export function MenuButton() {
             }
 
             {showModal &&
-                <div className=" w-full h-full fixed inset-0 flex justify-center items-center  z-auto   transition-opacity duration-300 ease-in-out  ">
+                <div className=" w-full h-full fixed inset-0 flex justify-center items-center  z-50   transition-opacity duration-300 ease-in-out   bg-black bg-opacity-50" onClick={handleOutsideClick}>
                     <div className=" w-80 md:w-96 rounded-2xl max-w-md  scale-95  transition-transform duration-300 ease-in-out transform bg-base-100     z-auto border ">
                         <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
                             <button className="btn btn-circle btn-sm btn-primary text-lg" onClick={toggleModal}>✕</button>
@@ -108,7 +113,7 @@ export function MenuButton() {
 
             {/* 菜单按钮 */}
             <div className="dropdown dropdown-bottom dropdown-end ml-1">
-                <div tabIndex={0} role="button" className="btn btn-circle btn-outline btn-sm md:btn-md  "><CgMenuGridO className=" size-6 md:size-8" /></div>
+                <div tabIndex={0} role="button" className="btn btn-circle btn-outline   "><CgMenuGridO className="size-8" /></div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border text-lg">
                     <li><Link href={`/settings`}><RiSettingsLine size={24} />应用设置</Link></li>
                     <li><a onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>

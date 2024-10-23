@@ -15,7 +15,7 @@ export default function interactCard({ dataname }) {
       <div className="w-1/4" >
         <div className={`${ButtonCSS} hover:text-info`} onClick={() => router.push(`/posts/${dataname.id}`)} >
           <RiChat3Line className="size-5 md:size-7 " />
-          <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.comments)}</p>
+          <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.comments)}</p>
         </div>
       </div>
 
@@ -29,7 +29,7 @@ export default function interactCard({ dataname }) {
       {/* 出版 收集 */}
       <CardButton hovertext={`hover:text-success`}>
         <RiShoppingBagLine className="size-5 md:size-7 " />
-        <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.collects)}</p>
+        <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
       </CardButton>
 
 
