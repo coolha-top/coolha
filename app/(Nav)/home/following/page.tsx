@@ -1,4 +1,5 @@
 
+// @ts-nocheck
 
 'use client'
 import { useInfiniteScroll } from "@/components/lnes/DataUsers/hook/useInfiniteScroll";
@@ -28,7 +29,7 @@ export default function page() {
 
             where: {
                 for: profileId(sesssion.profile.id),
-            feedEventItemTypes:[FeedEventItemType.Post,FeedEventItemType.Quote]
+                feedEventItemTypes: [FeedEventItemType.Post, FeedEventItemType.Quote]
             },
             suspense: true,
         }));
@@ -43,17 +44,10 @@ export default function page() {
                         {/* 帖子主内容 */}
                         {pub.root.__typename === 'Post' && <>
 
-                            {pub.mirrors && <>
-                                <div className="mb-3 flex flex-row gap-0.5 text-base-content/70">
-                                    <RiLoopLeftFill className="size-6" />
-                                    <b className=""> {pub.root.by.metadata?.displayName} </b>
-                                    <span className=""> 转发了</span>
-                                </div>
-                            </>}
+
 
                             <div className=" flex ">
                                 <div className="flex " onClick={(e) => e.stopPropagation()}>
-                                    <p className="text-primary">主内容A</p>
                                     <Avatarimg
                                         href={pub.root.by && pub.root.by.handle ? pub.root.by.handle.localName : pub?.root.by?.id}
                                         src={pub.root.by}
@@ -69,7 +63,7 @@ export default function page() {
                                 <div className="flex-1 flex" ><Link href={`/posts/${pub.id}`} className="flex-1"></Link></div>
                                 <Menu pub={pub} />
                             </div>
-                            <Link href={`posts/${pub.id}`} >
+                            <Link href={`/posts/${pub.id}`} >
                                 <PosAtext content={pub.root.metadata?.content} />
                                 <Meide pub={pub.root.metadata?.asset} />
                             </Link>
@@ -95,7 +89,7 @@ export default function page() {
                                         id={pub.root}
                                         createdAt={pub.root.createdAt}
                                     />
-                                    <div className="flex-1 flex" ><Link href={`posts/${pub.root.id}`} className="flex-1"></Link></div>
+                                    <div className="flex-1 flex" ><Link href={`/posts/${pub.root.id}`} className="flex-1"></Link></div>
                                     <Menu pub={pub.root} />
                                 </div>
 
@@ -117,7 +111,6 @@ export default function page() {
 
                                     <div className=" flex ">
                                         <div className="flex " onClick={(e) => e.stopPropagation()}>
-                                            <p className="text-primary">引用类型的帖子内容</p>
                                             <Avatarimg
                                                 href={pub.root.by && pub.root.by.handle ? pub.root.by.handle.localName : pub?.root.by?.id}
                                                 src={pub.root.by}
@@ -133,14 +126,13 @@ export default function page() {
                                         <div className="flex-1 flex" ><Link href={`/posts/${pub.id}`} className="flex-1"></Link></div>
                                         <Menu pub={pub} />
                                     </div>
-                                    <Link href={`posts/${pub.id}`} >
+                                    <Link href={`/posts/${pub.id}`} >
                                         <PosAtext content={pub.root.metadata?.content} />
                                         <Meide pub={pub.root.metadata?.asset} />
                                     </Link>
 
                                     <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
                                         <div className="flex" >
-                                            <p className="text-primary">引用类型的帖子内容 引用</p>
                                             <Avatarimg src={pub.root.quoteOn.by} href={pub.root.quoteOn.by.handle?.localName} />
                                             <AvatarName
                                                 localName={pub.root.quoteOn.by.handle?.localName}

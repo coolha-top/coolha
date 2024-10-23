@@ -1,5 +1,5 @@
 'use client'
-import BFollow from '@/components/lnes/DataUsers/hook/BFollow';
+/* import BFollow from '@/components/lnes/DataUsers/hook/BFollow'; */
 import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteScroll';
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg';
 import AvatarName from '@/components/lnes/PostsCard/AvatarName';
@@ -44,7 +44,7 @@ export default function MutualFollowers({ params: { users }, }) {
                                             <AvatarName localName={MutualF.handle?.localName ?? MutualF.id} displayName={MutualF?.metadata?.displayName} namespace={`lens`} createdAt={MutualF.createdAt} id={MutualF} />
                                         </div>
                                         <div className='flex-1'></div>
-                                        <BFollow profile={MutualF} />
+                                        {/* <BFollow profile={MutualF} /> */}
                                     </div>
                                 </div>
                             ))}

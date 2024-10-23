@@ -1,6 +1,6 @@
 'use client'
 
-import BFollow from "@/components/lnes/DataUsers/hook/BFollow";
+/* import BFollow from "@/components/lnes/DataUsers/hook/BFollow"; */
 import { useInfiniteScroll } from "@/components/lnes/DataUsers/hook/useInfiniteScroll";
 import Avatarimg from "@/components/lnes/PostsCard/Avatarimg";
 import AvatarName from "@/components/lnes/PostsCard/AvatarName";
@@ -39,7 +39,7 @@ export default function following({ params: { users }, }) {
                   <AvatarName localName={Following.handle?.localName ?? Following.id} displayName={Following?.metadata?.displayName} namespace={`lens`} createdAt={Following.createdAt} id={Following} />
                 </div>
                 <div className='flex-1'></div>
-                <BFollow profile={Following} />
+                {/* <BFollow profile={Following} /> */}
               </div>
             </div>
           ))}

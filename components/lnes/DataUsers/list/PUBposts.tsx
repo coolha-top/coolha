@@ -56,7 +56,7 @@ export function PUBposts({
                 <div className="flex-1 flex" ><Link href={`/posts/${pub.id}`} className="flex-1"></Link></div>
                 <Menu pub={pub} />
               </div>
-              <Link href={`/posts/${pub.id}`} passHref legacyBehavior>
+              <Link href={`/posts/${pub.id}`} passHref >
                   <UsersPosAtext content={pub.metadata.content} />
                   <Meide pub={pub.metadata.asset} />
               </Link>
