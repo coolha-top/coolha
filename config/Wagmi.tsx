@@ -5,6 +5,7 @@ import { walletConnect, injected, metaMask, safe, coinbaseWallet, } from 'wagmi/
 import { defineChain, type Chain } from 'viem'
 
 
+
 export const bbtestnet = defineChain({
   id: 20651,
   name: "bbtestnet",
@@ -26,18 +27,16 @@ export const bbtestnet = defineChain({
 })
 
 
-/* export const projectId = process.env.WEB3MODAL_PROJECT_ID || '1234567890'
-if (!projectId) throw new Error('Project ID is not defined') */
 
 export const metadata = {
-  name: 'CoolHa.Top',
-  description: 'CoolHa.Top Web Dapp',
+  name: 'Coolha',
+  description: 'Coolha Web Dapp',
   url: 'https://coolha.top',
   icons: ['/favicon.ico']
 }
 const MetaMaskOptions = {
   dappMetadata: {
-    name: "CoolHa.Top Dapp",
+    name: "Coolha Dapp",
   },
   infuraAPIKey: process.env.INFURA_API_KEY,
   extensionOnly: true
@@ -46,7 +45,7 @@ const MetaMaskOptions = {
 
 
 export const config = createConfig({
-  chains: [polygon, polygonAmoy,bbtestnet],
+  chains: [polygon, polygonAmoy, bbtestnet],
   transports: {
     [polygon.id]: http(),
     [polygonAmoy.id]: http(),
@@ -55,14 +54,14 @@ export const config = createConfig({
 
 
   connectors: [
+    injected({ shimDisconnect: true }),
     metaMask(MetaMaskOptions),
-    /*   walletConnect({ projectId, metadata, showQrModal: false }), */
     safe(),
     coinbaseWallet({
       appName: metadata.name,
       appLogoUrl: metadata.icons[0]
     }),
-    injected({ shimDisconnect: true }),
+    /* walletConnect({ projectId, metadata, showQrModal: false }), */
   ],
   ssr: true,
   storage: createStorage({

@@ -23,6 +23,7 @@ export default function LoginForm({ wallet, onSuccess }: { wallet: string; onSuc
 
     if (result.isSuccess()) {
       console.info(`Welcome ${String(result.value?.handle?.fullHandle ?? result.value?.id)}`);
+      window.location.reload();
       return onSuccess?.();
     }
 

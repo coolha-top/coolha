@@ -32,11 +32,11 @@ export default function ButtonList() {
                     </Link>
                 </div> */}
             {pathname === '/home/foryou' || pathname === '/home/following' ? '' :
-                <div className="  flex md:flex-row  z-20 h-12 items-center bg-base-100 overflow-auto ">
+                <div className="  flex md:flex-row  z-20 h-12 items-center bg-base-100  overflow-y-auto ">
                     {orderOptions.map((option) => (
-                        <div className='m-1' key={option.key}>
+                        <div className='m-1  ' key={option.key}>
                             <button
-                                className={`px-1 md:btn md:btn-sm ${pathname === '/home/foryou' || pathname === '/home/following' ? '' : orderBy === option.key ? 'text-info md:btn-primary' : ''}`}
+                                className={` whitespace-nowrap flex items-center px-1 md:btn md:btn-sm  ${pathname === '/home/foryou' || pathname === '/home/following' ? '' : orderBy === option.key ? 'text-info md:btn-primary' : ''}`}
                                 onClick={() => handleOrderByChange(option.key)}
                             >
                                 {option.title}

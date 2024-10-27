@@ -145,7 +145,7 @@ function Card() {
             <h1 className="p-4 text-xl font-bold">资产</h1>
             <div className='flex-row  grid grid-cols-4 justify-items-stretch '>
                {assetData.map((item, index) => (
-                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[ --button-bg]'>
+                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[--button-bg]'>
                      <item.icon size={24} /> <p >{item.label}</p>
                   </Link>
                ))}
@@ -157,7 +157,7 @@ function Card() {
             <h1 className="p-4 text-xl font-bold">用户</h1>
             <div className='flex-row h-auto w-auto py-2 grid grid-cols-4 justify-items-stretch  '>
                {userData.map((item, index) => (
-                  <Link href={item.href ? item.href : ''} key={index} className='grid justify-items-center hover:bg-[ --button-bg]'>
+                  <Link href={item.href ? item.href : ''} key={index} className='grid justify-items-center hover:bg-[--button-bg]'>
                      <item.icon size={24} /> <p>{item.label}</p>
                   </Link>
                ))}

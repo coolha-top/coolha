@@ -1,16 +1,13 @@
 'use client'
-import { SessionType, useSession, useProfile, useLogout, useBookmarks, } from "@lens-protocol/react-web";
-import { useAccount, useDisconnect } from "wagmi";
-import { config } from "@/config/Wagmi";
+import { SessionType, useSession } from "@lens-protocol/react-web";
 import { useRouter } from "next/navigation";
-import { RiSettingsLine, RiTranslate, RiInformation2Line, RiServiceLine, RiQuestionLine, RiSunLine, RiMoonClearLine, RiGiftLine, RiAccountCircleFill, RiMenuFill, RiFileTextLine, RiShieldUserLine } from "react-icons/ri";
+import { RiSettingsLine,  RiInformation2Line, RiServiceLine, RiQuestionLine, RiSunLine, RiMoonClearLine, RiGiftLine, RiAccountCircleFill,  RiFileTextLine, RiShieldUserLine } from "react-icons/ri";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import Cover04Text from '@/public/lens/Cover04-Text.png'
 import Image from "next/image";
 import { WelcomeToLens } from "../lnes/Auth/WelcomeToLens";
-import { PiDotsNine, PiDotsNineBold } from "react-icons/pi";
-import { CgMenuGridO, CgMenuGridR } from "react-icons/cg";
+import { CgMenuGridO } from "react-icons/cg";
 import { useState } from "react";
 export function MenuButton() {
     const router = useRouter();
@@ -29,6 +26,29 @@ export function MenuButton() {
     };
     return (
         <>
+            {/* 菜单按钮 */}
+            <div className="dropdown dropdown-bottom dropdown-end mx-1">
+                <div tabIndex={0} role="button" className="btn btn-circle btn-outline   "><CgMenuGridO className="size-8" /></div>
+                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border text-lg">
+                    <li><Link href={`/settings`}><RiSettingsLine size={24} />应用设置</Link></li>
+                    <li><a onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+                        {theme === 'dark' ?
+                            (<RiSunLine size={24} />)
+                            : (<RiMoonClearLine size={24} />)}
+                        <span>切换主题</span></a>
+                    </li>
+                    {/*  <li><Link href={`/settings`}><RiTranslate size={24} />界面语言</Link></li> */}
+                    <li className="my-1"></li>
+                    <li><Link href={`/mintNFT`}> <RiGiftLine size={24} />测试奖励</Link></li>
+                    <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>
+                    <li className="my-1"></li>
+                    <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>
+                    <li><Link href={`/privacy`}> <RiShieldUserLine size={24} />隐私政策</Link></li>
+                    <li><Link href={`/terms`}> <RiFileTextLine size={24} />条款规则</Link></li>
+                    <li><Link href={`/about`}> <RiInformation2Line size={24} />关于应用</Link></li>
+                </ul>
+            </div>
+
             {loading && <>
                 <button
                     className="btn btn-primary text-black  text-xl mx-1"
@@ -111,28 +131,7 @@ export function MenuButton() {
             }
 
 
-            {/* 菜单按钮 */}
-            <div className="dropdown dropdown-bottom dropdown-end ml-1">
-                <div tabIndex={0} role="button" className="btn btn-circle btn-outline   "><CgMenuGridO className="size-8" /></div>
-                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border text-lg">
-                    <li><Link href={`/settings`}><RiSettingsLine size={24} />应用设置</Link></li>
-                    <li><a onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-                        {theme === 'dark' ?
-                            (<RiSunLine size={24} />)
-                            : (<RiMoonClearLine size={24} />)}
-                        <span>切换主题</span></a>
-                    </li>
-                   {/*  <li><Link href={`/settings`}><RiTranslate size={24} />界面语言</Link></li> */}
-                    <li className="my-1"></li>
-                    <li><Link href={`/mintNFT`}> <RiGiftLine size={24} />测试奖励</Link></li>
-                    <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>
-                    <li className="my-1"></li>
-                    <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>
-                    <li><Link href={`/privacy`}> <RiShieldUserLine size={24} />隐私政策</Link></li>
-                    <li><Link href={`/terms`}> <RiFileTextLine size={24} />条款规则</Link></li>
-                    <li><Link href={`/about`}> <RiInformation2Line size={24} />关于应用</Link></li>
-                </ul>
-            </div>
+
         </>
     );
 }

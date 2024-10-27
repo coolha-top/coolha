@@ -25,18 +25,23 @@ export default function page() {
         );
     }
     if (sesssion && sesssion.type === SessionType.WithProfile) {
-        const { data, hasMore, observeRef } = useInfiniteScroll(useFeed({
+        const { data, loading, hasMore, observeRef } = useInfiniteScroll(useFeed({
 
             where: {
                 for: profileId(sesssion.profile.id),
                 feedEventItemTypes: [FeedEventItemType.Post, FeedEventItemType.Quote]
             },
-            suspense: true,
+            
         }));
 
 
         return (
             <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
+                {loading && (
+                    <div className=" flex flex-1 justify-center items-center ">
+                        <span className="loading loading-spinner loading-lg"></span>
+                    </div>
+                )}
                 {data?.map((pub) => (
                     <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={`${pub.root.id}`}>
 

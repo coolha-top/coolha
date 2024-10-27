@@ -39,43 +39,53 @@ export default function UseBio({ profile }) {
 
 
 
-      <div className=' py-1 flex flex-col md:flex-row px-4 gap-0.5 md:gap-2 items-start'>
-
+      <div className='grid justify-items-start  grid-cols-3 py-1 px-4 gap-0.5 md:gap-2'>
+        {location &&
+          <div>
+            <Link
+              href={`https://www.google.com/maps/search/?api=1&query=${location}`}
+              className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
+              <RiMapPin2Line size={14} />{location}
+            </Link>
+          </div>
+        }
         {website &&
-          <Link
-            href={`${website}`}
-            className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
-            <RiAttachment2  size={14} />{website}
-          </Link>
+          <div>
+            <Link
+              href={`${website}`}
+              className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
+              <RiAttachment2 size={14} />{website}
+            </Link>
+          </div>
         }
         {x &&
-          <Link
-            href={`https://x.com/${x}`}
-            className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
-            <RiTwitterXFill size={14} />{x}
-          </Link>
+          <div>
+            <Link
+              href={`https://x.com/${x}`}
+              className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
+              <RiTwitterXFill size={14} />{x}
+            </Link>
+          </div>
         }
         {youtube &&
-          <Link
-            href={`${youtube}`}
-            className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
-            <RiYoutubeLine size={14} />{youtube}
-          </Link>
+          <div>
+            <Link
+              href={`https://www.youtube.com/${youtube}`}
+              className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
+              <RiYoutubeLine size={14} />{youtube}
+            </Link>
+          </div>
         }
         {spotify &&
-          <Link
-            href={`${spotify}`}
-            className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
-            <RiSpotifyLine  size={14} />{spotify}
-          </Link>
+          <div>
+            <Link
+              href={`https://www.spotify.com/${spotify}`}
+              className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
+              <RiSpotifyLine size={14} />{spotify}
+            </Link>
+          </div>
         }
-        {location &&
-          <Link
-            href={`https://www.google.com/maps/search/?api=1&query=${location}`}
-            className=' hover:text-primary hover:underline text-base flex flex-row justify-center items-center' target='_blank'>
-            <RiMapPin2Line  size={14} />{location}
-          </Link>
-        }
+
 
 
       </div>
