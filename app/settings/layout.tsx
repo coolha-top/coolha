@@ -1,7 +1,8 @@
 'use client'
+import Header from "@/components/header/Header";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { RiArrowDropLeftLine, RiCursorLine, RiDatabase2Line, RiEditLine, RiHandCoinLine, RiLinksLine, RiLock2Line, RiShieldKeyholeLine, RiSoundModuleLine, RiSparkling2Line, RiTimeLine, RiUserForbidLine, RiUserSettingsLine } from "react-icons/ri";
+import { usePathname, useRouter } from "next/navigation";
+import { RiArrowDropLeftLine, RiArrowLeftLine, RiCursorLine, RiDatabase2Line, RiEditLine, RiHandCoinLine, RiLinksLine, RiLock2Line, RiShieldKeyholeLine, RiSoundModuleLine, RiSparkling2Line, RiTimeLine, RiUserForbidLine, RiUserSettingsLine } from "react-icons/ri";
 
 const LinkEditProfile = [
     {
@@ -67,21 +68,33 @@ const LinkEditProfile = [
 ]
 export default function Layout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-
+    const router = useRouter()
     return (
-        <div className="flex ">
+        <div>
+            <Header />
+            <div className="navbar py-0 bg-base-100 border-b md:hidden">
+                <div className=" navbar-start">
+                    <button className="btn btn-square btn-ghost" onClick={() => router.back()}>
+                        <RiArrowLeftLine size={24} />
+                    </button>
+                </div>
+                <div className=" navbar-center">设置</div>
+                <div className=" navbar-end"></div>
+            </div>
+            <div className="h-0 md:h-16" />
+
 
             {/* 侧边栏 */}
-            <aside className="w-64 fixed h-svh bg-base-100 shadow-md p-4 hidden md:block">
+            <aside className=" md:w-64 z-50 md:h-dvh md:fixed bg-base-100 shadow-md p-4 border-b">
                 <nav className="space-y-2 p-1">
                     {LinkEditProfile.map((litm) => (
                         <Link
                             href={`/settings${litm.href}`}
-                            className={` p-2 pl-6 rounded-full hover:bg-[var(--button-bg)] flex flex-row items-center gap-2
+                            className={`p-1 pl-3 md:p-2 md:pl-6 rounded-full hover:bg-[var(--button-bg)] flex flex-row items-center gap-2
                             ${pathname === `/settings${litm.href}` ? 'bg-[var(--button-bg)] ' : ''}`}
                             replace
                         >
-                            <span className="text-xl">{litm.logo}</span>
+                            <span className="md:text-xl">{litm.logo}</span>
                             <span className="">{litm.title}</span>
                             {/* {pathname === `/settings${litm.href}` ? <RiArrowDropLeftLine size={24} /> : ''} */}
                         </Link>
@@ -90,26 +103,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </nav>
             </aside>
 
-            {/* 侧边栏 */}
-            <aside className="w-1/3 h-dvh bg-base-100 shadow-md block md:hidden">
-                <nav className="space-y-2 p-1">
-                    {LinkEditProfile.map((litm) => (
-                        <Link
-                            href={`/settings${litm.href}`}
-                            className={` p-1 pl-3 rounded-full hover:bg-[var(--button-bg)] flex flex-row items-center gap-2
-                            ${pathname === `/settings${litm.href}` ? 'bg-[var(--button-bg)] ' : ''}`}
-                        >
-                            <span className="">{litm.logo}</span>
-                            <span className="">{litm.title}</span>
-                            {/* {pathname === `/settings${litm.href}` ? <RiArrowDropLeftLine size={24} /> : ''} */}
-                        </Link>
-                    ))}
-                </nav>
-            </aside>
+
 
 
             {/* 主内容区域 */}
-            <main className="flex-1 p-2 md:p-6 md:ml-64 bg-base-100">
+            <main className="flex-1 p-2 md:p-6 md:ml-64 bg-base-100  min-h-dvh mx-auto max-w-4xl ">
                 {children}
             </main>
         </div>

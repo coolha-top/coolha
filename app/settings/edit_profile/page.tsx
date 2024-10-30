@@ -20,7 +20,6 @@ async function uploadFile(file: File): Promise<string> {
 }
 
 export default function page() {
-  const { data } = useSession({ suspense: true });
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [coverFile, setCoverFile] = useState<File | null>(null);
 
@@ -33,7 +32,7 @@ export default function page() {
 
   const { execute, loading } = useSetProfileMetadata();
 
-
+  const { data } = useSession({ suspense: true });
   if (data && data.type === SessionType.Anonymous) {
     return (
       <div className="">

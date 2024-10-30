@@ -141,11 +141,11 @@ function Card() {
    return (
       <div>
 
-         <div className='bg-base-100 m-4 h-32 w-auto rounded-[--rounded-box]'>
+         <div className='bg-base-100 m-4 h-auto w-auto rounded-[--rounded-box]'>
             <h1 className="p-4 text-xl font-bold">资产</h1>
-            <div className='flex-row  grid grid-cols-4 justify-items-stretch '>
+            <div className='flex-row  grid grid-cols-4 justify-items-stretch p-3'>
                {assetData.map((item, index) => (
-                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[--button-bg]'>
+                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[--button-bg] rounded-full p-3'>
                      <item.icon size={24} /> <p >{item.label}</p>
                   </Link>
                ))}
@@ -153,11 +153,11 @@ function Card() {
          </div>
 
 
-         <div className='bg-base-100 m-4 h-32 w-auto rounded-[--rounded-box]'>
+         <div className='bg-base-100 m-4 h-auto w-auto rounded-[--rounded-box]'>
             <h1 className="p-4 text-xl font-bold">用户</h1>
-            <div className='flex-row h-auto w-auto py-2 grid grid-cols-4 justify-items-stretch  '>
+            <div className='flex-row h-auto w-auto py-2 grid grid-cols-4 justify-items-stretch  p-3'>
                {userData.map((item, index) => (
-                  <Link href={item.href ? item.href : ''} key={index} className='grid justify-items-center hover:bg-[--button-bg]'>
+                  <Link href={item.href ? item.href : ''} key={index} className='  grid justify-items-center hover:bg-[--button-bg] rounded-full p-3'>
                      <item.icon size={24} /> <p>{item.label}</p>
                   </Link>
                ))}

@@ -78,7 +78,7 @@ export default function Page() {
         )}
 
         {publications?.map((pub: any) => (
-          <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={pub.id}>
+          <div  className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={pub.id}>
 
             {/* 帖子主内容 */}
             <div className=" flex ">

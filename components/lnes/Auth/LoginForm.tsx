@@ -22,7 +22,7 @@ export default function LoginForm({ wallet, onSuccess }: { wallet: string; onSuc
     });
 
     if (result.isSuccess()) {
-      console.info(`Welcome ${String(result.value?.handle?.fullHandle ?? result.value?.id)}`);
+      console.info(`欢迎 ${String(result.value?.handle?.fullHandle ?? result.value?.id)}`);
       window.location.reload();
       return onSuccess?.();
     }
@@ -46,6 +46,7 @@ export default function LoginForm({ wallet, onSuccess }: { wallet: string; onSuc
 
   return (
     <form onSubmit={onSubmit} className="">
+      <legend className="text-base text-gray-500">仅限钱包登录,用于打赏和收集</legend>
       <legend className="text-base text-gray-500">选择当前钱包中要登录的Lens配置文件。</legend>
       <fieldset className="flex place-items-center flex-row justify-between">
 

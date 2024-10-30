@@ -20,9 +20,9 @@ export default function page() {
                     </div>
                     <div className=" navbar-center">注册界面</div>
                     <div className=" navbar-end">
-                        <button className="btn btn-square btn-ghost">
+{/*                         <button className="btn btn-square btn-ghost">
                             <RiMore2Fill size={24} />
-                        </button>
+                        </button> */}
                     </div>
                 </div>
 

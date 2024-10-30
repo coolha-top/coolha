@@ -65,7 +65,7 @@ export default function Report({ publication }) {
                         <textarea
                             value={comments}
                             onChange={(e) => setComments(e.target.value)}
-                            placeholder="人类可读的评论（如果有）。"
+                            placeholder="人类可读的评论（可选）。"
                             className="textarea textarea-bordered w-full mb-3"
                         />
                         <form method="dialog">

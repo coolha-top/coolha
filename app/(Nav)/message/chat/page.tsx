@@ -29,7 +29,7 @@ export default function ChatPage() {
                 <div key={index} className="flex p-4  bg-base-100 hover:bg-[--link-hover-background]">
 
                     <div className="flex-none w-14">
-                        <img src="https://via.placeholder.com/50" alt={chat.name} className=" rounded-full" />
+                        <img src="/lens/Icon-T-Black_@2x.png" alt={chat.name} className=" rounded-full bg-white" />
                     </div>
 
                     <div className="flex-auto pl-2">

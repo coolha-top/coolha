@@ -26,12 +26,12 @@ export default function page() {
     }
     if (sesssion && sesssion.type === SessionType.WithProfile) {
         const { data, loading, hasMore, observeRef } = useInfiniteScroll(useFeed({
-
+            limit: LimitType.Ten,
             where: {
                 for: profileId(sesssion.profile.id),
                 feedEventItemTypes: [FeedEventItemType.Post, FeedEventItemType.Quote]
             },
-            
+
         }));
 
 

@@ -21,17 +21,17 @@ export default function ActionHistory() {
               <th>Name</th>
               <th>Date</th>
               <th>txHash</th>
-              <th>Id</th>
+              {/* <th>Id</th> */}
               <th>Address</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.actionType}</td>
+                <td>{actionTypeMapping[item.actionType] || item.actionType}</td>
                 <td>{formatDate(item.actionedOn)}</td>
-                <td>{item.txHash}</td>
-                <td>{item.id}</td>
+                <td>{truncateEthAddress(item.txHash ? item.txHash : '')}</td>
+                {/* <td>{item.id}</td> */}
                 <td>{truncateEthAddress(item.who)}</td>
               </tr>
             ))}
@@ -48,52 +48,21 @@ export default function ActionHistory() {
     </div >
   );
 }
-enum ProfileActionHistoryType {
-  // An Open Action was executed
-  Acted = "ACTED",
-
-  // A Profile was blocked
-  Blocked = "BLOCKED",
-
-  // A publication was collected
-  Collected = "COLLECTED",
-
-  // A comment was posted
-  Comment = "COMMENT",
-
-  // A Profile was followed
-  Follow = "FOLLOW",
-
-  // An Handle was linked to the Profile
-  LinkHandle = "LINK_HANDLE",
-
-  // The Profile logged in
-  LoggedIn = "LOGGED_IN",
-
-  // A publication was mirrored
-  Mirror = "MIRROR",
-
-  // A new post was created
-  Post = "POST",
-
-  // A publication was quoted
-  Quote = "QUOTE",
-
-  // The Profile refreshed their auth token
-  RefreshAuthToken = "REFRESH_AUTH_TOKEN",
-
-  // The Profile metadata was updated
-  SetProfileMetadata = "SET_PROFILE_METADATA",
-
-  // The Profile Follow Module was updated
-  SetProfileModule = "SET_PROFILE_MODULE",
-
-  // A Profile was unblocked
-  Unblocked = "UNBLOCKED",
-
-  // A Profile was unfollowed
-  Unfollow = "UNFOLLOW",
-
-  // An Handle was unlinked from the Profile
-  UnlinkHandle = "UNLINK_HANDLE",
-}
+const actionTypeMapping = {
+  ACTED: '操作',
+  BLOCKED: '阻止',
+  COLLECTED: '已收集',
+  Comment: '评论',
+  FOLLOW: ' 关注',
+  LINK_HANDLE: '链接Lens',
+  LOGGED_IN: '登录',
+  MIRROR: '转发',
+  POST: '发布帖子',
+  QUOTE: '引用',
+  REFRESH_AUTH_TOKEN: '刷新身份验证令牌',
+  SET_PROFILE_METADATA: '编辑资料',
+  SET_PROFILE_MODULE: '设置配置文件模块',
+  UNBLOCKED: '取消阻止',
+  UNFOLLOW: '取消关注',
+  UNLINK_HANDLE: '取消链接Lens',
+};
