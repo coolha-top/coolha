@@ -4,7 +4,7 @@ import UseFollow from "@/components/lnes/DataUsers/hook/BFollow";
 import { truncateEthAddress } from "@/utils/truncateEthAddress"
 import { SessionType, useFollow, useProfile, useSession } from "@lens-protocol/react-web";
 import Link from "next/link"
-import { RiCheckboxCircleFill, RiVerifiedBadgeFill } from "react-icons/ri";
+import { RiCheckboxCircleFill, RiFileCopyLine, RiVerifiedBadgeFill } from "react-icons/ri";
 import Follow from "./hook/Follow";
 import BFollow from "@/components/lnes/DataUsers/hook/BFollow";
 
@@ -16,15 +16,10 @@ export default function UsersMetadata({ profile }) {
         profileHandle = session.profile.handle.fullHandle;
     }
 
-
-
     const ensName = profile?.onchainIdentity?.ens?.name;
     const ethAddress = profile?.ownedBy?.address;
     const ethAddressText = ensName ?
-        <> {ensName} <img className="size-4 ml-1" src="/logo/ens_mark_primary.svg" alt="ENS.logo" /></>
-        :
-        truncateEthAddress(`${ethAddress}`);
-
+        <> {ensName} <img className="size-4 ml-1" src="/logo/ens_mark_primary.svg" alt="ENS.logo" /></> : truncateEthAddress(`${ethAddress}`);
     return (
         <div className="flex flex-row items-center pt-2  px-4 bg-base-100">
 
@@ -62,10 +57,11 @@ export default function UsersMetadata({ profile }) {
 
 
 
-                <p className="text-[#878787]  text-sm font-bold hover:text-primary w-full">
+                <p className="text-[#878787]  text-sm font-bold hover:text-primary w-full flex flex-row">
                     <Link href={`https://www.oklink.com/zh-hans/multi-search#key=${ensName ? ensName : ethAddress}`} target='_blank'>
                         <span className="flex-1 inline-flex items-center hover:text-primary  w-full">{ethAddressText}</span>
                     </Link>
+                    
                 </p>
                 {/* <p className="badge badge-outline text-gray-500"> <span className="font-bold w-full">{profile?.createdAt ? formatDate(profile?.createdAt) : ''}</span> </p> */}
                 {/*  <p className="text-gray-500"><span className="font-bold">{truncateEthAddress(`${profile?.ownedBy?.address}`)}</span>   </p> */}

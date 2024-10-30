@@ -44,9 +44,8 @@ export default function layout({ children, params: { users } }) {
         <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw ">
             <div className=' max-w-4xl lg:min-w-4xl mx-auto  w-full'>
 
-                <UsersHeader name={users} />
+                <UsersHeader name={users} profile={profileData}/>
                 <div className=' flex-1 bg-base-200'>
-
                     {/* 当路由lens/${users}是profileHandle时显示profileWithProfile的组件,不是时显示params: { users }lens/${users}传入profile的组件 */}
 
                     <>

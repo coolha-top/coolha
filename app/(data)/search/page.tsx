@@ -1,42 +1,16 @@
 'use client'
-import {
-  useSearchPublications,
-  LimitType,
-  SearchPublicationType,
-  appId
-} from '@lens-protocol/react-web';
 
-export default function SearchPublications() {
-  const { data, error, loading } = useSearchPublications({
-    query: 'Hello World',
-    limit: LimitType.Ten,
-    where: {
-      publicationTypes: [SearchPublicationType.Post],
-      metadata: {
-        publishedOn: [appId('Orb')],
-      }
-    }
-  });
+export default function page() {
+    return (
+        <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw ">
+            <div className=' max-w-4xl lg:min-w-4xl mx-auto  w-full'>
 
-  if (loading) return <p>Loading...</p>;
+                <div className=' flex-1 bg-base-100 h-dvh'>
+                    搜索页
+                </div >
 
-  if (error) return <p>Error: {error.message}</p>;
-
-  if (data.length === 0) return <p>No publications found</p>;
-
-  return (
-    <ul>
-      {data.map((publication) => (
-        hasContent(publication.metadata) && (
-          <li key={publication.id} style={{marginBottom: '30px'}}>
-          <p>{ publication.metadata.content }</p>
-          </li>
-        )
-      ))}
-    </ul>
-  );
-}
-
-function hasContent(metadata: any): metadata is { content: string } {
-  return 'content' in metadata;
+                
+            </div >
+        </div >
+    )
 }

@@ -7,7 +7,6 @@ import { RiAccountCircleFill } from "react-icons/ri";
 export default function Avatarimg({ href, src }) {
     const router = useRouter()
     return (
-        <Motion>
             <Link href={`/u/${href}`}>
                 <div className="py-[4px] ">
 
@@ -40,7 +39,6 @@ export default function Avatarimg({ href, src }) {
 
                 </div>
             </Link>
-        </Motion>
     )
 }
 

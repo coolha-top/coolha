@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 import { RiCompass3Fill, RiCompass3Line, RiUserFill, RiUserLine, RiSearchLine, RiChat1Line, RiChat1Fill, RiHomeFill, RiHomeLine } from "react-icons/ri";
 import { MenuButton } from "./MenuButton";
+import { useRef, useState } from "react";
 export default function Header() {
     const pathname = usePathname();
     return (
@@ -16,7 +17,20 @@ export default function Header() {
     )
 }
 function HeaderC() {
-
+    const router = useRouter();
+    const [searchQuery, setSearchQuery] = useState("");
+  
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter" && searchQuery.trim()) {
+        router.push(`/search/${encodeURIComponent(searchQuery.trim())}`);
+      }
+    };
+  
+    const handleButtonClick = () => {
+      if (searchQuery.trim()) {
+        router.push(`/search/${encodeURIComponent(searchQuery.trim())}`);
+      }
+    };
     return (
         <div className=" hidden md:flex">
 
@@ -39,9 +53,12 @@ function HeaderC() {
                         </motion.div>
                     </Link>
 
-                    <label className="input w-24 lg:w-56 input-bordered flex ">
-                        <input type="text" className="grow" placeholder="搜索" />
-                        <RiSearchLine className=" w-8 h-8" />
+                    <label className="input input-bordered flex items-center gap-2  w-24 lg:w-56">
+                        <input type="text" className="grow" placeholder="搜索" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={handleKeyDown} />
+                        <span className="btn btn-ghost btn-circle btn-sm" onClick={handleButtonClick}>
+                            <RiSearchLine className=" w-6 h-6 " />
+                        </span>
                     </label>
 
                 </div>

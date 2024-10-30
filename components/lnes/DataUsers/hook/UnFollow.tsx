@@ -19,7 +19,7 @@ export default function UnFollowButton({ profile }: { profile: Profile }) {
                 onClick={handleunFollow}
                 disabled={unfollowLoading}
             >
-                取关
+                 {unfollowLoading ? unfollowLoading && <span className="loading loading-spinner loading-sm"></span> : '取关'}
             </button>
         </div>
     );

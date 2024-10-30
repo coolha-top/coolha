@@ -19,7 +19,7 @@ export default function FollowButton({ profile }: { profile: Profile }) {
                 onClick={handleFollow}
                 disabled={followLoading}
             >
-                关注
+                {followLoading ? followLoading && <span className="loading loading-spinner loading-sm"></span> : '关注'}
             </button>
         </div>
     );

@@ -6,9 +6,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import Provider from '@/app/Provider'
 
 import { headers } from "next/headers";
-import { cookieToInitialState } from 'wagmi'
-import { config } from '@/config/Wagmi'
-import { LensWagmiProviders } from "@/config/Lens";
+import { ContextProvider } from "@/config";
+import { Config, cookieToInitialState } from "wagmi";
+import getConfig from "next/config";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -32,13 +32,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const initialState = cookieToInitialState(config, headers().get('cookie'))
-
+  const cookies = headers().get('cookie')
+  const initialState = cookieToInitialState(
+    getConfig(),
+    headers().get('cookie')
+  )
   return (
     <html lang="zh">
       <head>
-      <meta charSet="utf-8"/>
+        <meta charSet="utf-8" />
         {/*         <meta property="twitter:image" content="/logo.png" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content="VimCoed:Lens Protocol Web3 Content social 内容社交" />
@@ -54,11 +56,11 @@ export default function RootLayout({
       <body className={`${inter.className} bg-base-200`}>
         <Provider>
 
-          <LensWagmiProviders initialState={initialState}>
+          <ContextProvider    initialState={initialState}  >
 
             {children}
 
-          </LensWagmiProviders>
+          </ContextProvider>
 
 
 

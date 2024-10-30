@@ -3,6 +3,8 @@ import { formatNumberWithUnit } from "@/utils/formatNumber"
 import { RiAlertLine, RiBookmarkFill, RiBookmarkLine, RiCheckboxMultipleBlankLine, RiCopperCoinLine, RiEyeOffLine, RiMore2Fill, RiShareForwardBoxLine, RiSparkling2Line, RiThumbDownFill, RiThumbDownLine } from "react-icons/ri"
 import { AnyPublication, PublicationReactionType, PublicationReportReason, useBookmarkToggle, useLogin, useNotInterestedToggle, useReactionToggle, useReportPublication } from '@lens-protocol/react-web';
 import Report from './Report'
+import { useState } from "react";
+import { LuCopyCheck, LuCopy } from "react-icons/lu";
 
 export default function Menu({ pub }) {
     return (
@@ -14,7 +16,6 @@ export default function Menu({ pub }) {
                     <li>  <BookmarkToggle publication={pub} /> </li>
                     <li>  <DownvoteToggle publication={pub} /></li>
                     <li> <EyeOffToggle publication={pub} /> </li>
-                    <li> <SparklingToggle publication={pub} /> </li>
 
                     <li className="my-1"></li>
                     <li> <CheckboxMultipleBlankToggle publication={pub} /> </li>
@@ -81,7 +82,7 @@ function DownvoteToggle({ publication }) {
     )
 }
 
-/* 不感兴趣 */
+/* 兴趣 */
 function EyeOffToggle({ publication }: { publication: AnyPublication }) {
     const { execute, loading } = useNotInterestedToggle();
 
@@ -89,35 +90,63 @@ function EyeOffToggle({ publication }: { publication: AnyPublication }) {
         await execute({ publication })
     };
     return (
-        <button onClick={toggle} disabled={loading} className={`flex flex-row`}>
-            <RiEyeOffLine className="size-6" />
-            <span>
-                {publication.__typename === 'Mirror' ? '' : publication.operations?.isNotInterested ? '不感兴趣' : '推荐兴趣'}
-            </span>
+        <button onClick={toggle} disabled={loading} className={`flex flex-row `}>
+            {publication.__typename === 'Mirror' ? '' : publication.operations?.isNotInterested ?
+                < ><RiEyeOffLine className="size-6" /><span>取消推荐</span></>
+                :
+                <><RiSparkling2Line className="size-6" /><span>推荐兴趣</span></>
+            }
         </button>
     );
 }
-/* 推荐兴趣 */
-function SparklingToggle({ publication }) {
-    return (
-        <button /* onClick={} disabled={} */ className={`flex flex-row  btn-disabled text-zinc-400`}>
-            <RiSparkling2Line className="size-6" /><span>推荐兴趣</span>
-        </button>
-    );
-}
+
 /* 复制文本 */
 function CheckboxMultipleBlankToggle({ publication }) {
+    const [copySuccess, setCopySuccess] = useState(false);
+    const copyToClipboard = () => {
+        const textToCopy = publication.metadata.content;
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 7000);
+    };
     return (
-        <button /* onClick={} disabled={} */ className={`flex flex-row btn-disabled text-zinc-400`}>
-            <RiCheckboxMultipleBlankLine className="size-6" /><span>复制文本</span>
+        <button className={`flex flex-row`} onClick={copyToClipboard}>
+            {copySuccess ? (
+                <><LuCopyCheck className="size-6 text-success" /><span>复制成功</span></>
+            ) : (
+                <> <LuCopy className="size-6" /> <span>复制地址</span></>
+            )}
         </button>
     );
 }
+
 /* 分享链接 */
 function ShareForwardBoxToggle({ publication }) {
+    const [copySuccess, setCopySuccess] = useState(false);
+    const copyToClipboard = () => {
+        const textToCopy = `https://share.lens.xyz/p/${publication.id}`;
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 7000);
+    };
     return (
-        <button /* onClick={} disabled={} */ className={`flex flex-row btn-disabled text-zinc-400`}>
-            <RiShareForwardBoxLine className="size-6" /><span>分享链接</span>
+        <button className={`flex flex-row`} onClick={copyToClipboard}>
+            {copySuccess ? (
+                <><RiShareForwardBoxLine className="size-6 text-success" /><span>复制成功</span></>
+            ) : (
+                <>  <RiShareForwardBoxLine className="size-6" /><span>分享链接</span></>
+            )}
         </button>
+
     );
 }

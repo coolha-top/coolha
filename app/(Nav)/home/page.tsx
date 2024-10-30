@@ -29,6 +29,7 @@ import Meide from '@/components/lnes/PostsCard/Meide';
 import Menu from '@/components/lnes/PostsCard/Menu/Menu';
 import { useOrderBy } from './_contexts/OrderByContext';
 import { orderOptions } from './_contexts/OrderBylist';
+import Loading from './loading';
 
 
 
@@ -70,19 +71,14 @@ export default function Page() {
 
 
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
-        {
-          loadingPubs && (
-            <div className=" flex justify-center items-center w-full flex-col">
-              <Loading />
-              <Loading />
-
-              {/*    <RiLoader4Line className="h-12 w-12 animate-spin" /> */}
-            </div>
-          )
-        }
+        {loadingPubs && (
+          <div className=" flex flex-1 justify-center items-center">
+            <span className="loading loading-spinner loading-lg"></span>
+          </div>
+        )}
 
         {publications?.map((pub: any) => (
-          <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={pub.id}>
+          <div  className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={pub.id}>
 
             {/* 帖子主内容 */}
             <div className=" flex ">
@@ -155,36 +151,3 @@ export default function Page() {
 }
 
 
-function Loading() {
-  return (
-    <>
-      <div className="flex flex-col gap-4 w-full p-4 bg-base-100">
-
-        <div className="flex gap-4 items-center w-full">
-          <div className="skeleton w-12 h-12 rounded-full shrink-0"></div>
-          <div className="flex flex-col gap-0.5">
-            <div className="skeleton h-6 w-64"></div>
-            <div className="skeleton h-5 w-16"></div>
-          </div>
-          <div className='flex-1'></div>
-          <div className="skeleton w-8 h-8 rounded-full shrink-0"></div>
-        </div>
-
-        <div className="skeleton h-2 w-full px-6"></div>
-        <div className="skeleton h-2 w-full px-6"></div>
-        <div className="skeleton h-2 w-full px-6"></div>
-
-        <div className="skeleton h-96 w-full lg:w-1/2 px-6"></div>
-
-        <div className=" gap-0.5 justify-around flex items-center ">
-          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
-          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
-          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
-          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
-          <div className="skeleton w-8 h-8 rounded-lg shrink-0"></div>
-        </div>
-
-      </div>
-    </>
-  )
-}
