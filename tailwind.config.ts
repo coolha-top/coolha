@@ -15,7 +15,7 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        'xs': '250px', // 添加自定义断点
+        'xs': '300px', // 添加自定义断点
       },
       borderColor: {
         DEFAULT: 'rgba(204, 204, 204, 0.3)',

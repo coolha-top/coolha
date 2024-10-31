@@ -1,10 +1,8 @@
 'use client'
 
-import { usePublications, PublicationType, PublicationMetadataMainFocusType, LimitType, OpenActionCategoryType, publicationId, useWhoActedOnPublication } from "@lens-protocol/react-web"
-import { profile } from "console"
+import { usePublications, PublicationType, PublicationMetadataMainFocusType, LimitType,  } from "@lens-protocol/react-web"
 import { useInfiniteScroll } from "../hook/useInfiniteScroll"
 import Link from "next/link"
-import { RiLoopLeftFill } from "react-icons/ri"
 import Avatarimg from "../../PostsCard/Avatarimg"
 import AvatarName from "../../PostsCard/AvatarName"
 import InteractCard from "../../PostsCard/InteractCard"
@@ -24,10 +22,11 @@ export default function PUBcollects({ profile }) {
       }
     }
   }))
+
   return (
     <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
       {data?.map((pub: any, index: number) => (
-        <div key={index} className="bg-base-100  hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 pb-6">
+        <div key={pub.id} className="bg-base-100  hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 pb-6">
 
 
           <>

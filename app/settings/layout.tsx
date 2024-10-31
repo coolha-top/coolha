@@ -31,14 +31,14 @@ const LinkEditProfile = [
         title: '管理权限'
     },
     {
-        logo: <RiSparkling2Line />,
-        href: '/interests',
-        title: '推荐兴趣'
-    },
-    {
         logo: <RiHandCoinLine />,
         href: '/allowance',
-        title: '津贴打赏'
+        title: '打赏权限'
+    },
+    {
+        logo: <RiSparkling2Line />,
+        href: '/interests',
+        title: '兴趣标签'
     },
     {
         logo: <RiUserForbidLine />,
@@ -85,7 +85,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 
             {/* 侧边栏 */}
-            <aside className=" md:w-64 z-50 md:h-dvh md:fixed bg-base-100 shadow-md p-4 border-b">
+            <aside className=" md:w-64  md:h-dvh md:fixed bg-base-100 shadow-md p-4 border-b">
                 <nav className="space-y-2 p-1">
                     {LinkEditProfile.map((litm) => (
                         <Link

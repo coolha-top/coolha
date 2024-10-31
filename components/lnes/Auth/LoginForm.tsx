@@ -53,7 +53,7 @@ export default function LoginForm({ wallet, onSuccess }: { wallet: string; onSuc
 
         <div className="my-4 space-y-2">
           {profiles.map((profile, idx) => (
-            <label
+            <label 
               key={profile.id}
               className=" btn btn-outline"
             >

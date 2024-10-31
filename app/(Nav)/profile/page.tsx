@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { SessionType, useProfile, useSession } from "@lens-protocol/react-web";
 import { truncateEthAddress } from '@/utils/truncateEthAddress';
-import { RiBarChart2Line, RiCopperCoinLine, RiHistoryLine, RiNftLine, RiPuzzleLine, RiTrophyLine, RiUserSettingsLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill } from "react-icons/ri";
+import { RiBarChart2Line, RiCopperCoinLine, RiHistoryLine, RiNftLine, RiPuzzleLine, RiTrophyLine, RiUserSettingsLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill, RiMedalLine, RiUserVoiceLine } from "react-icons/ri";
 import { formatNumberWithUnit } from '@/utils/formatNumber';
 import { formatDate } from '@/utils/formatDate';
 import { convertLinksToHTML } from "@/utils/convertLinksToHTML";
@@ -17,9 +17,15 @@ export default function page() {
 
    if (data && data.type === SessionType.Anonymous) {
       return (
-         <div className="">
-            <p>Profile</p>
-            <div>暂未登录 Lens 账户</div>
+         <div>
+            <div className='rounded-[--rounded-box] px-2  md:px-4'>
+               <div className=' rounded-[--rounded-box]   bg-base-100 mt-4 py-2 px-1'>
+                  <div className=" h-16  md:h-24 ml-2 lg:ml-4">
+                     <p>Profile</p>
+                     <div>暂未登录 Lens 账户</div>
+                  </div>
+               </div>
+            </div>
             <Card />
          </div>
       );
@@ -114,8 +120,8 @@ function UsersMetadata({ profile }) {
 
 
          <div className='flex flex-col  md:flex-row gap-2 mr-2 lg:mr-4'>
-            <Link href={`/u/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black text-sm md:text-md'>查看主页</Link>
-            <Link href={`/edit_profile`} className="btn btn-sm btn-primary text-black text-sm md:text-md">编辑资料</Link>
+            <Link href={`/u/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black text-xs md:text-md'>查看主页</Link>
+            <Link href={`/edit_profile`} className="btn btn-sm btn-primary text-black text-xs md:text-md">编辑资料</Link>
          </div>
 
       </div>
@@ -132,33 +138,33 @@ function Card() {
    ];
 
    const userData = [
-      { label: '账户设置', href: '/settings/account', icon: RiUserSettingsLine, },
-      { label: '扩展功能', href: '/a', icon: RiPuzzleLine, },
-      { label: '数据分析', href: '/a', icon: RiBarChart2Line, },
-      { label: '成就等级', href: '/a', icon: RiTrophyLine, }
+      { label: '扩展功能', href: '/extend', icon: RiPuzzleLine, },
+      { label: '数据分析', href: '/analyse', icon: RiBarChart2Line, },
+      { label: '成就等级', href: '/grade', icon: RiMedalLine, },
+      { label: '邀请用户', href: '/invite', icon: RiUserVoiceLine, }
    ];
 
    return (
       <div>
 
-         <div className='bg-base-100 m-4 h-auto w-auto rounded-[--rounded-box]'>
-            <h1 className="p-4 text-xl font-bold">资产</h1>
-            <div className='flex-row  grid grid-cols-4 justify-items-stretch p-3'>
+         <div className='bg-base-100 m-2 md:m-4 h-auto w-auto rounded-[--rounded-box]'>
+            <h1 className="p-1 md:p-4 text-xl font-bold">资产</h1>
+            <div className='flex-row grid grid-cols-4 justify-items-stretch   h-auto w-auto py-2  p-3'>
                {assetData.map((item, index) => (
-                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[--button-bg] rounded-full p-3'>
-                     <item.icon size={24} /> <p >{item.label}</p>
+                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[--button-bg] rounded-xl sm:rounded-full p-1 md:p-3'>
+                     <item.icon size={24} /> <p className='text-[0.5rem] xs:text-xs  md:text-base'>{item.label}</p>
                   </Link>
                ))}
             </div>
          </div>
 
 
-         <div className='bg-base-100 m-4 h-auto w-auto rounded-[--rounded-box]'>
-            <h1 className="p-4 text-xl font-bold">用户</h1>
-            <div className='flex-row h-auto w-auto py-2 grid grid-cols-4 justify-items-stretch  p-3'>
+         <div className='bg-base-100 m-2 md:m-4 h-auto w-auto rounded-[--rounded-box]'>
+            <h1 className="p-1 md:p-4 text-xl font-bold">用户</h1>
+            <div className='flex-row  grid grid-cols-4 justify-items-stretch h-auto w-auto py-2  p-3'>
                {userData.map((item, index) => (
-                  <Link href={item.href ? item.href : ''} key={index} className='  grid justify-items-center hover:bg-[--button-bg] rounded-full p-3'>
-                     <item.icon size={24} /> <p>{item.label}</p>
+                  <Link href={item.href ? item.href : ''} key={index} className='  grid justify-items-center hover:bg-[--button-bg]  rounded-xl sm:rounded-full p-1 md:p-3'>
+                     <item.icon size={24} /> <p className='text-[0.5rem] xs:text-xs md:text-base'>{item.label}</p>
                   </Link>
                ))}
             </div>

@@ -19,17 +19,17 @@ export default function Header() {
 function HeaderC() {
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState("");
-  
+
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === "Enter" && searchQuery.trim()) {
-        router.push(`/search/${encodeURIComponent(searchQuery.trim())}`);
-      }
+        if (event.key === "Enter" && searchQuery.trim()) {
+            router.push(`/search/${encodeURIComponent(searchQuery.trim())}`);
+        }
     };
-  
+
     const handleButtonClick = () => {
-      if (searchQuery.trim()) {
-        router.push(`/search/${encodeURIComponent(searchQuery.trim())}`);
-      }
+        if (searchQuery.trim()) {
+            router.push(`/search/${encodeURIComponent(searchQuery.trim())}`);
+        }
     };
     return (
         <div className=" hidden md:flex">
@@ -52,15 +52,18 @@ function HeaderC() {
                             />
                         </motion.div>
                     </Link>
-
-                    <label className="input input-bordered flex items-center gap-2  w-24 lg:w-56">
-                        <input type="text" className="grow" placeholder="搜索" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-        onKeyDown={handleKeyDown} />
-                        <span className="btn btn-ghost btn-circle btn-sm" onClick={handleButtonClick}>
-                            <RiSearchLine className=" w-6 h-6 " />
-                        </span>
-                    </label>
-
+                    <div className="w-24 lg:w-56">
+                        <label className="input input-bordered lg:flex items-center gap-2  hidden">
+                            <input type="text" className="grow" placeholder="搜索" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+                                onKeyDown={handleKeyDown} />
+                            <span className="btn btn-ghost btn-circle btn-sm " onClick={handleButtonClick}>
+                                <RiSearchLine className=" size-6 " />
+                            </span>
+                        </label>
+                    </div>
+                    <div role="button" className="btn btn-ghost btn-circle flex lg:hidden" onClick={handleButtonClick}>
+                        <RiSearchLine className=" size-6 " />
+                    </div>
                 </div>
 
 

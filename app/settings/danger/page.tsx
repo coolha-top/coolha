@@ -4,3 +4,4 @@ export default function page() {
     <div>Danger zone</div>
   )
 }
+//https://www.lens.xyz/docs/primitives/profile/profile-guardian

@@ -10,7 +10,7 @@ import {
 } from '@lens-protocol/react-web';
 
 import { Fragment, useMemo } from 'react';
-
+//https://www.lens.xyz/docs/primitives/profile/interests
 export default function page() {
   const { data } = useSession({ suspense: true });
 

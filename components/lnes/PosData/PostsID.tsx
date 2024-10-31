@@ -1,7 +1,6 @@
 // @ts-nocheck
 'use client'
 import { publicationId, usePublication, PublicationType, usePublications, LimitType, AnyPublication, Post, Quote, Mirror} from "@lens-protocol/react-web";
-
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg';
 import AvatarName from '@/components/lnes/PostsCard/AvatarName';
 import { UsersPosAtext } from '@/components/lnes/PostsCard/PosAtext';
@@ -22,6 +21,7 @@ export default function Posts({ params }) {
         suspense: true,
     });
     const { data: commentsData, loading, hasMore, observeRef } = useInfiniteScroll(usePublications({
+        
         where: {
             /* publicationTypes: [PublicationType.Comment], */
             /* publicationTypes: [PublicationType.Post, PublicationType.Quote,PublicationType.Comment], */
@@ -221,7 +221,7 @@ function ChildComments({ commentId }) {
                                             displayName={childComment.by.metadata.displayName || 'unknown'}
                                             namespace={`lens`}
                                             id={childComment}
-                                            createdAt={childComment.by.createdAt}
+                                            createdAt={childComment.createdAt}
                                         />
                                         <Menu pub={childComment} />
                                     </>
