@@ -28,7 +28,7 @@ export function MenuButton() {
         <>
             {/* 菜单按钮 */}
             <div className="dropdown dropdown-bottom dropdown-end mx-1">
-                <div tabIndex={0} role="button" className="btn btn-circle btn-outline   "><CgMenuGridO className="size-8" /></div>
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle   "><CgMenuGridO className="size-8" /></div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border text-lg">
                     <li><Link href={`/settings`}><RiSettingsLine size={24} />应用设置</Link></li>
                     <li><a onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
@@ -46,6 +46,7 @@ export function MenuButton() {
                     <li><Link href={`/privacy`}> <RiShieldUserLine size={24} />隐私政策</Link></li>
                     <li><Link href={`/terms`}> <RiFileTextLine size={24} />条款规则</Link></li>
                     <li><Link href={`/about`}> <RiInformation2Line size={24} />关于应用</Link></li>
+                    <li><Link href={`/about`}>v0.2.2</Link></li>
                 </ul>
             </div>
 

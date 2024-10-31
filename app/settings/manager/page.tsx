@@ -4,3 +4,4 @@ export default function page() {
     <div>Manager</div>
   )
 }
+//https://www.lens.xyz/docs/primitives/profile/managed-profiles

@@ -1,6 +1,6 @@
 'use client'
 
-//import PUBcollects from "@/components/lnes/DataUsers/list/PUBcollects"
+import PUBcollects from "@/components/lnes/DataUsers/list/PUBcollects"
 import { useProfile } from "@lens-protocol/react-web";
 
 export default function page({params: { users },}) {
@@ -9,7 +9,7 @@ export default function page({params: { users },}) {
   });
   return (
     <div className="lg:min-w-4xl mx-auto h-dvh">
-      {/* <PUBcollects profile={profile} /> */}
+      <PUBcollects profile={profile} />
     </div>
   )
 }

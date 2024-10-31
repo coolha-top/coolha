@@ -1,6 +1,6 @@
 'use client'
 
-import { Profile, SessionType, useSession } from "@lens-protocol/react-web";
+import {  SessionType,  useSession } from "@lens-protocol/react-web";
 import { useAccount } from "wagmi";
 import { config } from "@/config/Wagmi";
 //import { useWeb3Modal } from '@web3modal/wagmi/react'
@@ -41,7 +41,6 @@ export function WelcomeToLens() {
                         <LoginForm wallet={address} />
                     </>
                 )}
-
 
                 {data && data.type === SessionType.WithProfile && (
                     <>
