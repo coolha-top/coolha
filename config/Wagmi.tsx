@@ -34,13 +34,13 @@ export const metadata = {
   url: 'https://coolha.top',
   icons: ['/favicon.ico']
 }
-const MetaMaskOptions = {
+/* const MetaMaskOptions = {
   dappMetadata: {
     name: "Coolha Dapp",
   },
   infuraAPIKey: process.env.INFURA_API_KEY,
   extensionOnly: true
-};
+}; */
 
 
 
@@ -55,7 +55,7 @@ export const config = createConfig({
 
   connectors: [
     injected({ shimDisconnect: true }),
-    metaMask(MetaMaskOptions),
+    metaMask(),
     safe(),
     coinbaseWallet({
       appName: metadata.name,
