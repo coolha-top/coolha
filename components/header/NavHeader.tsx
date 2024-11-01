@@ -1,5 +1,5 @@
 'use client'
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { RiAddCircleLine, RiSearchLine } from "react-icons/ri";
 import { MenuButton } from "./MenuButton";
 
@@ -23,12 +23,13 @@ export default function NavHeader() {
 }
 
 function Find() {
+    const router = useRouter();
     return (
         <div className="navbar py-0">
             <div className=" navbar-start"> </div>
             <div className=" navbar-center">发现</div>
             <div className=" navbar-end">
-                <button className="btn btn-square btn-ghost">
+                <button className="btn btn-square btn-ghost" onClick={()=>router.push(`/search`)}>
                     <RiSearchLine size={24} />
                 </button>
             </div>
@@ -42,7 +43,7 @@ function Message() {
             <div className=" navbar-start"> </div>
             <div className=" navbar-center">消息</div>
             <div className=" navbar-end">
-                <button className="btn btn-square  btn-ghost">
+                <button className="btn btn-square  btn-ghost" >
                     <RiAddCircleLine size={24}/>
                 </button>
             </div>

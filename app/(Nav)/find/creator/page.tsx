@@ -29,14 +29,7 @@ import Avatarimg from '@/components/lnes/PostsCard/Avatarimg'
 export default function Page() {
   const { data: datauseSession } = useSession({ suspense: true });
 
-  let { data: profiles, error: profileError, loading: loadingProfiles, hasMore, observeRef } = useInfiniteScroll(useExploreProfiles({
-    limit: LimitType.TwentyFive,
-    orderBy: ExploreProfilesOrderByType.MostFollowers
-  })) as any
 
-
-
-  profiles = profiles?.filter(p => p.metadata?.picture?.optimized?.uri)
 
 
   const router = useRouter()
@@ -76,7 +69,12 @@ export default function Page() {
       </div>
     )
   }
-
+  
+  let { data: profiles, error: profileError, loading: loadingProfiles, hasMore, observeRef } = useInfiniteScroll(useExploreProfiles({
+    limit: LimitType.TwentyFive,
+    orderBy: ExploreProfilesOrderByType.MostFollowers
+  })) as any
+  profiles = profiles?.filter(p => p.metadata?.picture?.optimized?.uri)
   return (
     <>
       <div className="flex mx-auto max-w-3xl justify-center">

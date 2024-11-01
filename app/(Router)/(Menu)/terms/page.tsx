@@ -62,9 +62,8 @@ export default function page() {
             数字版权法案 （DMCA） 通知和删除程序
             我们尊重他人的知识产权。如果您认为您的版权作品被以构成版权侵权的方式复制，并且可以通过我们的网站访问，请通知我们指定的版权代理，如下所示。
 
-            指定版权代理：
-            hayi
-            电子邮件：<a href="https://callhanet.feishu.cn/share/base/form/shrcnnepq09zTddWuJJFJVWFMBe" className=" link  link-success" target='_blank'>fqa@callha.com</a>
+            指定版权代理：coolha.top
+            电子邮件：<a href="https://callhanet.feishu.cn/share/base/form/shrcnnepq09zTddWuJJFJVWFMBe" className=" link  link-success" target='_blank'>fqa@coolha.top</a>
             为了有效，您的通知必须包括以下内容：
 
             声称被侵犯的专有权所有者的授权代表的签名。
@@ -116,7 +115,7 @@ export default function page() {
             本协议在您或我们终止之前有效。您可以随时通过不访问本网站来终止与我们的协议。如果我们自行判断您未能遵守条款，我们保留终止与您的协议并拒绝您访问本网站的权利。##
 
             <h2 >14. 联系信息</h2>
-            有关本条款的问题，请通过  <a href="https://callhanet.feishu.cn/share/base/form/shrcnnepq09zTddWuJJFJVWFMBe" className=" link  link-success" target='_blank'>fqa@callha.com↗</a>发送给我们
+            有关本条款的问题，请通过  <a href="https://callhanet.feishu.cn/share/base/form/shrcnnepq09zTddWuJJFJVWFMBe" className=" link  link-success" target='_blank'>fqa@coolha.top↗</a>发送给我们
         </div>
     )
 }

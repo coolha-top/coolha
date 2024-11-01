@@ -121,7 +121,7 @@ function UsersMetadata({ profile }) {
 
          <div className='flex flex-col  md:flex-row gap-2 mr-2 lg:mr-4'>
             <Link href={`/u/${profile?.handle?.localName}`} className='btn btn-sm btn-primary text-black text-xs md:text-md'>查看主页</Link>
-            <Link href={`/edit_profile`} className="btn btn-sm btn-primary text-black text-xs md:text-md">编辑资料</Link>
+            <Link href={`/settings/edit_profile`} className="btn btn-sm btn-primary text-black text-xs md:text-md">编辑资料</Link>
          </div>
 
       </div>

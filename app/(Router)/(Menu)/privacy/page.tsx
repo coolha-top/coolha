@@ -42,7 +42,7 @@ export default function page() {
             我们不会与第三方分析提供商共享这些数据。
             <h2>6. 您的权利和选择</h2>
             饼干。我们只使用绝对必要的 cookie。这些 Cookie 对于您浏览网站和使用其功能（包括访问网站的安全区域）至关重要。
-            请勿跟踪。您的浏览器设置可能允许您自动将“请勿跟踪”信号传输到您访问的在线服务。但请注意，对于网站和应用程序运营商应该如何应对这些信号，行业还没有达成共识。因此，除非法律被解释为要求我们这样做，否则我们不会监控“请勿跟踪”信号或对其采取行动。有关“请勿跟踪”的更多信息，请访问 <a href="https://callhanet.feishu.cn/share/base/form/shrcnnepq09zTddWuJJFJVWFMBe" className=" link  link-success" target='_blank'>fqa@callha.com↗</a>
+            请勿跟踪。您的浏览器设置可能允许您自动将“请勿跟踪”信号传输到您访问的在线服务。但请注意，对于网站和应用程序运营商应该如何应对这些信号，行业还没有达成共识。因此，除非法律被解释为要求我们这样做，否则我们不会监控“请勿跟踪”信号或对其采取行动。有关“请勿跟踪”的更多信息，请访问 <a href="https://callhanet.feishu.cn/share/base/form/shrcnnepq09zTddWuJJFJVWFMBe" className=" link  link-success" target='_blank'>fqa@coolha.top↗</a>
             <h2>7. 数据安全</h2>
             我们实施并维护合理的管理、物理和技术安全保护措施，以帮助保护有关您的信息免遭丢失、被盗、滥用、未经授权的访问、披露、更改和销毁。然而，通过互联网传输并不完全安全，我们无法保证有关您的信息的安全性。
             
@@ -53,7 +53,7 @@ export default function page() {
             我们保留随时修订和重新发布本隐私政策的权利。任何更改将在我们发布修订后的隐私政策后立即生效。为避免疑义，您继续使用本网站即表示您同意当时发布的修订后的隐私政策。
             
             <h2>10. 联系我们</h2>
-            如果您对本隐私政策、我们的数据实践或我们对适用法律的遵守情况有任何疑问或意见，请通过 <a href="https://callhanet.feishu.cn/share/base/form/shrcnnepq09zTddWuJJFJVWFMBe" className=" link  link-success" target='_blank'>fqa@callha.com↗</a> 与我们联系。
+            如果您对本隐私政策、我们的数据实践或我们对适用法律的遵守情况有任何疑问或意见，请通过 <a href="https://callhanet.feishu.cn/share/base/form/shrcnnepq09zTddWuJJFJVWFMBe" className=" link  link-success" target='_blank'>fqa@coolha.top↗</a> 与我们联系。
         </div>
     )
 }
