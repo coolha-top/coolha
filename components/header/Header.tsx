@@ -23,12 +23,16 @@ function HeaderC() {
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter" && searchQuery.trim()) {
             router.push(`/search/${encodeURIComponent(searchQuery.trim())}`);
+        } else {
+            router.push("/search");
         }
     };
 
     const handleButtonClick = () => {
         if (searchQuery.trim()) {
             router.push(`/search/${encodeURIComponent(searchQuery.trim())}`);
+        } else {
+            router.push("/search");
         }
     };
     return (
@@ -39,7 +43,7 @@ function HeaderC() {
             <div className="navbar w-full py-0 px-0 md:px-4  bg-base-100   fixed top-0 left-0 z-50">
 
 
-                <div className="navbar-start gap-4">
+                <div className="navbar-start gap-1">
 
                     <Link href={`/`} className="avatar w-12 h-12 ">
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
@@ -52,7 +56,7 @@ function HeaderC() {
                             />
                         </motion.div>
                     </Link>
-                    <div className="w-24 lg:w-56">
+                    <div className="">
                         <label className="input input-bordered lg:flex items-center gap-2  hidden">
                             <input type="text" className="grow" placeholder="搜索" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
                                 onKeyDown={handleKeyDown} />

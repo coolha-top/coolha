@@ -23,10 +23,10 @@ export default function layout({ params: { query }, children }) {
     return (
         <div className="mx-auto max-w-4xl lg:justify-center pb-14 flex flex-col ">
 
-            <div className="flex flex-row z-20 h-8 xs:h-16 ">
+            <div className="flex flex-row z-20 h-10 ">
                 {linknav.map((item) => (
                     <div className=' flex-col sm:flex-row  w-1/3 flex  z-20  ' key={item.href}>
-                        <Link href={item.href} className={`z-20 flex items-center justify-center w-[100%] h-8 xs:h-16 flex-col sm:flex-row  text-[#878787] border-b-0 bg-base-100 hover:bg-[--link-hover-background] ${
+                        <Link href={item.href} className={`z-20 flex items-center justify-center w-[100%] h-10  flex-col sm:flex-row  text-[#878787] border-b-0 bg-base-100 hover:bg-[--link-hover-background] ${
                                 (item.isExact ? pathname === item.href : pathname.startsWith(item.href)) ? 'text-info border-b-info border-b-2' : ''
                             }`}>
                             <p className="text-sm text-inherit z-20 text-center md:text-base md:ml-1 hidden xs:flex ">{item.name}</p>

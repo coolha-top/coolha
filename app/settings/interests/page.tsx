@@ -13,6 +13,27 @@ import { Fragment, useMemo } from 'react';
 //https://www.lens.xyz/docs/primitives/profile/interests
 export default function page() {
   const { data } = useSession({ suspense: true });
+  const { execute: addInterests } = useAddProfileInterests();
+  const { execute: removeInterests } = useRemoveProfileInterests();
+  const groupedInterests = useMemo(() => {
+    const interests = createInterests(Object.values(ProfileInterestTypes));
+
+    // Group interests by category
+    return interests.reduce((acc, interest) => {
+      acc[interest.parent] = acc[interest.parent] || [];
+      acc[interest.parent].push(interest);
+      return acc;
+    }, {} as Record<string, Interest[]>);
+  }, []);
+
+  if (data.type === SessionType.Anonymous) {
+    return (
+      <div className="">
+        <b>Profile</b>
+        <div>暂未登录 Lens 账户</div>
+      </div>
+    );
+  }
 
   if (data.type === SessionType.WithProfile) {
     const ProfileWithProfile = data.profile.handle?.fullHandle ?? data.profile.id;
@@ -24,19 +45,6 @@ export default function page() {
       return <div>正在加载档案信息...</div>;
     }
 
-    const { execute: addInterests } = useAddProfileInterests();
-    const { execute: removeInterests } = useRemoveProfileInterests();
-
-    const groupedInterests = useMemo(() => {
-      const interests = createInterests(Object.values(ProfileInterestTypes));
-
-      // Group interests by category
-      return interests.reduce((acc, interest) => {
-        acc[interest.parent] = acc[interest.parent] || [];
-        acc[interest.parent].push(interest);
-        return acc;
-      }, {} as Record<string, Interest[]>);
-    }, []);
 
     const handleClick = async (interest: ProfileInterestTypes) => {
       const request = {
@@ -52,12 +60,13 @@ export default function page() {
 
     return (
       <div>
-        <button onClick={() => handleClick(ProfileInterestTypes.Business)}>Business</button>
-
+        {/* <button onClick={() => handleClick(ProfileInterestTypes.Business)}>Business</button> */}
+        <b>选择个人兴趣</b>
+        <p>您选择的兴趣用于个性化您的体验</p>
         <div>
           {Object.entries(groupedInterests).map(([category, items]) => (
             <div key={category}>
-              <h4>{capitalize(category.replace(/_/g, ' '))}</h4>
+              <h4 className='mt-2'>{capitalize(category.replace(/_/g, ' '))}</h4>
               <div>
                 {items.map((item) => (
                   <Fragment key={item.value}>
@@ -76,17 +85,7 @@ export default function page() {
       </div>
     )
   }
-  if (data.type === SessionType.Anonymous) {
-    return (
-      <div className="">
-        <b>Profile</b>
-        <div>暂未登录 Lens 账户</div>
-      </div>
-    );
-  }
-  return(
-    <>interests</>
-  )
+
 }
 
 
@@ -134,7 +133,7 @@ function ToggleButton({ isActive, onClick, children }: ButtonProps) {
   };
 
   return (
-    <button style={isActive ? activeStyle : normalStyle} onClick={onClick}>
+    <button className={`${isActive ? 'btn btn-outline btn-sm mb-1' : ' btn-primary btn btn-outline btn-sm btn-active mb-1'}`} onClick={onClick}>
       {children}
     </button>
   );

@@ -6,6 +6,11 @@ import AvatarName from "@/components/lnes/PostsCard/AvatarName";
 import Avatar from "@/gui/flowbite/Avatar";
 import { useSession, SessionType, useProfile, useRecommendedProfiles, profileId, ExploreProfilesOrderByType, useExploreProfiles, LimitType } from "@lens-protocol/react-web";
 import { useRouter } from "next/navigation";
+function Text() {
+  return (
+    <div>推荐关注</div>
+  )
+}
 
 export default function page() {
     const router = useRouter()
@@ -66,7 +71,6 @@ export default function page() {
     return (
         <>
             <div className="flex mx-auto max-w-3xl justify-center">
-
                 <div className=' flex  lg:flex-wrap flex-col w-full '>
                     {profiles?.map(profile => (
                         <div

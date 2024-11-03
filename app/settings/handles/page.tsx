@@ -1,7 +1,5 @@
 'use client'
-import { ConnectWalletButton } from '@/components/wagmi/ConnectWalletButton';
 import { useLinkHandle, useOwnedHandles, useUnlinkHandle, SessionType, useSession, } from '@lens-protocol/react-web';
-import { } from '@lens-protocol/react-web';
 
 
 
@@ -10,8 +8,7 @@ export default function MyHandles() {
   if (session && session.type === SessionType.Anonymous) {
     return (
       <div className="">
-        <div>暂未连接钱包</div>
-        <ConnectWalletButton />
+        <div>暂未连接Lens</div>
       </div>
     );
   }

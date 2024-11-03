@@ -46,14 +46,14 @@ const LinkEditProfile = [
         title: '屏蔽用户'
     },
     {
-        logo: <RiTimeLine />,
-        href: '/sessions',
-        title: '登入历史'
-    },
-    {
         logo: <RiCursorLine />,
         href: '/actions',
         title: '操作记录'
+    },
+    {
+        logo: <RiTimeLine />,
+        href: '/sessions',
+        title: '登入历史'
     },
     {
         logo: <RiDatabase2Line />,

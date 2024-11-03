@@ -46,7 +46,7 @@ export function MenuButton() {
                     <li><Link href={`/privacy`}> <RiShieldUserLine size={24} />隐私政策</Link></li>
                     <li><Link href={`/terms`}> <RiFileTextLine size={24} />条款规则</Link></li>
                     <li><Link href={`/about`}> <RiInformation2Line size={24} />关于应用</Link></li>
-                    <li><Link href={`/about`}>v0.2.2</Link></li>
+                    <li><Link href={`https://github.com/callha/coolha`} target='_blank'>v0.1.1</Link></li>
                 </ul>
             </div>
 
