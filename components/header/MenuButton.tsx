@@ -54,7 +54,7 @@ export function MenuButton() {
                 <button
                     className="btn btn-primary text-black  text-xl mx-1"
                     onClick={toggleModal}>
-                    登录
+                    连接
                 </button>
             </>}
             {/* 未登入显示 */}
@@ -62,7 +62,7 @@ export function MenuButton() {
                 <button
                     className="btn btn-primary text-black  text-xl mx-1"
                     onClick={toggleModal}>
-                    登录
+                    连接
                 </button>
             </>}
 

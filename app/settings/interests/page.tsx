@@ -133,7 +133,7 @@ function ToggleButton({ isActive, onClick, children }: ButtonProps) {
   };
 
   return (
-    <button className={`${isActive ? 'btn btn-outline btn-sm mb-1' : ' btn-primary btn btn-outline btn-sm btn-active mb-1'}`} onClick={onClick}>
+    <button className={`${isActive ? 'btn-primary btn btn-outline btn-sm btn-active mb-1' : 'btn btn-outline btn-sm mb-1'}`} onClick={onClick}>
       {children}
     </button>
   );

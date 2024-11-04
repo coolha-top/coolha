@@ -119,7 +119,7 @@ function CheckboxMultipleBlankToggle({ publication }) {
             {copySuccess ? (
                 <><LuCopyCheck className="size-6 text-success" /><span>复制成功</span></>
             ) : (
-                <> <LuCopy className="size-6" /> <span>复制地址</span></>
+                <> <LuCopy className="size-6" /> <span>复制文本</span></>
             )}
         </button>
     );

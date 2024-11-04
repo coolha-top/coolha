@@ -1,8 +1,5 @@
 'use client'
 
-import { useState } from "react"
-
-
 
 export default function Page() {
 
@@ -28,11 +25,7 @@ export default function Page() {
       answer: "是的，coolha.top 为用户提供了各种机会，让他们通过他们的内容和互动获利。这可能包括出售 NFT、接收加密货币小费或参与基于代币的治理系统。"
     }
   ]
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
   return (
     <div className=" bg-base-100 ">
 
@@ -46,27 +39,17 @@ export default function Page() {
       {/* FAQ Section */}
       <section className="py-20">
         <div className="  mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto ">
             {faqItems.map((item, index) => (
-              <div key={index} className="mb-4">
-                <button
-                  className="flex justify-between items-center w-full p-4 bg-gray-100 hover:bg-gray-200 transition duration-300 rounded-lg"
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <span className="text-lg font-semibold text-gray-800">{item.question}</span>
-                  {openIndex === index ? (
-                    <>-</>
-                  ) : (
-                    <>+</>
-                  )}
-                </button>
-                {openIndex === index && (
-                  <div className="p-4 bg-white border border-gray-200 rounded-b-lg">
-                    <p className="text-gray-600">{item.answer}</p>
-                  </div>
-                )}
+              <div key={index} className="collapse collapse-plus bg-base-200 my-3">
+                <input type="radio" name="my-accordion-3" defaultChecked />
+                <div className="collapse-title text-xl font-medium">{item.question}</div>
+                <div className="collapse-content">
+                  <p>{item.answer}</p>
+                </div>
               </div>
             ))}
+
           </div>
         </div>
       </section>
