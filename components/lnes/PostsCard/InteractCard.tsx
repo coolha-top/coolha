@@ -1,6 +1,6 @@
 'use client'
 import { formatNumberWithUnit } from "@/utils/formatNumber";
-import { AnyPublication, PublicationReactionType, useCreateMirror, useHidePublication, useReactionToggle } from "@lens-protocol/react-web";
+import { AnyPublication, PublicationReactionType, TriStateValue, useCreateMirror, useHidePublication, useReactionToggle } from "@lens-protocol/react-web";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { RiChat3Line, RiCopperCoinLine, RiHeart3Fill, RiHeart3Line, RiLoopLeftFill, RiShoppingBagLine } from "react-icons/ri";
@@ -14,7 +14,7 @@ export default function interactCard({ dataname }) {
 
       {/* 评论 */}
       <div className="w-1/4" >
-        <div className={`${ButtonCSS} hover:text-info`} onClick={() => router.push(`/posts/${dataname.id}`)} >
+        <div className={`${ButtonCSS} btn-disabled text-zinc-400`} onClick={() => router.push(`/posts/${dataname.id}`)} >
           <RiChat3Line className="size-4 md:size-6 " />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.comments)}</p>
         </div>
@@ -28,26 +28,17 @@ export default function interactCard({ dataname }) {
       <UpvoteToggle dataname={dataname} />
 
       {/* 出版 收集 */}
-      <CardButton hovertext={`hover:text-success`}>
-        <RiShoppingBagLine className="size-4 md:size-6 " />
-        <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
-      </CardButton>
+      {dataname?.operations?.canCollect === 'No' && 'No'}
+      {dataname?.operations?.canCollect.Unknown && 'Unknown'}
+      {dataname?.operations?.canCollect.Yes && 'Yes'}
 
+      <CollectsToggle dataname={dataname} />
 
 
     </div>
   )
 }
 
-function CardButton({ children, hovertext }) {
-  return (
-    <div className="w-1/4">
-      <div className={`${ButtonCSS} btn-disabled text-zinc-400 ${hovertext}`}  >
-        {children}
-      </div>
-    </div>
-  )
-}
 
 
 /* 转发 */
@@ -156,4 +147,46 @@ function UpvoteToggle({ dataname }) {
       </div>
     </>
   )
+}
+
+function CollectsToggle({ dataname }) {
+  const canCollectValue = dataname?.operations?.canCollect;
+  const isCollectibleNo = canCollectValue === 'NO';
+  const isCollectibleUnknown = canCollectValue === 'UNKNOWN';
+  const isCollectibleYes = canCollectValue === 'YES';
+
+  // 根据 canCollect 的状态，决定按钮的样式和功能
+  return (
+    <div className="w-1/4">
+
+      <button className={`${ButtonCSS} btn-disabled text-zinc-400`}/*  onClick={() => handleCollect(dataname)} */>
+        <RiShoppingBagLine className="size-4 md:size-6" />
+        <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
+      </button>
+
+{/*       {isCollectibleNo && (
+        <button className={`${ButtonCSS} btn-disabled text-zinc-400`} disabled>
+          <RiShoppingBagLine className="size-4 md:size-6" />
+          <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
+          <p>✕</p>
+        </button>
+      )}
+
+      {isCollectibleUnknown && (
+        <button className={`${ButtonCSS} btn-disabled text-zinc-400`} disabled>
+          <RiShoppingBagLine className="size-4 md:size-6" />
+          <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
+          <p>?</p>
+        </button>
+      )}
+
+      {isCollectibleYes && (
+        <button className={`${ButtonCSS} hover:text-success`}>
+          <RiShoppingBagLine className="size-4 md:size-6" />
+          <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
+          <p>✓</p>
+        </button>
+      )} */}
+    </div>
+  );
 }

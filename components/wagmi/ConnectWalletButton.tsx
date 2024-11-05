@@ -1,9 +1,9 @@
 'use client'
 
-import { metadata } from '@/config/Wagmi'
+import { metadata, projectId } from '@/config/Wagmi'
 import * as React from 'react'
 import { Connector, useConnect } from 'wagmi'
-import {/*  walletConnect,safe,   */injected, metaMask, coinbaseWallet, walletConnect, } from 'wagmi/connectors'
+import {injected, metaMask, coinbaseWallet, walletConnect, } from 'wagmi/connectors'
 export function ConnectWalletButton() {
   const { connectors, connect } = useConnect()
   const walletConnectors = [
@@ -22,7 +22,7 @@ export function ConnectWalletButton() {
       logoSrc: "/logo/coinbase.svg",
       buttonText: "CoinBase",
     },
-    /*     {
+/*         {
           connector: walletConnect({projectId}),
           logoSrc: "/logo/walletconnect.svg",
           buttonText: "WalletConnect",
@@ -61,49 +61,3 @@ export function ConnectWalletButton() {
     </>
   )
 }
-
-/* function WalletButton({ children }) {
-  return (
-    <div>
-      <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_5').showModal()}>连接钱包</button>
-      <dialog id="my_modal_5" className="modal modal-bottom md:modal-middle z-20">
-        <div className="modal-box border">
-
-          <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-4 top-6">✕</button>
-            <h3 className="font-bold text-lg">连接钱包</h3>
-          </form>
-          <div className="my-4">{children}</div>
-        </div>
-      </dialog>
-    </div>
-  )
-} */
-
-/* function WalletOption({
-  connector,
-  onClick,
-}: {
-  connector: Connector
-  onClick: () => void
-}) {
-  const [ready, setReady] = React.useState(false)
-
-  React.useEffect(() => {
-    ; (async () => {
-      const provider = await connector.getProvider()
-      setReady(!!provider)
-    })()
-  }, [connector])
-
-  return (
-    <>
-      <div className='flex-row flex justify-center items-center my-2'>
-        <button disabled={!ready} onClick={onClick} className='btn  btn-outline btn-wide'>
-          {connector.name}
-        </button>
-      </div>
-    </>
-
-  )
-} */

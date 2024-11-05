@@ -4,6 +4,7 @@ import { polygon, polygonAmoy } from 'wagmi/chains'
 import { walletConnect, injected, metaMask, safe, coinbaseWallet, } from 'wagmi/connectors'
 import { defineChain, type Chain } from 'viem'
 
+export const projectId = process.env.REOWN_ID||''
 
 
 export const bbtestnet = defineChain({
@@ -43,7 +44,6 @@ export const metadata = {
 }; */
 
 
-
 export const config = createConfig({
   chains: [polygon, polygonAmoy, bbtestnet],
   transports: {
@@ -61,7 +61,7 @@ export const config = createConfig({
       appName: metadata.name,
       appLogoUrl: metadata.icons[0]
     }),
-    /* walletConnect({ projectId, metadata, showQrModal: false }), */
+   /*  walletConnect({ projectId, metadata, showQrModal: false }), */
   ],
   ssr: true,
   storage: createStorage({

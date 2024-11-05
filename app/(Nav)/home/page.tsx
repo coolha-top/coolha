@@ -1,35 +1,22 @@
 'use client'
-import { useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-
 import {
-  useExploreProfiles,
   useExplorePublications,
-  ExploreProfilesOrderByType,
-  ExplorePublicationsOrderByType,
   ExplorePublicationType,
   LimitType,
-  PublicationMetadataMainFocusType
 } from '@lens-protocol/react-web'
-
-
 
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg';
 import AvatarName from '@/components/lnes/PostsCard/AvatarName';
-import { PosAtext, UsersPosAtext } from '@/components/lnes/PostsCard/PosAtext';
-import PosImage from '@/components/lnes/PostsCard/PosImage';
-import PosVideo from '@/components/lnes/PostsCard/PosVideo'; // 添加视频组件
-import PosMusic from '@/components/lnes/PostsCard/PosMusic'; // 添加音频组件
+import { PosAtext } from '@/components/lnes/PostsCard/PosAtext';
 import InteractCard from '@/components/lnes/PostsCard/InteractCard';
 
 import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteScroll';
-import { timeAgo } from '@/utils/formatDate';
 import Meide from '@/components/lnes/PostsCard/Meide';
 import Menu from '@/components/lnes/PostsCard/Menu/Menu';
 import { useOrderBy } from './_contexts/OrderByContext';
-import { orderOptions } from './_contexts/OrderBylist';
-import Loading from './loading';
+
 
 
 
@@ -79,7 +66,6 @@ export default function Page() {
 
         {publications?.map((pub: any) => (
           <div  className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={pub.id}>
-
             {/* 帖子主内容 */}
             <div className=" flex ">
               <div className="flex " onClick={(e) => e.stopPropagation()}>

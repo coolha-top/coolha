@@ -29,7 +29,7 @@ export default function Menu({ pub }) {
     )
 }
 
-/* 收藏 */
+/* 打赏 */
 function RewardToggle({ publication }) {
 
     return (
