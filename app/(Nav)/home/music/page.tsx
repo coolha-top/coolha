@@ -25,6 +25,7 @@ import Menu from '@/components/lnes/PostsCard/Menu/Menu'
 import { useOrderBy } from '../_contexts/OrderByContext'
 import { orderOptions } from '../_contexts/OrderBylist'
 import Link from 'next/link'
+import LoadingSpinner from '@/gui/LoadingSpinner'
 enum PublicationMetadataMainFocusType {
   Article = "ARTICLE",
   Audio = "AUDIO",
@@ -70,16 +71,12 @@ export default function Page() {
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
 
 
-        {loadingMusicPubs && (
-          <div className=" flex flex-1 justify-center items-center ">
-            <span className="loading loading-spinner loading-lg"></span>
-          </div>
-        )}
+        {loadingMusicPubs && <LoadingSpinner />}
 
 
         {musicPubs?.map(mpub => (
           <div
-            className="bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2 "
+            className="bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 py-2 mt-2 "
             key={mpub.id}
 
           >
@@ -97,7 +94,7 @@ export default function Page() {
                   id={mpub}
                   createdAt={mpub.createdAt} />
               </div>
-              <div className="flex-1 flex" ><Link href={`posts/${mpub.id}`} className="flex-1"></Link></div>
+              <div className="flex-1 flex" ><Link href={`/posts/${mpub.id}`} className="flex-1"></Link></div>
               <Menu pub={mpub} />
             </div>
 

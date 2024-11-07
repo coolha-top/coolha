@@ -3,6 +3,7 @@ import { RiChat1Line, RiFileTextLine, RiHeart3Line, RiShieldCheckLine, } from "r
 import { usePathname } from 'next/navigation'
 
 import Link from "next/link"
+import { formatNumberWithUnit } from "@/utils/formatNumber";
 
 export default function UsersNav({ name, profile }) {
     const pathname = usePathname();
@@ -25,13 +26,13 @@ export default function UsersNav({ name, profile }) {
                                 <p className=" text-lg text-inherit z-20 text-center ">{item.name}</p>
                                 {item.name === '帖子' && (
                                     <p className="text-center">
-                                        {profile?.globalStats?.posts +
+                                        {formatNumberWithUnit(profile?.globalStats?.posts +
                                             profile?.globalStats?.quotes +
-                                            profile?.globalStats?.mirrors}
+                                            profile?.globalStats?.mirrors)}
                                     </p>
                                 )}
                                 {item.name !== '帖子' && (
-                                    <p className="text-center">{profile?.globalStats?.[item.globalStats]}</p>
+                                    <p className="text-center">{formatNumberWithUnit(profile?.globalStats?.[item.globalStats])}</p>
                                 )}
                             </div>
                         </Link>

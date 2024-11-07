@@ -2,6 +2,9 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import fs from 'fs';
 import path from 'path';
+
+
+
 export default function page() {
     const filePath = path.join(process.cwd(), 'app/(Router)/(Menu)/privacy/privacy.md');
     const terms = fs.readFileSync(filePath, 'utf8');
@@ -10,6 +13,7 @@ export default function page() {
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {terms}
             </ReactMarkdown>
+
         </div>
     )
 }

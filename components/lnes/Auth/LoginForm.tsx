@@ -46,9 +46,8 @@ export default function LoginForm({ wallet, onSuccess }: { wallet: string; onSuc
 
   return (
     <form onSubmit={onSubmit} className="">
-      <legend className="text-base text-gray-500">仅限钱包登录,用于打赏和收集</legend>
-      <legend className="text-base text-gray-500">选择当前钱包中要登录的Lens配置文件。</legend>
-      <fieldset className="flex place-items-center flex-row justify-between">
+
+      <fieldset className="flex flex-col md:flex-row  place-items-center justify-between">
 
 
         <div className="my-4 space-y-2">
@@ -80,6 +79,7 @@ export default function LoginForm({ wallet, onSuccess }: { wallet: string; onSuc
 
 
       </fieldset>
+      <legend className=" text-gray-500">仅限钱包登录,不可用于帖子更多互动</legend>
     </form>
   );
 }

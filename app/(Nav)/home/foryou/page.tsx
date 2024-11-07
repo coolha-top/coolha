@@ -11,6 +11,8 @@ import { PosAtext, UsersPosAtext } from "@/components/lnes/PostsCard/PosAtext";
 import { profileId, SessionType, useFeed, useProfile, useSession, PublicationType, LimitType, FeedEventItemType, useFeedHighlights } from "@lens-protocol/react-web";
 import Link from "next/link";
 import { RiLoopLeftFill } from "react-icons/ri";
+import LoadingSpinner from '@/gui/LoadingSpinner';
+
 
 export default function page() {
 
@@ -34,13 +36,9 @@ export default function page() {
 
         return (
             <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
-                {loading && (
-                    <div className=" flex flex-1 justify-center items-center ">
-                        <span className="loading loading-spinner loading-lg"></span>
-                    </div>
-                )}
+                {loading && <LoadingSpinner />}
                 {data?.map((pub, idx) => (
-                    <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={`${pub.id}-${idx}`}>
+                    <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 py-2 mt-2" key={`${pub.id}-${idx}`}>
 
 
                         {/* 帖子主内容 */}
@@ -64,7 +62,7 @@ export default function page() {
                         </div>
 
                         <div>
-                            <Link href={`posts/${pub.id}`} >
+                            <Link href={`/posts/${pub.id}`} >
                                 <PosAtext content={pub.metadata?.content} />
                                 <Meide pub={pub.metadata?.asset} />
                             </Link>
@@ -72,7 +70,7 @@ export default function page() {
                             {/* 如果是引用类型的帖子，显示引用的内容 */}
                             {pub.__typename === "Quote" && (
                                 <div className="pl-0 pt-2">
-                                    <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+                                    <div className="p-4 py-2 border rounded-2xl hover:bg-[--link-hover-background]">
 
                                         <div className="flex" >
                                             <Avatarimg src={pub.quoteOn.by} href={pub.by.handle?.localName} />

@@ -26,7 +26,7 @@ export default function PUBmedia({ profile }) {
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
 
         {data?.map((pub: any, index: number) => (
-          <div key={index} className="bg-base-100  hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 pb-6">
+          <div key={index} className="bg-base-100  hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 py-2 pb-6">
 
             {/* 转发的帖子 */}
             {pub.__typename === "Mirror" ? (
@@ -50,7 +50,7 @@ export default function PUBmedia({ profile }) {
                       createdAt={pub.createdAt}
                     />
                   </div>
-                  <div className="flex-1 flex" ><Link href={`posts/${pub.id}`} className="flex-1"></Link></div>
+                  <div className="flex-1 flex" ><Link href={`/posts/${pub.id}`} className="flex-1"></Link></div>
                   <Menu pub={pub} />
                 </div>
                 <Link href={`/posts/${pub.id}`} passHref legacyBehavior>
@@ -64,7 +64,7 @@ export default function PUBmedia({ profile }) {
                 {/* 如果是引用类型的帖子，显示引用的内容 */}
                 {pub.__typename === "Quote" && (
                 <div className="p-6 pl-0">
-                  <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+                  <div className="p-4 py-2 border rounded-2xl hover:bg-[--link-hover-background]">
 
                     <div className="flex" >
                       <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />
@@ -75,7 +75,7 @@ export default function PUBmedia({ profile }) {
                         id={pub.quoteOn}
                         createdAt={pub.quoteOn.createdAt}
                       />
-                      <div className="flex-1 flex" ><Link href={`posts/${pub.quoteOn.id}`} className="flex-1"></Link></div>
+                      <div className="flex-1 flex" ><Link href={`/posts/${pub.quoteOn.id}`} className="flex-1"></Link></div>
                     </div>
 
                     <Link href={`/posts/${pub.quoteOn.id}`} passHref>
@@ -104,7 +104,7 @@ export default function PUBmedia({ profile }) {
                     id={pub.mirrorOn}
                     createdAt={pub.mirrorOn.createdAt}
                   />
-                  <div className="flex-1 flex" ><Link href={`posts/${pub.mirrorOn.id}`} className="flex-1"></Link></div>
+                  <div className="flex-1 flex" ><Link href={`/posts/${pub.mirrorOn.id}`} className="flex-1"></Link></div>
                   <Menu pub={pub.mirrorOn} />
                 </div>
 
@@ -115,7 +115,7 @@ export default function PUBmedia({ profile }) {
                 {/* 如果是引用类型的帖子，显示引用的内容 */}
                 {pub.__typename === "Quote" && (
                   <div className="p-6 pl-0">
-                    <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+                    <div className="p-4 py-2 border rounded-2xl hover:bg-[--link-hover-background]">
 
                       <div className="flex" >
                         <Avatarimg src={pub.mirrorOn.by.quoteOn.by} href={pub.by.handle.localName} />
@@ -126,7 +126,7 @@ export default function PUBmedia({ profile }) {
                           id={pub.quoteOn}
                           createdAt={pub.quoteOn.createdAt}
                         />
-                        <div className="flex-1 flex" ><Link href={`posts/${pub.quoteOn.id}`} className="flex-1"></Link></div>
+                        <div className="flex-1 flex" ><Link href={`/posts/${pub.quoteOn.id}`} className="flex-1"></Link></div>
                       </div>
 
                       <Link href={`/posts/${pub.quoteOn.id}`} passHref>

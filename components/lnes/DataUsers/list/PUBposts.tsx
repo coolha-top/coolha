@@ -29,7 +29,7 @@ export function PUBposts({
     <div className=" flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
 
       {publications?.map((pub: any, index: number) => (
-        <div key={index} className=" bg-base-100 hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 pb-6">
+        <div key={index} className=" bg-base-100 hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 py-2 pb-6">
 
           {/* 转发的帖子 */}
           {pub.__typename === "Mirror" ? (
@@ -63,7 +63,7 @@ export function PUBposts({
               {/* 如果是引用类型的帖子，显示引用的内容 */}
               {pub.__typename === "Quote" && (
                 <div className="p-6 pl-0">
-                  <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+                  <div className="p-4 py-2 border rounded-2xl hover:bg-[--link-hover-background]">
 
                     <div className="flex" >
                       <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />
@@ -114,7 +114,7 @@ export function PUBposts({
               {/* 如果是引用类型的帖子，显示引用的内容 */}
               {pub.__typename === "Quote" && (
                 <div className="p-6 pl-0">
-                  <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+                  <div className="p-4 py-2 border rounded-2xl hover:bg-[--link-hover-background]">
 
                     <div className="flex" >
                       <Avatarimg src={pub.mirrorOn.by.quoteOn.by} href={pub.by.handle.localName} />

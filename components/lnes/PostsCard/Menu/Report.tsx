@@ -3,7 +3,7 @@ import { useState } from "react";
 import { RiAlertLine } from "react-icons/ri";
 
 export default function Report({ publication }) {
-    const { execute: report, loading,error } = useReportPublication();
+    const { execute: report, loading, error } = useReportPublication();
 
     // 用于存储用户选择的举报原因和评论
     const [selectedReason, setSelectedReason] = useState(PublicationReportReason.FAKE_ENGAGEMENT);
@@ -26,57 +26,52 @@ export default function Report({ publication }) {
     function showModal() {
         const modalElement = document.getElementById('my_modal_3') as HTMLDialogElement;
         if (modalElement) {
-          modalElement.showModal();
+            modalElement.showModal();
         } else {
-          console.error('Modal element not found.');
+            console.error('Modal element not found.');
         }
-      }
+    }
     return (
         <button onClick={showModal} className="flex flex-row ">
 
-
             <RiAlertLine className="size-6 text-red-600" /> <span className="text-red-600">举报</span>
-            <div>
 
-                <dialog id="my_modal_3" className="modal">
-                    <div className="modal-box">
+            <dialog id="my_modal_3" className="modal" >
+                <div className="modal-box">
 
-
-                        <form method="dialog">
-                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                        </form>
-                        <h3 className="font-bold text-lg">选择举报类型</h3>
+                    <form method="dialog">
+                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <h3 className="font-bold text-lg">选择举报类型</h3>
 
 
-                        {/* 举报原因选择框 */}
-                        <select
-                            value={selectedReason}
-                            onChange={(e) => setSelectedReason(e.target.value as PublicationReportReason)}
-                            className="select select-primary w-full max-w-xs my-3"
-                        >
-                            {reportOptions.map((option) => (
-                                <option key={option.key} value={option.key}>
-                                    {option.title}
-                                </option>
-                            ))}
-                        </select>
+                    {/* 举报原因选择框 */}
+                    <select
+                        value={selectedReason}
+                        onChange={(e) => setSelectedReason(e.target.value as PublicationReportReason)}
+                        className="select select-primary w-full max-w-xs my-3"
+                    >
+                        {reportOptions.map((option) => (
+                            <option key={option.key} value={option.key}>
+                                {option.title}
+                            </option>
+                        ))}
+                    </select>
 
-                        {/* 评论输入框 */}
-                        <textarea
-                            value={comments}
-                            onChange={(e) => setComments(e.target.value)}
-                            placeholder="人类可读的评论（可选）。"
-                            className="textarea textarea-bordered w-full mb-3"
-                        />
-                        <form method="dialog">
-                            <button className="btn w-full" onClick={handleSubmit} disabled={loading}>
-                                举报
-                            </button>
-                        </form>
-                    </div>
-                </dialog>
-            </div>
-
+                    {/* 评论输入框 */}
+                    <textarea
+                        value={comments}
+                        onChange={(e) => setComments(e.target.value)}
+                        placeholder="人类可读的评论（可选）。"
+                        className="textarea textarea-bordered w-full mb-3"
+                    />
+                    <form method="dialog">
+                        <button className="btn w-full" onClick={handleSubmit} disabled={loading}>
+                            举报
+                        </button>
+                    </form>
+                </div>
+            </dialog>
 
 
         </button>

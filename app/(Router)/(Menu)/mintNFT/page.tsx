@@ -1,5 +1,5 @@
 'use client'
-import { bbtestnet, config } from '@/config/Wagmi'
+import { config } from '@/config/Wagmi'
 import { type BaseError, useReadContracts, useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
 import { coolhatopAPI } from './coolhatopAPI'
 import { weiToDawei } from '@/utils/uint256to'
@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 const coolhatopNFTContract = {
     address: '0xadb1d226eb9c36f6525c4a2cacce5882181d25ff',
     abi: coolhatopAPI,
-    chainId: bbtestnet.id,
+    chainId: 20651,
 } as const
 
 export default function MintNFT() {

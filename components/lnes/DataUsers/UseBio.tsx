@@ -39,7 +39,7 @@ export default function UseBio({ profile }) {
 
 
 
-      <div className='grid justify-items-start  grid-cols-3 py-1 px-4 gap-0.5 md:gap-2'>
+      <div className='md:grid md:justify-items-start  md:grid-cols-3  md:gap-2 flex flex-col items-start  py-1 px-4 gap-0.5'>
         {location &&
           <div>
             <Link

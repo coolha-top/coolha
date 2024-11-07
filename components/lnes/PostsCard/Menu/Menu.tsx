@@ -1,28 +1,44 @@
-
-import { formatNumberWithUnit } from "@/utils/formatNumber"
+'use client'
 import { RiAlertLine, RiBookmarkFill, RiBookmarkLine, RiCheckboxMultipleBlankLine, RiCopperCoinLine, RiEyeOffLine, RiMore2Fill, RiShareForwardBoxLine, RiSparkling2Line, RiThumbDownFill, RiThumbDownLine } from "react-icons/ri"
-import { AnyPublication, PublicationReactionType, PublicationReportReason, useBookmarkToggle, useLogin, useNotInterestedToggle, useReactionToggle, useReportPublication } from '@lens-protocol/react-web';
+import { AnyPublication, PublicationReactionType, PublicationReportReason, SessionType, useBookmarkToggle, useLogin, useNotInterestedToggle, useReactionToggle, useReportPublication, useSession } from '@lens-protocol/react-web';
 import Report from './Report'
 import { useState } from "react";
 import { LuCopyCheck, LuCopy } from "react-icons/lu";
+import HidePub from "./HidePub";
+import HideComment from "./HideComment";
+
 
 export default function Menu({ pub }) {
+    const { data: session } = useSession({ suspense: true });
+    const isSessionWithProfile = session && session.type === SessionType.WithProfile
     return (
         <>
             <div className="dropdown dropdown-end " onClick={(e) => e.stopPropagation()}>
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle  btn-sm text-base-content/70 hover:text-base-content"><RiMore2Fill className="size-6 " /></div>
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1]  w-52 p-2 shadow border">
                     <li>  <RewardToggle publication={pub} /> </li>
-                    <li>  <BookmarkToggle publication={pub} /> </li>
-                    <li>  <DownvoteToggle publication={pub} /></li>
-                    <li> <EyeOffToggle publication={pub} /> </li>
 
-                    <li className="my-1"></li>
+                    {isSessionWithProfile && <>
+                        <li>  <BookmarkToggle publication={pub} /> </li>
+                        <li>  <DownvoteToggle publication={pub} /></li>
+                        <li> <EyeOffToggle publication={pub} /> </li>
+                        <li className="my-1"></li>
+                    </>}
+
                     <li> <CheckboxMultipleBlankToggle publication={pub} /> </li>
                     <li> <ShareForwardBoxToggle publication={pub} /> </li>
-
                     <li className="my-1"></li>
-                    <li > <Report publication={pub} /></li>
+
+                    {session && session.type === SessionType.Anonymous && <li><Report publication={pub} /></li>}
+
+                    {isSessionWithProfile && session?.profile?.handle?.fullHandle !== pub.by?.handle?.fullHandle &&
+                        <li><Report publication={pub} /></li>
+                    }
+
+                    {isSessionWithProfile && session?.profile?.handle?.fullHandle === pub.by?.handle?.fullHandle &&
+                        <li> <HidePub publication={pub} /> </li>
+                    }
+
                 </ul>
             </div>
         </>
@@ -47,7 +63,7 @@ function BookmarkToggle({ publication }) {
             {publication?.operations?.hasBookmarked ? (
                 <> <RiBookmarkFill className="size-6" /><span>取消收藏</span></>
             ) : (
-                <> <RiBookmarkLine className="size-6" /><span>收藏</span></>
+                <> <RiBookmarkLine className="size-6" /><span>书签收藏</span></>
             )}
         </button>
     );
@@ -149,4 +165,44 @@ function ShareForwardBoxToggle({ publication }) {
         </button>
 
     );
+}
+
+
+export function MenuComment({ comment }) {
+    const { data: session } = useSession({ suspense: true });
+    const isSessionJustWallet = session && session.type === SessionType.JustWallet
+    const isSessionWithProfile = session && session.type === SessionType.WithProfile
+    return (
+        <>
+            <div className="dropdown dropdown-end " onClick={(e) => e.stopPropagation()}>
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle  btn-sm text-base-content/70 hover:text-base-content"><RiMore2Fill className="size-6 " /></div>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1]  w-52 p-2 shadow border">
+
+                    {isSessionJustWallet && <li>  <RewardToggle publication={comment} /> </li>}
+
+                    {isSessionWithProfile && <>
+                        <li>  <BookmarkToggle publication={comment} /> </li>
+                        <li>  <DownvoteToggle publication={comment} /></li>
+                        <li> <EyeOffToggle publication={comment} /> </li>
+                        <li className="my-1"></li>
+                    </>}
+
+                    <li> <CheckboxMultipleBlankToggle publication={comment} /> </li>
+                    <li> <ShareForwardBoxToggle publication={comment} /> </li>
+                    <li className="my-1"></li>
+
+                    {session && session.type === SessionType.Anonymous && <li><Report publication={comment} /></li>}
+
+                    {isSessionWithProfile && (!comment || comment.__typename !== 'Comment' || session.profile.handle?.fullHandle !==
+                        comment.root.by.handle?.fullHandle) &&
+                        <li><Report publication={comment} /></li>
+                    }
+                    {isSessionWithProfile && comment && comment.__typename === 'Comment' && session.profile.handle?.fullHandle === comment.root.by.handle?.fullHandle &&
+                        <li><HideComment comment={comment} /> </li>
+                    }
+
+                </ul>
+            </div>
+        </>
+    )
 }

@@ -39,8 +39,9 @@
 }
 
 body {
-  overflow-y: auto;
-
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
   /*   color: rgba(0, 0, 0, 0.3); */
 }
 
@@ -66,3 +67,4 @@ body {
 .wui-font-micro-600 {
     color: #3f1de7 !important;
 } */
+

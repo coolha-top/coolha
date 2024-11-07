@@ -1,18 +1,27 @@
 'use client'
 import { SessionType, useSession } from "@lens-protocol/react-web";
 import { useRouter } from "next/navigation";
-import { RiSettingsLine,  RiInformation2Line, RiServiceLine, RiQuestionLine, RiSunLine, RiMoonClearLine, RiGiftLine, RiAccountCircleFill,  RiFileTextLine, RiShieldUserLine } from "react-icons/ri";
+import { RiSettingsLine, RiInformation2Line, RiServiceLine, RiQuestionLine, RiSunLine, RiMoonClearLine, RiGiftLine, RiAccountCircleFill, RiFileTextLine, RiShieldUserLine } from "react-icons/ri";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import Cover04Text from '@/public/lens/Cover04-Text.png'
 import Image from "next/image";
 import { WelcomeToLens } from "../lnes/Auth/WelcomeToLens";
 import { CgMenuGridO } from "react-icons/cg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { truncateEthAddress } from "@/utils/truncateEthAddress";
+import { useAccount } from "wagmi";
+import { config } from "@/config/Wagmi";
+import { ConnectButton, useConnectModal } from "@rainbow-me/rainbowkit";
 export function MenuButton() {
-    const router = useRouter();
+    const { openConnectModal } = useConnectModal();
     const { theme, setTheme } = useTheme();
+
+    const { address } = useAccount({ config });
     const { data: session, loading } = useSession();
+
+
+
     // 添加一个状态来控制模态框的显示和隐藏
     const [showModal, setShowModal] = useState(false);
 
@@ -24,6 +33,9 @@ export function MenuButton() {
             setShowModal(false);
         }
     };
+
+
+
     return (
         <>
             {/* 菜单按钮 */}
@@ -54,16 +66,23 @@ export function MenuButton() {
                 <button
                     className="btn btn-primary text-black  text-xl mx-1"
                     onClick={toggleModal}>
-                    连接
+                    <span className="loading loading-dots"></span>
                 </button>
             </>}
+
             {/* 未登入显示 */}
             {!session || session.type !== SessionType.WithProfile && <>
-                <button
-                    className="btn btn-primary text-black  text-xl mx-1"
-                    onClick={toggleModal}>
-                    连接
-                </button>
+                {address ?
+                    <button
+                        className="btn btn-primary text-black text-xs md:text-base  mx-1"
+                        onClick={toggleModal}>
+                        {truncateEthAddress(address)}
+                    </button>
+                    :
+                    <button onClick={toggleModal} type="button" className="btn btn-primary text-black  text-xl mx-1">
+                        登入
+                    </button>
+                }
             </>}
 
 
@@ -100,10 +119,10 @@ export function MenuButton() {
             }
 
             {showModal &&
-                <div className=" w-full h-full fixed inset-0 flex justify-center items-center  z-50   transition-opacity duration-300 ease-in-out   bg-black bg-opacity-50" onClick={handleOutsideClick}>
-                    <div className=" w-80 md:w-96 rounded-2xl max-w-md  scale-95  transition-transform duration-300 ease-in-out transform bg-base-100     z-auto border ">
+                <div className=" w-full h-full fixed inset-0 flex justify-center items-center  z-50   transition-opacity duration-300 ease-in-out   bg-black bg-opacity-90" onClick={handleOutsideClick}>
+                    <div className=" w-11/12 md:w-96 rounded-2xl max-w-md  scale-95  transition-transform duration-300 ease-in-out transform bg-base-100     z-auto border ">
                         <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
-                            <button className="btn btn-circle btn-sm btn-primary text-lg" onClick={toggleModal}>✕</button>
+                            <button className="btn btn-circle btn-sm btn-primary text-lg" onClick={() => setShowModal(false)}>✕</button>
                         </div>
                         <figure>
                             <Image
@@ -120,9 +139,6 @@ export function MenuButton() {
                         </figure>
                         <div className="card-body border-opacity-50">
                             <WelcomeToLens />
-                            <div className="divider">没有Lens账户?
-                                <Link href={'/signup'} className="link link-hover link-info">前往注册</Link>
-                            </div>
                         </div>
                     </div>
                     {/*                     <form onClick={toggleModal}>

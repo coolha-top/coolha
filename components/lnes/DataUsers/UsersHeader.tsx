@@ -29,11 +29,15 @@ export default function UsersHeader({ name, profile }) {
                 <div className=" navbar-end">
 
                     {UsersID ? (
-                        <>
-                            <button className="btn btn-square btn-ghost">
+                        <div className="dropdown dropdown-end " onClick={(e) => e.stopPropagation()}>
+                            <div tabIndex={0} role="button" className="btn btn-square btn-ghost ">
                                 <RiMore2Fill size={24} />
-                            </button>
-                        </>
+                            </div>
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1]  w-52 p-2 shadow border">
+                                <li> <CheckboxMultipleBlankToggle profileS={profile} /> </li>
+                                <li> <ShareForwardBoxToggle profileS={profile} /> </li>
+                            </ul>
+                        </div>
                     ) : (
                         <div className="dropdown dropdown-end " onClick={(e) => e.stopPropagation()}>
                             <div tabIndex={0} role="button" className="btn btn-square btn-ghost ">
@@ -44,7 +48,7 @@ export default function UsersHeader({ name, profile }) {
                                 <li> <ShareForwardBoxToggle profileS={profile} /> </li>
 
                                 <li className="my-1"></li>
-                                <li > <BlockedProfileToggle profileS={profile} /></li>
+                                {session.type === SessionType.WithProfile && <li > <BlockedProfileToggle profileS={profile} /></li>}
                                 <li > <ReportProfileToggle profileS={profile} /></li>
                             </ul>
                         </div>
@@ -76,7 +80,7 @@ function CheckboxMultipleBlankToggle({ profileS }) {
         setTimeout(() => setCopySuccess(false), 7000);
     };
     return (
-        <button  className={`flex flex-row`} onClick={copyToClipboard}>
+        <button className={`flex flex-row`} onClick={copyToClipboard}>
             {copySuccess ? (
                 <><LuCopyCheck className="size-6 text-success" /><span>复制成功</span></>
             ) : (

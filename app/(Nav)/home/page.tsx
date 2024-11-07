@@ -16,6 +16,7 @@ import { useInfiniteScroll } from '@/components/lnes/DataUsers/hook/useInfiniteS
 import Meide from '@/components/lnes/PostsCard/Meide';
 import Menu from '@/components/lnes/PostsCard/Menu/Menu';
 import { useOrderBy } from './_contexts/OrderByContext';
+import LoadingSpinner from '@/gui/LoadingSpinner';
 
 
 
@@ -58,14 +59,10 @@ export default function Page() {
 
 
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
-        {loadingPubs && (
-          <div className=" flex flex-1 justify-center items-center">
-            <span className="loading loading-spinner loading-lg"></span>
-          </div>
-        )}
+        {loadingPubs && <LoadingSpinner /> }
 
         {publications?.map((pub: any) => (
-          <div  className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 mt-2" key={pub.id}>
+          <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 py-2 mt-2" key={pub.id}>
             {/* 帖子主内容 */}
             <div className=" flex ">
               <div className="flex " onClick={(e) => e.stopPropagation()}>
@@ -82,13 +79,13 @@ export default function Page() {
                 />
               </div>
 
-              <div className="flex-1 flex" ><Link href={`posts/${pub.id}`} className="flex-1"></Link></div>
+              <div className="flex-1 flex" ><Link href={`/posts/${pub.id}`} className="flex-1"></Link></div>
               <Menu pub={pub} />
 
             </div>
 
             <div >
-              <Link href={`posts/${pub.id}`} >
+              <Link href={`/posts/${pub.id}`} >
                 <PosAtext content={pub.metadata.content} />
                 <Meide pub={pub.metadata.asset} />
               </Link>
@@ -96,7 +93,7 @@ export default function Page() {
               {/* 如果是引用类型的帖子，显示引用的内容 */}
               {pub.__typename === "Quote" && (
                 <div className="pl-0 pt-2">
-                  <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+                  <div className="p-4 py-2 border rounded-2xl hover:bg-[--link-hover-background]">
 
                     <div className="flex" >
                       <Avatarimg src={pub.quoteOn.by} href={pub.by.handle.localName} />

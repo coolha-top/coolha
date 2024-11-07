@@ -47,7 +47,7 @@ export default function UsersStats({ name, profile }) {
                 <div className="flex  flex-row rounded-md w-[100%] lg:w-1/2 ">
                     {statsData1.map((item, index) => (
                         <div key={index} className=" text-left  w-1/3 flex items-center">
-                            <span className="badge badge-outline font-bold text-[#878787] hover:text-primary">{item.value}</span>
+                            <span className=" font-bold text-base text-[#878787]">{item.value}</span>
                         </div>
                     ))}
                 </div>

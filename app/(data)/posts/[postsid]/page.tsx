@@ -5,19 +5,22 @@ import Avatarimg from "@/components/lnes/PostsCard/Avatarimg";
 import AvatarName from "@/components/lnes/PostsCard/AvatarName";
 import InteractCard from "@/components/lnes/PostsCard/InteractCard";
 import Meide from "@/components/lnes/PostsCard/Meide";
-import Menu from "@/components/lnes/PostsCard/Menu/Menu";
+import {MenuComment} from "@/components/lnes/PostsCard/Menu/Menu";
 import { UsersPosAtext } from "@/components/lnes/PostsCard/PosAtext";
-import { usePublications, publicationId ,LimitType} from "@lens-protocol/react-web";
+import { usePublications, publicationId, LimitType, HiddenCommentsType } from "@lens-protocol/react-web";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function page({ params }) {
+
+
   const { data: commentsData, loading, hasMore, observeRef } = useInfiniteScroll(usePublications({
     where: {
       /* publicationTypes: [PublicationType.Comment], */
       /* publicationTypes: [PublicationType.Post, PublicationType.Quote,PublicationType.Comment], */
       commentOn: {
         id: publicationId(params.postsid),
+        hiddenComments: HiddenCommentsType.Hide,
       },
     },
     limit: LimitType.TwentyFive,
@@ -43,11 +46,11 @@ export default function page({ params }) {
       <div className="my-2 border-t bg-base-100" >
         {commentsData && commentsData.length > 0 ? (commentsData.map((comment) => (
 
-          <div key={comment.id} className="border-b p-4 hover:bg-[--link-hover-background]">
-            <Link href={`/posts/${comment.id}`}>
-              <div className="flex">
-                {comment.by && comment.by.handle && comment.by.metadata && (
-                  <>
+          <div key={comment.id} className="border-b p-4 py-2 hover:bg-[--link-hover-background]">
+            <div className="flex">
+              {comment.by && comment.by.handle && comment.by.metadata && (
+                <div className="flex">
+                  <div className="flex">
                     <Avatarimg
                       href={comment.by.handle.localName}
                       src={comment.by}
@@ -59,22 +62,26 @@ export default function page({ params }) {
                       id={comment}
                       createdAt={comment.createdAt}
                     />
-                  </>
+                  </div>
+                  <div className="flex-1 flex" >
+                    <Link href={`/posts/${comment.id}`} className="flex-1"></Link>
+                  </div>
+                  <MenuComment comment={comment} />
+                 
+                </div>
+              )}
+            </div>
+            <div className='mt-2'>
+              {comment.__typename === "Mirror" ? (<></>) : (<>
+                {comment.metadata && (
+                  <Link href={`/posts/${comment.id}`}>
+                    <UsersPosAtext content={comment.metadata.content} />
+                    <Meide pub={comment.metadata.asset} />
+                  </Link>
                 )}
-              </div>
-              <div className='mt-2'>
-                {comment.__typename === "Mirror" ? (<></>) : (<>
-                  {comment.metadata && (
-                    <>
-                      <UsersPosAtext content={comment.metadata.content} />
-                      <Meide pub={comment.metadata.asset} />
-                    </>
-                  )}
-                </>)}
-
-              </div>
-              <InteractCard dataname={comment} />
-            </Link>
+              </>)}
+            </div>
+            <InteractCard dataname={comment} />
 
 
             {/* 子评论 */}
@@ -98,15 +105,18 @@ export default function page({ params }) {
         ))
         ) : (
           <div className="flex justify-center items-center">暂无评论</div>
-        )}
+        )
+        }
 
-        {hasMore && (
-          <div className="flex justify-center my-4">
-            <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
-          </div>
-        )}
-      </div>
-    </div>
+        {
+          hasMore && (
+            <div className="flex justify-center my-4">
+              <span ref={observeRef} className="loading loading-spinner loading-lg"></span>
+            </div>
+          )
+        }
+      </div >
+    </div >
   )
 }
 
@@ -120,31 +130,34 @@ function ChildComments({ commentId }) {
     limit: LimitType.TwentyFive,
   }));
 
-  if (childLoading) return <div>加载中...</div>;
+  if (childLoading) return <div>加载评论中...</div>;
 
   return (
     <div>
       {childCommentsData && childCommentsData.length > 0 ? (
         childCommentsData.map((childComment) => (
           <div className="pb-2">
-            <div key={childComment.id} className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+            <div key={childComment.id} className="p-4 py-2 border rounded-2xl hover:bg-[--link-hover-background]">
 
               <div className="flex">
                 {childComment.by && childComment.by.handle && childComment.by.metadata && (
-                  <>
-                    <Avatarimg
-                      href={childComment.by.handle.localName}
-                      src={childComment.by}
-                    />
-                    <AvatarName
-                      localName={childComment.by.handle.localName || 'unknown'}
-                      displayName={childComment.by.metadata.displayName || 'unknown'}
-                      namespace={`lens`}
-                      id={childComment}
-                      createdAt={childComment.createdAt}
-                    />
-                    <Menu pub={childComment} />
-                  </>
+                  <div className=" flex">
+                    <div className=" flex">
+                      <Avatarimg
+                        href={childComment.by.handle.localName}
+                        src={childComment.by}
+                      />
+                      <AvatarName
+                        localName={childComment.by.handle.localName || 'unknown'}
+                        displayName={childComment.by.metadata.displayName || 'unknown'}
+                        namespace={`lens`}
+                        id={childComment}
+                        createdAt={childComment.createdAt}
+                      />
+                    </div>
+                    <div className="flex-1" ></div>
+                    <MenuComment comment={childComment} />
+                  </div>
                 )}
               </div>
 

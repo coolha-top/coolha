@@ -1,4 +1,6 @@
 import "./globals.css";
+import '@rainbow-me/rainbowkit/styles.css';
+
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -50,10 +52,21 @@ export default function RootLayout({
         <meta property="og:site_name" content="Coolha Dapp:基于Lens协议构建,为中文用户设计的去中心化平台" />
         <meta property="og:title" content="Coolha"></meta>
         <meta property="og:description" content="基于Lens协议构建,为中文用户构建,内容社交,社群聊天,放大创作者经济,灵感保证原创,Web3优质内容的去中心化平台" />
-       {/*  <meta property="og:url" content="Canonical link preview URL"></meta> */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5SLP9N49Y"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-D5SLP9N49Y');
+            `,
+          }}
+        />
+        {/*  <meta property="og:url" content="Canonical link preview URL"></meta> */}
       </head>
 
-      <body className={`${inter.className} bg-base-200`}>
+      <body className={`${inter.className} bg-base-200 `}>
         <Provider>
 
           <ContextProvider initialState={initialState}  >

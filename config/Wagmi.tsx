@@ -1,13 +1,14 @@
 
 import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
-import { polygon, polygonAmoy } from 'wagmi/chains'
+import { mainnet, polygon } from 'wagmi/chains'
 import { walletConnect, injected, metaMask, safe, coinbaseWallet, } from 'wagmi/connectors'
 import { defineChain, type Chain } from 'viem'
+import { projectId } from './Rainbowkit'
+import { connectors } from './Rainbowkit'
 
-export const projectId = process.env.REOWN_ID||''
 
 
-export const bbtestnet = defineChain({
+/* export const bbtestnet = defineChain({
   id: 20651,
   name: "bbtestnet",
   nativeCurrency: {
@@ -25,35 +26,27 @@ export const bbtestnet = defineChain({
       url: "https://explorer.buildbear.io/classical-kingpin-385d0670",
     },
   }
-})
+}) */
 
 
 
-export const metadata = {
+/* export const metadata = {
   name: 'Coolha',
   description: 'Coolha Web Dapp',
   url: 'https://coolha.top',
   icons: ['/favicon.ico']
-}
-/* const MetaMaskOptions = {
-  dappMetadata: {
-    name: "Coolha Dapp",
-  },
-  infuraAPIKey: process.env.INFURA_API_KEY,
-  extensionOnly: true
-}; */
+} */
 
 
 export const config = createConfig({
-  chains: [polygon, polygonAmoy, bbtestnet],
+  chains: [polygon, mainnet,  /* bbtestnet */],
   transports: {
-    [polygon.id]: http(),
-    [polygonAmoy.id]: http(),
-    [bbtestnet.id]: http(),
+    [polygon.id]: http(`https://polygon-mainnet.g.alchemy.com/v2/${process.env.REOWN_ID}`),
+    [mainnet.id]: http(`https://eth-mainnet.g.alchemy.com/v2/${process.env.REOWN_ID}`),
+    /* [bbtestnet.id]: http(), */
   },
-
-
-  connectors: [
+  connectors,
+/*   connectors: [
     injected({ shimDisconnect: true }),
     metaMask(),
     safe(),
@@ -61,8 +54,8 @@ export const config = createConfig({
       appName: metadata.name,
       appLogoUrl: metadata.icons[0]
     }),
-   /*  walletConnect({ projectId, metadata, showQrModal: false }), */
-  ],
+    walletConnect({ projectId, metadata, showQrModal: false }),
+  ], */
   ssr: true,
   storage: createStorage({
     storage: cookieStorage

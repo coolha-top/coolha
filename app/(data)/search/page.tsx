@@ -21,6 +21,7 @@ export default function page() {
             forHandle: ProfileWithProfile
         });
         const { data: RecommendedProfiles, hasMore, observeRef } = useInfiniteScroll(useRecommendedProfiles({
+            limit: LimitType.Ten,
             for: profileId(profile?.id ? profile?.id : ''),
         }));
         return (
@@ -64,7 +65,7 @@ export default function page() {
     }
 
     let { data: profiles, error: profileError, loading: loadingProfiles, hasMore, observeRef } = useInfiniteScroll(useExploreProfiles({
-        limit: LimitType.TwentyFive,
+        limit: LimitType.Ten,
         orderBy: ExploreProfilesOrderByType.MostFollowers
     })) as any
     profiles = profiles?.filter(p => p.metadata?.picture?.optimized?.uri)

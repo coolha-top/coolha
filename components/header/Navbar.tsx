@@ -70,7 +70,7 @@ function NavLink({ href, activeIcon, icon, activeHrefs, text }) {
 
     return (
         <Link
-            className={`flex-1 flex flex-col items-center justify-center h-full  transition-shadow  hover:bg-[var(--link-hover-background)] ${isActive ? ' text-info' : ''}`}
+            className={`flex-1 flex flex-col items-center justify-center h-full  transition-shadow  text-base-content/70 hover:bg-[var(--link-hover-background)] ${isActive ? ' text-info' : ''}`}
             href={href}
             prefetch={true} passHref
         >

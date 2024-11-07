@@ -42,7 +42,7 @@ export default function layout({ children, params }) {
 
 
         {/* 主帖 */}
-        <div key={pub.id} className="w-dvw lg:max-w-4xl p-4 pt-0 bg-base-100">
+        <div key={pub.id} className="w-dvw lg:max-w-4xl p-4 pb-2 pt-0 bg-base-100">
 
           {pub.__typename === "Mirror" ? (<></>) : (<>
             <div className="flex">
@@ -73,7 +73,7 @@ export default function layout({ children, params }) {
           {
             pub.__typename === "Quote" && (
               <div className="p-6 pl-0">
-                <div className="p-4 border rounded-2xl hover:bg-[--link-hover-background]">
+                <div className="p-4 py-2 border rounded-2xl hover:bg-[--link-hover-background]">
 
                   <div className="flex" >
                     <Avatarimg src={pub.quoteOn.by} href={pub?.by?.handle?.localName} />
