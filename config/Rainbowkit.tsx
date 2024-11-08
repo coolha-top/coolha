@@ -4,15 +4,16 @@ import { mainnet, polygon } from 'wagmi/chains'
 import { getDefaultConfig, RainbowKitProvider, connectorsForWallets, darkTheme, lightTheme, midnightTheme } from '@rainbow-me/rainbowkit';
 import { coinbaseWallet, injectedWallet, metaMaskWallet, okxWallet, rainbowWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 import { useTheme } from 'next-themes';
+import { cookieStorage, createStorage, http } from 'wagmi';
 export const projectId = process.env.REOWN_ID || '123'
 
-export const rainbowmetadata = {
+/* export const rainbowmetadata = {
     appName: 'Coolha',
-    projectId:  projectId,
+    projectId: projectId,
     appDescription: 'Coolha Web Dapp',
     appUrl: 'https://coolha.top',
     appIcon: '/favicon.ico'
-}
+} */
 
 export const connectors = connectorsForWallets(
     [
@@ -28,17 +29,26 @@ export const connectors = connectorsForWallets(
     {
         appName: 'Coolha',
         projectId: projectId,
-        appDescription: 'Coolha Web Dapp',
-        appUrl: 'https://coolha.top',
-        appIcon: '/favicon.ico'
     }
 );
-export const rainbowconfig = getDefaultConfig({
+
+/* export const rainbowconfig = getDefaultConfig({
     appName: 'Coolha',
     projectId: projectId,
+    appDescription: 'Coolha Web Dapp',
+    appUrl: 'https://coolha.top',
+    appIcon: 'https://coolha.top/favicon.ico',
     chains: [polygon, mainnet],
-    ssr: true, 
-});
+    transports: {
+        [polygon.id]: http(`https://polygon-mainnet.g.alchemy.com/v2/${process.env.REOWN_ID}`),
+        [mainnet.id]: http(`https://eth-mainnet.g.alchemy.com/v2/${process.env.REOWN_ID}`),
+        
+    },
+    ssr: true,
+    storage: createStorage({
+        storage: cookieStorage
+    }),
+}); */
 
 
 export function Rainbowkit({ children }) {
@@ -60,7 +70,7 @@ export function Rainbowkit({ children }) {
         }
     };
     return (
-        <RainbowKitProvider initialChain={polygon} theme={getRainbowKitTheme()}>
+        <RainbowKitProvider  initialChain={polygon} theme={getRainbowKitTheme()}>
             {children}
         </RainbowKitProvider>
     )

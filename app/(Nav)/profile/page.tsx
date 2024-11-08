@@ -4,13 +4,8 @@
 import Link from 'next/link';
 import { SessionType, useProfile, useSession } from "@lens-protocol/react-web";
 import { truncateEthAddress } from '@/utils/truncateEthAddress';
-import { RiBarChart2Line, RiCopperCoinLine, RiHistoryLine, RiNftLine, RiPuzzleLine, RiTrophyLine, RiUserSettingsLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill, RiMedalLine, RiUserVoiceLine, RiBookmarkFill, RiBookmarkLine } from "react-icons/ri";
-import { formatNumberWithUnit } from '@/utils/formatNumber';
-import { formatDate } from '@/utils/formatDate';
-import { convertLinksToHTML } from "@/utils/convertLinksToHTML";
-import UsersPicimg from "@/components/lnes/DataUsers/UsersPicimg";
-import UsersStats from "@/components/lnes/DataUsers/UsersStats";
-import UseBio from "@/components/lnes/DataUsers/UseBio";
+import { RiBarChart2Line, RiCopperCoinLine, RiHistoryLine, RiNftLine, RiPuzzleLine, RiTrophyLine, RiUserSettingsLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill, RiMedalLine, RiUserVoiceLine, RiBookmarkFill, RiBookmarkLine, RiServiceLine, RiWallet3Line } from "react-icons/ri";
+
 
 export default function page() {
    const { data } = useSession({ suspense: true });
@@ -131,28 +126,27 @@ function UsersMetadata({ profile }) {
 
 function Card() {
    const assetData = [
-      { label: 'Token', href: '/wallet', icon: RiCopperCoinLine, },
-      { label: 'NFT', href: '/wallet', icon: RiNftLine, },
-      { label: '交易记录', href: '/wallet', icon: RiHistoryLine, },
-      { label: '会员', href: '/a', icon: RiVerifiedBadgeLine, }
+      { label: '资产', href: '/wallet', icon: RiWallet3Line , },
+      { label: '会员', href: '/a', icon: RiVerifiedBadgeLine, },
+      { label: '成就等级', href: '/profile/grade', icon: RiMedalLine, },
+      { label: '数据分析', href: '/profile/analyse', icon: RiBarChart2Line, },
+      { label: '我的书签', href: '/profile/bookmarks', icon: RiBookmarkLine, },
    ];
 
    const userData = [
-      { label: '我的书签', href: '/profile/bookmarks', icon: RiBookmarkLine, },
-      { label: '数据分析', href: '/profile/analyse', icon: RiBarChart2Line, },
-      { label: '成就等级', href: '/profile/grade', icon: RiMedalLine, },
       { label: '扩展功能', href: '/profile/extend', icon: RiPuzzleLine, },
-      { label: '邀请用户', href: '/profile/invite', icon: RiUserVoiceLine, }
+      { label: '测试奖励', href: '/mintNFT', icon: RiServiceLine, },
+      { label: '邀请用户', href: '/profile/invite', icon: RiUserVoiceLine, },
    ];
 
    return (
       <div>
 
          <div className='bg-base-100 m-2 md:m-4 h-auto w-auto rounded-[--rounded-box]'>
-            <h1 className="p-2 md:p-4 text-xl font-bold">资产</h1>
-            <div className='flex-row grid grid-cols-4 justify-items-stretch   h-auto w-auto  p-3 my-2'>
+            {/* <h1 className="p-2 md:p-4 text-xl font-bold">资产</h1> */}
+            <div className='flex-row grid grid-cols-4 justify-items-stretch   h-auto w-auto  p-3 '>
                {assetData.map((item, index) => (
-                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[--button-bg] rounded-xl sm:rounded-full p-1 mt-1 md:p-3'>
+                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[--button-bg] rounded-xl sm:rounded-full p-1 my-2 md:p-3'>
                      <item.icon size={24} /> <p className='text-[0.5rem] xs:text-xs  md:text-base'>{item.label}</p>
                   </Link>
                ))}
@@ -161,10 +155,10 @@ function Card() {
 
 
          <div className='bg-base-100 m-2 md:m-4 h-auto w-auto rounded-[--rounded-box]'>
-            <h1 className="p-2 md:p-4 text-xl font-bold">用户</h1>
-            <div className='flex-row  grid grid-cols-4 justify-items-stretch h-auto w-auto  p-3 my-2'>
+            {/* <h1 className="p-2 md:p-4 text-xl font-bold">用户</h1> */}
+            <div className='flex-row  grid grid-cols-4 justify-items-stretch h-auto w-auto  p-3 '>
                {userData.map((item, index) => (
-                  <Link href={item.href ? item.href : ''} key={index} className='  grid justify-items-center hover:bg-[--button-bg]  rounded-xl sm:rounded-full p-1 mt-1 md:p-3 '>
+                  <Link href={item.href ? item.href : ''} key={index} className='  grid justify-items-center hover:bg-[--button-bg]  rounded-xl sm:rounded-full p-1 my-2 md:p-3 '>
                      <item.icon size={24} /> <p className='text-[0.5rem] xs:text-xs md:text-base'>{item.label}</p>
                   </Link>
                ))}

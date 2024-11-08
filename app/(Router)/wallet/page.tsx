@@ -1,17 +1,26 @@
 'use client'
 import { truncateEthAddress } from '@/utils/truncateEthAddress'
 import Link from 'next/link'
+import { RiTokenSwapLine, RiCoinsLine, RiNftLine, RiHistoryLine } from 'react-icons/ri'
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi'
 import Token from './_token/token'
 
+
 export default function Wallet() {
+
     const { address } = useAccount()
     const { data: ensName } = useEnsName({ address })
     const { data: ensAvatar } = useEnsAvatar({ name: ensName! })
+    const userData = [
+        { label: 'Swap', href: '/wallet/swap', icon: RiTokenSwapLine, },
+        { label: 'DeFi', href: '/wallet/defi', icon: RiCoinsLine, },
+        { label: 'NFT', href: '/wallet/nft', icon: RiNftLine, },
+        { label: '交易记录', href: '/wallet/tx_history', icon: RiHistoryLine, }
+    ];
     return (
         <div className=''>
 
-            <div className="">
+            {/*             <div className="">
                 {ensAvatar && <img alt="ENS Avatar" src={ensAvatar} />}
                 {address &&
                     <Link
@@ -21,7 +30,21 @@ export default function Wallet() {
                         {ensName ? `${ensName} (${truncateEthAddress(address)})`
                             : truncateEthAddress(address)}↗
                     </Link>}
+            </div> */}
+            <div className='bg-base-100  h-auto w-auto rounded-[--rounded-box]'>
+                <div className='flex-row  grid grid-cols-4 justify-items-center h-auto w-auto  p-3 my-2'>
+                    {userData.map((item, index) => (
+                        <div>
+                            <Link href={item.href ? item.href : ''} key={index} className='  grid justify-items-center  btn btn-circle btn-outline btn-lg'>
+                                <item.icon size={32} />
+                            </Link>
+                            <p className='text-[0.5rem] xs:text-xs md:text-base text-center'>{item.label}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
+
+
 
             <Token />
 

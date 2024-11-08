@@ -1,9 +1,9 @@
 'use client'
 
-export default function page() {
+export default function A() {
    return (
      <>
-     A test
+     A
      </>
    )
 }

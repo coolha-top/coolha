@@ -51,7 +51,6 @@ export function MenuButton() {
                     </li>
                     {/*  <li><Link href={`/settings`}><RiTranslate size={24} />界面语言</Link></li> */}
                     <li className="my-1"></li>
-                    <li><Link href={`/mintNFT`}> <RiGiftLine size={24} />测试奖励</Link></li>
                     <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>
                     <li className="my-1"></li>
                     <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>
@@ -66,7 +65,7 @@ export function MenuButton() {
                 <button
                     className="btn btn-primary text-black  text-xl mx-1"
                     onClick={toggleModal}>
-                    <span className="loading loading-dots"></span>
+                    <span className="loading loading-spinner"></span>
                 </button>
             </>}
 

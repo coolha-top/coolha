@@ -17,7 +17,6 @@ export function ContextProvider({ children, initialState }: { children: ReactNod
             <QueryClientProvider client={queryClient}>
                 <Rainbowkit >
                     <LensProvider config={lensConfig}>
-
                         {children}
                     </LensProvider>
                 </Rainbowkit>
