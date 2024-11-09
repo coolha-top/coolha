@@ -1,5 +1,4 @@
 import "./globals.css";
-import '@rainbow-me/rainbowkit/styles.css';
 
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
@@ -34,7 +33,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookies = headers().get('cookie')
   const initialState = cookieToInitialState(
     getConfig(),
     headers().get('cookie')

@@ -10,13 +10,13 @@ import { WelcomeToLens } from "../lnes/Auth/WelcomeToLens";
 import { CgMenuGridO } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import { truncateEthAddress } from "@/utils/truncateEthAddress";
-import { useAccount } from "wagmi";
+import { useAccount, useEnsName } from "wagmi";
 import { config } from "@/config/Wagmi";
-import { ConnectButton, useConnectModal } from "@rainbow-me/rainbowkit";
+import { Avatar } from "connectkit";
 export function MenuButton() {
-    const { openConnectModal } = useConnectModal();
     const { theme, setTheme } = useTheme();
 
+    const { } = useEnsName()
     const { address } = useAccount({ config });
     const { data: session, loading } = useSession();
 
@@ -54,13 +54,13 @@ export function MenuButton() {
                     <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>
                     <li className="my-1"></li>
                     <div className="">
-                    <Link href={`/fqa`} className=" text-sm hover:link hover:link-primary"> 常见问题</Link>
-                    <Link href={`/privacy`} className=" text-sm hover:link hover:link-primary"> 隐私政策</Link>
-                    <Link href={`/terms`} className=" text-sm hover:link hover:link-primary"> 条款规则</Link>
-                    <Link href={`/about`} className=" text-sm hover:link hover:link-primary" target='_blank'> 关于应用</Link>
-                    <Link href={`https://github.com/callha/coolha`} className=" text-sm hover:link hover:link-primary" target='_blank'> v0.1.1</Link>
+                        <Link href={`/fqa`} className=" text-sm hover:link hover:link-primary"> 常见问题</Link>
+                        <Link href={`/privacy`} className=" text-sm hover:link hover:link-primary"> 隐私政策</Link>
+                        <Link href={`/terms`} className=" text-sm hover:link hover:link-primary"> 条款规则</Link>
+                        <Link href={`/about`} className=" text-sm hover:link hover:link-primary" target='_blank'> 关于应用</Link>
+                        <Link href={`https://github.com/callha/coolha`} className=" text-sm hover:link hover:link-primary" target='_blank'> v0.1.1</Link>
                     </div>
-{/*                     <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>
+                    {/*                     <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>
                     <li><Link href={`/privacy`}> <RiShieldUserLine size={24} />隐私政策</Link></li>
                     <li><Link href={`/terms`}> <RiFileTextLine size={24} />条款规则</Link></li>
                     <li><Link href={`/about`}> <RiInformation2Line size={24} />关于应用</Link></li>
@@ -84,17 +84,18 @@ export function MenuButton() {
                         onClick={toggleModal}>
                         {truncateEthAddress(address)}
                     </button>
-                    :
-                    <button onClick={toggleModal} type="button" className="btn btn-primary text-black  text-xl mx-1">
-                        登入
-                    </button>
+            :
+                <button onClick={toggleModal} type="button" className="btn btn-primary text-black  text-xl mx-1">
+                    登入
+                </button>
                 }
             </>}
 
 
 
             {/* 登入成功显示 */}
-            {session && session.type === SessionType.WithProfile && session.profile?.metadata?.picture &&
+            {
+                session && session.type === SessionType.WithProfile && session.profile?.metadata?.picture &&
                 <>
                     <button
                         className="avatar "
@@ -126,7 +127,7 @@ export function MenuButton() {
 
             {showModal &&
                 <div className=" w-full h-full fixed inset-0 flex justify-center items-center  z-50   transition-opacity duration-300 ease-in-out   bg-black bg-opacity-90" onClick={handleOutsideClick}>
-                    <div className=" w-11/12 md:w-96 rounded-2xl max-w-md  scale-95  transition-transform duration-300 ease-in-out transform bg-base-100     z-auto border ">
+                    <div className=" w-11/12 md:w-[450px] rounded-2xl max-w-md  scale-95  transition-transform duration-300 ease-in-out transform bg-base-100     z-auto border ">
                         <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
                             <button className="btn btn-circle btn-sm btn-primary text-lg" onClick={() => setShowModal(false)}>✕</button>
                         </div>

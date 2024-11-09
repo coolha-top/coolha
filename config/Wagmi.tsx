@@ -1,7 +1,7 @@
 
 import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
 import { mainnet, polygon } from 'wagmi/chains'
-import { connectors } from './Rainbowkit'
+import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 
 
 
@@ -35,28 +35,26 @@ import { connectors } from './Rainbowkit'
 } */
 
 
-export const config = createConfig({
-  chains: [polygon, mainnet,  /* bbtestnet */],
-  transports: {
-        [polygon.id]: http(`https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
-        [mainnet.id]: http(`https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
-    /* [bbtestnet.id]: http(), */
-  },
-  connectors,
-  /*   connectors: [
-      injected({ shimDisconnect: true }),
-      metaMask(),
-      safe(),
-      coinbaseWallet({
-        appName: metadata.name,
-        appLogoUrl: metadata.icons[0]
-      }),
-      walletConnect({ projectId, metadata, showQrModal: false }),
-    ], */
-  ssr: true,
-  storage: createStorage({
-    storage: cookieStorage
-  }),
-})
+export const config = createConfig(
+  getDefaultConfig({
+    chains: [polygon, mainnet,],
+    transports: {
+      [polygon.id]: http(`https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
+      [mainnet.id]: http(`https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
+    },
+    walletConnectProjectId: process.env.REOWN_ID||'12345678',
+
+    // Required App Info
+    appName: "Coolha",
+
+    // Optional App Info
+    appDescription: "Coolha Web Dapp",
+    appUrl: "https://coolha.top", // your app's url
+    appIcon: "https://coolha.top/favicon.ico", // your app's icon, no bigger than 1024x1024px (max. 1MB)
+    ssr: true,
+    storage: createStorage({
+      storage: cookieStorage
+    }),
+  }))
 
 

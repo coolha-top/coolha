@@ -19,7 +19,7 @@ export default function Token() {
 
   return (
     <div>
-      <div className="overflow-x-auto bg-base-100">
+      <div className="overflow-x-auto bg-base-100 rounded-full">
         <table className="table table-md">
           <thead>
             <tr>

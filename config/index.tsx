@@ -5,21 +5,19 @@ import { config } from './Wagmi';
 import { ReactNode } from "react"
 import { State, WagmiProvider } from 'wagmi'
 import { lensConfig } from "./Lens"
-import {Rainbowkit} from "./Rainbowkit";
+import ConnectKit from "./ConnectKit";
 
 export const queryClient = new QueryClient()
 
 export function ContextProvider({ children, initialState }: { children: ReactNode; initialState: State | undefined; }) {
-
-
     return (
         <WagmiProvider config={config} initialState={initialState}>
             <QueryClientProvider client={queryClient}>
-                <Rainbowkit >
+                <ConnectKit>
                     <LensProvider config={lensConfig}>
                         {children}
                     </LensProvider>
-                </Rainbowkit>
+                </ConnectKit>
             </QueryClientProvider>
         </WagmiProvider>
     )
