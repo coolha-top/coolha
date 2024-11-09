@@ -9,12 +9,19 @@ import { RiBarChart2Line, RiPuzzleLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill
 
 export default function page() {
    const { data } = useSession();
-   if (data && data.type !== SessionType.WithProfile) {
+   const { data: Profile } = useProfile({
+      forHandle: data?.type === SessionType.WithProfile
+         ? data?.profile?.handle?.fullHandle ?? data?.profile?.id
+         : null
+   });
+
+   // 如果未登录
+   if (data?.type !== SessionType.WithProfile) {
       return (
          <div>
-            <div className='rounded-[--rounded-box] px-2  md:px-4'>
-               <div className=' rounded-[--rounded-box]   bg-base-100 mt-4 py-2 px-1'>
-                  <div className=" h-16  md:h-24 ml-2 lg:ml-4">
+            <div className='rounded-[--rounded-box] px-2 md:px-4'>
+               <div className='rounded-[--rounded-box] bg-base-100 mt-4 py-2 px-1'>
+                  <div className="h-16 md:h-24 ml-2 lg:ml-4">
                      <p>Profile</p>
                      <div>暂未登录 Lens 账户</div>
                   </div>
@@ -23,28 +30,18 @@ export default function page() {
          </div>
       );
    }
-   if (data && data.type === SessionType.WithProfile) {
-      return (
-         <div className="">
-            <div className='h-full '>
-               <div className='rounded-[--rounded-box] px-2  md:px-4'>
-                  <div className=' rounded-[--rounded-box]   bg-base-100 mt-4 py-2 px-1'>
-                     {/* 用户信息 */}
-                     <UsersMetadata profile={data?.profile?.handle?.fullHandle ?? data.profile.id} />
 
-                     {/* 用户数据 */}
-                     {/*                         <UsersStats profile={Profile} name={data.profile.handle?.localName} />
-                        <UseBio profile={Profile} /> */}
-                  </div>
-               </div>
-
-               <Card />
-
-
+   // 如果已登录并获取到 Profile 数据
+   return (
+      <div className="h-full">
+         <div className='rounded-[--rounded-box] px-2 md:px-4'>
+            <div className='rounded-[--rounded-box] bg-base-100 mt-4 py-2 px-1'>
+               {Profile && <UsersMetadata profile={Profile} />}
             </div>
          </div>
-      );
-   }
+         <Card />
+      </div>
+   );
 }
 
 
