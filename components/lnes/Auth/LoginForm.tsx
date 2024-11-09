@@ -1,7 +1,6 @@
 'use client'
 import { profileId, useLogin, useProfilesManaged } from "@lens-protocol/react-web";
 
-import Link from "next/link";
 
 
 export default function LoginForm({ wallet, onSuccess }: { wallet: string; onSuccess?: () => void }) {

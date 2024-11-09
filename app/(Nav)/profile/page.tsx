@@ -4,13 +4,12 @@
 import Link from 'next/link';
 import { SessionType, useProfile, useSession } from "@lens-protocol/react-web";
 import { truncateEthAddress } from '@/utils/truncateEthAddress';
-import { RiBarChart2Line, RiCopperCoinLine, RiHistoryLine, RiNftLine, RiPuzzleLine, RiTrophyLine, RiUserSettingsLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill, RiMedalLine, RiUserVoiceLine, RiBookmarkFill, RiBookmarkLine, RiServiceLine, RiWallet3Line } from "react-icons/ri";
+import { RiBarChart2Line, RiPuzzleLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill, RiMedalLine, RiUserVoiceLine, RiBookmarkLine, RiServiceLine, RiWallet3Line } from "react-icons/ri";
 
 
 export default function page() {
-   const { data } = useSession({ suspense: true });
-
-   if (data && data.type === SessionType.Anonymous) {
+   const { data } = useSession();
+   if (data && data.type !== SessionType.WithProfile) {
       return (
          <div>
             <div className='rounded-[--rounded-box] px-2  md:px-4'>
@@ -21,22 +20,17 @@ export default function page() {
                   </div>
                </div>
             </div>
-            <Card />
          </div>
       );
    }
    if (data && data.type === SessionType.WithProfile) {
-      const ProfileWithProfile = data.profile.handle?.fullHandle ?? data.profile.id;
-      let { data: Profile } = useProfile({
-         forHandle: ProfileWithProfile
-      });
       return (
          <div className="">
             <div className='h-full '>
                <div className='rounded-[--rounded-box] px-2  md:px-4'>
                   <div className=' rounded-[--rounded-box]   bg-base-100 mt-4 py-2 px-1'>
                      {/* 用户信息 */}
-                     <UsersMetadata profile={Profile} />
+                     <UsersMetadata profile={data?.profile?.handle?.fullHandle ?? data.profile.id} />
 
                      {/* 用户数据 */}
                      {/*                         <UsersStats profile={Profile} name={data.profile.handle?.localName} />
@@ -126,7 +120,7 @@ function UsersMetadata({ profile }) {
 
 function Card() {
    const assetData = [
-      { label: '资产', href: '/wallet', icon: RiWallet3Line , },
+      { label: '资产', href: '/wallet', icon: RiWallet3Line, },
       { label: '会员', href: '/a', icon: RiVerifiedBadgeLine, },
       { label: '成就等级', href: '/profile/grade', icon: RiMedalLine, },
       { label: '数据分析', href: '/profile/analyse', icon: RiBarChart2Line, },
@@ -146,7 +140,7 @@ function Card() {
             {/* <h1 className="p-2 md:p-4 text-xl font-bold">资产</h1> */}
             <div className='flex-row grid grid-cols-4 justify-items-stretch   h-auto w-auto  p-3 '>
                {assetData.map((item, index) => (
-                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[--button-bg] rounded-xl sm:rounded-full p-1 my-2 md:p-3'>
+                  <Link href={item.href} key={index} className=' grid justify-items-center hover:bg-[--button-bg] rounded-xl sm:rounded-full p-2 my-2 md:p-3'>
                      <item.icon size={24} /> <p className='text-[0.5rem] xs:text-xs  md:text-base'>{item.label}</p>
                   </Link>
                ))}
@@ -158,7 +152,7 @@ function Card() {
             {/* <h1 className="p-2 md:p-4 text-xl font-bold">用户</h1> */}
             <div className='flex-row  grid grid-cols-4 justify-items-stretch h-auto w-auto  p-3 '>
                {userData.map((item, index) => (
-                  <Link href={item.href ? item.href : ''} key={index} className='  grid justify-items-center hover:bg-[--button-bg]  rounded-xl sm:rounded-full p-1 my-2 md:p-3 '>
+                  <Link href={item.href ? item.href : ''} key={index} className='  grid justify-items-center hover:bg-[--button-bg]  rounded-xl sm:rounded-full p-2 my-2 md:p-3 '>
                      <item.icon size={24} /> <p className='text-[0.5rem] xs:text-xs md:text-base'>{item.label}</p>
                   </Link>
                ))}

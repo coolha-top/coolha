@@ -53,11 +53,18 @@ export function MenuButton() {
                     <li className="my-1"></li>
                     <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>
                     <li className="my-1"></li>
-                    <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>
+                    <div className="">
+                    <Link href={`/fqa`} className=" text-sm hover:link hover:link-primary"> 常见问题</Link>
+                    <Link href={`/privacy`} className=" text-sm hover:link hover:link-primary"> 隐私政策</Link>
+                    <Link href={`/terms`} className=" text-sm hover:link hover:link-primary"> 条款规则</Link>
+                    <Link href={`/about`} className=" text-sm hover:link hover:link-primary" target='_blank'> 关于应用</Link>
+                    <Link href={`https://github.com/callha/coolha`} className=" text-sm hover:link hover:link-primary" target='_blank'> v0.1.1</Link>
+                    </div>
+{/*                     <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>
                     <li><Link href={`/privacy`}> <RiShieldUserLine size={24} />隐私政策</Link></li>
                     <li><Link href={`/terms`}> <RiFileTextLine size={24} />条款规则</Link></li>
                     <li><Link href={`/about`}> <RiInformation2Line size={24} />关于应用</Link></li>
-                    <li><Link href={`https://github.com/callha/coolha`} target='_blank'>v0.1.1</Link></li>
+                    <li><Link href={`https://github.com/callha/coolha`} target='_blank'>v0.1.1</Link></li> */}
                 </ul>
             </div>
 

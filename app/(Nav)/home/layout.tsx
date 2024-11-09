@@ -52,7 +52,7 @@ export default function HomeLayout({ children }) {
 
 
       {/* 类型 */}
-      <div className="flex flex-row w-full z-20 h-8 xs:h-16  items-center">
+      <div className="flex flex-row w-full max-w-4xl z-20 h-8 xs:h-16  items-center">
         {linknav.map((item) => (
           <div className='mx-auto flex-col sm:flex-row  justify-around w-[20%] flex  z-20  ' key={item.href}>
 
