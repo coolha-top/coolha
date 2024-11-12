@@ -13,26 +13,28 @@ export default function interactCard({ dataname }) {
     <div className='flex justify-items-start md:max-w-[100%]  text-base-content/70 mt-2 '>
 
       {/* 评论 */}
-      <div className="w-1/4" >
+      <div className="w-1/4 md:w-1/5" >
         <div className={`${ButtonCSS} btn-disabled text-zinc-400`} onClick={() => router.push(`/posts/${dataname.id}`)} >
-          <RiChat3Line className="size-4 md:size-6 " />
+          <RiChat3Line className="size-5 md:size-6 " />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.comments)}</p>
         </div>
       </div>
 
       {/* 转发 + 转贴 */}
-      <MirrorsToggle dataname={dataname} />
+      <div className="w-1/4 md:w-1/5" >
+        <MirrorsToggle dataname={dataname} />
+      </div>
 
 
       {/* 点赞 */}
-      <UpvoteToggle dataname={dataname} />
+      <div className="w-1/4 md:w-1/5" >
+        <UpvoteToggle dataname={dataname} />
+      </div>
 
       {/* 出版 收集 */}
-      {dataname?.operations?.canCollect === 'No' && 'No'}
-      {dataname?.operations?.canCollect.Unknown && 'Unknown'}
-      {dataname?.operations?.canCollect.Yes && 'Yes'}
-
-      <CollectsToggle dataname={dataname} />
+      <div className="w-1/4 md:w-1/5" >
+        <CollectsToggle dataname={dataname} />
+      </div>
 
 
     </div>
@@ -83,23 +85,19 @@ function MirrorsToggle({ dataname }) {
     <>
 
       {isMirrored ?
-        <div className="w-1/4">
           <button onClick={hideMirrorToggle} disabled={hidingMirror} className={`${ButtonCSS} hover:text-success text-success`}>
-            <RiLoopLeftFill className="size-4 md:size-6" />
+            <RiLoopLeftFill className="size-5 md:size-6" />
             <p className="text-center text-sm">
               {formatNumberWithUnit(dataname.stats.mirrors + dataname.stats.quotes)}
             </p>
           </button>
-        </div>
         :
-        <div className="w-1/4">
           <button onClick={createMirrorToggle} disabled={creatingMirror} className={`${ButtonCSS} hover:bg-[var(--button-bg)] hover:text-success`}>
-            <RiLoopLeftFill className="size-4 md:size-6" />
+            <RiLoopLeftFill className="size-5 md:size-6" />
             <p className="text-center text-sm">
               {formatNumberWithUnit(dataname.stats.mirrors + dataname.stats.quotes)}
             </p>
           </button>
-        </div>
       }
 
 
@@ -131,20 +129,17 @@ function UpvoteToggle({ dataname }) {
 
   return (
     <>
-
-      <div className="w-1/4">
         <button onClick={Upvotetoggle} disabled={loading} className={` ${ButtonCSS} hover:bg-[var(--button-bg)]  hover:text-error ${dataname.operations.hasUpvoted ? 'text-red-500' : ''}`}  >
 
           {dataname.operations.hasUpvoted ? (
-            <RiHeart3Fill className="size-4 md:size-6" /> // 红色填充图标表示已点赞
+            <RiHeart3Fill className="size-5 md:size-6" /> // 红色填充图标表示已点赞
           ) : (
-            <RiHeart3Line className="size-4 md:size-6" /> // 空心图标表示未点赞
+            <RiHeart3Line className="size-5 md:size-6" /> // 空心图标表示未点赞
           )}
 
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats.upvotes)}</p>
 
         </button>
-      </div>
     </>
   )
 }
@@ -157,16 +152,16 @@ function CollectsToggle({ dataname }) {
 
   // 根据 canCollect 的状态，决定按钮的样式和功能
   return (
-    <div className="w-1/4">
+    <>
 
       <button className={`${ButtonCSS} btn-disabled text-zinc-400`}/*  onClick={() => handleCollect(dataname)} */>
-        <RiShoppingBagLine className="size-4 md:size-6" />
+        <RiShoppingBagLine className="size-5 md:size-6" />
         <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
       </button>
 
-{/*       {isCollectibleNo && (
+      {/*       {isCollectibleNo && (
         <button className={`${ButtonCSS} btn-disabled text-zinc-400`} disabled>
-          <RiShoppingBagLine className="size-4 md:size-6" />
+          <RiShoppingBagLine className="size-5 md:size-6" />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
           <p>✕</p>
         </button>
@@ -174,7 +169,7 @@ function CollectsToggle({ dataname }) {
 
       {isCollectibleUnknown && (
         <button className={`${ButtonCSS} btn-disabled text-zinc-400`} disabled>
-          <RiShoppingBagLine className="size-4 md:size-6" />
+          <RiShoppingBagLine className="size-5 md:size-6" />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
           <p>?</p>
         </button>
@@ -182,11 +177,11 @@ function CollectsToggle({ dataname }) {
 
       {isCollectibleYes && (
         <button className={`${ButtonCSS} hover:text-success`}>
-          <RiShoppingBagLine className="size-4 md:size-6" />
+          <RiShoppingBagLine className="size-5 md:size-6" />
           <p className="text-center text-sm">{formatNumberWithUnit(dataname.stats?.collects)}</p>
           <p>✓</p>
         </button>
       )} */}
-    </div>
+    </>
   );
 }

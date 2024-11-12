@@ -5,26 +5,32 @@ import { usePathname } from 'next/navigation'
 import { RiChat3Line, RiFileTextLine, RiImageLine, RiMessage2Line, RiMusic2Line, RiNotification3Line, RiQuestionAnswerLine, RiShapesLine, RiTeamLine, RiVideoLine } from 'react-icons/ri'
 export default function Message({ children }) {
   const pathname = usePathname();
+
+  // 指定要显示导航栏的路径列表
+  const displayPaths = ["/message/chat", "/message/community", "/message/notice"];
+  // 判断当前路径是否在指定列表中
+  const shouldDisplayNav = displayPaths.includes(pathname);
+
   return (
     <div className=''>
 
 
+      {shouldDisplayNav &&
+        <div className="flex flex-row  w-full lg:w-full z-20 h-16  items-center ">
 
-      <div className="flex flex-row  w-full lg:w-full z-20 h-16  items-center ">
+          {linknav.map((item) => (
+            <div className='mx-auto flex-col sm:flex-row w-1/3 justify-around flex border-b bg-base-100 hover:bg-[--link-hover-background]  z-20' key={item.href}>
 
-        {linknav.map((item) => (
-          <div className='mx-auto flex-col sm:flex-row w-1/3 justify-around flex border-b bg-base-100 hover:bg-[--link-hover-background]  z-20' key={item.href}>
+              <Link href={item.href} className={`z-20 flex items-center justify-center w-[100%] h-16 flex-col sm:flex-row border-b text-[#878787]  ${pathname === item.href ? 'text-info border-b-info border-b-2' : ''}`}>
+                <div className=' justify-center text-2xl sm:text-2xl z-20'> {item.logo} </div>
+                <p className="text-sm text-inherit z-20 text-center">{item.name}</p>
+              </Link>
 
-            <Link href={item.href} className={`z-20 flex items-center justify-center w-[100%] h-16 flex-col sm:flex-row border-b text-[#878787]  ${pathname === item.href ? 'text-info border-b-info border-b-2' : ''}`}>
-              <div className=' justify-center text-2xl sm:text-2xl z-20'> {item.logo} </div>
-              <p className="text-sm text-inherit z-20 text-center">{item.name}</p>
-            </Link>
+            </div>
+          ))}
 
-          </div>
-        ))}
-
-      </div>
-
+        </div>
+      }
 
 
       {children}

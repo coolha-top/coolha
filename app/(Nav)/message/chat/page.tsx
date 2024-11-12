@@ -1,5 +1,7 @@
 'use client'
 
+import Link from "next/link";
+
 export default function ChatPage() {
     const chatData = [
         { name: 'Lens', message: 'Hello! CoolhaTop users' },
@@ -26,7 +28,7 @@ export default function ChatPage() {
     return (
         <>
             {chatData.map((chat, index) => (
-                <div key={index} className="flex p-4  bg-base-100 hover:bg-[--link-hover-background]">
+                <Link key={index} href={`/message/chat/${chat.name}`} className="flex p-4  bg-base-100 hover:bg-[--link-hover-background]">
 
                     <div className="flex-none w-14">
                         <img src="/lens/Icon-T-Black_@2x.png" alt={chat.name} className=" rounded-full bg-white" />
@@ -41,7 +43,7 @@ export default function ChatPage() {
                         <p>23:00</p>
                     </div>
 
-                </div>
+                </Link>
             ))}
         </>
     );
