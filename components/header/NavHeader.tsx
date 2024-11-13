@@ -28,11 +28,7 @@ function Find() {
         <div className="navbar py-0">
             <div className=" navbar-start"> </div>
             <div className=" navbar-center">发现</div>
-            <div className=" navbar-end">
-                <button className="btn btn-square btn-ghost" onClick={()=>router.push(`/search`)}>
-                    <RiSearchLine size={24} />
-                </button>
-            </div>
+            <div className=" navbar-end"> </div>
         </div>
     )
 }

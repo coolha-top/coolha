@@ -26,15 +26,15 @@ export function PUBposts({
   }))
 
   return (
-    <div className=" flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
+    <div className=" flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw ">
 
       {publications?.map((pub: any, index: number) => (
-        <div key={index} className=" bg-base-100 hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 py-2 pb-6">
+        <div key={index} className=" bg-base-100 hover:bg-[--link-hover-background] md:max-w-3xl w-dvw mt-2 p-4 py-2">
 
           {/* 转发的帖子 */}
           {pub.__typename === "Mirror" ? (
             <>
-              <div className="mb-3 flex flex-row gap-0.5 text-base-content/70">
+              <div className=" flex flex-row gap-0.5 text-base-content/70">
                 <RiLoopLeftFill className="size-6" />
                 <b className=""> {pub.by.metadata?.displayName} </b>
                 <span className=""> 转发了</span>
@@ -57,8 +57,8 @@ export function PUBposts({
                 <Menu pub={pub} />
               </div>
               <Link href={`/posts/${pub.id}`} passHref >
-                  <UsersPosAtext content={pub.metadata.content} />
-                  <Meide pub={pub.metadata.asset} />
+                <UsersPosAtext content={pub.metadata.content} />
+                <Meide pub={pub.metadata.asset} />
               </Link>
               {/* 如果是引用类型的帖子，显示引用的内容 */}
               {pub.__typename === "Quote" && (

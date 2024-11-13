@@ -27,9 +27,9 @@ export const PosAtext = ({ content }) => {
   return (
     <div className='pt-2 break-words text-wrap h-auto '>
 
-      <p dangerouslySetInnerHTML={{ __html: expanded ? convertLinksToHTML(content).split('\n') : convertLinksToHTML(content).split('\n').slice(0, MAX_LINES) }}>
+      <span dangerouslySetInnerHTML={{ __html: expanded ? convertLinksToHTML(content).split('\n') : convertLinksToHTML(content).split('\n').slice(0, MAX_LINES) }}>
 
-      </p>
+      </span>
 
       {lines.length > MAX_LINES && (
         <button

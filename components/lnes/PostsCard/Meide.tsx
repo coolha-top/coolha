@@ -10,14 +10,14 @@ export default function Meide({ pub }) {
             {pub ? (
                 <>
                     {pub.image && !pub.audio && <img
-                        className={`max-w-[200px] md:max-w-[300px]] h-auto    sm:h-auto mb-3   rounded-2xl object-cover`}
+                        className={`max-w-[200px] md:max-w-[400px] h-auto    sm:h-auto mb-3   rounded-2xl object-cover border-base-content/60 border-[0.5px]`}
                         alt='pub.image && !pub.audio img'
                         src={pub?.image?.optimized?.uri || pub?.image?.optimized?.raw?.uri || ''} />}
 
                     {pub.audio && (
                         <>
                             <img
-                                className={`max-w-[200px] md:max-w-[300px] h-auto    sm:h-auto mb-3  rounded-2xl object-cover`}
+                                className={`max-w-[200px] md:max-w-[400px] h-auto    sm:h-auto mb-3  rounded-2xl object-cover border-base-content/60 border-[0.5px]`}
                                 alt='audio img'
                                 src={
                                     pub ?

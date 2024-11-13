@@ -38,10 +38,10 @@ export default function page() {
 
 
         return (
-            <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
-                {loading && <LoadingSpinner /> }
+            <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
+                {loading && <LoadingSpinner />}
                 {data?.map((pub) => (
-                    <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 py-2 mt-2" key={`${pub.root.id}`}>
+                    <div className=" bg-base-100 hover:bg-[--link-hover-background] w-dvw max-w-3xl lg:p-4 py-2 mt-2" key={`${pub.root.id}`}>
 
 
                         {/* 帖子主内容 */}

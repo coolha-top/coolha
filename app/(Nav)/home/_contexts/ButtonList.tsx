@@ -32,7 +32,7 @@ export default function ButtonList() {
                     </Link>
                 </div> */}
             {pathname === '/home/foryou' || pathname === '/home/following' ? '' :
-                <div className="  flex md:flex-row  z-20 h-12 items-center bg-base-100  overflow-y-auto ">
+                <div className="  flex md:flex-row  z-20 h-10 items-center bg-base-100  overflow-y-auto ">
                     {orderOptions.map((option) => (
                         <div className='m-1  ' key={option.key}>
                             <button

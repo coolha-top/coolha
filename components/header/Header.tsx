@@ -46,7 +46,7 @@ function HeaderC() {
                 <div className="navbar-start gap-1">
 
                     <Link href={`/`} className="avatar w-12 h-12 ">
-                        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Image
                                 src='/favicon.ico'
                                 width={40}

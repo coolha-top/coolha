@@ -1,6 +1,6 @@
 // @ts-nocheck
 'use client'
-import { publicationId, usePublication, PublicationType, usePublications, LimitType, AnyPublication, Post, Quote, Mirror} from "@lens-protocol/react-web";
+import { publicationId, usePublication, PublicationType, usePublications, LimitType, AnyPublication, Post, Quote, Mirror } from "@lens-protocol/react-web";
 import Avatarimg from '@/components/lnes/PostsCard/Avatarimg';
 import AvatarName from '@/components/lnes/PostsCard/AvatarName';
 import { UsersPosAtext } from '@/components/lnes/PostsCard/PosAtext';
@@ -21,7 +21,7 @@ export default function Posts({ params }) {
         suspense: true,
     });
     const { data: commentsData, loading, hasMore, observeRef } = useInfiniteScroll(usePublications({
-        
+
         where: {
             /* publicationTypes: [PublicationType.Comment], */
             /* publicationTypes: [PublicationType.Post, PublicationType.Quote,PublicationType.Comment], */
@@ -53,7 +53,7 @@ export default function Posts({ params }) {
             {/* 主帖 */}
 
 
-            <div key={pub.id} className="w-dvw lg:max-w-4xl p-4 pt-0">
+            <div key={pub.id} className="w-dvw lg: p-4 pt-0">
 
                 {pub.__typename === "Mirror" ? (<></>) : (<>
                     <div className="flex">

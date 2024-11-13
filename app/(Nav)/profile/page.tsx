@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { SessionType, useProfile, useSession } from "@lens-protocol/react-web";
 import { truncateEthAddress } from '@/utils/truncateEthAddress';
-import { RiBarChart2Line, RiPuzzleLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill, RiMedalLine, RiUserVoiceLine, RiBookmarkLine, RiServiceLine, RiWallet3Line } from "react-icons/ri";
+import { RiBarChart2Line, RiPuzzleLine, RiVerifiedBadgeLine, RiVerifiedBadgeFill, RiMedalLine, RiUserVoiceLine, RiBookmarkLine, RiServiceLine, RiWallet3Line, RiGiftLine } from "react-icons/ri";
 
 
 export default function page() {
@@ -118,16 +118,16 @@ function UsersMetadata({ profile }) {
 function Card() {
    const assetData = [
       { label: '资产', href: '/wallet', icon: RiWallet3Line, },
-      { label: '会员', href: '/a', icon: RiVerifiedBadgeLine, },
-      { label: '成就等级', href: '/profile/grade', icon: RiMedalLine, },
-      { label: '数据分析', href: '/profile/analyse', icon: RiBarChart2Line, },
-      { label: '我的书签', href: '/profile/bookmarks', icon: RiBookmarkLine, },
+      { label: '会员', href: '/vip', icon: RiVerifiedBadgeLine, },
+      { label: '成就等级', href: '/grade', icon: RiMedalLine, },
+      { label: '数据分析', href: '/analyse', icon: RiBarChart2Line, },
+      { label: '我的书签', href: '/bookmarks', icon: RiBookmarkLine, },
    ];
 
    const userData = [
-      { label: '扩展功能', href: '/profile/extend', icon: RiPuzzleLine, },
-      { label: '测试奖励', href: '/mintNFT', icon: RiServiceLine, },
-      { label: '邀请用户', href: '/profile/invite', icon: RiUserVoiceLine, },
+      { label: '扩展功能', href: '/extend', icon: RiPuzzleLine, },
+      { label: '邀请用户', href: '/invite', icon: RiUserVoiceLine, },
+      { label: '测试奖励', href: '/mintNFT', icon: RiGiftLine, },
    ];
 
    return (

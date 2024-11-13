@@ -23,7 +23,7 @@ export default function layout({ children, params }) {
   if (!pub) return <div>未找到帖子</div>;
   return (
     <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw ">
-      <div className=' max-w-4xl lg:min-w-4xl mx-auto  w-full '>
+      <div className='  lg:min-w-3xl mx-auto max-w-3xl '>
 
         {/* 导航栏 */}
         <div className="navbar py-0 bg-base-100">
@@ -42,7 +42,7 @@ export default function layout({ children, params }) {
 
 
         {/* 主帖 */}
-        <div key={pub.id} className="w-dvw lg:max-w-4xl p-4 pb-2 pt-0 bg-base-100">
+        <div key={pub.id} className="w-dvw md:max-w-3xl md:p-4 pb-2 pt-0 bg-base-100">
 
           {pub.__typename === "Mirror" ? (<></>) : (<>
             <div className="flex">

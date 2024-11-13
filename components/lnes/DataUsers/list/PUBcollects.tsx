@@ -1,6 +1,6 @@
 'use client'
 
-import { usePublications, PublicationType, PublicationMetadataMainFocusType, LimitType,  } from "@lens-protocol/react-web"
+import { usePublications, PublicationType, PublicationMetadataMainFocusType, LimitType, } from "@lens-protocol/react-web"
 import { useInfiniteScroll } from "../hook/useInfiniteScroll"
 import Link from "next/link"
 import Avatarimg from "../../PostsCard/Avatarimg"
@@ -12,7 +12,7 @@ import { UsersPosAtext } from "../../PostsCard/PosAtext"
 
 export default function PUBcollects({ profile }) {
 
-  const { data, hasMore,  observeRef } = useInfiniteScroll(usePublications({
+  const { data, hasMore, observeRef } = useInfiniteScroll(usePublications({
     limit: LimitType.TwentyFive,
     where: {
       from: [profile?.id],
@@ -26,7 +26,7 @@ export default function PUBcollects({ profile }) {
   return (
     <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw">
       {data?.map((pub: any, index: number) => (
-        <div key={pub.id} className="bg-base-100  hover:bg-[--link-hover-background]  lg:max-w-4xl w-dvw mt-2 p-4 pt-2 pb-6">
+        <div key={pub.id} className="bg-base-100  hover:bg-[--link-hover-background] md:max-w-3xl w-dvw mt-2 p-4 pt-2 ">
 
 
           <>

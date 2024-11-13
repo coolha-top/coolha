@@ -16,7 +16,7 @@ export default function layout({ children }) {
   return (
     <div className='bg-base-200'>
 
-      <div className="max-w-4xl lg:min-w-4xl mx-auto   w-full h-full bg-base-100">
+      <div className=" lg:min-w-4xl mx-auto   w-full h-full bg-base-100">
         <div className="navbar py-0 ">
           <div className=" navbar-start">
             <button className="btn btn-square btn-ghost" onClick={handleBack} >
@@ -30,7 +30,7 @@ export default function layout({ children }) {
 
       <Header />
 
-      <div className='mx-auto max-w-4xl min-h-[calc(100dvh-4rem)] flex-1 justify-center'>
+      <div className='mx-auto  min-h-[calc(100dvh-4rem)] flex-1 justify-center'>
         {children}
       </div>
 

@@ -39,7 +39,7 @@ export default function Page() {
     where: {
       publicationTypes: [ExplorePublicationType.Post],
       metadata: {
-        mainContentFocus: [PublicationMetadataMainFocusType.TextOnly,PublicationMetadataMainFocusType.Article,PublicationMetadataMainFocusType.Story]
+        mainContentFocus: [PublicationMetadataMainFocusType.TextOnly, PublicationMetadataMainFocusType.Article, PublicationMetadataMainFocusType.Story]
       }
     }
   })) as any
@@ -56,12 +56,12 @@ export default function Page() {
       <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-[100vw]">
 
 
-        {loadingMusicPubs && <LoadingSpinner /> }
+        {loadingMusicPubs && <LoadingSpinner />}
 
 
         {musicPubs?.map(mpub => (
           <div
-            className="bg-base-100 hover:bg-[--link-hover-background] w-dvw  lg:max-w-4xl p-4 py-2 mt-2 "
+            className="bg-base-100 hover:bg-[--link-hover-background] w-dvw  md: p-4 py-2 mt-2 "
             key={mpub.id}
           /*  onClick={() => router.push(`https://share.lens.xyz/p/${mpub.id}`)} */
           >
@@ -74,7 +74,7 @@ export default function Page() {
                 />
                 <AvatarName
                   localName={mpub.by && mpub.by.handle ? mpub.by.handle.localName : mpub.by.id}
-                  displayName={mpub.by?.metadata?.displayName} 
+                  displayName={mpub.by?.metadata?.displayName}
                   namespace={mpub.by && mpub.by.handle ? mpub.by.handle.namespace : ''}
                   id={mpub}
                   createdAt={mpub.createdAt} />

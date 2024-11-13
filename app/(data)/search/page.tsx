@@ -7,9 +7,9 @@ import Avatar from "@/gui/flowbite/Avatar";
 import { useSession, SessionType, useProfile, useRecommendedProfiles, profileId, ExploreProfilesOrderByType, useExploreProfiles, LimitType } from "@lens-protocol/react-web";
 import { useRouter } from "next/navigation";
 function Text() {
-  return (
-    <div>推荐关注</div>
-  )
+    return (
+        <div>推荐关注</div>
+    )
 }
 
 export default function page() {
@@ -26,7 +26,7 @@ export default function page() {
         }));
         return (
             <div className="flex flex-wrap flex-col justify-normal lg:justify-center lg:w-full w-dvw ">
-                <div className=' max-w-4xl lg:min-w-4xl mx-auto  w-full'>
+                <div className='  lg:min-w-3xl mx-auto  w-full'>
 
 
                     <div className="flex mx-auto max-w-3xl justify-center">

@@ -10,7 +10,7 @@ export default function PosImage({ src }) {
                 {src && (
                   <img
                     alt="user posts img"
-                    className='max-w-[200px] md:max-w-[300px] h-auto  rounded-2xl object-cover border-[0.5px]'
+                    className='max-w-[200px] md:max-w-[400px] h-auto  rounded-2xl object-cover border-[0.5px] border-base-content/60'
                     src={src}
                   />
                 )}

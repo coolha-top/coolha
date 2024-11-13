@@ -107,7 +107,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 
             {/* 主内容区域 */}
-            <main className="flex-1 p-2 md:p-6 md:ml-64 bg-base-100  min-h-dvh mx-auto max-w-4xl ">
+            <main className="flex-1 p-2 md:p-6 md:ml-64 bg-base-100  min-h-dvh mx-auto  ">
                 {children}
             </main>
         </div>

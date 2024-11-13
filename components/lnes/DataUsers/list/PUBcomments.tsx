@@ -14,7 +14,7 @@ import Meide from "../../PostsCard/Meide";
 import Menu from "../../PostsCard/Menu/Menu";
 
 export default function PUBcomments({ profile }) {
-  const { data, hasMore,  observeRef } = useInfiniteScroll(usePublications({
+  const { data, hasMore, observeRef } = useInfiniteScroll(usePublications({
     limit: LimitType.Ten,
     //orderBy: ExplorePublicationsOrderByType.LensCurated,
     where: {
@@ -29,7 +29,7 @@ export default function PUBcomments({ profile }) {
       {data?.map((comment: any, index: number) => (
         <>
 
-          <div key={index} className=" bg-base-100 lg:max-w-4xl w-dvw mt-2 pb-4 ">
+          <div key={index} className=" bg-base-100 w-dvw md:max-w-3xl mt-2 ">
 
             {/* 如果是引用类型的帖子，显示引用的内容 */}
             {comment.__typename === "Comment" && (
@@ -53,7 +53,7 @@ export default function PUBcomments({ profile }) {
                     <Meide pub={comment.commentOn.metadata.asset} />
                   </Link>
                   <InteractCard dataname={comment.commentOn} />
-                  <div className="h-14 w-0.5  border ml-4 absolute"></div>{/* 连线 */}
+                  <div className="h-12 w-0.5  border ml-4 absolute"></div>{/* 连线 */}
                 </div>
 
               </div>

@@ -15,7 +15,7 @@ export default function NavNavLink() {
 
                 <NavLink
                     href='/home'
-                    activeHrefs={['/home', "/home/article", "/home/image", "/home/music", "/home/video",]}
+                    activeHrefs={['/home']}
                     icon={<RiHomeLine className="size-7" />}
                     activeIcon={<RiHomeFill className="size-7" />}
                     text='首页'
@@ -31,7 +31,7 @@ export default function NavNavLink() {
 
                 <NavLink
                     href='/message/chat'
-                    activeHrefs={['/message/chat', '/message/community', '/message/notice',]}
+                    activeHrefs={['/message']}
                     icon={<RiChat1Line className="size-7" />}
                     activeIcon={<RiChat1Fill className="size-7" />}
                     text='消息'
@@ -64,8 +64,8 @@ export default function NavNavLink() {
 
 function NavLink({ href, activeIcon, icon, activeHrefs, text }) {
     const pathname = usePathname();
-    const isActive = activeHrefs.includes(pathname);
-
+    // 检查路径是否以activeHrefs中的任何一个前缀开头
+    const isActive = activeHrefs.some((activeHref) => pathname.startsWith(activeHref));
 
 
     return (
@@ -76,7 +76,7 @@ function NavLink({ href, activeIcon, icon, activeHrefs, text }) {
         >
 
             <div className="flex flex-col items-center justify-center">
-                {activeHrefs.includes(pathname) ? activeIcon : icon}
+                {isActive ? activeIcon : icon}
                 {/* <span className="text-xs mt-0.5">{text}</span> */}
             </div>
 

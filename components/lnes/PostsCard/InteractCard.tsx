@@ -10,7 +10,7 @@ const ButtonCSS = 'flex gap-0.5 justify-start items-center  rounded-full size-7 
 export default function interactCard({ dataname }) {
   const router = useRouter();
   return (
-    <div className='flex justify-items-start md:max-w-[100%]  text-base-content/70 mt-2 '>
+    <div className='flex justify-items-start   text-base-content/70 mt-2 '>
 
       {/* 评论 */}
       <div className="w-1/4 md:w-1/5" >

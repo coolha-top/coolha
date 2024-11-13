@@ -8,7 +8,7 @@ export default function page({params: { users },}) {
     forHandle: `lens/${users}`
   });
    return (
-     <div className="lg:min-w-4xl mx-auto">
+     <div className="lg:min-w-3xl mx-auto">
      <PUBcomments profile={profile}/>
      </div>
    )
