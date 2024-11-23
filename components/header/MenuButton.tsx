@@ -40,7 +40,7 @@ export function MenuButton() {
         <>
             {/* 菜单按钮 */}
             <div className="dropdown dropdown-bottom dropdown-end mx-1">
-                <div  tabIndex={0} role="button" className="btn btn-ghost btn-circle   "><CgMenuGridO className="size-8" /></div>
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle   "><CgMenuGridO className="size-8" /></div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border text-lg">
                     <li><Link href={`/settings`}><RiSettingsLine size={24} />应用设置</Link></li>
                     <li><a onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
@@ -51,14 +51,15 @@ export function MenuButton() {
                     </li>
                     {/*  <li><Link href={`/settings`}><RiTranslate size={24} />界面语言</Link></li> */}
                     <li className="my-1"></li>
-                    <li><Link href={`/sponsor`}> <RiServiceLine size={24} />赞助合作</Link></li>
+                    <li><Link href={`cs@coolha.top`}> <RiServiceLine size={24} />赞助合作</Link></li>
                     <li className="my-1"></li>
                     <div className="">
                         <Link href={`/fqa`} className=" text-sm hover:link hover:link-primary"> 常见问题</Link>
                         <Link href={`/privacy`} className=" text-sm hover:link hover:link-primary"> 隐私政策</Link>
                         <Link href={`/terms`} className=" text-sm hover:link hover:link-primary"> 条款规则</Link>
-                        <Link href={`/about`} className=" text-sm hover:link hover:link-primary" target='_blank'> 关于应用</Link>
-                        <Link href={`https://github.com/callha/coolha`} className=" text-sm hover:link hover:link-primary" target='_blank'> v0.1.1</Link>
+                        <Link href={`/about`} className=" text-sm hover:link hover:link-primary"> 关于应用</Link>
+                        <Link href={`https://github.com/coolha-top/coolha`} className=" text-sm hover:link hover:link-primary" target='_blank'> v0.1.1</Link>
+
                     </div>
                     {/*                     <li><Link href={`/fqa`}> <RiQuestionLine size={24} />常见问题</Link></li>
                     <li><Link href={`/privacy`}> <RiShieldUserLine size={24} />隐私政策</Link></li>
@@ -84,10 +85,10 @@ export function MenuButton() {
                         onClick={toggleModal}>
                         {truncateEthAddress(address)}
                     </button>
-            :
-                <button onClick={toggleModal} type="button" className="bg-primary rounded-full py-1.5 px-3 text-black  text-xl  mx-1">
-                    登录
-                </button>
+                    :
+                    <button onClick={toggleModal} type="button" className="bg-primary rounded-full py-1.5 px-3 text-black  text-xl  mx-1">
+                        登录
+                    </button>
                 }
             </>}
 
