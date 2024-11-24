@@ -59,7 +59,7 @@ export default function Page() {
         <div className="  mx-auto px-4 text-center">
           <h3 className="text-3xl font-bold text-gray-800 mb-4">仍有疑问？</h3>
           <p className="text-xl text-gray-600 mb-8">我们随时为您提供帮助。请联系我们的支持团队以获取更多信息。</p>
-          <a href="https://t.me/coolha_top/3" target='_blank' className="inline-block bg-[#C0E218] text-gray-800 font-semibold px-6 py-3 rounded-full hover:bg-opacity-80 transition duration-300">
+          <a href="mailto:fqa@coolha.top" target='_blank' className="inline-block bg-[#C0E218] text-gray-800 font-semibold px-6 py-3 rounded-full hover:bg-opacity-80 transition duration-300">
             客服支持
           </a>
         </div>

@@ -147,7 +147,7 @@ function NavbarLink() {
                 <li key={link.href}>
                     <Link
                         href={link.href}
-                        className={`btn  ${pathname && pathname.startsWith(link.startsWith) ? " text-info " : ""}`}
+                        className={`btn dark:hover:bg-[var(--button-bg)]  ${pathname && pathname.startsWith(link.startsWith) ? " text-info " : ""}`}
                     >
                         {pathname.startsWith(link.startsWith) ? <link.iconActive className="size-8" /> : <link.iconInactive className="size-8" />}
                         <span className=" hidden md:flex text-lg">

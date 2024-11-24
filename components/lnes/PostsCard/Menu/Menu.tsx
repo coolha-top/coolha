@@ -63,7 +63,7 @@ function BookmarkToggle({ publication }) {
             {publication?.operations?.hasBookmarked ? (
                 <> <RiBookmarkFill className="size-6" /><span>取消收藏</span></>
             ) : (
-                <> <RiBookmarkLine className="size-6" /><span>书签收藏</span></>
+                <> <RiBookmarkLine className="size-6" /><span>收藏</span></>
             )}
         </button>
     );

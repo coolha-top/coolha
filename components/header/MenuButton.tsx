@@ -51,7 +51,7 @@ export function MenuButton() {
                     </li>
                     {/*  <li><Link href={`/settings`}><RiTranslate size={24} />界面语言</Link></li> */}
                     <li className="my-1"></li>
-                    <li><Link href={`cs@coolha.top`}> <RiServiceLine size={24} />赞助合作</Link></li>
+                    <li><Link href={`mailto:cs@coolha.top`}> <RiServiceLine size={24} />赞助合作</Link></li>
                     <li className="my-1"></li>
                     <div className="">
                         <Link href={`/fqa`} className=" text-sm hover:link hover:link-primary"> 常见问题</Link>
