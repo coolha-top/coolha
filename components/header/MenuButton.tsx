@@ -10,13 +10,11 @@ import { WelcomeToLens } from "../lnes/Auth/WelcomeToLens";
 import { CgMenuGridO } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import { truncateEthAddress } from "@/utils/truncateEthAddress";
-import { useAccount, useEnsName } from "wagmi";
+import { Config, useAccount, useEnsName } from "wagmi";
 import { config } from "@/config/Wagmi";
-import { Avatar } from "connectkit";
 export function MenuButton() {
     const { theme, setTheme } = useTheme();
 
-    const { } = useEnsName()
     const { address } = useAccount({ config });
     const { data: session, loading } = useSession();
 
@@ -73,7 +71,7 @@ export function MenuButton() {
                 <button
                     className="btn btn-primary text-black  text-xl mx-1"
                     onClick={toggleModal}>
-                    <span className="loading loading-spinner"></span>
+                    <span className="loading loading-xs md:loading-sm loading-spinner"></span>
                 </button>
             </>}
 

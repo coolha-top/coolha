@@ -4,12 +4,10 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-import Provider from '@/app/Provider'
 
 import { headers } from "next/headers";
-import { ContextProvider } from "@/config";
-import { Config, cookieToInitialState } from "wagmi";
-import getConfig from "next/config";
+import ContextProvider from "@/config";
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -33,10 +31,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialState = cookieToInitialState(
-    getConfig(),
-    headers().get('cookie')
-  )
+  const cookies = headers().get('cookie')
   return (
     <html lang="zh">
       <head>
@@ -65,19 +60,17 @@ export default function RootLayout({
       </head>
 
       <body className={`${inter.className} bg-base-200 `}>
-        <Provider>
 
-          <ContextProvider initialState={initialState}  >
+        <ContextProvider cookies={cookies}  >
 
-            {children}
+          {children}
 
-          </ContextProvider>
-
+        </ContextProvider>
 
 
 
 
-        </Provider>
+
         <Analytics />
         <SpeedInsights />
       </body>

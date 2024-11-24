@@ -7,7 +7,8 @@ import {
     OkxEvents,
     OkxEventHandler,
     IFeeConfig,
-    TradeType
+    TradeType,
+    EthereumProvider
 } from "@okxweb3/dex-widget";
 import { useTheme } from "next-themes";
 enum THEME {
@@ -43,8 +44,7 @@ export default function OkxWidget() {
             baseUrl: 'https://www.okx.com'
         };
 
-        const provider = window.ethereum;
-
+        const provider = window.ethereum as unknown as EthereumProvider;
         if (!provider) {
             console.error("未检测到钱包提供方 (window.ethereum)");
             return;

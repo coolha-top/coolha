@@ -1,60 +1,44 @@
 
-import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
-import { mainnet, polygon } from 'wagmi/chains'
-import { ConnectKitProvider, getDefaultConfig } from "connectkit";
+import { cookieStorage, createStorage, http } from 'wagmi'
+import { mainnet, polygon } from '@reown/appkit/networks'
+import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 
 
+export const projectId = process.env.REOWN_ID || 'ee0baf74aec8f889780d2859302173aa';
 
-/* export const bbtestnet = defineChain({
-  id: 20651,
-  name: "bbtestnet",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Native Token",
-    symbol: "Native Token",
+if (!projectId) {
+  throw new Error('Project ID is not defined')
+}
+
+export const networks = [polygon, mainnet,]
+
+export const wagmiAdapter = new WagmiAdapter({
+  storage: createStorage({
+    storage: cookieStorage
+  }),
+  ssr: true,
+  projectId,
+  networks,
+  transports: {
+    [polygon.id]: http(`https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
+    [mainnet.id]: http(`https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
   },
-  rpcUrls: {
-    public: { http: ["https://rpc.buildbear.io/classical-kingpin-385d0670"] },
-    default: { http: ["https://rpc.buildbear.io/classical-kingpin-385d0670"] },
+})
+
+export const config = wagmiAdapter.wagmiConfig
+
+/* export const config = createConfig({
+
+  chains: [polygon, mainnet,],
+  transports: {
+    [polygon.id]: http(`https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
+    [mainnet.id]: http(`https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
   },
-  blockExplorers: {
-    default: {
-      name: "BBExplorer",
-      url: "https://explorer.buildbear.io/classical-kingpin-385d0670",
-    },
-  }
+  
+  ssr: true,
+  storage: createStorage({
+    storage: cookieStorage
+  }),
 }) */
-
-
-
-/* export const metadata = {
-  name: 'Coolha',
-  description: 'Coolha Web Dapp',
-  url: 'https://coolha.top',
-  icons: ['/favicon.ico']
-} */
-
-
-export const config = createConfig(
-  getDefaultConfig({
-    chains: [polygon, mainnet,],
-    transports: {
-      [polygon.id]: http(`https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
-      [mainnet.id]: http(`https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`),
-    },
-    walletConnectProjectId: process.env.REOWN_ID||'12345678',
-
-    // Required App Info
-    appName: "Coolha",
-
-    // Optional App Info
-    appDescription: "Coolha Web Dapp",
-    appUrl: "https://coolha.top", // your app's url
-    appIcon: "https://coolha.top/favicon.ico", // your app's icon, no bigger than 1024x1024px (max. 1MB)
-    ssr: true,
-    storage: createStorage({
-      storage: cookieStorage
-    }),
-  }))
 
 
